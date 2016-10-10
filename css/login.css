@@ -1,0 +1,8 @@
+div.center {
+    margin: auto;
+    width: 25%;
+    border: 2px solid green;
+}
+form.center {
+    text-align: center;
+}
