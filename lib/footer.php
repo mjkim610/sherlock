@@ -4,7 +4,7 @@
     </a>
 
   <!-- Team Section -->
-  <section id="team" class="bg-light-gray">
+  <section id="team">
       <div class="container-fluid text-center">
           <div class="row">
               <div class="col-lg-12 text-center">
