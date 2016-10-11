@@ -1,7 +1,7 @@
   <footer class="container-fluid text-center">
     <a href="#" title="To Top">
       <span class="glyphicon glyphicon-chevron-up"></span>
-    </a><br>
+    </a>
 
   <!-- Team Section -->
   <section id="team" class="bg-light-gray">
