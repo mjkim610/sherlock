@@ -5,7 +5,7 @@
 
   <!-- Team Section -->
   <section id="team" class="bg-light-gray">
-      <div class="container">
+      <div class="container-fluid text-center">
           <div class="row">
               <div class="col-lg-12 text-center">
                   <h2 class="section-heading">Our Amazing Team</h2>
