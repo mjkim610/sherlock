@@ -63,9 +63,6 @@ if (session_status() == PHP_SESSION_NONE) session_start();
           <span style="font-size:1.1em;">Sherlock is a usable authentication system using browser fingerprinting.</span><br>
 
         </div>
-        <div class="col-sm-4 text-center" style="padding-top:20px;">
-          Sherlock
-        </div>
       </div>
     </div>
   </div>
