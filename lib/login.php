@@ -16,10 +16,7 @@
 	    </form>
 	</div>
 
-	<?php
-	require_once "lib/footer.php"
-	?>
-
+    <script src="/js/login.js"></script>
 </body>
 
 </html>
