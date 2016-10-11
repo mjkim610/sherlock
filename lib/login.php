@@ -1,7 +1,3 @@
-<?php
-if (session_status() == PHP_SESSION_NONE) session_start();
-?>
-
 <!DOCTYPE html>
 <html lang="en-us">
 
@@ -24,7 +20,6 @@ if (session_status() == PHP_SESSION_NONE) session_start();
 	require_once "lib/footer.php"
 	?>
 
-    <script src="/js/login.js"></script>
 </body>
 
 </html>

@@ -59,7 +59,7 @@ if (session_status() == PHP_SESSION_NONE) session_start();
       <div class="row">
         <div class="col-sm-8">
           <h2>What is Sherlock?</h2><br>
-          <span style="font-size:1.1em;">blah~blah~blah~blah~blah~blah~blah~blah~blah~</span><br>
+          <span style="font-size:1.1em;">Sherlock is a usable authentication system using browser fingerprinting.</span><br>
 
         </div>
         <div class="col-sm-4 text-center" style="padding-top:20px;">
@@ -76,24 +76,24 @@ if (session_status() == PHP_SESSION_NONE) session_start();
     <div class="container">
       <div class="row slideanim service_step">
         <div class="col-sm-4">
-          <h4>1. 이렇게 저렇게</h4>
-          <p>으어어어어</p>
+          <h4>1. Browser fingerprinting</h4>
+          <p>JavaScript calculates the browser fingerprint of the session.</p>
         </div>
         <div class="col-sm-4">
-          <h4>1. 이렇게 저렇게</h4>
-          <p>으어어어어</p>
+          <h4>2. Authentication</h4>
+          <p>User-input username is checked against the MySQL database.</p>
         </div>
         <div class="col-sm-4">
-          <h4>1. 이렇게 저렇게</h4>
-          <p>으어어어어</p>
+          <h4>3. Different levels of authentication</h4>
+          <p>Depending on the confidence level of the session, the user is logged in/prompted for PIN/prompted for password</p>
         </div>
         <div class="col-sm-4">
-          <h4>1. 이렇게 저렇게</h4>
-          <p>으어어어어</p>
+          <h4>4. Number 4</h4>
+          <p>Number 4</p>
         </div>
         <div class="col-sm-4">
-          <h4>1. 이렇게 저렇게</h4>
-          <p>으어어어어</p>
+          <h4>5. Number 5</h4>
+          <p>Number 5</p>
         </div>
       </div>
     </div>
@@ -107,7 +107,8 @@ if (session_status() == PHP_SESSION_NONE) session_start();
     <div class="container">
       <div class="row">
         <div class="col-sm-8">
-          asdasd
+          Security: Security is unchanged.<br />
+          Usability: Usability is improved.<br />
         </div>
       </div>
     </div>
