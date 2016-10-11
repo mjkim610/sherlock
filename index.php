@@ -18,6 +18,7 @@ if (session_status() == PHP_SESSION_NONE) session_start();
   <link href="http://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
   <link href="font-awesome.min.css" rel="stylesheet" type="text/css">
   <link href="css/style.css" rel="stylesheet" media="screen">
+  <link href="css/agency.css" rel="stylesheet" media="screen">
   <link href="http://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
