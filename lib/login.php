@@ -1,3 +1,7 @@
+<?php
+if (session_status() == PHP_SESSION_NONE) session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en-us">
 
@@ -15,6 +19,10 @@
 	        <input type="submit" id="login" value="Login"></input>
 	    </form>
 	</div>
+
+	<?php
+	require_once "lib/footer.php"
+	?>
 
     <script src="/js/login.js"></script>
 </body>
