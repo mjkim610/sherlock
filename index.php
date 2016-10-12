@@ -33,7 +33,7 @@ if (session_status() == PHP_SESSION_NONE) session_start();
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="index.php" style="padding:10px 15px;">Sherlock</a>
+        <a class="navbar-brand" href="index.php">Sherlock</a>
       </div>
       <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="nav navbar-nav navbar-right">
@@ -62,6 +62,7 @@ if (session_status() == PHP_SESSION_NONE) session_start();
         <div class="col-sm-8">
           <p>Your browser fingerprint: <strong id="fp"></strong></p>
           <p><code id="time"></code></p>
+          <span id="components"></span>
           <button type="button" id="btn">Get my fingerprint</button>
         </div>
       </div>
@@ -172,15 +173,23 @@ require_once "lib/footer.php"
 $("#btn").on("click", function () {
   var d1 = new Date();
   var fp = new Fingerprint2();
-  fp.get(function(result) {
+  var string = '';
+  var i = 0;
+  fp.get(function(result, components) {
     var d2 = new Date();
     var timeString = "Time took to calculate the fingerprint: " + (d2 - d1) + "ms";
     if(typeof window.console !== "undefined") {
       console.log(timeString);
       console.log(result);
+      console.log(components);
+    }
+    var output = '';
+    for (var property in components) {
+      output += property + '. key : ' + components[property]['key'] + '<br>  &nbsp&nbsp value : ' + components[property]['value']+'<br>';
     }
     $("#fp").text(result);
     $("#time").text(timeString);
+    $("#components").html(output);
   });
 });
 </script>

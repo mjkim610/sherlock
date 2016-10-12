@@ -378,3 +378,9 @@ footer .glyphicon {
 .img-profile{
   width: 150px;
 }
+
+strong {
+  display: block;
+  letter-spacing: 1px;
+  word-wrap: break-word;
+}
