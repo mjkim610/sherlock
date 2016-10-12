@@ -23,7 +23,7 @@
                           </li>
                           <li><a href="#"><i class="fa fa-facebook"></i></a>
                           </li>
-                          <li><a href="mailto:sullamij@naver.com?Subject=Regarding%20Sherlock"><i class="fa fa-inbox"></i></a>
+                          <li><a href="mailto:sullamij@naver.com?Subject=Regarding%20Sherlock"><i class="fa fa-envelope"></i></a>
                           </li>
                       </ul>
                   </div>
@@ -38,7 +38,7 @@
                           </li>
                           <li><a href="#"><i class="fa fa-facebook"></i></a>
                           </li>
-                          <li><a href="mailto:jhoney7374@gmail.com?Subject=Regarding%20Sherlock"><i class="fa fa-inbox"></i></a>
+                          <li><a href="mailto:jhoney7374@gmail.com?Subject=Regarding%20Sherlock"><i class="fa fa-envelope"></i></a>
                           </li>
                       </ul>
                   </div>
@@ -53,7 +53,7 @@
                           </li>
                           <li><a href="#"><i class="fa fa-facebook"></i></a>
                           </li>
-                          <li><a href="mailto:mjkim610@gmail.com?Subject=Regarding%20Sherlock"><i class="fa fa-inbox"></i></a>
+                          <li><a href="mailto:mjkim610@gmail.com?Subject=Regarding%20Sherlock"><i class="fa fa-envelope"></i></a>
                           </li>
                       </ul>
                   </div>
