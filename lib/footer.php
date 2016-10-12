@@ -15,7 +15,7 @@
           <div class="row">
               <div class="col-sm-4">
                   <div class="team-member">
-                      <img src="img/team/1.jpg" class="img-responsive img-circle" alt="">
+                      <img src="img/team/1.jpg" class="img-profile img-responsive img-circle" alt="image">
                       <h4>정술람</h4>
                       <p class="text-muted">Lead Developer</p>
                       <ul class="list-inline social-buttons">
@@ -30,7 +30,7 @@
               </div>
               <div class="col-sm-4">
                   <div class="team-member">
-                      <img src="img/team/2.jpg" class="img-responsive img-circle" alt="">
+                      <img src="img/team/2.jpg" class="img-profile img-responsive img-circle" alt="image">
                       <h4>김정헌</h4>
                       <p class="text-muted">Lead Developer</p>
                       <ul class="list-inline social-buttons">
@@ -45,7 +45,7 @@
               </div>
               <div class="col-sm-4">
                   <div class="team-member">
-                      <img src="img/team/3.jpg" class="img-responsive img-circle" alt="">
+                      <img src="img/team/3.jpg" class="img-profile img-responsive img-circle" alt="image">
                       <h4>김명종</h4>
                       <p class="text-muted">Lead Developer</p>
                       <ul class="list-inline social-buttons">

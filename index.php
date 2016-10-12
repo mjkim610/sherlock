@@ -20,8 +20,9 @@ if (session_status() == PHP_SESSION_NONE) session_start();
   <link href="css/style.css" rel="stylesheet" media="screen">
   <link href="css/agency.css" rel="stylesheet" media="screen">
   <link href="http://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="http://code.jquery.com/jquery.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="js/fingerprint2.js"></script>
 </head>
 <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
   <nav class="navbar navbar-default navbar-fixed-top">
@@ -54,14 +55,26 @@ if (session_status() == PHP_SESSION_NONE) session_start();
     </div>
   </nav>
 
-  <!-- 서비스 소개 -->
+  <!-- 핑거프린트 테스트 -->
   <div class="container-fluid" id="service">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-8">
+          <p>Your browser fingerprint: <strong id="fp"></strong></p>
+          <p><code id="time"></code></p>
+          <button type="button" id="btn">Get my fingerprint</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 서비스 소개 -->
+  <div class="container-fluid bg-grey" id="service">
     <div class="container">
       <div class="row">
         <div class="col-sm-8">
           <h2>What is Sherlock?</h2><br>
           <span style="font-size:1.1em;">Sherlock is a usable authentication system using browser fingerprinting.</span><br>
-
         </div>
       </div>
     </div>
@@ -155,3 +168,19 @@ require_once "lib/footer.php"
 
 </body>
 </html>
+<script>
+$("#btn").on("click", function () {
+  var d1 = new Date();
+  var fp = new Fingerprint2();
+  fp.get(function(result) {
+    var d2 = new Date();
+    var timeString = "Time took to calculate the fingerprint: " + (d2 - d1) + "ms";
+    if(typeof window.console !== "undefined") {
+      console.log(timeString);
+      console.log(result);
+    }
+    $("#fp").text(result);
+    $("#time").text(timeString);
+  });
+});
+</script>
