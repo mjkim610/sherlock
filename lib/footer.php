@@ -19,11 +19,11 @@
                       <h4>정술람</h4>
                       <p class="text-muted">Lead Developer</p>
                       <ul class="list-inline social-buttons">
-                          <li><a href="https://github.com/sullamij"><i class="fa fa-github"></i></a>
+                          <li><a href="#"><i class="fa fa-twitter"></i></a>
                           </li>
                           <li><a href="#"><i class="fa fa-facebook"></i></a>
                           </li>
-                          <li><a href="mailto:sullamij@naver.com?Subject=Regarding%20Sherlock"><i class="fa fa-envelope"></i></a>
+                          <li><a href="#"><i class="fa fa-linkedin"></i></a>
                           </li>
                       </ul>
                   </div>
@@ -34,11 +34,11 @@
                       <h4>김정헌</h4>
                       <p class="text-muted">Lead Developer</p>
                       <ul class="list-inline social-buttons">
-                          <li><a href="https://github.com/restforest"><i class="fa fa-github"></i></a>
+                          <li><a href="#"><i class="fa fa-twitter"></i></a>
                           </li>
                           <li><a href="#"><i class="fa fa-facebook"></i></a>
                           </li>
-                          <li><a href="mailto:jhoney7374@gmail.com?Subject=Regarding%20Sherlock"><i class="fa fa-envelope"></i></a>
+                          <li><a href="#"><i class="fa fa-linkedin"></i></a>
                           </li>
                       </ul>
                   </div>
@@ -49,11 +49,11 @@
                       <h4>김명종</h4>
                       <p class="text-muted">Lead Developer</p>
                       <ul class="list-inline social-buttons">
-                          <li><a href="https://github.com/mjkim610"><i class="fa fa-github"></i></a>
+                          <li><a href="#"><i class="fa fa-twitter"></i></a>
                           </li>
                           <li><a href="#"><i class="fa fa-facebook"></i></a>
                           </li>
-                          <li><a href="mailto:mjkim610@gmail.com?Subject=Regarding%20Sherlock"><i class="fa fa-envelope"></i></a>
+                          <li><a href="#"><i class="fa fa-linkedin"></i></a>
                           </li>
                       </ul>
                   </div>
@@ -65,5 +65,7 @@
               </div>
           </div>
       </div>
-  </section>
-</footer>
+    </section>
+  </footer>
+</body>
+</html>

@@ -111,6 +111,7 @@
       keys = this.hasLiedOsKey(keys);
       keys = this.hasLiedBrowserKey(keys);
       keys = this.touchSupportKey(keys);
+
       var that = this;
       this.fontsKey(keys, function(newKeys){
         var values = [];
@@ -121,8 +122,9 @@
           }
           values.push(value);
         });
+        var tmptmp = values;
         var murmur = that.x64hash128(values.join("~~~"), 31);
-        return done(murmur, newKeys);
+        return done(murmur, newKeys,tmptmp,'11');
       });
     },
     userAgentKey: function(keys) {
