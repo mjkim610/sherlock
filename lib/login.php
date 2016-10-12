@@ -21,9 +21,9 @@
             <input type="text" id="username" class="form-control" placeholder="Username" required autofocus>
             <br />
             <label for="inputPin" class="sr-only">PIN</label>
-            <input type="password" id="inputPin" class="form-control" placeholder="PIN" required>
+            <input type="password" id="inputPin" class="form-control" placeholder="PIN">
             <label for="inputPassword" class="sr-only">Password</label>
-            <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+            <input type="password" id="inputPassword" class="form-control" placeholder="Password">
             <div class="checkbox">
                 <label>
                     <input type="checkbox" value="save-fp"> Save current browser fingerprint
