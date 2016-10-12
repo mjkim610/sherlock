@@ -16,7 +16,7 @@ if (session_status() == PHP_SESSION_NONE) session_start();
   <!-- <meta property="og:url" content="http://.kr/"> -->
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link href="http://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
-  <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link href="css/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
   <link href="css/style.css" rel="stylesheet" media="screen">
   <link href="css/agency.css" rel="stylesheet" media="screen">
   <link href="http://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
