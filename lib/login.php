@@ -21,15 +21,15 @@
             <input type="text" id="username" class="form-control" placeholder="Username" required autofocus>
             <br />
             <label for="inputPin" class="sr-only">PIN</label>
-            <input type="password" id="inputPin" class="form-control" placeholder="PIN">
+            <input type="password" id="inputPin" class="form-control hidden" placeholder="PIN">
             <label for="inputPassword" class="sr-only">Password</label>
-            <input type="password" id="inputPassword" class="form-control" placeholder="Password">
+            <input type="password" id="inputPassword" class="form-control hidden" placeholder="Password">
             <div class="checkbox">
                 <label>
                     <input type="checkbox" value="save-fp"> Save current browser fingerprint
                 </label>
             </div>
-            <button class="btn btn-lg btn-primary btn-block" type="submit">Log In</button>
+            <button class="btn btn-lg btn-primary btn-block" id="login" type="submit">Log In</button>
         </form>
 
     </div>

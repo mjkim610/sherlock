@@ -47,6 +47,8 @@ function authenticate() {
         alert("Login Success!");
     } else {
         alert("Login Failed...");
+        // document.getElementById("inputPin").className = "form-control";
+        // document.getElementById("inputPassword").className = "form-control";
     }
 }
 
