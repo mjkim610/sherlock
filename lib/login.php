@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
 
-    <title>Sherlock - Sign Up</title>
+    <title>Sherlock - Log In</title>
 
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
