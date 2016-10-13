@@ -111,25 +111,9 @@ else if(isset($_POST['check_fingerprint']) && $_POST['check_fingerprint'] === 'y
 ?>
 
 <!-- 핑거프린트 테스트 -->
-<div class="container-fluid" id="signup">
-  <div class="container">
-    <div class="row">
-      <div class="col-sm-4 col-sm-offset-4">
-        <form id="form_login" action="<?=$_SERVER['PHP_SELF']?>" method="post">
-          <div class="form-group">
-            <label for="email">Email:</label>
-            <input type="email" class="form-control" id="email" name="email" placeholder="Enter email">
-          </div>
-          <input type="button" class="btn btn-default" value="Submit" id="btn_submit_login" style="float: right;">
-        </form>
-      </div>
-    </div>
-  </div>
-</div>
-
 <div class="container" id="login">
         <form class="form-signup" id="form-login" action="<?=$_SERVER['PHP_SELF']?>" method="post">
-            <h2 class="form-signup-heading">Please Sign Up</h2>
+            <h2 class="form-signup-heading">Please Log In</h2>
 
             <label for="email">Email</label>
             <input type="email" class="form-control" id="email" name="email" placeholder="Email" autofocus>
