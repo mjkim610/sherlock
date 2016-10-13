@@ -3,12 +3,8 @@
     require_once "lib/dbconn.php";
     require_once "lib/head.php";
 
-    // fingerprint error -> password check
-    if(isset($_POST['check_password']) && $_POST['check_password'] === 'y') {
-
-    }
     // fingerprint check
-    else if(isset($_POST['check_fingerprint']) && $_POST['check_fingerprint'] === 'y') {
+    if(isset($_POST['check_fingerprint']) && $_POST['check_fingerprint'] === 'y') {
         $reg_date = 'now()';
 
         $options = [];
@@ -55,8 +51,9 @@
             exit();
         }
 
-        $sql1 = "INSERT INTO user(email, password, pin) VALUES ('$email', '$password', '$pin')";
-        if ($conn->query($sql1) === TRUE) {
+        $sql1 = "INSERT INTO user(email, password, pin_password) VALUES ('$email', '$password', '$pin')";
+        if ($conn->query($sql1) === TRUE) 
+        {
             $sql2 = "SELECT * FROM user WHERE email = '$email'";
             $result2 = mysqli_query($conn, $sql2);
             $row = mysqli_fetch_assoc($result2);
@@ -92,7 +89,7 @@
         }
         else {
             echo "<script type='text/javascript'>";
-            echo "window.alert('err111');";
+            echo 'window.alert("err111'.$sql1.'");';
             echo "history.back();";
             echo "</script>";
             exit();
