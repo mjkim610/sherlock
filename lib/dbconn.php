@@ -1,7 +1,7 @@
 <?php //데이터 베이스 연결
 $servername = "localhost";
 $username = "root";
-$password = "wjdgjs1!";
+$password = "wjdgjs1";
 $dbname = "sherlock";
 
 // Create connection
