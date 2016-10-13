@@ -1,7 +1,14 @@
 <?php //데이터 베이스 연결
 $servername = "localhost";
 $username = "root";
-$password = "wjdgjs1";
+if($_SERVER['SERVER_NAME'] === 'localhost' || $_SERVER['SERVER_NAME'] === 'localhost')
+{
+	$password = "202ghkdlxld!";
+}
+else
+{
+	$password = "wjdgjs1";
+}
 $dbname = "sherlock";
 
 // Create connection
