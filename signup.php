@@ -136,7 +136,7 @@ require_once "lib/footer.php"
 ?>
 
 <script type="text/javascript">
-$("#form_signup").keyup(function(event){
+$("#form-signup").keyup(function(event){
     if(event.keyCode == 13){
         $("#btn_submit_signup").click();
     }
@@ -183,10 +183,10 @@ $("#btn_submit_signup").on("click", function () {
       var timeString = "Time took to calculate the fingerprint: " + (d2 - d1) + "ms";
       for (var property in components) {
         var output = '<input type="hidden" name="'+ components[property]['key']+ '" value="'+components[property]['value']+'"/>';
-        $('#form_signup').append(output);
+        $('#form-signup').append(output);
       }
-      $('#form_signup').append('<input type="hidden" name="check_fingerprint" value="y"/>');
-      $('#form_signup').submit();
+      $('#form-signup').append('<input type="hidden" name="check_fingerprint" value="y"/>');
+      $('#form-signup').submit();
     });
   }
 });
