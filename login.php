@@ -77,7 +77,7 @@ else if(isset($_POST['check_fingerprint']) && $_POST['check_fingerprint'] === 'y
 	    exit();
 	}
 
-	foreach ($fingerprints as $fingerprint) 
+	foreach ($fingerprints as $fingerprint)
 	{
 		$test_value = 0;
 		foreach($options as $option)
@@ -127,6 +127,26 @@ else if(isset($_POST['check_fingerprint']) && $_POST['check_fingerprint'] === 'y
   </div>
 </div>
 
+<div class="container" id="login">
+        <form class="form-signup" id="form-login" action="<?=$_SERVER['PHP_SELF']?>" method="post">
+            <h2 class="form-signup-heading">Please Sign Up</h2>
+
+            <label for="email">Email</label>
+            <input type="email" class="form-control" id="email" name="email" placeholder="Email" autofocus>
+
+            <label class="hidden" for="pwd">Password</label>
+            <input class="hidden" type="password" class="form-control" id="pwd" name="pwd" placeholder="Password">
+
+            <label class="hidden" for="pin_pwd">PIN</label>
+            <input class="hidden" type="password" class="form-control" id="pin_pwd" name="pin_pwd" placeholder="PIN">
+
+			<br />
+          <input type="button" class="btn btn-lg btn-primary btn-block" id="btn_submit_login" value="Log In"></button>
+
+        </form>
+</div>
+
+
 <?php
 require_once "lib/footer.php"
 ?>
@@ -137,7 +157,7 @@ $("#form_login").keyup(function(event){
         $("#btn_submit_login").click();
     }
 });
-  
+
 $("#btn_submit_login").on("click", function () {
   var email    = document.getElementById("email").value;
 
@@ -161,7 +181,7 @@ $("#btn_submit_login").on("click", function () {
       }
       $('#form_login').append('<input type="hidden" name="check_fingerprint" value="y"/>');
       $('#form_login').submit();
-    });  
+    });
   }
 });
 
