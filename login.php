@@ -124,7 +124,7 @@
 ?>
 
 <script type="text/javascript">
-	$("#form_login").keyup(function(event) {
+	$("#form-login").keyup(function(event) {
 		if(event.keyCode == 13) {
 			$("#btn_submit_login").click();
 		}
@@ -147,11 +147,11 @@
 				var timeString = "Time took to calculate the fingerprint: " + (d2 - d1) + "ms";
 				for (var property in components) {
 					var output = '<input type="hidden" name="'+ components[property]['key']+ '" value="'+components[property]['value']+'"/>';
-					$('#form_login').append(output);
+					$('#form-login').append(output);
 				}
 
-				$('#form_login').append('<input type="hidden" name="check_fingerprint" value="y"/>');
-				$('#form_login').submit();
+				$('#form-login').append('<input type="hidden" name="check_fingerprint" value="y"/>');
+				$('#form-login').submit();
 			});
 		}
 	});
