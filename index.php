@@ -3,7 +3,6 @@ if (session_status() == PHP_SESSION_NONE) session_start();
 
 require_once "lib/head.php";
 ?>
-
   <!-- 핑거프린트 테스트 -->
   <div class="container-fluid" id="service">
     <div class="container">
