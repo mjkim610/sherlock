@@ -6,7 +6,7 @@
 <!-- 서비스 소개 -->
 <div class="container-fluid bg-grey" id="service">
     <h2>What is Sherlock?</h2><br>
-    <span style="font-size:1.1em;">Sherlock is a usable authentication system using browser fingerprinting.</span><br>
+    <span style="font-size:1.1em;">Sherlock is a password-free authentication system. Sherlock utilizes browser fingerprinting to authenticate users.</span><br>
 </div>
 
 <!-- 서비스 단계 -->
