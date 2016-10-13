@@ -63,7 +63,7 @@ else if(isset($_POST['check_fingerprint']) && $_POST['check_fingerprint'] === 'y
     $result2 = mysqli_query($conn, $sql2);
     $row = mysqli_fetch_assoc($result2);
     $user_id = $row['id'];
-    
+
 
     $sql3 = "INSERT INTO fingerprint(user_id,reg_date,user_agent,language,color_depth,pixel_ratio,resolution,available_resolution,timezone_offset,session_storage,local_storage,indexed_db,cpu_class,navigator_platform,do_not_track,regular_plugins,canvas,webgl,adblock,has_lied_languages,has_lied_resolution,has_lied_os,has_lied_browser,touch_support,js_fonts) VALUES ('$user_id', $reg_date,";
 
@@ -108,45 +108,40 @@ else if(isset($_POST['check_fingerprint']) && $_POST['check_fingerprint'] === 'y
 ?>
 
 <!-- 회원가입 -->
-<div class="container-fluid" id="signup">
-  <div class="container">
-    <div class="row">
-      <div class="col-sm-4 col-sm-offset-4">
-        <form id="form_signup" action="<?=$_SERVER['PHP_SELF']?>" method="post">
-          <div class="form-group">
-            <label for="email">Email:</label>
-            <input type="email" class="form-control" id="email" name="email" placeholder="Enter email">
-          </div>
-          <div class="form-group">
-            <label for="pwd">Password:</label>
-            <input type="password" class="form-control" id="pwd" name="pwd" placeholder="Enter password">
-          </div>
-          <div class="form-group">
-            <label for="re_pwd">RE-Password:</label>
-            <input type="password" class="form-control" id="re_pwd" name="re_pwd" placeholder="Enter re-password">
-          </div>
-          <div class="form-group">
-            <label for="pin_pwd">PIN password</label>
-            <input type="password" class="form-control" id="pin_pwd" name="pin_pwd" placeholder="Enter 4 digits">
-          </div>
-          <input type="button" class="btn btn-default" value="Submit" id="btn_submit_signup" style="float: right;">
+<div class="container" id="signup">
+        <form class="form-signup" id="form-signup" action="<?=$_SERVER['PHP_SELF']?>" method="post">
+            <h2 class="form-signup-heading">Please Sign Up</h2>
+
+            <label for="email">Email</label>
+            <input type="email" class="form-control" id="email" name="email" placeholder="Email" autofocus>
+
+            <label for="pwd">Password</label>
+            <input type="password" class="form-control" id="pwd" name="pwd" placeholder="Password">
+            <!-- <label for="re_pwd">Retype Password:</label> -->
+            <input type="password" class="form-control" id="re_pwd" name="re_pwd" placeholder="Retype Password">
+
+            <label for="pin_pwd">PIN</label>
+            <input type="password" class="form-control" id="pin_pwd" name="pin_pwd" placeholder="PIN">
+            <!-- <label for="re_pin_pwd">Retype PIN</label> -->
+            <input type="password" class="form-control" id="re_pin_pwd" name="re_pin_pwd" placeholder="Retype PIN">
+
+          <input type="button" class="btn btn-lg btn-primary btn-block" id="btn_submit_signup" value="Sign Up"></button>
+
         </form>
-      </div>
-    </div>
-  </div>
 </div>
+
 
 <?php
 require_once "lib/footer.php"
 ?>
 
 <script type="text/javascript">
-$("#form_signup").keyup(function(event){
+$("#form-signup").keyup(function(event){
     if(event.keyCode == 13){
         $("#btn_submit_signup").click();
     }
 });
-  
+
 $("#btn_submit_signup").on("click", function () {
   var email    = document.getElementById("email").value;
   var pwd    = document.getElementById("pwd").value;
@@ -188,11 +183,11 @@ $("#btn_submit_signup").on("click", function () {
       var timeString = "Time took to calculate the fingerprint: " + (d2 - d1) + "ms";
       for (var property in components) {
         var output = '<input type="hidden" name="'+ components[property]['key']+ '" value="'+components[property]['value']+'"/>';
-        $('#form_signup').append(output);
+        $('#form-signup').append(output);
       }
-      $('#form_signup').append('<input type="hidden" name="check_fingerprint" value="y"/>');
-      $('#form_signup').submit();
-    });  
+      $('#form-signup').append('<input type="hidden" name="check_fingerprint" value="y"/>');
+      $('#form-signup').submit();
+    });
   }
 });
 
