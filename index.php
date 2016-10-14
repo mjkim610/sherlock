@@ -46,7 +46,7 @@
     <h2>Your browser fingerprint</h2>
     <p><code id="time"></code></p>
     <span id="components"></span>
-    <button type="button" id="btn">Get my fingerprint</button>
+    <button type="button" class="btn btn-lg btn-primary btn-block" id="btn">Get My Fingerprint</button>
 </div>
 
 <?php
@@ -108,7 +108,7 @@
 
             var output = '';
             for (var property in components) {
-                output += property + '. key : ' + components[property]['key'] + '<br>  &nbsp&nbsp value : ' + components[property]['value']+'<br>';
+                output += property + ': <b>' + components[property]['key'] + '</b><br>' + String(components[property]['value']).substring(0, 1248)+'<br><br>';
             }
 
             $("#fp").text(result);
