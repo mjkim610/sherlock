@@ -9,3 +9,4 @@
 ## Low Priority
 - Sherlock API
 - Logo 의뢰 (incognito로고 같이, 파이프?)
+- Service 설명 자료 자작 & 페이지 꾸미기  (Image)
