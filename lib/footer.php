@@ -1,4 +1,4 @@
-<footer class="container-fluid text-center">
+<footer class="footer text-center bg-grey">
     <a href="#" title="To Top">
         <span class="glyphicon glyphicon-chevron-up"></span>
     </a>

@@ -4,13 +4,13 @@
 ?>
 
 <!-- 서비스 소개 -->
-<div class="container-fluid bg-grey" id="service">
+<div class="container-fluid" id="service">
     <h2>What is Sherlock?</h2><br>
     <span style="font-size:1.1em;">Sherlock is a password-free authentication system. Sherlock utilizes browser fingerprinting to authenticate users.</span><br>
 </div>
 
 <!-- 서비스 단계 -->
-<div class="container-fluid text-center">
+<div class="container-fluid text-center bg-grey">
     <h2>How Sherlock Works</h2>
     <br>
     <div class="row slideanim service_step">
@@ -34,7 +34,7 @@
 </div>
 
 <!-- 서비스 세부 -->
-<div class="container-fluid text-center bg-grey">
+<div class="container-fluid text-center">
     <h2>Our Contribution</h2>
     <br>
     <b>Security:</b> Security is unchanged.<br />
@@ -42,7 +42,7 @@
 </div>
 
 <!-- 핑거프린트 테스트 -->
-<div class="container-fluid" id="service">
+<div class="container-fluid bg-grey" id="service">
     <h2>Your browser fingerprint</h2>
     <p><code id="time"></code></p>
     <span id="components"></span>

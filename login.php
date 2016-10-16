@@ -1,120 +1,26 @@
 <?php
-	if (session_status() == PHP_SESSION_NONE) session_start();
-	require_once "lib/dbconn.php";
-	require_once "lib/head.php";
-
-	if(isset($_POST['check_password']) && $_POST['check_password'] === 'y') { // fingerprint error -> password check
-
-	}
-	else if(isset($_POST['check_fingerprint']) && $_POST['check_fingerprint'] === 'y') { // fingerprint check
-		$thresh_hold = 20;
-
-		$options = [];
-		$options[] = 'user_agent';
-		$options[] = 'language';
-		$options[] = 'color_depth';
-		$options[] = 'pixel_ratio';
-		$options[] = 'resolution';
-		$options[] = 'available_resolution';
-		$options[] = 'timezone_offset';
-		$options[] = 'session_storage';
-		$options[] = 'local_storage';
-		$options[] = 'indexed_db';
-		$options[] = 'cpu_class';
-		$options[] = 'navigator_platform';
-		$options[] = 'do_not_track';
-		$options[] = 'regular_plugins';
-		$options[] = 'canvas';
-		$options[] = 'webgl';
-		$options[] = 'adblock';
-		$options[] = 'has_lied_languages';
-		$options[] = 'has_lied_resolution';
-		$options[] = 'has_lied_os';
-		$options[] = 'has_lied_browser';
-		$options[] = 'touch_support';
-		$options[] = 'js_fonts';
-
-		$email = $_POST['email'];
-
-		$sql0 = "SELECT * FROM user WHERE email = '$email'";
-		$result = mysqli_query($conn, $sql0);
-
-		// echo $sql0;
-		// var_dump($result);
-
-		if (mysqli_num_rows($result) === 0) {
-			echo "<script type='text/javascript'>";
-			echo "window.alert('이메일이 존재하지 않습니다.');";
-			echo "history.back();";
-			echo "</script>";
-			exit();
-		}
-
-		$sql2 = "SELECT * FROM user WHERE email = '$email'";
-		$result2 = mysqli_query($conn, $sql2);
-		$row = mysqli_fetch_assoc($result2);
-		$user_id = $row['id'];
-
-		$sql3 = "SELECT * FROM fingerprint WHERE user_id = '$user_id'";
-		$result3 = mysqli_query($conn, $sql3);
-		if (mysqli_num_rows($result3) > 0) {
-			$fingerprints = [];
-			while($row = mysqli_fetch_assoc($result3)) {
-				$fingerprints[] = $row;
-			}
-		} else {
-			echo "<script type='text/javascript'>";
-			echo "window.alert('err102.');";
-			echo "history.back();";
-			echo "</script>";
-			exit();
-		}
-
-		foreach ($fingerprints as $fingerprint) {
-			$test_value = 0;
-			foreach($options as $option) {
-				if(isset($_POST[$option])) {
-					if($fingerprint[$option] == hash('sha256', $_POST[$option], false)) {
-						$test_value = $test_value + 1;
-					}
-				}
-			}
-
-			// fingerprint 일치!
-			if($test_value > $thresh_hold) {
-				$_SESSION['is_login'] = true;
-				echo "<script type='text/javascript'>";
-				echo "window.alert('환영합니다');";
-				echo "location.href = 'index.php';";
-				echo "</script>";
-				exit();
-			}
-		}
-
-		echo "<script type='text/javascript'>";
-		echo "window.alert('비밀번호 로그인페이지로 이동');";
-		echo "location.href = 'login_pwd.php';";
-		echo "</script>";
-		exit();
-	}
+    if (session_status() == PHP_SESSION_NONE) session_start();
+    require_once "lib/dbconn.php";
+    require_once "lib/head.php";
 ?>
-
 <!-- 로그인 폼 -->
-<div class="container" id="login">
+<div class="login_container">
 	<form class="form-signup" id="form-login" action="<?=$_SERVER['PHP_SELF']?>" method="post">
 		<h2 class="form-signup-heading">Please Log In</h2>
 
 		<label for="email">Email</label>
 		<input type="email" class="form-control" id="email" name="email" placeholder="Email" autofocus>
 
-		<label class="hidden" for="pwd">Password</label>
-		<input class="hidden" type="password" class="form-control" id="pwd" name="pwd" placeholder="Password">
+		<label class="hidden" id="pwd_label" for="pwd">Password</label>
+		<input class="hidden form-control" type="password" class="form-control" id="pwd" name="pwd" placeholder="Password">
 
-		<label class="hidden" for="pin_pwd">PIN</label>
-		<input class="hidden" type="password" class="form-control" id="pin_pwd" name="pin_pwd" placeholder="PIN">
+		<label class="hidden" id="pin_label" for="pin_pwd">PIN</label>
+		<input class="hidden form-control" type="password" class="form-control" id="pin_pwd" name="pin_pwd" placeholder="PIN">
 
 		<br />
 		<input type="button" class="btn btn-lg btn-primary btn-block" id="btn_submit_login" value="Log In"></button>
+
+		<input type="hidden" id="login_type" value="fp">
 
 	</form>
 </div>
@@ -131,28 +37,184 @@
 	});
 
 	$("#btn_submit_login").on("click", function() {
-		var email = document.getElementById("email").value;
+		var email_val = $("#email").val();
+		var login_type = $("#login_type").val();
 
-		if (typeof email === 'undefined' || email === '') {
-			alert("이메일을 입력해주세요");
+		if(login_type == 'fp')
+		{
+
+			if (typeof email_val === 'undefined' || email_val === '') {
+				alert("이메일을 입력해주세요");
+			}
+			else {
+				var d1 = new Date();
+				var fp = new Fingerprint2();
+				var string = '';
+				var i = 0;
+				fp.get(function(result, components,a,b) {
+					// var d2 = new Date();
+					// var timeString = "Time took to calculate the fingerprint: " + (d2 - d1) + "ms";
+
+					var strings = '';
+
+					for (var property in components) {
+						strings = strings + '!@#' + components[property]['value'];
+					}
+					var ttt = strings.split('!@#'); // array 형태로 변환
+					var ddd = ttt.shift(); // 첫번째 원소 제거
+					$.ajax({
+						type : "POST",
+						data : {
+							email : email_val,
+							datas : JSON.stringify(ttt) // json 형태로 변환
+						},
+						url : "lib/chk_fingerprint.php",
+						success: function(result)
+						{
+							if(result == '1111')
+							{
+								alert('존재하지 않는 이메일입니다');
+							}
+							else if(result == '1112')
+							{
+								alert('다시 시도해주세요(err 109)');
+							}
+							else if(result == '1101')
+							{
+								alert('환영합니다');
+								location.href = 'index.php';
+							}
+							else if(result == '1122')
+							{
+								alert('fingerprint 실패. 비밀번호로 로그인');
+								$("#login_type").val("password");
+								$("#pwd_label").removeClass("hidden");
+								$("#pwd").removeClass("hidden");
+
+							}
+							else if(result == '1151')
+							{
+								alert('fp not perfect. 핀번호로 로그인');
+								$("#login_type").val("pin");
+								$("#pin_label").removeClass("hidden");
+								$("#pin_pwd").removeClass("hidden");
+							}
+							else
+							{
+								alert('다시 시도해주세요(err 110)');
+							}
+
+				        },
+				        error: function (xhr, ajaxOptions, thrownError) {
+					           alert(xhr.status);
+					           alert(xhr.responseText);
+					           alert(thrownError);
+					       }
+					});
+				});
+			}
 		}
-		else {
-			var d1 = new Date();
-			var fp = new Fingerprint2();
-			var string = '';
-			var i = 0;
+		else if(login_type == 'password')
+		{
+			var email_val = $("#email").val();
+			var password_val = $("#pwd").val();
 
-			fp.get(function(result, components,a,b) {
-				var d2 = new Date();
-				var timeString = "Time took to calculate the fingerprint: " + (d2 - d1) + "ms";
-				for (var property in components) {
-					var output = '<input type="hidden" name="'+ components[property]['key']+ '" value="'+components[property]['value']+'"/>';
-					$('#form-login').append(output);
-				}
-
-				$('#form-login').append('<input type="hidden" name="check_fingerprint" value="y"/>');
-				$('#form-login').submit();
+			$.ajax({
+				type : "POST",
+				data : {
+					email : email_val,
+					password : password_val
+				},
+				url : "lib/chk_pwd.php",
+				success: function(result)
+				{
+					if(result == '2111')
+					{
+						alert('존재하지 않는 이메일입니다');						
+					}
+					else if(result == '2221')
+					{
+						alert('환영합니다');
+						location.href = 'index.php';
+					}
+					else if(result == '2223')
+					{
+						alert('다시 시도해 주세요');
+					}
+		        },
+		        error: function (xhr, ajaxOptions, thrownError) {
+		           alert(xhr.status);
+		           alert(xhr.responseText);
+		           alert(thrownError);
+		        }
 			});
 		}
+		else if(login_type == 'pin')
+		{
+			var email_val = $("#email").val();
+			var pin_val = $("#pin_pwd").val();
+
+			var fp = new Fingerprint2();
+
+			fp.get(function(result, components,a,b) {
+
+					var strings = '';
+
+					for (var property in components) {
+						strings = strings + '!@#' + components[property]['value'];
+					}
+					var ttt = strings.split('!@#'); // array 형태로 변환
+					var ddd = ttt.shift(); // 첫번째 
+
+					$.ajax({
+						type : "POST",
+						data : {
+							email : email_val,
+							pin : pin_val,
+							datas : JSON.stringify(ttt)
+						},
+						url : "lib/chk_pin.php",
+						success: function(result)
+						{
+							if(result == '3111')
+							{
+								alert('존재하지 않는 이메일입니다');
+							}
+							else if(result == '3112')
+							{
+								alert('다시 시도해주세요(err 312)');
+							}
+							else if(result == '3101')
+							{
+								alert('환영합니다');
+								location.href = 'index.php';
+							}
+							else if(result == '3323')
+							{
+								alert('Nice Try :)');
+								history.back();
+							}
+							else if(result == '3233')
+							{
+								alert('핀번호 비일치. 비밀번호로 로그인합니다');
+								$("#login_type").val("password");
+								$("#pwd_label").removeClass("hidden");
+								$("#pwd").removeClass("hidden");
+								$("#pin_label").addClass("hidden");
+								$("#pin_pwd").addClass("hidden");
+							}
+				        },
+				        error: function (xhr, ajaxOptions, thrownError) {
+				           alert(xhr.status);
+				           alert(xhr.responseText);
+				           alert(thrownError);
+				        }
+					});
+			});
+
+			
+		}
+		
 	});
+	
 </script>
