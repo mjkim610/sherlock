@@ -31,6 +31,7 @@
         $options[] = 'has_lied_browser';
         $options[] = 'touch_support';
         $options[] = 'js_fonts';
+        $options[] = 'ip_address';
 
         $password = hash('sha256', $_POST['password'], false);
         $pin = hash('sha256', $_POST['pin'], false);
@@ -52,14 +53,14 @@
         }
 
         $sql1 = "INSERT INTO user(email, password, pin_password) VALUES ('$email', '$password', '$pin')";
-        if ($conn->query($sql1) === TRUE) 
+        if ($conn->query($sql1) === TRUE)
         {
             $sql2 = "SELECT * FROM user WHERE email = '$email'";
             $result2 = mysqli_query($conn, $sql2);
             $row = mysqli_fetch_assoc($result2);
             $user_id = $row['id'];
 
-            $sql3 = "INSERT INTO fingerprint(user_id,reg_date,user_agent,language,color_depth,pixel_ratio,resolution,available_resolution,timezone_offset,session_storage,local_storage,indexed_db,cpu_class,navigator_platform,do_not_track,regular_plugins,canvas,webgl,adblock,has_lied_languages,has_lied_resolution,has_lied_os,has_lied_browser,touch_support,js_fonts) VALUES ('$user_id', $reg_date,";
+            $sql3 = "INSERT INTO fingerprint(user_id,reg_date,user_agent,language,color_depth,pixel_ratio,resolution,available_resolution,timezone_offset,session_storage,local_storage,indexed_db,cpu_class,navigator_platform,do_not_track,regular_plugins,canvas,webgl,adblock,has_lied_languages,has_lied_resolution,has_lied_os,has_lied_browser,touch_support,js_fonts,ip_address) VALUES ('$user_id', $reg_date,";
 
             foreach($options as $option) {
                 if(isset($_POST[$option])) {
@@ -126,6 +127,22 @@
 ?>
 
 <script type="text/javascript">
+function getIP() {
+    var xhr = new XMLHttpRequest();
+    // setting synchronous causes JSON to not be returned properly... why??
+    xhr.open("GET", "https://jsonip.com", false);
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xhr.send(null);
+    // gets blocked by uBlockOrigin adblocker
+    // make sure to disable adblocker when testing
+    var responseJSON = JSON.parse(xhr.responseText);
+    ipCurrent = responseJSON.ip;
+
+    return ipCurrent;
+}
+</script>
+
+<script type="text/javascript">
     $("#form-signup").keyup(function(event) {
         if(event.keyCode == 13) {
             $("#btn_submit_signup").click();
@@ -165,6 +182,7 @@
         else {
             var d1 = new Date();
             var fp = new Fingerprint2();
+            var ip = getIP();
             var string = '';
             var i = 0;
             fp.get(function(result, components,a,b) {
@@ -174,6 +192,8 @@
                     var output = '<input type="hidden" name="'+ components[property]['key']+ '" value="'+components[property]['value']+'"/>';
                     $('#form-signup').append(output);
                 }
+                var output = '<input type="hidden" name="ip_address" value="'+ ip +'"/ />';
+                $('#form-signup').append(output);
 
                 $('#form-signup').append('<input type="hidden" name="check_fingerprint" value="y"/>');
                 $('#form-signup').submit();
