@@ -430,13 +430,14 @@ margin-top: 60px;
 padding: 15px 15px;
 }
 
+.main_btn p {
+  height: 55px;
+}
+
 .footer-text {
  color: #3e2723;
 }
 
-.back_btn {
-  
-}
 
 .back-image{
   /*background-image: url("https://images.unsplash.com/42/U7Fc1sy5SCUDIu4tlJY3_NY_by_PhilippHenzler_philmotion.de.jpg");*/
@@ -450,27 +451,10 @@ background: url(../img/background.jpg) no-repeat center center fixed;
   background-size: cover;
 }
 
-.btn_login { 
-background-color: #26C6DA;
-  border: none;
-  padding: 10px;
-border-radius:3px;
-box-shadow: 1px 5px 20px -5px rgba(0,0,0,0.4);
-  color: #fff;
-margin-top: 10px;
-cursor: pointer;
+.btn-service { 
+box-shadow: 1px 5px 20px -5px rgba(0,0,0,0.7);
 }
 
-.btn_sign_up { 
-background-color: #ef5350;
-  border: none;
-  padding: 10px;
-border-radius:3px;
-box-shadow: 1px 5px 20px -5px rgba(0,0,0,0.4);
-  color: #fff;
-margin-top: 10px;
-cursor: pointer;
-}
 .navbar-toggle .icon-bar {
     background-color: black;
 }

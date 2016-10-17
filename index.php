@@ -18,29 +18,25 @@
 
 <div class="container-fluid tran-gray" id="service">
     <div class="container">
-      <div class="row">
-        <div class="col-sm-12 text-center">
-            Try It.
-        </div> 
-        <div class="col-sm-3 col-sm-offset-3">
-            <div class="back_btn">
+        <div class="row">
+            <div class="col-sm-12 text-center">
+                Let's try Sherlock
+            </div> 
+            <div class="col-sm-3 col-sm-offset-3">
                 <div class="main_btn">
-                <h2>LOGIN</h2>  
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p> 
-                <a class="btn_login" href="login.php">LOGIN</a>
+                <h2>Sign In</h2>  
+                <p>Sign In with your Browser Fingerprint</p> 
+                <a class="btn btn-primary btn-service" href="login.php">Sign In</a>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="main_btn">
+                <h2>Sign Up</h2>
+                <p>Regist your Browser Fingerprint</p>
+                <a class="btn btn-danger btn-service" href="signup.php">Sign Up</a>
                 </div>
             </div>
         </div>
-        <div class="col-sm-3">
-            <div class="back_btn">
-                <div class="main_btn">
-                <h2>SIGN UP</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                <a class="btn_sign_up" href="signup.php">SIGN UP</a>
-                </div>
-            </div>
-        </div>
-      </div>
     </div>
 </div>
 <!-- 
@@ -84,9 +80,7 @@ asdasdasd
                 <h4>3. Different levels of authentication</h4>
                 <p>Depending on the confidence level of the session, the user is logged in/prompted for PIN/prompted for password</p>
             </div>
-
         </div>
-      </div>
     </div>
 </div>
 
@@ -106,8 +100,7 @@ asdasdasd
 <div class="container-fluid tran-light-gray" id="service">
     <div class="container">
         <div class="row">
-            <h2>Your browser fingerprint</h2>
-            <p><code id="time"></code></p>
+            <h2>Get Your browser fingerprint</h2>
             <span id="components"></span>
             <button type="button" class="btn btn-lg btn-primary btn-block" id="btn">Get My Fingerprint</button>
         </div>
