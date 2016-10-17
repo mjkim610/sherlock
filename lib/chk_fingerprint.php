@@ -33,6 +33,7 @@
 	$options[] = 'has_lied_browser';
 	$options[] = 'touch_support';
 	$options[] = 'js_fonts';
+	$options[] = 'ip_address';
 
 	$email = $_POST['email'];
 
