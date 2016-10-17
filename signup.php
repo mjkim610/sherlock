@@ -55,7 +55,7 @@
             exit();
         }
 
-        $sql1 = "INSERT INTO user(email, password, pin_password) VALUES ('$email', '$password', '$pin')";
+        $sql1 = "INSERT INTO user(email, password, pin_password, reg_date) VALUES ('$email', '$password', '$pin', $reg_date)";
         if ($conn->query($sql1) === TRUE)
         {
             $sql2 = "SELECT * FROM user WHERE email = '$email'";
