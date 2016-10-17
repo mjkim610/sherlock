@@ -4,49 +4,114 @@
 ?>
 
 <!-- 서비스 소개 -->
-<div class="container-fluid" id="service">
-    <h2>What is Sherlock?</h2><br>
-    <span style="font-size:1.1em;">Sherlock is a password-free authentication system. Sherlock utilizes browser fingerprinting to authenticate users.</span><br>
+<!-- <div class="container-fluid top-part" id="service"> -->
+<div class="container-fluid tran-light-gray" id="service">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+            <h2>What is Sherlock?</h2><br>
+            <span style="font-size:1.1em;">Sherlock is a password-free authentication system. Sherlock utilizes browser fingerprinting to authenticate users.</span><br>
+        </div>
+      </div>
+    </div>
 </div>
 
+<div class="container-fluid tran-gray" id="service">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12 text-center">
+            Try It.
+        </div> 
+        <div class="col-sm-3 col-sm-offset-3">
+            <div class="back_btn">
+                <div class="main_btn">
+                <h2>LOGIN</h2>  
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p> 
+                <a class="btn_login" href="login.php">LOGIN</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="back_btn">
+                <div class="main_btn">
+                <h2>SIGN UP</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <a class="btn_sign_up" href="signup.php">SIGN UP</a>
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+</div>
+<!-- 
+<div class="cont_forms" >
+    <div class="cont_img_back_">
+    <img src="https://images.unsplash.com/42/U7Fc1sy5SCUDIu4tlJY3_NY_by_PhilippHenzler_philmotion.de.jpg?ixlib=rb-0.3.5&q=50&fm=jpg&crop=entropy&s=7686972873678f32efaf2cd79671673d" alt="" />
+    </div>
+</div> -->
+
+<!-- <div class="container-fluid top-part" id="service">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-3 col-sm-offset-2">
+        asdasd
+        </div>
+        <div class="col-sm-3 col-sm-offset-2">
+asdasdasd
+        </div>
+      </div>
+    </div>
+</div> -->
 <!-- 서비스 단계 -->
-<div class="container-fluid text-center bg-grey">
-    <h2>How Sherlock Works</h2>
-    <br>
-    <div class="row slideanim service_step">
-
-        <div class="col-sm-4">
-            <h4>1. Browser fingerprinting</h4>
-            <p>JavaScript calculates the browser fingerprint of the session.</p>
+<div class="container-fluid tran-light-gray" id="service">
+    <div class="container">
+        <div class="text-center">
+            <h2>How Sherlock Works</h2>
         </div>
+        <div class="row service_step">
 
-        <div class="col-sm-4">
-            <h4>2. Authentication</h4>
-            <p>User-input username is checked against the MySQL database.</p>
+            <div class="col-sm-4">
+                <h4>1. Browser fingerprinting</h4>
+                <p>JavaScript calculates the browser fingerprint of the session.</p>
+            </div>
+
+            <div class="col-sm-4">
+                <h4>2. Authentication</h4>
+                <p>User-input username is checked against the MySQL database.</p>
+            </div>
+
+            <div class="col-sm-4">
+                <h4>3. Different levels of authentication</h4>
+                <p>Depending on the confidence level of the session, the user is logged in/prompted for PIN/prompted for password</p>
+            </div>
+
         </div>
-
-        <div class="col-sm-4">
-            <h4>3. Different levels of authentication</h4>
-            <p>Depending on the confidence level of the session, the user is logged in/prompted for PIN/prompted for password</p>
-        </div>
-
+      </div>
     </div>
 </div>
 
 <!-- 서비스 세부 -->
-<div class="container-fluid text-center">
-    <h2>Our Contribution</h2>
-    <br>
-    <b>Security:</b> Security is unchanged.<br />
-    <b>Usability:</b> Usability is improved.<br />
+<div class="container-fluid text-center tran-gray" id="service">
+    <div class="container">
+        <div class="row">
+            <h2>Our Contribution</h2>
+            <br>
+            <b>Security:</b> Security is unchanged.<br />
+            <b>Usability:</b> Usability is improved.<br />
+        </div>
+    </div>
 </div>
 
 <!-- 핑거프린트 테스트 -->
-<div class="container-fluid bg-grey" id="service">
-    <h2>Your browser fingerprint</h2>
-    <p><code id="time"></code></p>
-    <span id="components"></span>
-    <button type="button" class="btn btn-lg btn-primary btn-block" id="btn">Get My Fingerprint</button>
+<div class="container-fluid tran-light-gray" id="service">
+    <div class="container">
+        <div class="row">
+            <h2>Your browser fingerprint</h2>
+            <p><code id="time"></code></p>
+            <span id="components"></span>
+            <button type="button" class="btn btn-lg btn-primary btn-block" id="btn">Get My Fingerprint</button>
+        </div>
+    </div>
 </div>
 
 <?php
@@ -77,16 +142,16 @@
             } // End if
         });
 
-        $(window).scroll(function() {
-            $(".slideanim").each(function() {
-                var pos = $(this).offset().top;
+        // $(window).scroll(function() {
+        //     $(".slideanim").each(function() {
+        //         var pos = $(this).offset().top;
 
-                var winTop = $(window).scrollTop();
-                if (pos < winTop + 600) {
-                    $(this).addClass("slide");
-                }
-            });
-        });
+        //         var winTop = $(window).scrollTop();
+        //         if (pos < winTop + 600) {
+        //             $(this).addClass("slide");
+        //         }
+        //     });
+        // });
     })
 </script>
 
@@ -116,4 +181,6 @@
             $("#components").html(output);
         });
     });
+
+
 </script>

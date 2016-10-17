@@ -6,7 +6,7 @@
 <!-- 로그인 폼 -->
 <div class="login_container">
 	<form class="form-signup" id="form-login" action="<?=$_SERVER['PHP_SELF']?>" method="post">
-		<h2 class="form-signup-heading">Please Log In</h2>
+		<h2 class="form-signup-heading">Log In</h2>
 
 		<label for="email">Email</label>
 		<input type="email" class="form-control" id="email" name="email" placeholder="Email" autofocus>

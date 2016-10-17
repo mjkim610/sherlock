@@ -1,7 +1,8 @@
 .form-signup {
   max-width: 330px;
-  padding: 15px;
-  margin: 0 auto;
+  padding: 20px;
+  color: white;
+  margin: 50px auto 150px auto;
 }
 .form-signup .form-signup-heading,
 .form-signup .checkbox {
@@ -37,12 +38,13 @@
 }
 
 .login_container {
-  margin:0 auto;
+  margin:100px auto;
   width: 85%;
   max-width: 400px;
+  color: white;
   /*height: 300px;*/
   text-align: center;
-  background-color: #fff;
+  background-color: rgba(77, 98, 171, 0.44);
   box-shadow: 2px 4px 4px 0 rgba(0, 0, 0, 0.1);
 
 }

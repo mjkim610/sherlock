@@ -98,9 +98,9 @@
 ?>
 
 <!-- 회원가입 -->
-<div class="container" id="signup">
+<div class="login_container" id="signup">
     <form class="form-signup" id="form-signup" action="<?=$_SERVER['PHP_SELF']?>" method="post">
-        <h2 class="form-signup-heading">Please Sign Up</h2>
+        <h2 class="form-signup-heading">Sign Up</h2>
 
         <label for="email">Email</label>
         <input type="email" class="form-control" id="email" name="email" placeholder="Email" autofocus>
