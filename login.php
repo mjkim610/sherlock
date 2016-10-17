@@ -30,6 +30,22 @@
 ?>
 
 <script type="text/javascript">
+function getIP() {
+    var xhr = new XMLHttpRequest();
+    // setting synchronous causes JSON to not be returned properly... why??
+    xhr.open("GET", "https://jsonip.com", false);
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xhr.send(null);
+    // gets blocked by uBlockOrigin adblocker
+    // make sure to disable adblocker when testing
+    var responseJSON = JSON.parse(xhr.responseText);
+    ipCurrent = responseJSON.ip;
+
+    return ipCurrent;
+}
+</script>
+
+<script type="text/javascript">
 	$("#form-login").keyup(function(event) {
 		if(event.keyCode == 13) {
 			$("#btn_submit_login").click();
@@ -49,6 +65,7 @@
 			else {
 				var d1 = new Date();
 				var fp = new Fingerprint2();
+                var ip = getIP();
 				var string = '';
 				var i = 0;
 				fp.get(function(result, components,a,b) {
@@ -60,6 +77,7 @@
 					for (var property in components) {
 						strings = strings + '!@#' + components[property]['value'];
 					}
+                    strings = strings + '!@#' + ip;
 					var ttt = strings.split('!@#'); // array 형태로 변환
 					var ddd = ttt.shift(); // 첫번째 원소 제거
 					$.ajax({
@@ -130,7 +148,7 @@
 				{
 					if(result == '2111')
 					{
-						alert('존재하지 않는 이메일입니다');						
+						alert('존재하지 않는 이메일입니다');
 					}
 					else if(result == '2221')
 					{
@@ -155,6 +173,7 @@
 			var pin_val = $("#pin_pwd").val();
 
 			var fp = new Fingerprint2();
+            var ip = getIP();
 
 			fp.get(function(result, components,a,b) {
 
@@ -163,8 +182,9 @@
 					for (var property in components) {
 						strings = strings + '!@#' + components[property]['value'];
 					}
+                    strings = strings + '!@#' + ip;
 					var ttt = strings.split('!@#'); // array 형태로 변환
-					var ddd = ttt.shift(); // 첫번째 
+					var ddd = ttt.shift(); // 첫번째
 
 					$.ajax({
 						type : "POST",
@@ -212,9 +232,9 @@
 					});
 			});
 
-			
+
 		}
-		
+
 	});
-	
+
 </script>
