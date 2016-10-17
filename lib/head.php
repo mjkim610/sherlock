@@ -25,6 +25,8 @@
 </head>
 
 <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
+<img src="img/background.jpg" class="bg" alt="">
+
     <nav class="navbar navbar-fixed-top">
     <!-- <nav class="navbar navbar-default navbar-fixed-top"> -->
         <div class="container">
