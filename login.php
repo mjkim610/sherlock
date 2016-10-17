@@ -30,22 +30,6 @@
 ?>
 
 <script type="text/javascript">
-function getIP() {
-    var xhr = new XMLHttpRequest();
-    // setting synchronous causes JSON to not be returned properly... why??
-    xhr.open("GET", "https://jsonip.com", false);
-    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    xhr.send(null);
-    // gets blocked by uBlockOrigin adblocker
-    // make sure to disable adblocker when testing
-    var responseJSON = JSON.parse(xhr.responseText);
-    ipCurrent = responseJSON.ip;
-
-    return ipCurrent;
-}
-</script>
-
-<script type="text/javascript">
 	$("#form-login").keyup(function(event) {
 		if(event.keyCode == 13) {
 			$("#btn_submit_login").click();
@@ -65,7 +49,7 @@ function getIP() {
 			else {
 				var d1 = new Date();
 				var fp = new Fingerprint2();
-                var ip = getIP();
+                var ips = getIP();
 				var string = '';
 				var i = 0;
 				fp.get(function(result, components,a,b) {
@@ -77,7 +61,11 @@ function getIP() {
 					for (var property in components) {
 						strings = strings + '!@#' + components[property]['value'];
 					}
-                    strings = strings + '!@#' + ip;
+
+					for (var ip in ips) {
+						 strings = strings + '!@#' + ip;
+					}
+
 					var ttt = strings.split('!@#'); // array 형태로 변환
 					var ddd = ttt.shift(); // 첫번째 원소 제거
 					$.ajax({
@@ -108,6 +96,7 @@ function getIP() {
 								$("#login_type").val("password");
 								$("#pwd_label").removeClass("hidden");
 								$("#pwd").removeClass("hidden");
+								$("#pwd").focus();
 
 							}
 							else if(result == '1151')
@@ -116,6 +105,7 @@ function getIP() {
 								$("#login_type").val("pin");
 								$("#pin_label").removeClass("hidden");
 								$("#pin_pwd").removeClass("hidden");
+								$("#pin_pwd").focus();
 							}
 							else
 							{
@@ -173,7 +163,7 @@ function getIP() {
 			var pin_val = $("#pin_pwd").val();
 
 			var fp = new Fingerprint2();
-            var ip = getIP();
+            var ips = getIP();
 
 			fp.get(function(result, components,a,b) {
 
@@ -182,7 +172,11 @@ function getIP() {
 					for (var property in components) {
 						strings = strings + '!@#' + components[property]['value'];
 					}
-                    strings = strings + '!@#' + ip;
+
+					for (var ip in ips) {
+						 strings = strings + '!@#' + ip;
+					}
+
 					var ttt = strings.split('!@#'); // array 형태로 변환
 					var ddd = ttt.shift(); // 첫번째
 
@@ -222,6 +216,7 @@ function getIP() {
 								$("#pwd").removeClass("hidden");
 								$("#pin_label").addClass("hidden");
 								$("#pin_pwd").addClass("hidden");
+								$("#pwd").focus();
 							}
 				        },
 				        error: function (xhr, ajaxOptions, thrownError) {

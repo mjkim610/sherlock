@@ -4,8 +4,8 @@
 ?>
 
 <!-- 서비스 소개 -->
-<!-- <div class="container-fluid top-part" id="service"> -->
-<div class="container-fluid tran-light-gray" id="service">
+<!-- <div class="container-fluid top-part"> -->
+<div class="container-fluid tran-light-gray">
     <div class="container">
       <div class="row">
         <div class="col-sm-12">
@@ -16,7 +16,7 @@
     </div>
 </div>
 
-<div class="container-fluid tran-gray" id="service">
+<div class="container-fluid tran-gray">
     <div class="container">
         <div class="row">
             <div class="col-sm-12 text-center">
@@ -46,7 +46,7 @@
     </div>
 </div> -->
 
-<!-- <div class="container-fluid top-part" id="service">
+<!-- <div class="container-fluid top-part">
     <div class="container">
       <div class="row">
         <div class="col-sm-3 col-sm-offset-2">
@@ -59,7 +59,7 @@ asdasdasd
     </div>
 </div> -->
 <!-- 서비스 단계 -->
-<div class="container-fluid tran-light-gray" id="service">
+<div class="container-fluid tran-light-gray">
     <div class="container">
         <div class="text-center">
             <h2>How Sherlock Works</h2>
@@ -85,7 +85,7 @@ asdasdasd
 </div>
 
 <!-- 서비스 세부 -->
-<div class="container-fluid text-center tran-gray" id="service">
+<div class="container-fluid text-center tran-gray">
     <div class="container">
         <div class="row">
             <h2>Our Contribution</h2>
@@ -97,7 +97,7 @@ asdasdasd
 </div>
 
 <!-- 핑거프린트 테스트 -->
-<div class="container-fluid tran-light-gray" id="service">
+<div class="container-fluid tran-light-gray">
     <div class="container">
         <div class="row">
             <h2>Get Your browser fingerprint</h2>
@@ -107,6 +107,56 @@ asdasdasd
     </div>
 </div>
 
+<!-- 팀 소개 -->
+<div class="container-fluid text-center tran-gray">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 text-center">
+                    <h2 class="section-heading">Our Amazing Team</h2>
+                    <h3 class="section-subheading footer-text">협업실 B01</h3>
+            </div>
+            <div class="col-sm-4">
+                <div class="team-member">
+                    <img src="img/team/1.jpg" class="img-profile img-responsive img-circle" alt="image">
+                    <h4>정술람</h4>
+                    <p class="footer-text">Lead Developer</p>
+                    <ul class="list-inline social-buttons">
+                        <li><a href="https://github.com/sullamij"><i class="fa fa-github"></i></a> </li>
+                        <li><a href="#"><i class="fa fa-facebook"></i></a> </li>
+                        <li><a href="mailto:sullamij@naver.com?Subject=Regarding%20Sherlock"><i class="fa fa-envelope"></i></a> </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="team-member">
+                    <img src="img/team/2.jpg" class="img-profile img-responsive img-circle" alt="image">
+                    <h4>김정헌</h4>
+                    <p class="footer-text">Lead Developer</p>
+                    <ul class="list-inline social-buttons">
+                        <li><a href="https://github.com/restforest"><i class="fa fa-github"></i></a> </li>
+                        <li><a href="#"><i class="fa fa-facebook"></i></a> </li>
+                        <li><a href="mailto:jhoney7374@gmail.com?Subject=Regarding%20Sherlock"><i class="fa fa-envelope"></i></a> </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="team-member">
+                    <img src="img/team/3.jpg" class="img-profile img-responsive img-circle" alt="image">
+                    <h4>김명종</h4>
+                    <p class="footer-text">Lead Developer</p>
+                    <ul class="list-inline social-buttons">
+                        <li><a href="https://github.com/mjkim610"><i class="fa fa-github"></i></a> </li>
+                        <li><a href="#"><i class="fa fa-facebook"></i></a> </li>
+                        <li><a href="mailto:mjkim610@gmail.com?Subject=Regarding%20Sherlock"><i class="fa fa-envelope"></i></a> </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-sm-12 text-center">
+                    <h3 class="section-subheading footer-text">연세대학교 소프트웨어종합설계 팀 협업실 B01입니다.</h3>
+            </div>
+        </div>
+    </div>
+</div>
 <?php
     require_once "lib/footer.php"
 ?>

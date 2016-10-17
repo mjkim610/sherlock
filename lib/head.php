@@ -22,6 +22,7 @@
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="js/fingerprint2.js"></script>
     <script src="js/sha256.js"></script>
+    <script src="js/login.js"></script>
 </head>
 
 <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
@@ -48,7 +49,7 @@
                             echo '<li><a href="mypage.php">My Page</a></li>';
                         }
                         else {
-                            echo '<li><a href="login.php">Log In</a></li>';
+                            echo '<li><a href="login.php">Sign In</a></li>';
                             echo '<li><a href="signup.php">Sign Up</a></li>';
                         }
                     ?>

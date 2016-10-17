@@ -31,7 +31,10 @@
         $options[] = 'has_lied_browser';
         $options[] = 'touch_support';
         $options[] = 'js_fonts';
-        $options[] = 'ip_address';
+        $options[] = 'ip_1';
+        $options[] = 'ip_2';
+        $options[] = 'ip_3';
+        $options[] = 'ip_4';
 
         $password = hash('sha256', $_POST['password'], false);
         $pin = hash('sha256', $_POST['pin'], false);
@@ -60,7 +63,7 @@
             $row = mysqli_fetch_assoc($result2);
             $user_id = $row['id'];
 
-            $sql3 = "INSERT INTO fingerprint(user_id,reg_date,user_agent,language,color_depth,pixel_ratio,resolution,available_resolution,timezone_offset,session_storage,local_storage,indexed_db,cpu_class,navigator_platform,do_not_track,regular_plugins,canvas,webgl,adblock,has_lied_languages,has_lied_resolution,has_lied_os,has_lied_browser,touch_support,js_fonts,ip_address) VALUES ('$user_id', $reg_date,";
+            $sql3 = "INSERT INTO fingerprint(user_id,reg_date,user_agent,language,color_depth,pixel_ratio,resolution,available_resolution,timezone_offset,session_storage,local_storage,indexed_db,cpu_class,navigator_platform,do_not_track,regular_plugins,canvas,webgl,adblock,has_lied_languages,has_lied_resolution,has_lied_os,has_lied_browser,touch_support,js_fonts,ip_1,ip_2,ip_3,ip_4) VALUES ('$user_id', $reg_date,";
 
             foreach($options as $option) {
                 if(isset($_POST[$option])) {
@@ -127,22 +130,6 @@
 ?>
 
 <script type="text/javascript">
-function getIP() {
-    var xhr = new XMLHttpRequest();
-    // setting synchronous causes JSON to not be returned properly... why??
-    xhr.open("GET", "https://jsonip.com", false);
-    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    xhr.send(null);
-    // gets blocked by uBlockOrigin adblocker
-    // make sure to disable adblocker when testing
-    var responseJSON = JSON.parse(xhr.responseText);
-    ipCurrent = responseJSON.ip;
-
-    return ipCurrent;
-}
-</script>
-
-<script type="text/javascript">
     $("#form-signup").keyup(function(event) {
         if(event.keyCode == 13) {
             $("#btn_submit_signup").click();
@@ -182,9 +169,8 @@ function getIP() {
         else {
             var d1 = new Date();
             var fp = new Fingerprint2();
-            var ip = getIP();
-            var string = '';
-            var i = 0;
+            var ips = getIP();
+
             fp.get(function(result, components,a,b) {
                 var d2 = new Date();
                 var timeString = "Time took to calculate the fingerprint: " + (d2 - d1) + "ms";
@@ -192,8 +178,13 @@ function getIP() {
                     var output = '<input type="hidden" name="'+ components[property]['key']+ '" value="'+components[property]['value']+'"/>';
                     $('#form-signup').append(output);
                 }
-                var output = '<input type="hidden" name="ip_address" value="'+ ip +'"/ />';
-                $('#form-signup').append(output);
+
+                var i = 1;
+                for (var ip in ips) {
+                     var output = '<input type="hidden" name="ip_' + i + '" value="'+ ip +'"/ />';
+                    $('#form-signup').append(output);
+                    i++;
+                }
 
                 $('#form-signup').append('<input type="hidden" name="check_fingerprint" value="y"/>');
                 $('#form-signup').submit();
