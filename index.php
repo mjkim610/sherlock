@@ -5,7 +5,7 @@
 
 <!-- 서비스 소개 -->
 <!-- <div class="container-fluid top-part"> -->
-<div class="container-fluid tran-light-gray">
+<div class="container-fluid text-center tran-light-gray">
     <div class="container">
       <div class="row">
         <div class="col-sm-12">
@@ -20,7 +20,7 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-12 text-center">
-                Let's try Sherlock
+                <h2>Let's try Sherlock</h2>
             </div> 
             <div class="col-sm-3 col-sm-offset-3">
                 <div class="main_btn">
@@ -44,7 +44,7 @@
 <div class="container-fluid tran-light-gray">
     <div class="container">
         <div class="text-center">
-            <h2>How Sherlock Works</h2>
+            <h2>How Sherlock Works</h2><br>
         </div>
         <div class="row service_step">
 
@@ -83,7 +83,7 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-12">
-                <h2>Get Your browser fingerprint</h2>
+                <h2 class="text-center">Get Your browser fingerprint</h2><br>
                 <span id="components"></span>
                 <button type="button" class="btn btn-lg btn-primary btn-block" id="btn">Get My Fingerprint</button>
             </div>
