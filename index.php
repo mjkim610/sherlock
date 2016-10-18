@@ -100,15 +100,173 @@ asdasdasd
 <div class="container-fluid tran-light-gray">
     <div class="container">
         <div class="row">
-            <h2>Get Your browser fingerprint</h2>
-            <span id="components"></span>
-            <button type="button" class="btn btn-lg btn-primary btn-block" id="btn">Get My Fingerprint</button>
+            <div class="col-sm-12">
+                <h2>Get Your browser fingerprint</h2>
+                <span id="components"></span>
+                <button type="button" class="btn btn-lg btn-primary btn-block" id="btn">Get My Fingerprint</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid tran-gray">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="col-sm-4 team-card">
+                    <div class="profile-card">
+                      <header>
+                        <!-- here’s the avatar -->
+                        <a target="_blank" href="#">
+                          <img src="img/team/1.jpg" class="hoverZoomLink">
+                        </a>
+
+                        <!-- the username -->
+                        <h1>김명종</h1>
+
+                        <!-- and role or location -->
+                        <h2>Developer</h2>
+                      </header>
+
+                      <!-- bit of a bio; who are you? -->
+                      <div class="profile-bio">
+                        <p>
+                          Yonsei Univ
+                        </p>
+                        <p>
+                          Computer Science. 4
+                        </p>
+                        <p>
+                          mjkim610@gmail.com
+                        </p>
+                      </div>
+                      <!-- some social links to show off -->
+                      <ul class="profile-social-links">
+                        <li>
+                          <a target="_blank" href="https://www.facebook.com/creativedonut">
+                            <i class="fa fa-facebook"></i>
+                          </a>
+                        </li>
+                        <li>
+                          <a target="_blank" href="https://github.com/mjkim610">
+                            <i class="fa fa-github"></i>
+                          </a>
+                        </li>
+                        <li>
+                          <a target="_blank" href="mailto:mjkim610@gmail.com?Subject=Regarding%20Sherlock">
+                            <i class="fa fa-envelope"></i>
+                          </a>
+                        </li>
+                        
+                      </ul>
+
+                    </div>
+                </div>
+                <div class="col-sm-4 team-card">
+                    <div class="profile-card">
+                      <header>
+                        <!-- here’s the avatar -->
+                        <a target="_blank" href="#">
+                          <img src="img/team/2.jpg" class="hoverZoomLink">
+                        </a>
+
+                        <!-- the username -->
+                        <h1>김정헌</h1>
+
+                        <!-- and role or location -->
+                        <h2>Developer</h2>
+                      </header>
+
+                      <!-- bit of a bio; who are you? -->
+                      <div class="profile-bio">
+                        <p>
+                          Yonsei Univ
+                        </p>
+                        <p>
+                          Computer Science. 4
+                        </p>
+                        <p>
+                          jhoney7374@gmail.com
+                        </p>
+                      </div>
+                      <!-- some social links to show off -->
+                      <ul class="profile-social-links">
+                        <li>
+                          <a target="_blank" href="https://www.facebook.com/honey.Rnf">
+                            <i class="fa fa-facebook"></i>
+                          </a>
+                        </li>
+                        <li>
+                          <a target="_blank" href="https://github.com/restforest">
+                            <i class="fa fa-github"></i>
+                          </a>
+                        </li>
+                        <li>
+                          <a target="_blank" href="mailto:jhoney7374@gmail.com?Subject=Regarding%20Sherlock">
+                            <i class="fa fa-envelope"></i>
+                          </a>
+                        </li>
+                        
+                      </ul>
+
+                    </div>
+                </div>
+                <div class="col-sm-4 team-card">
+                    <div class="profile-card">
+                      <header>
+                        <!-- here’s the avatar -->
+                        <a target="_blank" href="#">
+                          <img src="img/team/3.jpg" class="hoverZoomLink">
+                        </a>
+
+                        <!-- the username -->
+                        <h1>정술람</h1>
+
+                        <!-- and role or location -->
+                        <h2>Developer</h2>
+                      </header>
+
+                      <!-- bit of a bio; who are you? -->
+                      <div class="profile-bio">
+                        <p>
+                          Yonsei Univ
+                        </p>
+                        <p>
+                          Computer Science. 4
+                        </p>
+                        <p>
+                          sullamij@naver.com
+                        </p>
+                      </div>
+                      <!-- some social links to show off -->
+                      <ul class="profile-social-links">
+                        <li>
+                          <a target="_blank" href="#">
+                            <i class="fa fa-facebook"></i>
+                          </a>
+                        </li>
+                        <li>
+                          <a target="_blank" href="https://github.com/sullamij">
+                            <i class="fa fa-github"></i>
+                          </a>
+                        </li>
+                        <li>
+                          <a target="_blank" href="mailto:sullamij@naver.com?Subject=Regarding%20Sherlock">
+                            <i class="fa fa-envelope"></i>
+                          </a>
+                        </li>
+                        
+                      </ul>
+
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
 
 <!-- 팀 소개 -->
-<div class="container-fluid text-center tran-gray">
+<!-- <div class="container-fluid text-center tran-gray">
     <div class="container">
         <div class="row">
             <div class="col-sm-12 text-center">
@@ -152,11 +310,11 @@ asdasdasd
                 </div>
             </div>
             <div class="col-sm-12 text-center">
-                    <h3 class="section-subheading footer-text">연세대학교 소프트웨어종합설계 팀 협업실 B01입니다.</h3>
+                <h3 class="section-subheading footer-text">연세대학교 소프트웨어종합설계 팀 협업실 B01입니다.</h3>
             </div>
         </div>
     </div>
-</div>
+</div> -->
 <?php
     require_once "lib/footer.php"
 ?>

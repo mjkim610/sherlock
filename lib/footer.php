@@ -1,4 +1,4 @@
-    <footer class="footer text-center tran-gray">
+    <footer class="footer text-center">
         <div class="container">
             <div class="row">
                 <div class="col-sm-12">
@@ -15,6 +15,7 @@
             </div>
         </div>
     </footer>
+    
 </body>
 
 </html>
