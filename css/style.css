@@ -22,7 +22,7 @@ html {
   padding-bottom: 20px;
   word-wrap: break-word;
   background-color: rgba(22, 40, 57, 0.82);
-  color: white; 
+  color: white;
   position: absolute;
   bottom: 0;
   width: 100%;
@@ -41,6 +41,12 @@ a, a:active, a:focus, a:visited, a:hover{
 }
 .fa, .glyphicon{
   vertical-align: middle;
+  font-size: 18px;
+}
+.fa:hover{
+  vertical-align: middle;
+  color: rgba(0, 0, 0, 0.5);
+
 }
 ::selection { background: rgba(232, 207, 38, 0.81); color: #fff;}
 ::-moz-selection { background: rgba(232, 207, 38, 0.81); color: #fff;}
@@ -58,11 +64,11 @@ img.bg {
   /* Set rules to fill background */
   min-height: 100%;
   min-width: 1024px;
-  
+
   /* Set up proportionate scaling */
   width: 100%;
   height: auto;
-  
+
   /* Set up positioning */
   position: fixed;
   top: 0;
@@ -453,16 +459,16 @@ padding: 15px 15px;
 .back-image{
   /*background-image: url("https://images.unsplash.com/42/U7Fc1sy5SCUDIu4tlJY3_NY_by_PhilippHenzler_philmotion.de.jpg");*/
 /*  width: 100%;
-  height: 100%;  
-*/  
-background: url(../img/background.jpg) no-repeat center center fixed; 
+  height: 100%;
+*/
+background: url(../img/background.jpg) no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
 }
 
-.btn-service { 
+.btn-service {
 box-shadow: 1px 5px 20px -5px rgba(0,0,0,0.7);
 }
 
@@ -488,7 +494,7 @@ box-shadow: 1px 5px 20px -5px rgba(0,0,0,0.7);
   }
 }
 
-.btn-service {  
+.btn-service {
   -webkit-animation: pulse 2s ease-out;
   -webkit-animation-iteration-count: infinite;
 }
@@ -518,7 +524,7 @@ box-shadow: 1px 5px 20px -5px rgba(0,0,0,0.7);
 .profile-card header {
   width: 179px;
   height: 280px;
-  padding: 40px 20px 30px 20px;
+  /*padding: 40px 20px 30px 20px;*/
   display: inline-block;
   float: left;
   border-right: 2px dashed #EEEEEE;
@@ -578,12 +584,16 @@ box-shadow: 1px 5px 20px -5px rgba(0,0,0,0.7);
   box-shadow: 0px 0px 0px 12px rgba(0, 0, 0, 0.1);
 }
 
+.profile-card .profile-header {
+    padding: 5px;
+}
+
 .profile-card .profile-bio {
   width: 175px;
   height: 180px;
   display: inline-block;
   float: right;
-  padding: 50px 20px 30px 20px;
+  padding: 5px 5px 5px 5px;
   background-color: rgba(1, 52, 83, 0.3);
   color: #333333;
   margin-top: 50px;
@@ -598,7 +608,7 @@ box-shadow: 1px 5px 20px -5px rgba(0,0,0,0.7);
   display: inline-block;
   float: right;
   margin: 0px;
-  padding: 15px 20px;
+  padding: 15px 5px;
   background-color: rgba(1, 52, 83, 0.3);
   margin-top: 50px;
   text-align: center;
@@ -621,7 +631,7 @@ box-shadow: 1px 5px 20px -5px rgba(0,0,0,0.7);
 .profile-social-links li a {
   display: inline-block;
   width: 24px;
-  padding: 6px;
+  padding: 0px;
   position: relative;
   overflow: hidden!important;
   -webkit-border-radius: 50%;
@@ -691,7 +701,7 @@ box-shadow: 1px 5px 20px -5px rgba(0,0,0,0.7);
   .profile-card .profile-bio {
     width: auto;
     height: auto;
-    padding: 15px 20px 30px 20px;
+    padding: 5px 5px 5px 5px;
     display: block;
     float: none;
   }
@@ -704,7 +714,7 @@ box-shadow: 1px 5px 20px -5px rgba(0,0,0,0.7);
 
 
 .team-info {
-  margin-bottom: 30px;
+  margin-bottom: 10px;
 }
 
 .team-sub {

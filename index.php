@@ -21,11 +21,11 @@
         <div class="row">
             <div class="col-sm-12 text-center">
                 <h2>Let's try Sherlock</h2>
-            </div> 
+            </div>
             <div class="col-sm-3 col-sm-offset-3">
                 <div class="main_btn">
-                <h2>Sign In</h2>  
-                <p>Sign In with your Browser Fingerprint</p> 
+                <h2>Sign In</h2>
+                <p>Sign In with your Browser Fingerprint</p>
                 <a class="btn btn-primary btn-service" href="login.php">Sign In</a>
                 </div>
             </div>
@@ -60,7 +60,7 @@
 
             <div class="col-sm-4">
                 <h4>3. Different levels of authentication</h4>
-                <p>Depending on the confidence level of the session, the user is logged in/prompted for PIN/prompted for password</p>
+                <p>Depending on the confidence level of the session, the user is logged in/prompted for PIN/prompted for password.</p>
             </div>
         </div>
     </div>
@@ -95,106 +95,57 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-12 text-center team-info">
-                    <h2>Team 협업실 B01</h2>
-                    <p class="team-sub">Team 협업실 B01 for Yonsei univ, Software Capstone Project.</p>
+                    <h2>Team 협업실B01</h2>
+                    <p class="team-sub">Software Capstone Project, Yonsei University</p>
             </div>
             <div class="col-sm-12">
                 <div class="col-sm-4">
                     <div class="team-card">
                         <div class="profile-card">
-                      <header>
-                        <!-- here’s the avatar -->
+                      <header class="profile-header">
                         <a target="_blank" href="mailto:mjkim610@gmail.com?Subject=Regarding%20Sherlock">
-                          <img src="img/team/1.jpg" class="hoverZoomLink">
+                            <img src="img/team/1.jpg" class="hoverZoomLink">
                         </a>
-
-                        <!-- the username -->
                         <h1>김명종</h1>
-
-                        <!-- and role or location -->
-                        <h2>Developer</h2>
+                        <h2>Master of the Universe</h2>
                       </header>
 
-                      <!-- bit of a bio; who are you? -->
                       <div class="profile-bio">
-                        <p>
-                          Yonsei Univ
-                        </p>
-                        <p>
-                          Computer Science. 4
-                        </p>
-                        <p>
-                          mjkim610@gmail.com
-                        </p>
+                        <p>Yonsei University</p>
+                        <p>Computer Science. 4</p>
+                        <p>mjkim610@gmail.com</p>
                       </div>
-                      <!-- some social links to show off -->
+
                       <ul class="profile-social-links">
-                        <li>
-                          <a target="_blank" href="https://www.facebook.com/creativedonut">
-                            <i class="fa fa-facebook"></i>
-                          </a>
-                        </li>
-                        <li>
-                          <a target="_blank" href="https://github.com/mjkim610">
-                            <i class="fa fa-github"></i>
-                          </a>
-                        </li>
-                        <li>
-                          <a target="_blank" href="mailto:mjkim610@gmail.com?Subject=Regarding%20Sherlock">
-                            <i class="fa fa-envelope"></i>
-                          </a>
-                        </li>
-                        
+                        <li><a target="_blank" href="https://www.facebook.com/creativedonut"><i class="fa fa-facebook-official"></i></a></li>
+                        <li><a target="_blank" href="https://github.com/mjkim610"><i class="fa fa-github-square"></i></a></li>
+                        <li><a target="_blank" href="mailto:mjkim610@gmail.com?Subject=Regarding%20Sherlock"><i class="fa fa-envelope-square"></i></a></li>
                       </ul>
                         </div>
                     </div>
                 </div>
+
                 <div class="col-sm-4">
                     <div class="team-card">
                         <div class="profile-card">
-                      <header>
-                        <!-- here’s the avatar -->
+                      <header class="profile-header">
                         <a target="_blank" href="mailto:jhoney7374@gmail.com?Subject=Regarding%20Sherlock">
                           <img src="img/team/2.jpg" class="hoverZoomLink">
                         </a>
-
-                        <!-- the username -->
                         <h1>김정헌</h1>
-
-                        <!-- and role or location -->
-                        <h2>Developer</h2>
+                        <h2>Guardian of the Galaxy</h2>
                       </header>
 
-                      <!-- bit of a bio; who are you? -->
                       <div class="profile-bio">
-                        <p>
-                          Yonsei Univ
-                        </p>
-                        <p>
-                          Computer Science. 4
-                        </p>
-                        <p>
-                          jhoney7374@gmail.com
-                        </p>
+                        <p>Yonsei University</p>
+                        <p>Computer Science. 4</p>
+                        <p>jhoney7374@gmail.com</p>
                       </div>
-                      <!-- some social links to show off -->
+
                       <ul class="profile-social-links">
-                        <li>
-                          <a target="_blank" href="https://www.facebook.com/honey.Rnf">
-                            <i class="fa fa-facebook"></i>
-                          </a>
-                        </li>
-                        <li>
-                          <a target="_blank" href="https://github.com/restforest">
-                            <i class="fa fa-github"></i>
-                          </a>
-                        </li>
-                        <li>
-                          <a target="_blank" href="mailto:jhoney7374@gmail.com?Subject=Regarding%20Sherlock">
-                            <i class="fa fa-envelope"></i>
-                          </a>
-                        </li>
-                        
+                          <li><a target="_blank" href="https://www.facebook.com/honey.Rnf"><i class="fa fa-facebook"></i></a></li>
+                          <li><a target="_blank" href="https://github.com/restforest"><i class="fa fa-github-square"></i></a></li>
+                          <li><a target="_blank" href="mailto:jhoney7374@gmail.com?Subject=Regarding%20Sherlock"><i class="fa fa-envelope"></i></a></li>
                       </ul>
                         </div>
                     </div>
@@ -202,49 +153,24 @@
                 <div class="col-sm-4">
                     <div class="team-card">
                         <div class="profile-card">
-                      <header>
-                        <!-- here’s the avatar -->
+                      <header class="profile-header">
                         <a target="_blank" href="mailto:sullamij@naver.com?Subject=Regarding%20Sherlock">
                           <img src="img/team/3.jpg" class="hoverZoomLink">
                         </a>
-
-                        <!-- the username -->
                         <h1>정술람</h1>
-
-                        <!-- and role or location -->
-                        <h2>Developer</h2>
+                        <h2>Leader of the Free World</h2>
                       </header>
 
-                      <!-- bit of a bio; who are you? -->
                       <div class="profile-bio">
-                        <p>
-                          Yonsei Univ
-                        </p>
-                        <p>
-                          Computer Science. 4
-                        </p>
-                        <p>
-                          sullamij@naver.com
-                        </p>
+                        <p>Yonsei University</p>
+                        <p>Computer Science. 4</p>
+                        <p>sullamij@naver.com</p>
                       </div>
-                      <!-- some social links to show off -->
+
                       <ul class="profile-social-links">
-                        <li>
-                          <a target="_blank" href="#">
-                            <i class="fa fa-facebook"></i>
-                          </a>
-                        </li>
-                        <li>
-                          <a target="_blank" href="https://github.com/sullamij">
-                            <i class="fa fa-github"></i>
-                          </a>
-                        </li>
-                        <li>
-                          <a target="_blank" href="mailto:sullamij@naver.com?Subject=Regarding%20Sherlock">
-                            <i class="fa fa-envelope"></i>
-                          </a>
-                        </li>
-                        
+                          <li><a target="_blank" href="https://www.facebook.com/creativedonut"><i class="fa fa-facebook-official"></i></a></li>
+                          <li><a target="_blank" href="https://github.com/sullamij"><i class="fa fa-github"></i></a></li>
+                          <li><a target="_blank" href="mailto:sullamij@naver.com?Subject=Regarding%20Sherlock"><i class="fa fa-envelope"></i></a></li>
                       </ul>
                         </div>
                     </div>
