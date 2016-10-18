@@ -104,7 +104,7 @@
                         <div class="profile-card">
                       <header>
                         <!-- here’s the avatar -->
-                        <a target="_blank" href="#">
+                        <a target="_blank" href="mailto:mjkim610@gmail.com?Subject=Regarding%20Sherlock">
                           <img src="img/team/1.jpg" class="hoverZoomLink">
                         </a>
 
@@ -154,7 +154,7 @@
                         <div class="profile-card">
                       <header>
                         <!-- here’s the avatar -->
-                        <a target="_blank" href="#">
+                        <a target="_blank" href="mailto:jhoney7374@gmail.com?Subject=Regarding%20Sherlock">
                           <img src="img/team/2.jpg" class="hoverZoomLink">
                         </a>
 
@@ -204,7 +204,7 @@
                         <div class="profile-card">
                       <header>
                         <!-- here’s the avatar -->
-                        <a target="_blank" href="#">
+                        <a target="_blank" href="mailto:sullamij@naver.com?Subject=Regarding%20Sherlock">
                           <img src="img/team/3.jpg" class="hoverZoomLink">
                         </a>
 
