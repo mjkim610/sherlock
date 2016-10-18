@@ -39,25 +39,7 @@
         </div>
     </div>
 </div>
-<!-- 
-<div class="cont_forms" >
-    <div class="cont_img_back_">
-    <img src="https://images.unsplash.com/42/U7Fc1sy5SCUDIu4tlJY3_NY_by_PhilippHenzler_philmotion.de.jpg?ixlib=rb-0.3.5&q=50&fm=jpg&crop=entropy&s=7686972873678f32efaf2cd79671673d" alt="" />
-    </div>
-</div> -->
 
-<!-- <div class="container-fluid top-part">
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-3 col-sm-offset-2">
-        asdasd
-        </div>
-        <div class="col-sm-3 col-sm-offset-2">
-asdasdasd
-        </div>
-      </div>
-    </div>
-</div> -->
 <!-- 서비스 단계 -->
 <div class="container-fluid tran-light-gray">
     <div class="container">
@@ -112,9 +94,14 @@ asdasdasd
 <div class="container-fluid tran-gray">
     <div class="container">
         <div class="row">
+            <div class="col-sm-12 text-center team-info">
+                    <h2>Team 협업실 B01</h2>
+                    <p class="team-sub">Team 협업실 B01 for Yonsei univ, Software Capstone Project.</p>
+            </div>
             <div class="col-sm-12">
-                <div class="col-sm-4 team-card">
-                    <div class="profile-card">
+                <div class="col-sm-4">
+                    <div class="team-card">
+                        <div class="profile-card">
                       <header>
                         <!-- here’s the avatar -->
                         <a target="_blank" href="#">
@@ -159,11 +146,12 @@ asdasdasd
                         </li>
                         
                       </ul>
-
+                        </div>
                     </div>
                 </div>
-                <div class="col-sm-4 team-card">
-                    <div class="profile-card">
+                <div class="col-sm-4">
+                    <div class="team-card">
+                        <div class="profile-card">
                       <header>
                         <!-- here’s the avatar -->
                         <a target="_blank" href="#">
@@ -208,11 +196,12 @@ asdasdasd
                         </li>
                         
                       </ul>
-
+                        </div>
                     </div>
                 </div>
-                <div class="col-sm-4 team-card">
-                    <div class="profile-card">
+                <div class="col-sm-4">
+                    <div class="team-card">
+                        <div class="profile-card">
                       <header>
                         <!-- here’s the avatar -->
                         <a target="_blank" href="#">
@@ -257,7 +246,7 @@ asdasdasd
                         </li>
                         
                       </ul>
-
+                        </div>
                     </div>
                 </div>
             </div>
