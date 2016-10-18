@@ -212,7 +212,7 @@
                         <h1>정술람</h1>
 
                         <!-- and role or location -->
-                        <h2>Developer</h2>
+                        <h2>Theo / CS. 4</h2>
                       </header>
 
                       <!-- bit of a bio; who are you? -->
