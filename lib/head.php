@@ -45,8 +45,8 @@
                 <ul class="nav navbar-nav navbar-right">
                     <?php
                         if(isset($_SESSION['is_login']) && $_SESSION['is_login'] === true) {
-                            echo '<li><a href="lib/logout.php">Logout</a></li>';
                             echo '<li><a href="mypage.php">My Page</a></li>';
+                            echo '<li><a href="lib/logout.php">Logout</a></li>';
                         }
                         else {
                             echo '<li><a href="login.php">Sign In</a></li>';

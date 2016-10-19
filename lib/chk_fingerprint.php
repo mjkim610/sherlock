@@ -85,6 +85,7 @@
 		// fingerprint 일치!
 		if($test_value > $thresh_hold1) {
 			$_SESSION['is_login'] = true;
+			$_SESSION['user_id'] = $user_id;
 			echo "1101"; // login
 			exit();
 		}

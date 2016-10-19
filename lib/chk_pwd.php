@@ -17,10 +17,12 @@
 	$result2 = mysqli_query($conn, $sql2);
 	$row = mysqli_fetch_assoc($result2);
 	$user_pwd = $row['password'];
+	$user_id = $row['id'];
 
 	if($user_pwd === hash('sha256', $password, false))
 	{
 		$_SESSION['is_login'] = true;
+		$_SESSION['user_id'] = $user_id;
 		echo "2221";
 		exit();
 	}
