@@ -7,7 +7,7 @@
     {
     	$user_id = $_SESSION['user_id'];
 
-    	$sql0 = "SELECT * FROM fingerprint WHERE user_id = '$user_id'";
+    	$sql0 = "SELECT * FROM fingerprint WHERE user_id = '$user_id' ORDER BY reg_date DESC";
 		$result0 = mysqli_query($conn, $sql0);
 		
 		if (mysqli_num_rows($result0) > 0)
@@ -19,6 +19,79 @@
 				$fingerprints[] = $row;
 			}
 
+			$fp_num = count($fingerprints);
+
+			$fp_html = [];
+			$i = 0;
+			foreach ($fingerprints as $fingerprint) {
+				
+				$i++;
+
+				$tmp = '<div class="fp-card-2">';
+				$tmp .= '	<header>						';
+				$tmp .= '		<div class="avatarcontainer">';
+				$tmp .= '			<img src="http://www.croop.cl/UI/twitter/images/carl.jpg" alt="avatar" class="avatar">';
+							
+				$tmp .= '			<div class="hover">';
+				$tmp .= '					<div class="icon-twitter"></div>';
+				$tmp .= '			</div>';
+				$tmp .= '		</div>';
+				$tmp .= '	</header>';
+				$tmp .= '	<div class="content">';
+				$tmp .= '		<div class="data">';
+				$tmp .= '			<ul>';
+				$tmp .= '				<li>'.$fingerprint['reg_date'].'<span>Tweets</span></li>';
+				$tmp .= '				<li>1,119<span>Followers</span></li>';
+				$tmp .= '				<li>530<span>Following</span></li>';
+				$tmp .= '			</ul>';
+				$tmp .= '		</div>';
+
+				$tmp .= '		<div class="replace_fp" id="replace_fp-'.$i.'" onclick="replace_fp('.$i.')">';
+				$tmp .= '			<div class="icon-twitter"></div> Renew';
+				$tmp .= '		</div>';
+				$tmp .= '	</div>';
+
+				$tmp .= '</div>';				
+
+				$fp_html[$i] = $tmp;
+			}
+
+			$blank_html = '<div class="fp-card-2">';
+			$blank_html .= '	<header>						';
+			$blank_html .= '		<div class="avatarcontainer">';
+			$blank_html .= '			<img src="http://www.croop.cl/UI/twitter/images/carl.jpg" alt="avatar" class="avatar">';
+						
+			$blank_html .= '			<div class="hover">';
+			$blank_html .= '					<div class="icon-twitter"></div>';
+			$blank_html .= '			</div>';
+			$blank_html .= '		</div>';
+			$blank_html .= '	</header>';
+			$blank_html .= '	<div class="content">';
+			$blank_html .= '		<div class="data">';
+			$blank_html .= '			<ul>';
+			$blank_html .= '				<li>nope<span>Tweets</span></li>';
+			$blank_html .= '				<li>nope<span>Followers</span></li>';
+			$blank_html .= '				<li>nope<span>Following</span></li>';
+			$blank_html .= '			</ul>';
+			$blank_html .= '		</div>';
+
+			$blank_html .= '		<div class="replace_fp">';
+			$blank_html .= '			<div class="icon-twitter"></div> Renew';
+			$blank_html .= '		</div>';
+			$blank_html .= '	</div>';
+
+			$blank_html .= '</div>';
+
+
+			if($i == 1) // fp가 1개면
+			{
+				$fp_html[2] = $blank_html;
+				$fp_html[3] = $blank_html;
+			}
+			else if($i == 2) // fp가 2개면
+			{
+				$fp_html[3] = $blank_html;
+			}
 			//갯수 계산해서 html 문으로 cadr_html[0,1,2] 에 넣어주기
 			//없으면 불투명 또는 이미지로 대체
 			//있을 때 보여줄만한 정보가 뭐가있을까나
@@ -50,134 +123,13 @@
     <div class="container">
         <div class="row">
         	<div class="col-sm-4">
-                <!-- <div class="fp-card">
-                <h4>1. Browser fingerprinting</h4>
-                <p>JavaScript calculates the browser fingerprint of the session.</p>
-                </div> -->
-               	<div class="fp-card-2">
-					<header>
-						<div class="bio">
-			        		<img src="http://www.croop.cl/UI/twitter/images/up.jpg" alt="background" class="card-bg">
-							
-							<div class="desc">
-								<h3>@carlf</h3>
-								<p>Carl Fredricksen is the protagonist in Up. He also appeared in Dug's Special Mission as a minor character.</p>
-							</div>
-						</div>
-						
-						<div class="avatarcontainer">
-							<img src="http://www.croop.cl/UI/twitter/images/carl.jpg" alt="avatar" class="avatar">
-							
-							<div class="hover">
-									<div class="icon-twitter"></div>
-							</div>
-						</div>
-					</header>
-					<div class="content">
-						<div class="data">
-							<ul>
-								<li>2,934<span>Tweets</span></li>
-								<li>1,119<span>Followers</span></li>
-								<li>530<span>Following</span></li>
-							</ul>
-						</div>
-
-						<div class="follow">
-							<div class="icon-twitter"></div> Follow
-						</div>
-					</div>
-
-				</div>
+               	<?=$fp_html[1]?>
             </div>
             <div class="col-sm-4">
-            	<div class="fp-card-2">
-					<header>
-						<div class="bio">
-			        <img src="http://www.croop.cl/UI/twitter/images/up.jpg" alt="background" class="card-bg">
-							<div class="desc">
-								<h3>@carlf</h3>
-								<p>Carl Fredricksen is the protagonist in Up. He also appeared in Dug's Special Mission as a minor character.</p>
-							</div>
-						</div>
-						
-						<div class="avatarcontainer">
-							<img src="http://www.croop.cl/UI/twitter/images/carl.jpg" alt="avatar" class="avatar">
-							<div class="hover">
-									<div class="icon-twitter"></div>
-							</div>
-						</div>
-
-
-					</header>
-
-					<div class="content">
-						<div class="data">
-							<ul>
-								<li>
-									2,934
-									<span>Tweets</span>
-								</li>
-								<li>
-									1,119
-									<span>Followers</span>
-								</li>
-								<li>
-									530
-									<span>Following</span>
-								</li>
-							</ul>
-						</div>
-
-						<div class="follow"> <div class="icon-twitter"></div> Follow</div>
-					</div>
-
-				</div>
+            	<?=$fp_html[2]?>
             </div>
             <div class="col-sm-4">
-            	<div class="fp-card-2">
-					<header>
-						<div class="bio">
-			        <img src="http://www.croop.cl/UI/twitter/images/up.jpg" alt="background" class="card-bg">
-							<div class="desc">
-								<h3>@carlf</h3>
-								<p>Carl Fredricksen is the protagonist in Up. He also appeared in Dug's Special Mission as a minor character.</p>
-							</div>
-						</div>
-						
-						<div class="avatarcontainer">
-							<img src="http://www.croop.cl/UI/twitter/images/carl.jpg" alt="avatar" class="avatar">
-							<div class="hover">
-									<div class="icon-twitter"></div>
-							</div>
-						</div>
-
-
-					</header>
-
-					<div class="content">
-						<div class="data">
-							<ul>
-								<li>
-									2,934
-									<span>Tweets</span>
-								</li>
-								<li>
-									1,119
-									<span>Followers</span>
-								</li>
-								<li>
-									530
-									<span>Following</span>
-								</li>
-							</ul>
-						</div>
-
-						<div class="follow">
-							<div class="icon-twitter"></div> Follow
-						</div>
-					</div>
-
-				</div>
+            	<?=$fp_html[3]?>
             </div>
         </div>
     </div>
@@ -188,14 +140,15 @@
 ?>
 
 <script>
-	$(document).ready(
 
-	function iniciar(){
-	$('.follow').on("click", function(){
-		$('.follow').css('background-color','#34CF7A');
-		$('.follow').html('<div class="icon-ok"></div> Following');
-	});	
-	}
+function replace_fp(index)
+{
+	var ask = confirm("Wanna change Fingerprint?");
+	if(ask) alert('yyy');
+	else alert('nnn');
+	
+	$('#replace_fp-'+index).css('background-color','#34CF7A');
+	$('#replace_fp-'+index).html('<div class="icon-ok"></div> Replaced!');
+};
 
-);	
 </script>

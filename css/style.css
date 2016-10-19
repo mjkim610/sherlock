@@ -726,7 +726,7 @@ box-shadow: 1px 5px 20px -5px rgba(0,0,0,0.7);
 }
 .fp-card-2 header {
   display: block;
-  overflow: hidden;
+  /*overflow: hidden;*/
   position: relative;
   padding-bottom: 2em;
   -moz-border-radius-topleft: 8px;
@@ -882,7 +882,7 @@ box-shadow: 1px 5px 20px -5px rgba(0,0,0,0.7);
     font-family: 'Quicksand';
     line-height: 1.5em; 
 }
-.fp-card-2 .follow {
+.fp-card-2 .replace_fp {
   margin: 1.5em auto 0 auto;
   background-color: #2589cc;
   width: 150px;
@@ -908,7 +908,7 @@ box-shadow: 1px 5px 20px -5px rgba(0,0,0,0.7);
   -o-transition-timing-function: ease;
   transition-timing-function: ease;
 }
-.fp-card-2 .follow:hover {
+.fp-card-2 .replace_fp:hover {
     background-color: #167abd;
     cursor: pointer; 
 }
