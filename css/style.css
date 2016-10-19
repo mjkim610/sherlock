@@ -801,11 +801,11 @@ box-shadow: 1px 5px 20px -5px rgba(0,0,0,0.7);
   font-size: 1.8em;
   text-align: center;
   color: white;
-  padding-top: 18%;
+  /*padding-top: 18%;*/
   opacity: 0;
   font-family: 'FontAwesome';
   font-weight: 300;
-  border: 8px solid #5cc0ff;
+  /*border: 8px solid #5cc0ff;*/
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
   -ms-border-radius: 50%;
@@ -829,7 +829,7 @@ box-shadow: 1px 5px 20px -5px rgba(0,0,0,0.7);
   color: #81878b; 
   }
 .fp-card-2 .data li {
-    width: 32%;
+    width: 49%;
     text-align: center;
     display: inline-block;
     font-size: 1.5em;
