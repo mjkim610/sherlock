@@ -48,7 +48,7 @@
 
 		$sql = "SELECT * FROM fingerprint WHERE user_id = '$user_id'";
 		$result = mysqli_query($conn, $sql);
-		if (mysqli_num_rows($result) > 3) {
+		if (mysqli_num_rows($result) >= 3) {
 			echo '7776';
 			exit();
 		}
