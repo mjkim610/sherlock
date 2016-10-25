@@ -46,7 +46,7 @@
 				$tmp .= '		</div>';
 
 				$tmp .= '		<div class="replace_fp" id="replace_fp-'.$fingerprint['id'].'" onclick="replace_fp('.$fingerprint['id'].','.$i.')">';
-				$tmp .= '			<div class="icon-twitter"></div> Renew';
+				$tmp .= '			Replace';
 				$tmp .= '		</div>';
 				$tmp .= '	</div>';
 
@@ -68,13 +68,13 @@
 			$blank_html .= '	<div class="content">';
 			$blank_html .= '		<div class="data">';
 			$blank_html .= '			<ul>';
-			$blank_html .= '				<li>nope<span>Regist day</span></li>';
-			$blank_html .= '				<li>nope<span>Followers</span></li>';
+			$blank_html .= '				<li>Nope<span>Regist day</span></li>';
+			$blank_html .= '				<li>Nope<span>Followers</span></li>';
 			$blank_html .= '			</ul>';
 			$blank_html .= '		</div>';
 
 			$blank_html .= '		<div class="replace_fp">';
-			$blank_html .= '			<div class="icon-twitter"></div> Renew';
+			$blank_html .= '			Please Regist';
 			$blank_html .= '		</div>';
 			$blank_html .= '	</div>';
 
@@ -117,6 +117,9 @@
 <div class="container-fluid tran-light-gray" id="mypage">
     <div class="container">
         <div class="row">
+        	<div class="col-sm-12 text-center">
+        		<button class="btn btn-primary" onclick="regist_fp()" style="font-size: 20px;">Regist Browser Fingerprint</button>
+        	</div>
         	<div class="col-sm-4" id="fp_1">
                	<?=$fp_html[1]?>
             </div>
@@ -184,8 +187,7 @@
 							html_string = '<div class="fp-card-2">';
 							html_string += '	<header>						';
 							html_string += '		<div class="avatarcontainer">';
-							html_string += '			<img src="http://www.croop.cl/UI/twitter/images/carl.jpg" alt="avatar" class="avatar">';
-										
+							html_string = html_string + '<img src="img/'+index2+'.png" alt="avatar" class="avatar">';		
 							html_string += '			<div class="hover">';
 							html_string += '					<div class="icon-twitter"></div>';
 							html_string += '			</div>';
@@ -194,13 +196,12 @@
 							html_string += '	<div class="content">';
 							html_string += '		<div class="data">';
 							html_string += '			<ul>';
-							html_string += '				<li>replaced<span>Regist day</span></li>';
-							html_string += '				<li>replaced<span>Followers</span></li>';
+							html_string += '				<li>Replaced<span>Regist day</span></li>';
+							html_string += '				<li>Replaced<span>Followers</span></li>';
 							html_string += '			</ul>';
 							html_string += '		</div>';
-
 							html_string += '		<div class="replace_fp">';
-							html_string += '			<div class="icon-twitter"></div> replaced';
+							html_string += '			Replaced!!';
 							html_string += '		</div>';
 							html_string += '	</div>';
 
@@ -214,6 +215,70 @@
 						else
 						{
 							alert('Try again (err 510)');
+						}
+
+			        },
+			        error: function (xhr, ajaxOptions, thrownError) {
+				           alert(xhr.status);
+				           alert(xhr.responseText);
+				           alert(thrownError);
+				       }
+				});
+			});
+		}
+	};
+
+	function regist_fp()
+	{
+		var ask = confirm("Wanna Regist Fingerprint?");
+		if(ask)
+		{
+			var fp = new Fingerprint2();
+		    var ips = getIP();
+			var string = '';
+			var i = 0;
+			fp.get(function(result, components,a,b) {
+				var strings = '';
+
+				for (var property in components) {
+					strings = strings + '!@#' + components[property]['value'];
+				}
+
+				for (var ip in ips) {
+					 strings = strings + '!@#' + ip;
+				}
+
+				var ttt = strings.split('!@#'); // array 형태로 변환
+				var ddd = ttt.shift(); // 첫번째 원소 제거
+				$.ajax({
+					type : "POST",
+					data : {
+						id : <?=$_SESSION['user_id']?>,
+						datas : JSON.stringify(ttt) // json 형태로 변환
+					},
+					url : "lib/regist_fingerprint.php",
+					success: function(result)
+					{
+						if(result == '7776')
+						{
+							alert('Fingerprint는 3개까지 등록 가능합니다');
+						}
+						else if(result == '7761')
+						{
+							alert('Nice try (err 712)');
+						}
+						else if(result == '7733')
+						{
+							alert('Try again (err 723)');
+						}
+						else if(result == '7712') // 성공
+						{
+							alert('등록되었습니다! 확인 버튼을 누르면 새로고침됩니다.');
+							location.reload();
+						}
+						else
+						{
+							alert('Try again (err 776)');
 						}
 
 			        },

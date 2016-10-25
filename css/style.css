@@ -738,7 +738,7 @@ box-shadow: 1px 5px 20px -5px rgba(0,0,0,0.7);
 }
 .fp-card-2 {
   width: auto;
-  /*margin: 3em auto 1em auto;*/
+  margin: 3em auto 1em auto;
   -webkit-border-radius: 8px;
   -moz-border-radius: 8px;
   -ms-border-radius: 8px;
