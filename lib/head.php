@@ -15,14 +15,12 @@
     <link href="http://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
     <link href="css/font-awesome-4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="css/style.css" rel="stylesheet" media="screen">
-    <!-- <link href="css/agency.css" rel="stylesheet" media="screen"> -->
     <link href="css/login-signup.css" rel="stylesheet" media="screen">
     <link href="http://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
     <script src="http://code.jquery.com/jquery.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="js/fingerprint2.js"></script>
     <script src="js/sha256.js"></script>
-    <script src="js/login.js"></script>
 </head>
 
 <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">

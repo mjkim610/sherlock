@@ -24,7 +24,7 @@
             <div class="col-sm-12 text-center">
                 <h2>Let's try Sherlock</h2>
             </div>
-            <div class="col-sm-3 col-sm-offset-3">
+            <div class="col-sm-3 col-sm-offset-2">
                 <div class="main_btn">
                 <h2>Sign In</h2>
                 <p>Sign In with your Browser Fingerprint</p>
@@ -36,6 +36,13 @@
                 <h2>Sign Up</h2>
                 <p>Regist your Browser Fingerprint</p>
                 <a class="btn btn-danger btn-service" href="signup.php">Sign Up</a>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="main_btn">
+                <h2>Play</h2>
+                <p>Play the T-Rex Game</p>
+                <a class="btn btn-warning btn-service" href="game.php">Play</a>
                 </div>
             </div>
         </div>
