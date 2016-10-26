@@ -90,8 +90,7 @@ var FPS = 60;
 var IS_HIDPI = window.devicePixelRatio > 1;
 
 /** @const */
-var IS_IOS = window.navigator.userAgent.indexOf('CriOS') > -1 ||
-    window.navigator.userAgent == 'UIWebViewForStaticFileContent';
+var IS_IOS = window.navigator.userAgent.indexOf('UIWebViewForStaticFileContent') > -1 ;
 
 /** @const */
 var IS_MOBILE = window.navigator.userAgent.indexOf('Mobi') > -1 || IS_IOS;
@@ -205,7 +204,7 @@ Runner.keycodes = {
  * @enum {string}
  */
 Runner.events = {
-  ANIM_END: 'webkitAnimationEnd',
+  ANIM_END: ((!!window.chrome|| !!window.opera)? 'webkitAnimationEnd':'animationend'),
   CLICK: 'click',
   KEYDOWN: 'keydown',
   KEYUP: 'keyup',
@@ -227,13 +226,15 @@ Runner.prototype = {
    * Whether the easter egg has been disabled. CrOS enterprise enrolled devices.
    * @return {boolean}
    */
+  /*
   isDisabled: function() {
     return loadTimeData && loadTimeData.valueExists('disabledEasterEgg');
   },
-
+  */
   /**
    * For disabled instances, set up a snackbar with the disabled message.
    */
+  /*
   setupDisabledRunner: function() {
     this.containerEl = document.createElement('div');
     this.containerEl.className = Runner.classes.SNACKBAR;
@@ -248,7 +249,7 @@ Runner.prototype = {
       }
     }.bind(this));
   },
-
+  */
   /**
    * Setting individual settings for debugging.
    * @param {string} setting
@@ -480,10 +481,11 @@ Runner.prototype = {
     this.playingIntro = false;
     this.tRex.playingIntro = false;
     this.containerEl.style.webkitAnimation = '';
+    this.containerEl.style.animation='';
     this.playCount++;
 
     // Handle tabbing off the page. Pause the current game.
-    document.addEventListener(Runner.events.VISIBILITY,
+    window.addEventListener(Runner.events.VISIBILITY,
           this.onVisibilityChange.bind(this));
 
     window.addEventListener(Runner.events.BLUR,
