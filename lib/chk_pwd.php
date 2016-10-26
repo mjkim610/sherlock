@@ -10,6 +10,12 @@
 
 	if (mysqli_num_rows($result) === 0) {
 		echo "2111"; // 이메일 존재하지 않음
+
+		$reg_date = 'now()';
+        $sql = "INSERT INTO trial_log(user_id,email,result,reg_date) VALUES ('', '$email', 'pw-email-err', $reg_date)";
+
+        $conn->query($sql);
+
 		exit();
 	}
 
@@ -24,10 +30,22 @@
 		$_SESSION['is_login'] = true;
 		$_SESSION['user_id'] = $user_id;
 		echo "2221";
+
+		$reg_date = 'now()';
+        $sql = "INSERT INTO trial_log(user_id,email,result,reg_date) VALUES ('$user_id', '$email', 'pw-ok', $reg_date)";
+
+        $conn->query($sql);
 		exit();
 	}
-	else echo "2223";
+	else 
+	{
+		echo "2223";
 
+		$reg_date = 'now()';
+        $sql = "INSERT INTO trial_log(user_id,email,result,reg_date) VALUES ('$user_id', '$email', 'pw-fail', $reg_date)";
+
+        $conn->query($sql);
+	}
 	exit();
 
 ?>
