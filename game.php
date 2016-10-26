@@ -73,5 +73,6 @@
     </template>
   </div>
   <script src="js/game.js"></script>
+  <p class="hidden" id="highscore">Hello</p>
 </body>
 </html>

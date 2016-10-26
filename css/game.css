@@ -28,6 +28,8 @@ html,body{
 
 /* Offline page */
 .offline .interstitial-wrapper {
+  position: relative;
+  top: 100px;
   color: #2b2b2b;
   font-size: 1em;
   line-height: 1.55;
@@ -47,6 +49,7 @@ html,body{
 }
 
 .offline .runner-canvas {
+  background-color: rgba(222, 227, 230, 0.75);
   height: 150px;
   max-width: 600px;
   opacity: 1;

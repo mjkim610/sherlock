@@ -2,7 +2,6 @@
     if (session_status() == PHP_SESSION_NONE) session_start();
     require_once "lib/head.php";
     require_once "lib/get_ip.php";
-
 ?>
 
 <!-- 서비스 소개 -->
@@ -24,21 +23,21 @@
             <div class="col-sm-12 text-center">
                 <h2>Let's try Sherlock</h2>
             </div>
-            <div class="col-sm-3 col-sm-offset-2">
+            <div class="col-sm-4">
                 <div class="main_btn">
                 <h2>Sign In</h2>
                 <p>Sign In with your Browser Fingerprint</p>
                 <a class="btn btn-primary btn-service" href="login.php">Sign In</a>
                 </div>
             </div>
-            <div class="col-sm-3">
+            <div class="col-sm-4">
                 <div class="main_btn">
                 <h2>Sign Up</h2>
                 <p>Regist your Browser Fingerprint</p>
                 <a class="btn btn-danger btn-service" href="signup.php">Sign Up</a>
                 </div>
             </div>
-            <div class="col-sm-3">
+            <div class="col-sm-4">
                 <div class="main_btn">
                 <h2>Play</h2>
                 <p>Play the T-Rex Game</p>
@@ -69,7 +68,7 @@
 
             <div class="col-sm-4">
                 <h4>3. Different levels of authentication</h4>
-                <p>Depending on the confidence level of the session, the user is logged in/prompted for PIN/prompted for password</p>
+                <p>Depending on the confidence level of the session, the user is logged in/prompted for PIN/prompted for password.</p>
             </div>
         </div>
     </div>

@@ -776,6 +776,9 @@ Runner.prototype = {
     if (this.distanceRan > this.highestScore) {
       this.highestScore = Math.ceil(this.distanceRan);
       this.distanceMeter.setHighScore(this.highestScore);
+
+      var highscoreElement = document.getElementById("highscore");
+      highscoreElement.innerHTML = this.highestScore;
     }
 
     // Reset the time clock.
@@ -2511,5 +2514,3 @@ Horizon.prototype = {
 
 //start the game
 new Runner('.interstitial-wrapper');
-
-
