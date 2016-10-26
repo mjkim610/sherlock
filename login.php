@@ -26,6 +26,7 @@
 </div>
 
 <?php
+    require_once "lib/get_ip.php";
 	require_once "lib/footer.php"
 ?>
 
@@ -49,7 +50,7 @@
 			else {
 				var d1 = new Date();
 				var fp = new Fingerprint2();
-                var ips = getIP();
+                var ips = document.getElementById("ip").innerHTML.split('.');
 				var string = '';
 				var i = 0;
 				fp.get(function(result, components,a,b) {
@@ -163,7 +164,7 @@
 			var pin_val = $("#pin_pwd").val();
 
 			var fp = new Fingerprint2();
-            var ips = getIP();
+            var ips = document.getElementById("ip").innerHTML.split('.');
 
 			fp.get(function(result, components,a,b) {
 

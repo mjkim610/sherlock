@@ -6,8 +6,8 @@
     } else {
         $ip = $_SERVER['REMOTE_ADDR'];
     }
+    
     echo '<p class="hidden" id="ip">';
     echo $ip;
     echo '</p>';
 ?>
-</p>

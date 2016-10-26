@@ -126,9 +126,6 @@
 
 <?php
     require_once "lib/get_ip.php";
-?>
-
-<?php
     require_once "lib/footer.php"
 ?>
 
