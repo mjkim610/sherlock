@@ -124,6 +124,9 @@
     </form>
 </div>
 
+<?php
+    require_once "lib/get_ip.php";
+?>
 
 <?php
     require_once "lib/footer.php"
@@ -169,7 +172,7 @@
         else {
             var d1 = new Date();
             var fp = new Fingerprint2();
-            var ips = getIP();
+            var ips = document.getElementById("ip").innerHTML.split('.');
 
             fp.get(function(result, components,a,b) {
                 var d2 = new Date();

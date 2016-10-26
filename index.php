@@ -1,6 +1,8 @@
 <?php
     if (session_status() == PHP_SESSION_NONE) session_start();
     require_once "lib/head.php";
+    require_once "lib/get_ip.php";
+
 ?>
 
 <!-- 서비스 소개 -->
@@ -21,11 +23,11 @@
         <div class="row">
             <div class="col-sm-12 text-center">
                 <h2>Let's try Sherlock</h2>
-            </div> 
+            </div>
             <div class="col-sm-3 col-sm-offset-3">
                 <div class="main_btn">
-                <h2>Sign In</h2>  
-                <p>Sign In with your Browser Fingerprint</p> 
+                <h2>Sign In</h2>
+                <p>Sign In with your Browser Fingerprint</p>
                 <a class="btn btn-primary btn-service" href="login.php">Sign In</a>
                 </div>
             </div>
@@ -144,7 +146,7 @@
                             <i class="fa fa-envelope"></i>
                           </a>
                         </li>
-                        
+
                       </ul>
                         </div>
                     </div>
@@ -194,7 +196,7 @@
                             <i class="fa fa-envelope"></i>
                           </a>
                         </li>
-                        
+
                       </ul>
                         </div>
                     </div>
@@ -244,7 +246,7 @@
                             <i class="fa fa-envelope"></i>
                           </a>
                         </li>
-                        
+
                       </ul>
                         </div>
                     </div>
