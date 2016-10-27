@@ -8,14 +8,12 @@
                 </div>
                 <div class="col-sm-6"></div>
                 <div class="col-sm-6">
-                    김명종
-                    김정헌
-                    정술람
+                    Copyright © 2016 Sherlock. All rights reserved.
                 </div>
             </div>
         </div>
     </footer>
-    
+
 </body>
 
 </html>

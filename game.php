@@ -1,5 +1,11 @@
-<!doctype html>
+<?php
+    if (session_status() == PHP_SESSION_NONE) session_start();
+    require_once "lib/dbconn.php";
+?>
+
+<!DOCTYPE html>
 <html>
+
 <head>
   <title>Sherlock</title>
   <link rel="shortcut icon" href="img/favicon.png">
@@ -22,7 +28,6 @@
   <script src="js/sha256.js"></script>
 
   <!-- from original game -->
-  <title i18n-content="title"></title>
   <link rel="stylesheet" href="css/game.css">
 
 </head>
@@ -73,6 +78,8 @@
     </template>
   </div>
   <script src="js/game.js"></script>
-  <p class="hidden" id="highscore">Hello</p>
-</body>
-</html>
+  <p class="hidden" id="highscore"></p>
+
+  <?php
+      require_once "lib/footer.php"
+  ?>
