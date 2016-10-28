@@ -1,9 +1,10 @@
 <?php
 	if (session_status() == PHP_SESSION_NONE) session_start();
 	require_once "dbconn.php";
+	require_once "function.php";
 
-	$email = $_POST['email'];	
-	$password = $_POST['password'];	
+	$email = test_input($_POST['email']);	
+	$password = test_input($_POST['password']);	
 	
 	$sql0 = "SELECT * FROM user WHERE email = '$email'";
 	$result = mysqli_query($conn, $sql0);
@@ -26,7 +27,13 @@
 	$user_id = $row['id'];
 
 	if($user_pwd === hash('sha256', $password, false))
-	{
+	{			
+
+		if($email == 'gold@is.here')
+		{
+			$_SESSION['gold'] = 'got_it';
+		}
+
 		$_SESSION['is_login'] = true;
 		$_SESSION['user_id'] = $user_id;
 		echo "2221";

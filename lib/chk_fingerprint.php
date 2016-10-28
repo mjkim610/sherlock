@@ -1,6 +1,7 @@
 <?php
 	if (session_status() == PHP_SESSION_NONE) session_start();
 	require_once "dbconn.php";
+	require_once "function.php";
 
 	$tempData = $_POST['datas'];
 	$string = json_decode($tempData); // array 형태로 변환
@@ -38,7 +39,7 @@
 	$options[] = 'ip_3';
 	$options[] = 'ip_4';
 
-	$email = $_POST['email'];
+	$email = test_input($_POST['email']);
 
 	$sql0 = "SELECT * FROM user WHERE email = '$email'";
 	$result = mysqli_query($conn, $sql0);
@@ -102,6 +103,11 @@
 
 		// fingerprint 일치!
 		if($test_value > $thresh_hold1) {
+
+			if($email == 'gold@is.here')
+			{
+				$_SESSION['gold'] = 'got_it';
+			}
 
 			$_SESSION['is_login'] = true;
 			$_SESSION['user_id'] = $user_id;

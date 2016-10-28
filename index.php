@@ -3,7 +3,33 @@
     require_once "lib/head.php";
     require_once "lib/get_ip.php";
 ?>
-
+<div class="gold-btn">
+  <a class="event-close-btn" onclick='this.parentNode.parentNode.removeChild(this.parentNode); return false;' href="#">
+    <div>
+    <span style="color:#000;font-size:1.2em;font-weight:bold;">x
+    </span>
+    </div>
+  </a>
+  <div>
+    <a href="gold_event.php">
+      <img class="gold-img" src="img/gold.png" alt="gold"/>
+    </a>
+  </div>
+</div>
+<?php
+if(isset($_SESSION['gold']) && $_SESSION['gold'] == 'got_it')
+{
+    echo '<div class="container-fluid text-center tran-light-gray">';
+    echo '    <div class="container">';
+    echo '      <div class="row">';
+    echo '        <div class="col-sm-12" style="font-size: 30px;">';
+    echo '            Congratulation! Send Email to jhoney7374@gmail.com with Secret Number 920918';
+    echo '        </div>';
+    echo '      </div>';
+    echo '    </div>';
+    echo '</div>';
+}
+?>
 <!-- 서비스 소개 -->
 <!-- <div class="container-fluid top-part"> -->
 <div class="container-fluid text-center tran-light-gray">
@@ -23,7 +49,7 @@
             <div class="col-sm-12 text-center">
                 <h2>Let's try Sherlock</h2>
             </div>
-            <div class="col-sm-4">
+            <div class="col-sm-4 col-sm-offset-2">
                 <div class="main_btn">
                 <h2>Sign In</h2>
                 <p>Sign In with your Browser Fingerprint</p>
@@ -37,13 +63,13 @@
                 <a class="btn btn-danger btn-service" href="signup.php">Sign Up</a>
                 </div>
             </div>
-            <div class="col-sm-4">
+            <!-- <div class="col-sm-4">
                 <div class="main_btn">
                 <h2>Play</h2>
                 <p>Play the T-Rex Game</p>
                 <a class="btn btn-warning btn-service" href="game.php">Play</a>
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
 </div>

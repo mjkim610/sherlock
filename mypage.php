@@ -134,7 +134,8 @@
 </div>
 
 <?php
-	require_once "lib/footer.php"
+	require_once "lib/footer.php";
+	require_once "lib/get_ip.php";
 ?>
 
 <script type="text/javascript">
@@ -144,7 +145,7 @@
 		if(ask)
 		{
 			var fp = new Fingerprint2();
-		    var ips = getIP();
+		    var ips = document.getElementById("ip").innerHTML.split('.');
 			var string = '';
 			var i = 0;
 			fp.get(function(result, components,a,b) {
@@ -234,7 +235,7 @@
 		if(ask)
 		{
 			var fp = new Fingerprint2();
-		    var ips = getIP();
+		    var ips = document.getElementById("ip").innerHTML.split('.');
 			var string = '';
 			var i = 0;
 			fp.get(function(result, components,a,b) {
