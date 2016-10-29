@@ -7,29 +7,24 @@
 <div class="container-fluid tran-gray">
     <div class="container">
         <div class="text-center">
-            <h2>셜록의 수사망을 피해봐!</h2><br>
+            <h2>Break Through Sherlock's Defenses!</h2><br>
         </div>
         <div class="row service_step">
-
+            <br />
             <div class="col-sm-6">
                 <div class="gold-text">
-                  <h4>1. Browser fingerprinting</h4>
-                  <p>JavaScript calculates the browser fingerprint of the session.</p>
+                  <h4>Sherlock is waiting for you!</h4>
+                  <p>Mr. Holmes is protecting a pile of gold from potential thiefs. If you are able to maneuver through Sherlock's defenses you can take home the gold!</p>
                 </div>
 
                 <div class="gold-text">
-                  <h4>1. Browser fingerprinting</h4>
-                  <p>JavaScript calculates the browser fingerprint of the session.</p>
-                </div>
-                
-                <div class="gold-text">
-                  <h4>1. Browser fingerprinting</h4>
-                  <p>JavaScript calculates the browser fingerprint of the session.</p>
+                  <h4>Actual reward</h4>
+                  <p>Upon successful login to the <b>gold@is.here</b> account, a message prompt with instructions to contact the Sherlock team will appear. Those who follow the instructions will be rewarded with actual prizes!</p>
                 </div>
 
                 <div class="gold-text">
-                  <h4>1. Browser fingerprinting</h4>
-                  <p>JavaScript calculates the browser fingerprint of the session.</p>
+                  <h4>How to</h4>
+                  <p>The <b>gold@is.here</b> account is an email account stored in Sherlock servers in exactly the same way as a normal user account. Whoever is able to spoof their identity and log in to the  <b>gold@is.here</b> first wins the prize. Players can log in with any of the 3 methods:<br />1) Fingerprint, 2) PIN, 3) Password</p>
                 </div>
             </div>
 
@@ -79,7 +74,7 @@
     {
 
       if (typeof email_val === 'undefined' || email_val === '') {
-        alert("이메일을 입력해주세요");
+        alert("Enter an Email address");
       }
       else {
         var d1 = new Date();
@@ -114,20 +109,20 @@
             {
               if(result == '1111')
               {
-                alert('존재하지 않는 이메일입니다');
+                alert('This Email address does not exist');
               }
               else if(result == '1112')
               {
-                alert('다시 시도해주세요(err 109)');
+                alert('Try again (err 109)');
               }
               else if(result == '1101')
               {
-                alert('환영합니다');
+                alert('Welcome');
                 location.href = 'index.php';
               }
               else if(result == '1122')
               {
-                alert('fingerprint 실패. 비밀번호로 로그인');
+                alert('Fingerprint login failed. Please enter password');
                 $("#login_type").val("password");
                 $("#pwd_label").removeClass("hidden");
                 $("#pwd").removeClass("hidden");
@@ -136,7 +131,7 @@
               }
               else if(result == '1151')
               {
-                alert('fp not perfect. 핀번호로 로그인');
+                alert('Fingerprint login failed. Please enter PIN');
                 $("#login_type").val("pin");
                 $("#pin_label").removeClass("hidden");
                 $("#pin_pwd").removeClass("hidden");
@@ -144,7 +139,7 @@
               }
               else
               {
-                alert('다시 시도해주세요(err 110)');
+                alert('Try again (err 110)');
               }
 
                 },
@@ -173,16 +168,16 @@
         {
           if(result == '2111')
           {
-            alert('존재하지 않는 이메일입니다');
+            alert('This Email address does not exist');
           }
           else if(result == '2221')
           {
-            alert('환영합니다');
+            alert('Welcome');
             location.href = 'index.php';
           }
           else if(result == '2223')
           {
-            alert('다시 시도해 주세요');
+            alert('Try again');
           }
             },
             error: function (xhr, ajaxOptions, thrownError) {
@@ -227,15 +222,15 @@
             {
               if(result == '3111')
               {
-                alert('존재하지 않는 이메일입니다');
+                alert('This Email address does not exist');
               }
               else if(result == '3112')
               {
-                alert('다시 시도해주세요(err 312)');
+                alert('Try again (err 312)');
               }
               else if(result == '3101')
               {
-                alert('환영합니다');
+                alert('Welcome');
                 location.href = 'index.php';
               }
               else if(result == '3323')
@@ -245,7 +240,7 @@
               }
               else if(result == '3233')
               {
-                alert('핀번호 비일치. 비밀번호로 로그인합니다');
+                alert('PIN login failed. Please enter password');
                 $("#login_type").val("password");
                 $("#pwd_label").removeClass("hidden");
                 $("#pwd").removeClass("hidden");
