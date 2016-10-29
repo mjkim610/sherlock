@@ -3,19 +3,6 @@
     require_once "lib/head.php";
     require_once "lib/get_ip.php";
 ?>
-<div class="gold-btn">
-  <a class="event-close-btn" onclick='this.parentNode.parentNode.removeChild(this.parentNode); return false;' href="#">
-    <div>
-    <span style="color:#000;font-size:1.2em;font-weight:bold;">x
-    </span>
-    </div>
-  </a>
-  <div>
-    <a href="gold_event.php">
-      <img class="gold-img" src="img/gold.png" alt="gold"/>
-    </a>
-  </div>
-</div>
 <?php
 if(isset($_SESSION['gold']) && $_SESSION['gold'] == 'got_it')
 {
@@ -49,27 +36,36 @@ if(isset($_SESSION['gold']) && $_SESSION['gold'] == 'got_it')
             <div class="col-sm-12 text-center">
                 <h2>Let's try Sherlock</h2>
             </div>
-            <div class="col-sm-4 col-sm-offset-2">
-                <div class="main_btn">
-                <h2>Sign In</h2>
-                <p>Sign In with your Browser Fingerprint</p>
-                <a class="btn btn-primary btn-service" href="login.php">Sign In</a>
-                </div>
-            </div>
-            <div class="col-sm-4">
-                <div class="main_btn">
-                <h2>Sign Up</h2>
-                <p>Regist your Browser Fingerprint</p>
-                <a class="btn btn-danger btn-service" href="signup.php">Sign Up</a>
-                </div>
-            </div>
-            <!-- <div class="col-sm-4">
-                <div class="main_btn">
-                <h2>Play</h2>
-                <p>Play the T-Rex Game</p>
-                <a class="btn btn-warning btn-service" href="game.php">Play</a>
-                </div>
-            </div> -->
+            <?php
+                if(isset($_SESSION['is_login']) && $_SESSION['is_login'] === true) {
+                    echo '<div class="col-sm-4">';
+                        echo '<div class="main_btn">';
+                        echo '<h2>Play</h2>';
+                        echo '<p>Grab the Gold!</p>';
+                        echo '<img class="gold-img" src="img/gold.png" alt="gold"/>';
+                        echo '<a class="btn btn-warning btn-service" href="gold_event.php">Play</a>';
+                        echo '</div>';
+                    echo '</div>';
+                }
+                else {
+                    echo '<div class="col-sm-4">';
+                    echo '<div class="main_btn">';
+                    echo '<h2>Sign In</h2>';
+                    echo '<p>Sign In with your Browser Fingerprint</p>';
+                    echo '<a class="btn btn-primary btn-service" href="login.php">Sign In</a>';
+                    echo '</div>';
+                    echo '</div>';
+
+                    echo '<div class="col-sm-4">';
+                    echo '<div class="main_btn">';
+                    echo '<h2>Sign Up</h2>';
+                    echo '<p>Register your Browser Fingerprint</p>';
+                    echo '<a class="btn btn-danger btn-service" href="signup.php">Sign Up</a>';
+                    echo '</div>';
+                    echo '</div>';
+                }
+            ?>
+
         </div>
     </div>
 </div>
