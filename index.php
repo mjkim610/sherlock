@@ -3,6 +3,7 @@
     require_once "lib/head.php";
     require_once "lib/get_ip.php";
 ?>
+
 <?php
 if(isset($_SESSION['gold']) && $_SESSION['gold'] == 'got_it')
 {
@@ -10,7 +11,7 @@ if(isset($_SESSION['gold']) && $_SESSION['gold'] == 'got_it')
     echo '    <div class="container">';
     echo '      <div class="row">';
     echo '        <div class="col-sm-12" style="font-size: 30px;">';
-    echo '            Congratulation! Send Email to jhoney7374@gmail.com with Secret Number 920918';
+    echo '            Congratulation! Send Email to jhoney7374@gmail.com with Secret Number 920918 and Your Phone Number :)';
     echo '        </div>';
     echo '      </div>';
     echo '    </div>';
@@ -38,17 +39,16 @@ if(isset($_SESSION['gold']) && $_SESSION['gold'] == 'got_it')
             </div>
             <?php
                 if(isset($_SESSION['is_login']) && $_SESSION['is_login'] === true) {
-                    echo '<div class="col-sm-4">';
+                    echo '<div class="col-sm-4 col-sm-offset-4">';
                         echo '<div class="main_btn">';
                         echo '<h2>Play</h2>';
                         echo '<p>Grab the Gold!</p>';
-                        echo '<img class="gold-img" src="img/gold.png" alt="gold"/>';
-                        echo '<a class="btn btn-warning btn-service" href="gold_event.php">Play</a>';
+                        echo '<a class="btn" href="gold_event.php"><img class="gold-img" src="img/gold.png" alt="gold"/></a>';
                         echo '</div>';
                     echo '</div>';
                 }
                 else {
-                    echo '<div class="col-sm-4">';
+                    echo '<div class="col-sm-4 col-sm-offset-2">';
                     echo '<div class="main_btn">';
                     echo '<h2>Sign In</h2>';
                     echo '<p>Sign In with your Browser Fingerprint</p>';
@@ -63,9 +63,21 @@ if(isset($_SESSION['gold']) && $_SESSION['gold'] == 'got_it')
                     echo '<a class="btn btn-danger btn-service" href="signup.php">Sign Up</a>';
                     echo '</div>';
                     echo '</div>';
+
+                    echo '<div class="gold-btn">';
+                    echo '    <a class="event-close-btn" onclick="this.parentNode.parentNode.removeChild(this.parentNode); return false;" href="#">';
+                    echo '    <div>';
+                    echo '       <span style="color:#000;font-size:1.2em;font-weight:bold;">x</span>';
+                    echo '    </div>';
+                    echo '    </a>';
+                    echo '    <div>';
+                    echo '    <a href="gold_event.php">';
+                    echo '     <img class="gold-img" src="img/gold.png" alt="gold"/>';
+                    echo '    </a>';
+                    echo '    </div>';
+                    echo '</div>';
                 }
             ?>
-
         </div>
     </div>
 </div>

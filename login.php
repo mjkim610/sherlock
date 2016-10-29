@@ -45,7 +45,7 @@
 		{
 
 			if (typeof email_val === 'undefined' || email_val === '') {
-				alert("이메일을 입력해주세요");
+				alert("Enter an Email address");
 			}
 			else {
 				var d1 = new Date();
@@ -80,20 +80,20 @@
 						{
 							if(result == '1111')
 							{
-								alert('존재하지 않는 이메일입니다');
+								alert('This Email address does not exist');
 							}
 							else if(result == '1112')
 							{
-								alert('다시 시도해주세요(err 109)');
+								alert('Try again(err 109)');
 							}
 							else if(result == '1101')
 							{
-								alert('환영합니다');
+								alert('Welcome');
 								location.href = 'index.php';
 							}
 							else if(result == '1122')
 							{
-								alert('fingerprint 실패. 비밀번호로 로그인');
+								alert('Fingerprint login failed. Please enter password');
 								$("#login_type").val("password");
 								$("#pwd_label").removeClass("hidden");
 								$("#pwd").removeClass("hidden");
@@ -102,7 +102,7 @@
 							}
 							else if(result == '1151')
 							{
-								alert('fp not perfect. 핀번호로 로그인');
+								alert('Fingerprint is not perfect. Please enter PIN');
 								$("#login_type").val("pin");
 								$("#pin_label").removeClass("hidden");
 								$("#pin_pwd").removeClass("hidden");
@@ -110,7 +110,7 @@
 							}
 							else
 							{
-								alert('다시 시도해주세요(err 110)');
+								alert('Try again(err 110)');
 							}
 
 				        },
@@ -139,16 +139,16 @@
 				{
 					if(result == '2111')
 					{
-						alert('존재하지 않는 이메일입니다');
+						alert('This Email address does not exist');
 					}
 					else if(result == '2221')
 					{
-						alert('환영합니다');
+						alert('Welcome');
 						location.href = 'index.php';
 					}
 					else if(result == '2223')
 					{
-						alert('다시 시도해 주세요');
+						alert('Try again');
 					}
 		        },
 		        error: function (xhr, ajaxOptions, thrownError) {
@@ -193,15 +193,15 @@
 						{
 							if(result == '3111')
 							{
-								alert('존재하지 않는 이메일입니다');
+								alert('This Email address does not exist');
 							}
 							else if(result == '3112')
 							{
-								alert('다시 시도해주세요(err 312)');
+								alert('Try again(err 312)');
 							}
 							else if(result == '3101')
 							{
-								alert('환영합니다');
+								alert('Welcome');
 								location.href = 'index.php';
 							}
 							else if(result == '3323')
@@ -211,7 +211,7 @@
 							}
 							else if(result == '3233')
 							{
-								alert('핀번호 비일치. 비밀번호로 로그인합니다');
+								alert('PIN login failed. Please enter password');
 								$("#login_type").val("password");
 								$("#pwd_label").removeClass("hidden");
 								$("#pwd").removeClass("hidden");

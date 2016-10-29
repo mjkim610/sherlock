@@ -131,7 +131,7 @@
               }
               else if(result == '1151')
               {
-                alert('Fingerprint login failed. Please enter PIN');
+                alert('Fingerprint is not perfect. Please enter PIN');
                 $("#login_type").val("pin");
                 $("#pin_label").removeClass("hidden");
                 $("#pin_pwd").removeClass("hidden");
