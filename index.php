@@ -43,7 +43,7 @@ if(isset($_SESSION['gold']) && $_SESSION['gold'] == 'got_it')
                         echo '<h2>Play</h2>';
                         echo '<p>Grab the Gold!</p>';
                         echo '<img class="gold-img" src="img/gold.png" alt="gold"/>';
-                        echo '<a class="btn btn-warning btn-service" href="game.php">Play</a>';
+                        echo '<a class="btn btn-warning btn-service" href="gold_event.php">Play</a>';
                         echo '</div>';
                     echo '</div>';
                 }
