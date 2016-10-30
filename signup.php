@@ -49,7 +49,7 @@
 
         if (mysqli_num_rows($result) !== 0) {
             echo "<script type='text/javascript'>";
-            echo "window.alert('이미 존재하는 이메일입니다.');";
+            echo "window.alert('This email address is already registered');";
             echo "history.back();";
             echo "</script>";
             exit();
@@ -78,7 +78,7 @@
 
             if ($conn->query($sql3) === TRUE) {
                 echo "<script type='text/javascript'>";
-                echo "window.alert('가입완료');";
+                echo "window.alert('Signup complete!');";
                 echo "location.href = 'index.php';";
                 echo "</script>";
                 exit();
@@ -145,26 +145,26 @@
 
         if(typeof email === 'undefined' || email === '') {
             // the variable is defined
-            alert("이메일을 입력해주세요");
+            alert("Enter a valid email address");
         }
         else if(typeof password === 'undefined' || password === '' || typeof re_password === 'undefined' || re_password === '') {
             // the variable is defined
-            alert("비밀번호를 정확하게 입력해주세요");
+            alert("Enter a valid password");
         }
         else if(re_password !== password) {
             // the variable is defined
-            alert("비밀번호가 일치하지 않습니다");
+            alert("Passwords do not match");
         }
         else if(typeof pin === 'undefined' || pin === '' || typeof re_pin === 'undefined' || re_pin === '') {
             // the variable is defined
-            alert("핀비밀번호를 정확하게 입력해주세요");
+            alert("Enter a valid PIN");
         }
         else if(re_pin !== pin) {
-            alert("핀번호가 일치하지 않습니다")
+            alert("PINs do not match")
         }
         // 추가 검사 필요
         else if(pin.length !== 4) {
-            alert("핀번호는 4자리 숫자 입니다");
+            alert("PIN length should be 4 numbers");
         }
         else {
             var d1 = new Date();

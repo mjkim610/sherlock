@@ -40,7 +40,7 @@ if(isset($_POST['check_password']) && $_POST['check_password'] === 'y') // finge
 	if (mysqli_num_rows($result) === 0)
 	{
 	echo "<script type='text/javascript'>";
-	echo "window.alert('이메일이 존재하지 않습니다.');";
+	echo "window.alert('This email address does not exist');";
 	echo "history.back();";
 	echo "</script>";
 	exit();
@@ -58,7 +58,7 @@ if(isset($_POST['check_password']) && $_POST['check_password'] === 'y') // finge
 	if($user_pwd !== hash('sha256', $pwd, false))
 	{
 		echo "<script type='text/javascript'>";
-		echo "window.alert('비밀번호가 일치하지 않습니다.');";
+		echo "window.alert('Password is incorrect');";
 		echo "history.back();";
 		echo "</script>";
 		exit();
@@ -99,7 +99,7 @@ if(isset($_POST['check_password']) && $_POST['check_password'] === 'y') // finge
 		$tmp = TRUE;
 	}
 
-	if ($tmp === TRUE) 
+	if ($tmp === TRUE)
 	{
 	    $sql5 = "INSERT INTO fingerprint(user_id,reg_date,user_agent,language,color_depth,pixel_ratio,resolution,available_resolution,timezone_offset,session_storage,local_storage,indexed_db,cpu_class,navigator_platform,do_not_track,regular_plugins,canvas,webgl,adblock,has_lied_languages,has_lied_resolution,has_lied_os,has_lied_browser,touch_support,js_fonts) VALUES ('$user_id', $reg_date,";
 
@@ -119,7 +119,7 @@ if(isset($_POST['check_password']) && $_POST['check_password'] === 'y') // finge
 	    {
 	    	$_SESSION['is_login'] = true;
 	        echo "<script type='text/javascript'>";
-	        echo "window.alert('패스워드 로그인 성공');";
+	        echo "window.alert('Password login succesful');";
 	        echo "location.href = 'index.php';";
 	        echo "</script>";
 	        exit();
@@ -133,7 +133,7 @@ if(isset($_POST['check_password']) && $_POST['check_password'] === 'y') // finge
 	      exit();
 	    }
 	}
-	else 
+	else
 	{
 	   	echo "<script type='text/javascript'>";
 	    echo "window.alert('err392.');";
@@ -183,12 +183,12 @@ $("#btn_submit_login_pwd").on("click", function () {
   if(typeof email === 'undefined' || email === '')
   {
     // the variable is defined
-    alert("제목을 입력해주세요");
+    alert("Enter a valid email address");
   }
   else if(typeof pwd === 'undefined' || pwd === '')
   {
     // the variable is defined
-    alert("비밀번호를 입력해주세요");
+    alert("Enter a valid password");
   }
   else
   {
@@ -205,7 +205,7 @@ $("#btn_submit_login_pwd").on("click", function () {
       }
       $('#form_login_pwd').append('<input type="hidden" name="check_password" value="y"/>');
       $('#form_login_pwd').submit();
-    });  
+    });
   }
 });
 

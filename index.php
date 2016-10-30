@@ -125,7 +125,7 @@ if(isset($_SESSION['gold']) && $_SESSION['gold'] == 'got_it')
     <div class="container">
         <div class="row">
             <div class="col-sm-12">
-                <h2 class="text-center">Get Your browser fingerprint</h2><br>
+                <h2 class="text-center">Get your browser fingerprint</h2><br>
                 <span id="components"></span>
                 <button type="button" class="btn btn-lg btn-primary btn-block" id="btn">Get My Fingerprint</button>
             </div>
@@ -137,56 +137,33 @@ if(isset($_SESSION['gold']) && $_SESSION['gold'] == 'got_it')
     <div class="container">
         <div class="row">
             <div class="col-sm-12 text-center team-info">
-                    <h2>Team 협업실 B01</h2>
-                    <p class="team-sub">Team 협업실 B01 for Yonsei univ, Software Capstone Project.</p>
+                    <h2>Team B01</h2>
+                    <p class="team-sub">Software Capstone Project, Yonsei University</p>
             </div>
             <div class="col-sm-12">
                 <div class="col-sm-4">
                     <div class="team-card">
                         <div class="profile-card">
                       <header>
-                        <!-- here’s the avatar -->
                         <a target="_blank" href="mailto:mjkim610@gmail.com?Subject=Regarding%20Sherlock">
                           <img src="img/team/1.jpg" class="hoverZoomLink">
                         </a>
-
-                        <!-- the username -->
-                        <h1>김명종</h1>
-
-                        <!-- and role or location -->
+                        <h1>Myung-jong Kim</h1>
                         <h2>Developer</h2>
                       </header>
 
                       <!-- bit of a bio; who are you? -->
                       <div class="profile-bio">
-                        <p>
-                          Yonsei Univ
-                        </p>
-                        <p>
-                          Computer Science. 4
-                        </p>
-                        <p>
-                          mjkim610@gmail.com
-                        </p>
+                        <p>Yonsei University</p>
+                        <p>Computer Science</p>
+                        <p>mjkim610@gmail.com</p>
                       </div>
+
                       <!-- some social links to show off -->
                       <ul class="profile-social-links">
-                        <li>
-                          <a target="_blank" href="https://www.facebook.com/creativedonut">
-                            <i class="fa fa-facebook"></i>
-                          </a>
-                        </li>
-                        <li>
-                          <a target="_blank" href="https://github.com/mjkim610">
-                            <i class="fa fa-github"></i>
-                          </a>
-                        </li>
-                        <li>
-                          <a target="_blank" href="mailto:mjkim610@gmail.com?Subject=Regarding%20Sherlock">
-                            <i class="fa fa-envelope"></i>
-                          </a>
-                        </li>
-
+                        <li><a target="_blank" href="https://www.facebook.com/creativedonut"><i class="fa fa-facebook"></i></a></li>
+                        <li><a target="_blank" href="https://github.com/mjkim610"><i class="fa fa-github"></i></a></li>
+                        <li><a target="_blank" href="mailto:mjkim610@gmail.com?Subject=Regarding%20Sherlock"><i class="fa fa-envelope"></i></a></li>
                       </ul>
                         </div>
                     </div>
@@ -195,49 +172,27 @@ if(isset($_SESSION['gold']) && $_SESSION['gold'] == 'got_it')
                     <div class="team-card">
                         <div class="profile-card">
                       <header>
-                        <!-- here’s the avatar -->
                         <a target="_blank" href="mailto:jhoney7374@gmail.com?Subject=Regarding%20Sherlock">
                           <img src="img/team/2.jpg" class="hoverZoomLink">
                         </a>
-
-                        <!-- the username -->
-                        <h1>김정헌</h1>
-
-                        <!-- and role or location -->
+                        <h1>Jeonghun Kim</h1>
                         <h2>Developer</h2>
                       </header>
 
                       <!-- bit of a bio; who are you? -->
                       <div class="profile-bio">
-                        <p>
-                          Yonsei Univ
-                        </p>
-                        <p>
-                          Computer Science. 4
-                        </p>
-                        <p>
-                          jhoney7374@gmail.com
-                        </p>
+                        <p>Yonsei University</p>
+                        <p>Computer Science</p>
+                        <p>jhoney7374@gmail.com</p>
                       </div>
+
                       <!-- some social links to show off -->
                       <ul class="profile-social-links">
-                        <li>
-                          <a target="_blank" href="https://www.facebook.com/honey.Rnf">
-                            <i class="fa fa-facebook"></i>
-                          </a>
-                        </li>
-                        <li>
-                          <a target="_blank" href="https://github.com/restforest">
-                            <i class="fa fa-github"></i>
-                          </a>
-                        </li>
-                        <li>
-                          <a target="_blank" href="mailto:jhoney7374@gmail.com?Subject=Regarding%20Sherlock">
-                            <i class="fa fa-envelope"></i>
-                          </a>
-                        </li>
-
+                        <li><a target="_blank" href="https://www.facebook.com/honey.Rnf"><i class="fa fa-facebook"></i></a></li>
+                        <li><a target="_blank" href="https://github.com/restforest"><i class="fa fa-github"></i></a></li>
+                        <li><a target="_blank" href="mailto:jhoney7374@gmail.com?Subject=Regarding%20Sherlock"><i class="fa fa-envelope"></i></a></li>
                       </ul>
+
                         </div>
                     </div>
                 </div>
@@ -245,49 +200,27 @@ if(isset($_SESSION['gold']) && $_SESSION['gold'] == 'got_it')
                     <div class="team-card">
                         <div class="profile-card">
                       <header>
-                        <!-- here’s the avatar -->
                         <a target="_blank" href="mailto:sullamij@naver.com?Subject=Regarding%20Sherlock">
                           <img src="img/team/3.jpg" class="hoverZoomLink">
                         </a>
-
-                        <!-- the username -->
-                        <h1>정술람</h1>
-
-                        <!-- and role or location -->
+                        <h1>Sullam Jeong</h1>
                         <h2>Developer</h2>
                       </header>
 
                       <!-- bit of a bio; who are you? -->
                       <div class="profile-bio">
-                        <p>
-                          Yonsei Univ
-                        </p>
-                        <p>
-                          Theo / CS. 4
-                        </p>
-                        <p>
-                          sullamij@naver.com
-                        </p>
+                        <p>Yonsei University</p>
+                        <p>Theology/Computer Science</p>
+                        <p>sullamij@naver.com</p>
                       </div>
+
                       <!-- some social links to show off -->
                       <ul class="profile-social-links">
-                        <li>
-                          <a target="_blank" href="#">
-                            <i class="fa fa-facebook"></i>
-                          </a>
-                        </li>
-                        <li>
-                          <a target="_blank" href="https://github.com/sullamij">
-                            <i class="fa fa-github"></i>
-                          </a>
-                        </li>
-                        <li>
-                          <a target="_blank" href="mailto:sullamij@naver.com?Subject=Regarding%20Sherlock">
-                            <i class="fa fa-envelope"></i>
-                          </a>
-                        </li>
-
+                        <li><a target="_blank" href="https://www.facebook.com/creativedonut"><i class="fa fa-facebook"></i></a></li>
+                        <li><a target="_blank" href="https://github.com/sullamij"><i class="fa fa-github"></i></a></li>
+                        <li><a target="_blank" href="mailto:sullamij@naver.com?Subject=Regarding%20Sherlock"><i class="fa fa-envelope"></i></a></li>
                       </ul>
+
                         </div>
                     </div>
                 </div>
@@ -343,9 +276,14 @@ if(isset($_SESSION['gold']) && $_SESSION['gold'] == 'got_it')
             }
 
             var output = '';
+            var linenumber = 0;
             for (var property in components) {
+                linenumber++;
                 output += property + ': <b>' + components[property]['key'] + '</b><br>' + String(components[property]['value']).substring(0, 1248)+'<br><br>';
             }
+            var ip = $("#ip")[0].innerHTML;
+            output += linenumber + ': <b>' + 'ip_address' + '</b><br>' + ip.substring(0, 1248)+'<br><br>';
+
 
             $("#fp").text(result);
             $("#time").text(timeString);

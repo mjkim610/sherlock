@@ -9,11 +9,11 @@
 
     	$sql0 = "SELECT * FROM fingerprint WHERE user_id = '$user_id' ORDER BY reg_date DESC";
 		$result0 = mysqli_query($conn, $sql0);
-		
+
 		if (mysqli_num_rows($result0) > 0)
 		{
 			$fingerprints = [];
-			
+
 			while($row = mysqli_fetch_assoc($result0))
 			{
 				$fingerprints[] = $row;
@@ -24,14 +24,14 @@
 			$fp_html = [];
 			$i = 0;
 			foreach ($fingerprints as $fingerprint) {
-				
+
 				$i++;
 
 				$tmp = '<div class="fp-card-2">';
 				$tmp .= '	<header>						';
 				$tmp .= '		<div class="avatarcontainer">';
 				$tmp .= '			<img src="img/'.$i.'.png" alt="avatar" class="avatar">';
-							
+
 				$tmp .= '			<div class="hover">';
 				$tmp .= '					<img src="img/favicon.png" alt="avatar" class="avatar">';
 				$tmp .= '			</div>';
@@ -50,7 +50,7 @@
 				$tmp .= '		</div>';
 				$tmp .= '	</div>';
 
-				$tmp .= '</div>';				
+				$tmp .= '</div>';
 
 				$fp_html[$i] = $tmp;
 			}
@@ -59,7 +59,7 @@
 			$blank_html .= '	<header>						';
 			$blank_html .= '		<div class="avatarcontainer">';
 			$blank_html .= '			<img src="img/x.png" alt="avatar" class="avatar">';
-						
+
 			$blank_html .= '			<div class="hover">';
 			$blank_html .= '					<img src="img/favicon.png" alt="avatar" class="avatar">';
 			$blank_html .= '			</div>';
@@ -94,7 +94,7 @@
 		else
 		{
 			echo "<script type='text/javascript'>";
-			echo "window.alert('다시 시도해주세요.(err 921)');";
+			echo "window.alert('Try again (err 921)');";
 			echo "history.back();";
 			echo "</script>";
 			exit();
@@ -104,7 +104,7 @@
     else
     {
     	echo "<script type='text/javascript'>";
-		echo "window.alert('잘못된 접근입니다.(err 991)');";
+		echo "window.alert('Invalid access (err 991)');";
 		echo "history.back();";
 		echo "</script>";
 		exit();
@@ -118,7 +118,7 @@
     <div class="container">
         <div class="row">
         	<div class="col-sm-12 text-center">
-        		<button class="btn btn-primary" onclick="regist_fp()" style="font-size: 20px;">Regist Browser Fingerprint</button>
+        		<button class="btn btn-primary" onclick="regist_fp()" style="font-size: 20px;">Register Browser Fingerprint</button>
         	</div>
         	<div class="col-sm-4" id="fp_1">
                	<?=$fp_html[1]?>
@@ -141,7 +141,7 @@
 <script type="text/javascript">
 	function replace_fp(index1, index2)
 	{
-		var ask = confirm("Wanna change Fingerprint?");
+		var ask = confirm("Do you want to register a new fingerprint?");
 		if(ask)
 		{
 			var fp = new Fingerprint2();
@@ -188,7 +188,7 @@
 							html_string = '<div class="fp-card-2">';
 							html_string += '	<header>						';
 							html_string += '		<div class="avatarcontainer">';
-							html_string = html_string + '<img src="img/'+index2+'.png" alt="avatar" class="avatar">';		
+							html_string = html_string + '<img src="img/'+index2+'.png" alt="avatar" class="avatar">';
 							html_string += '			<div class="hover">';
 							html_string += '					<div class="icon-twitter"></div>';
 							html_string += '			</div>';
@@ -231,7 +231,7 @@
 
 	function regist_fp()
 	{
-		var ask = confirm("Wanna Regist Fingerprint?");
+		var ask = confirm("Do you want to register a new fingerprint?");
 		if(ask)
 		{
 			var fp = new Fingerprint2();
@@ -262,7 +262,7 @@
 					{
 						if(result == '7776')
 						{
-							alert('Fingerprint는 3개까지 등록 가능합니다');
+							alert('You cannot register more than 3 fingerprints');
 						}
 						else if(result == '7761')
 						{
@@ -274,7 +274,7 @@
 						}
 						else if(result == '7712') // 성공
 						{
-							alert('등록되었습니다! 확인 버튼을 누르면 새로고침됩니다.');
+							alert('Fingerprint registered!');
 							location.reload();
 						}
 						else

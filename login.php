@@ -45,7 +45,7 @@
 		{
 
 			if (typeof email_val === 'undefined' || email_val === '') {
-				alert("Enter an Email address");
+				alert("Enter a valid email address");
 			}
 			else {
 				var d1 = new Date();
@@ -80,11 +80,11 @@
 						{
 							if(result == '1111')
 							{
-								alert('This Email address does not exist');
+								alert('This email address does not exist');
 							}
 							else if(result == '1112')
 							{
-								alert('Try again(err 109)');
+								alert('Try again (err 109)');
 							}
 							else if(result == '1101')
 							{
@@ -110,7 +110,7 @@
 							}
 							else
 							{
-								alert('Try again(err 110)');
+								alert('Try again (err 110)');
 							}
 
 				        },
@@ -139,7 +139,7 @@
 				{
 					if(result == '2111')
 					{
-						alert('This Email address does not exist');
+						alert('This email address does not exist');
 					}
 					else if(result == '2221')
 					{
@@ -193,7 +193,7 @@
 						{
 							if(result == '3111')
 							{
-								alert('This Email address does not exist');
+								alert('This email address does not exist');
 							}
 							else if(result == '3112')
 							{
