@@ -268,12 +268,6 @@ if(isset($_SESSION['gold']) && $_SESSION['gold'] == 'got_it')
         fp.get(function(result, components,a,b) {
             var d2 = new Date();
             var timeString = "Time took to calculate the fingerprint: " + (d2 - d1) + "ms";
-            if (typeof window.console !== "undefined") {
-                console.log(result);
-                console.log(timeString);
-                console.log(a);
-                console.log(b);
-            }
 
             var output = '';
             var linenumber = 0;
