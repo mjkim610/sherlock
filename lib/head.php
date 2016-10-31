@@ -3,14 +3,14 @@
 
 <head>
     <title>Sherlock</title>
-    <link rel="shortcut icon" href="img/favicon.png">
+    <link rel="shortcut icon" href="img/favicon2.png">
     <meta http-equiv="content-type" content="text/html;charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta property="og:type" content="website">
     <meta property="og:title" content="Sherlock">
     <meta property="og:description" content="Browser Fingerprint Authentication System">
-    <!-- <meta property="og:image" content="http://.jpg"> -->
-    <!-- <meta property="og:url" content="http://.kr/"> -->
+    <meta property="og:image" content="http://try-sherlock.com/img/favicon2.jpg">
+    <meta property="og:url" content="http://try-sherlock.com/">
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link href="http://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
     <link href="css/font-awesome-4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
