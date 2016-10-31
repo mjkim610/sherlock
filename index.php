@@ -175,7 +175,7 @@ if(isset($_SESSION['gold']) && $_SESSION['gold'] == 'got_it')
                         <a target="_blank" href="mailto:jhoney7374@gmail.com?Subject=Regarding%20Sherlock">
                           <img src="img/team/2.jpg" class="hoverZoomLink">
                         </a>
-                        <h1>Jeonghun Kim</h1>
+                        <h1>Chunghun Kim</h1>
                         <h2>Developer</h2>
                       </header>
 
