@@ -64,7 +64,7 @@ if(isset($_SESSION['gold']) && $_SESSION['gold'] == 'got_it')
                     echo '</div>';
                     echo '</div>';
 
-                    echo '<div class="gold-btn">';
+                    echo '<div class="gold-btn img-circle">';
                     echo '    <a class="event-close-btn" onclick="this.parentNode.parentNode.removeChild(this.parentNode); return false;" href="#">';
                     echo '    <div>';
                     echo '       <span style="color:#000;font-size:1.2em;font-weight:bold;">x</span>';

@@ -33,7 +33,7 @@
 				$tmp .= '			<img src="img/'.$i.'.png" alt="avatar" class="avatar">';
 
 				$tmp .= '			<div class="hover">';
-				$tmp .= '					<img src="img/favicon.png" alt="avatar" class="avatar">';
+				$tmp .= '					<img src="img/favicon2.png" alt="avatar" class="avatar">';
 				$tmp .= '			</div>';
 				$tmp .= '		</div>';
 				$tmp .= '	</header>';
@@ -61,7 +61,7 @@
 			$blank_html .= '			<img src="img/x.png" alt="avatar" class="avatar">';
 
 			$blank_html .= '			<div class="hover">';
-			$blank_html .= '					<img src="img/favicon.png" alt="avatar" class="avatar">';
+			$blank_html .= '					<img src="img/favicon2.png" alt="avatar" class="avatar">';
 			$blank_html .= '			</div>';
 			$blank_html .= '		</div>';
 			$blank_html .= '	</header>';

@@ -773,7 +773,7 @@ box-shadow: 1px 5px 20px -5px rgba(0,0,0,0.7);
 }
 .fp-card-2 .avatar {
   width: 100%;
-  border: 8px solid #5cc0ff;
+  border: 8px solid #2589CC;
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
   -ms-border-radius: 50%;
@@ -796,7 +796,7 @@ box-shadow: 1px 5px 20px -5px rgba(0,0,0,0.7);
   cursor: pointer;
   width: 100%;
   height: 100%;
-  background-color: #3498db;
+  background-color: #fff;
   top: 0;
   font-size: 1.8em;
   text-align: center;
@@ -916,7 +916,7 @@ box-shadow: 1px 5px 20px -5px rgba(0,0,0,0.7);
 .gold-btn {
   position: fixed;
   width: 100px;
-  border: 1px #deff03 dashed;
+  /*border: 1px #deff03 dashed;*/
   height: 75px;
   z-index: 10;
   background-color: #f6ca6166;
