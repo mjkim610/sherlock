@@ -11,7 +11,7 @@ if(isset($_SESSION['gold']) && $_SESSION['gold'] == 'got_it')
     echo '    <div class="container">';
     echo '      <div class="row">';
     echo '        <div class="col-sm-12" style="font-size: 30px;">';
-    echo '            Congratulation! Send Email to jhoney7374@gmail.com with Secret Number 920918 and Your Phone Number :)';
+    echo '            Congratulation! Send us an email at <b>try.sherlock@gmail.com</b> with the secret number <b>920918</b> and your phone number :)';
     echo '        </div>';
     echo '      </div>';
     echo '    </div>';
@@ -51,7 +51,7 @@ if(isset($_SESSION['gold']) && $_SESSION['gold'] == 'got_it')
                     echo '<div class="col-sm-4 col-sm-offset-2">';
                     echo '<div class="main_btn">';
                     echo '<h2>Sign In</h2>';
-                    echo '<p>Sign In with your Browser Fingerprint</p>';
+                    echo '<p>Sign in with your browser fingerprint</p>';
                     echo '<a class="btn btn-primary btn-service" href="login.php">Sign In</a>';
                     echo '</div>';
                     echo '</div>';
@@ -59,7 +59,7 @@ if(isset($_SESSION['gold']) && $_SESSION['gold'] == 'got_it')
                     echo '<div class="col-sm-4">';
                     echo '<div class="main_btn">';
                     echo '<h2>Sign Up</h2>';
-                    echo '<p>Register your Browser Fingerprint</p>';
+                    echo '<p>Register your browser fingerprint</p>';
                     echo '<a class="btn btn-danger btn-service" href="signup.php">Sign Up</a>';
                     echo '</div>';
                     echo '</div>';
