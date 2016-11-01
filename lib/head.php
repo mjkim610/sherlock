@@ -9,7 +9,7 @@
     <meta property="og:type" content="website">
     <meta property="og:title" content="Sherlock">
     <meta property="og:description" content="Browser Fingerprint Authentication System">
-    <meta property="og:image" content="http://try-sherlock.com/img/favicon3.png">
+    <meta property="og:image" content="http://try-sherlock.com/img/logo130_200.png">
     <meta property="og:url" content="http://try-sherlock.com/">
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link href="http://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
