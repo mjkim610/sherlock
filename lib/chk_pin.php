@@ -39,6 +39,7 @@
 	$options[] = 'ip_4';
 
 	$email = test_input($_POST['email']);
+	$final_fp = test_input($_POST['final_fp']);
 
 	$sql0 = "SELECT * FROM user WHERE email = '$email'";
 	$result = mysqli_query($conn, $sql0);
@@ -78,7 +79,7 @@
 		exit();
 	}
 
-	if($pin == hash('sha256', $_POST['pin']))
+	if($pin == hash('sha256', test_input($_POST['pin'])))
 	{
 		$is_pin_ok = true;
 	}
@@ -116,11 +117,12 @@
 			echo "3101"; // login
 
 			$reg_date = 'now()';
-            $sql = "INSERT INTO trial_log(user_id,email,num_of_fp,fp_num,result,num_of_match,reg_date,user_agent,language,color_depth,pixel_ratio,resolution,available_resolution,timezone_offset,session_storage,local_storage,indexed_db,cpu_class,navigator_platform,do_not_track,regular_plugins,canvas,webgl,adblock,has_lied_languages,has_lied_resolution,has_lied_os,has_lied_browser,touch_support,js_fonts,ip_1,ip_2,ip_3,ip_4) VALUES ('$user_id', '$email', '$num_of_fp', '$fp_num', 'pin-ok', '$test_value', $reg_date,";
+            $sql = "INSERT INTO trial_log(user_id,email,num_of_fp,fp_num,result,num_of_match,reg_date,user_agent,language,color_depth,pixel_ratio,resolution,available_resolution,timezone_offset,session_storage,local_storage,indexed_db,cpu_class,navigator_platform,do_not_track,regular_plugins,canvas,webgl,adblock,has_lied_languages,has_lied_resolution,has_lied_os,has_lied_browser,touch_support,js_fonts,ip_1,ip_2,ip_3,ip_4,final_fp) VALUES ('$user_id', '$email', '$num_of_fp', '$fp_num', 'pin-ok', '$test_value', $reg_date,";
 
             foreach($fp_trial as $trial) {
                     $sql = $sql."'".$trial."', ";
             }
+            $sql = $sql."'".$final_fp."', ";
 
             $sql = substr($sql, 0, -2);
             $sql = $sql.")";
@@ -144,12 +146,12 @@
 		echo '3323'; 
 
 		$reg_date = 'now()';
-        $sql = "INSERT INTO trial_log(user_id,email,num_of_fp,fp_num,result,num_of_match,reg_date,user_agent,language,color_depth,pixel_ratio,resolution,available_resolution,timezone_offset,session_storage,local_storage,indexed_db,cpu_class,navigator_platform,do_not_track,regular_plugins,canvas,webgl,adblock,has_lied_languages,has_lied_resolution,has_lied_os,has_lied_browser,touch_support,js_fonts,ip_1,ip_2,ip_3,ip_4) VALUES ('$user_id', '$email', '$num_of_fp', '$max_fp_num', 'pin-err', '$max_test_value', $reg_date,";
+        $sql = "INSERT INTO trial_log(user_id,email,num_of_fp,fp_num,result,num_of_match,reg_date,user_agent,language,color_depth,pixel_ratio,resolution,available_resolution,timezone_offset,session_storage,local_storage,indexed_db,cpu_class,navigator_platform,do_not_track,regular_plugins,canvas,webgl,adblock,has_lied_languages,has_lied_resolution,has_lied_os,has_lied_browser,touch_support,js_fonts,ip_1,ip_2,ip_3,ip_4,final_fp) VALUES ('$user_id', '$email', '$num_of_fp', '$max_fp_num', 'pin-err', '$max_test_value', $reg_date,";
 
         foreach($fp_trial as $trial) {
             $sql = $sql."'".$trial."', ";
         }
-
+        $sql = $sql."'".$final_fp."', ";
         $sql = substr($sql, 0, -2);
         $sql = $sql.")";
 
@@ -160,12 +162,12 @@
 		echo '3233';
 
 		$reg_date = 'now()';
-        $sql = "INSERT INTO trial_log(user_id,email,num_of_fp,fp_num,result,num_of_match,reg_date,user_agent,language,color_depth,pixel_ratio,resolution,available_resolution,timezone_offset,session_storage,local_storage,indexed_db,cpu_class,navigator_platform,do_not_track,regular_plugins,canvas,webgl,adblock,has_lied_languages,has_lied_resolution,has_lied_os,has_lied_browser,touch_support,js_fonts,ip_1,ip_2,ip_3,ip_4) VALUES ('$user_id', '$email', '$num_of_fp', '$max_fp_num', 'pin-pw', '$max_test_value', $reg_date,";
+        $sql = "INSERT INTO trial_log(user_id,email,num_of_fp,fp_num,result,num_of_match,reg_date,user_agent,language,color_depth,pixel_ratio,resolution,available_resolution,timezone_offset,session_storage,local_storage,indexed_db,cpu_class,navigator_platform,do_not_track,regular_plugins,canvas,webgl,adblock,has_lied_languages,has_lied_resolution,has_lied_os,has_lied_browser,touch_support,js_fonts,ip_1,ip_2,ip_3,ip_4,final_fp) VALUES ('$user_id', '$email', '$num_of_fp', '$max_fp_num', 'pin-pw', '$max_test_value', $reg_date,";
 
         foreach($fp_trial as $trial) {
             $sql = $sql."'".$trial."', ";
         }
-
+        $sql = $sql."'".$final_fp."', ";
         $sql = substr($sql, 0, -2);
         $sql = $sql.")";
 

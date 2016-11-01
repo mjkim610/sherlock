@@ -48,15 +48,9 @@
 				alert("Enter a valid email address");
 			}
 			else {
-				var d1 = new Date();
 				var fp = new Fingerprint2();
                 var ips = document.getElementById("ip").innerHTML.split('.');
-				var string = '';
-				var i = 0;
 				fp.get(function(result, components,a,b) {
-					// var d2 = new Date();
-					// var timeString = "Time took to calculate the fingerprint: " + (d2 - d1) + "ms";
-
 					var strings = '';
 
 					for (var property in components) {
@@ -73,6 +67,7 @@
 						type : "POST",
 						data : {
 							email : email_val,
+							final_fp : result,
 							datas : JSON.stringify(ttt) // json 형태로 변환
 						},
 						url : "lib/chk_fingerprint.php",
@@ -108,6 +103,10 @@
 								$("#pin_pwd").removeClass("hidden");
 								$("#pin_pwd").focus();
 							}
+							else if(result == '1155')
+							{
+								alert('Nice try! Try with different Fingerprint :)');
+							}
 							else
 							{
 								alert('Try again (err 110)');
@@ -128,34 +127,55 @@
 			var email_val = $("#email").val();
 			var password_val = $("#pwd").val();
 
-			$.ajax({
-				type : "POST",
-				data : {
-					email : email_val,
-					password : password_val
-				},
-				url : "lib/chk_pwd.php",
-				success: function(result)
-				{
-					if(result == '2111')
-					{
-						alert('This email address does not exist');
+			var fp = new Fingerprint2();
+            var ips = document.getElementById("ip").innerHTML.split('.');
+			fp.get(function(result, components,a,b) {
+					var strings = '';
+
+					for (var property in components) {
+						strings = strings + '!@#' + components[property]['value'];
 					}
-					else if(result == '2221')
-					{
-						alert('Welcome');
-						location.href = 'index.php';
+
+					for (var ip in ips) {
+						 strings = strings + '!@#' + ip;
 					}
-					else if(result == '2223')
-					{
-						alert('Try again');
-					}
-		        },
-		        error: function (xhr, ajaxOptions, thrownError) {
-		           alert(xhr.status);
-		           alert(xhr.responseText);
-		           alert(thrownError);
-		        }
+					var ttt = strings.split('!@#'); // array 형태로 변환
+					var ddd = ttt.shift(); // 첫번째 원소 제거
+					$.ajax({
+						type : "POST",
+						data : {
+							email : email_val,
+							final_fp : result,
+							password : password_val,
+							datas : JSON.stringify(ttt) // json 형태로 변환
+						},
+						url : "lib/chk_pwd.php",
+						success: function(result)
+						{
+							if(result == '2211')
+							{
+								alert('This email address does not exist');
+							}
+							else if(result == '2221')
+							{
+								alert('Welcome');
+								location.href = 'index.php';
+							}
+							else if(result == '2232')
+							{
+								alert('Try again');
+							}
+							else
+							{
+								alert('Try again(err 212)');
+							}
+				        },
+				        error: function (xhr, ajaxOptions, thrownError) {
+				           alert(xhr.status);
+				           alert(xhr.responseText);
+				           alert(thrownError);
+				        }
+					});
 			});
 		}
 		else if(login_type == 'pin')
@@ -186,6 +206,7 @@
 						data : {
 							email : email_val,
 							pin : pin_val,
+							final_fp : result,
 							datas : JSON.stringify(ttt)
 						},
 						url : "lib/chk_pin.php",

@@ -263,17 +263,15 @@ if(isset($_SESSION['gold']) && $_SESSION['gold'] == 'got_it')
     $("#btn").on("click", function () {
         var d1 = new Date();
         var fp = new Fingerprint2();
-        var string = '';
-        var i = 0;
         fp.get(function(result, components,a,b) {
             var d2 = new Date();
             var timeString = "Time took to calculate the fingerprint: " + (d2 - d1) + "ms";
 
             var output = '';
-            var linenumber = 0;
+            var linenumber = 1;
             for (var property in components) {
+                output += linenumber + ': <b>' + components[property]['key'] + '</b><br>' + String(components[property]['value']).substring(0, 1248)+'<br><br>';
                 linenumber++;
-                output += property + ': <b>' + components[property]['key'] + '</b><br>' + String(components[property]['value']).substring(0, 1248)+'<br><br>';
             }
             var ip = $("#ip")[0].innerHTML;
             output += linenumber + ': <b>' + 'ip_address' + '</b><br>' + ip.substring(0, 1248)+'<br><br>';
