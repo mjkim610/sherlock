@@ -40,7 +40,7 @@
 				$tmp .= '	<div class="content">';
 				$tmp .= '		<div class="data">';
 				$tmp .= '			<ul>';
-				$tmp .= '				<li>'.$fingerprint['reg_date'].'<span>Regist day</span></li>';
+				$tmp .= '				<li>'.$fingerprint['reg_date'].'<span>Date of registration</span></li>';
 				$tmp .= '				<li>1,119<span>Followers</span></li>';
 				$tmp .= '			</ul>';
 				$tmp .= '		</div>';
@@ -68,13 +68,13 @@
 			$blank_html .= '	<div class="content">';
 			$blank_html .= '		<div class="data">';
 			$blank_html .= '			<ul>';
-			$blank_html .= '				<li>Nope<span>Regist day</span></li>';
-			$blank_html .= '				<li>Nope<span>Followers</span></li>';
+			$blank_html .= '				<li>Empty<span>Date of registration</span></li>';
+			$blank_html .= '				<li>None<span>Followers</span></li>';
 			$blank_html .= '			</ul>';
 			$blank_html .= '		</div>';
 
 			$blank_html .= '		<div class="replace_fp">';
-			$blank_html .= '			Please Regist';
+			$blank_html .= '			Empty fingerprint';
 			$blank_html .= '		</div>';
 			$blank_html .= '	</div>';
 
