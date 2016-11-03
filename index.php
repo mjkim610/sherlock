@@ -25,7 +25,10 @@ if(isset($_SESSION['gold']) && $_SESSION['gold'] == 'got_it')
       <div class="row">
         <div class="col-sm-12">
             <h2>What is Sherlock?</h2><br>
-            <span style="font-size:1.1em;">Sherlock is a password-free authentication system. Sherlock utilizes browser fingerprinting to authenticate users.</span><br>
+            <span style="font-size:1.1em;">
+                Sherlock is a password-free authentication system.<br>
+                Sherlock utilizes browser fingerprinting to authenticate users.
+            </span><br>
         </div>
       </div>
     </div>
@@ -89,20 +92,30 @@ if(isset($_SESSION['gold']) && $_SESSION['gold'] == 'got_it')
             <h2>How Sherlock Works</h2><br>
         </div>
         <div class="row service_step">
-
-            <div class="col-sm-4">
-                <h4>1. Browser fingerprinting</h4>
-                <p>JavaScript calculates the browser fingerprint of the session.</p>
+            <div class="container">
+                <div class="col-sm-4">
+                    <h4>1. Sign up</h4>
+                    <p>Sign up to Sherlock's service by entering your email, password, and PIN. Sherlock automatically calculates your session's <a href="https://en.wikipedia.org/wiki/Device_fingerprint" target="_blank">browser fingerprint</a> and stores it with your account.</p>
+                </div>
+                <div class="col-sm-4">
+                    <h4>2. Sign in</h4>
+                    <p>Sign into Sherlock using only your email address! Sherlock will check your browser fingerprint and determine if you are using your own machine.</p>
+                </div>
+                <div class="col-sm-4">
+                    <h4>3. Password-free authentication</h4>
+                    <p>If your browser fingerprint is a perfect match, you will be logged in. No password! No hassle!</p>
+                </div>
             </div>
 
-            <div class="col-sm-4">
-                <h4>2. Authentication</h4>
-                <p>User-input username is checked against the MySQL database.</p>
-            </div>
-
-            <div class="col-sm-4">
-                <h4>3. Different levels of authentication</h4>
-                <p>Depending on the confidence level of the session, the user is logged in/prompted for PIN/prompted for password.</p>
+            <div class="container">
+                <div class="col-sm-4">
+                    <h4>4. Different levels of authentication</h4>
+                    <p>If your browser fingerprint is not a perfect match, you will be prompted for extra authentication such as the PIN number or the password.</p>
+                </div>
+                <div class="col-sm-4">
+                    <h4>5. Register more fingerprints</h4>
+                    <p>If you want to log in from your phone or your workplace computer, simply register extra fingerprints in My Page. You may store upto 3 browser fingerprints.</p>
+                </div>
             </div>
         </div>
     </div>
@@ -114,8 +127,11 @@ if(isset($_SESSION['gold']) && $_SESSION['gold'] == 'got_it')
         <div class="row">
             <h2>Our Contribution</h2>
             <br>
-            <b>Security:</b> Security is unchanged.<br />
-            <b>Usability:</b> Usability is improved.<br />
+
+            <b>Authentication:</b> Sherlock proposes a secure and usable authentication system<br />
+            <b>Security:</b> Sherlock's authentication system is as secure as traditional authentication methods<br />
+            <b>Usability:</b> Sherlock's authentication improves usability and user satisfaction of the authentication process<br />
+
         </div>
     </div>
 </div>
