@@ -105,7 +105,7 @@
 		// fingerprint 일치!
 		if($test_value > $thresh_hold1) {
 
-			if($email == 'gold@is.here')
+			if($email == 'try.sherlock@gmail.com')
 			{
 				$_SESSION['gold'] = 'got_it';
 			}
@@ -140,7 +140,7 @@
 
 	if($max_test_value > $thresh_hold2)
 	{
-		if($email == 'gold@is.here')
+		if($email == 'try.sherlock@gmail.com')
 		{
 			echo "1155"; // 다시 fp 검사
 		}
@@ -165,7 +165,7 @@
 	}
 	else
 	{
-		if($email == 'gold@is.here')
+		if($email == 'try.sherlock@gmail.com')
 		{
 			echo "1155"; // 다시 fp 검사
 		}

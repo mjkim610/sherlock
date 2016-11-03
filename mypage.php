@@ -34,7 +34,7 @@
 				$tmp .= '			<img src="img/'.$i.'.png" alt="avatar" class="avatar">';
 
 				$tmp .= '			<div class="hover">';
-				$tmp .= '					<img src="img/favicon2.png" alt="avatar" class="avatar">';
+				$tmp .= '					<img src="img/favicon3.png" alt="avatar" class="avatar">';
 				$tmp .= '			</div>';
 				$tmp .= '		</div>';
 				$tmp .= '	</header>';
@@ -42,7 +42,7 @@
 				$tmp .= '		<div class="data">';
 				$tmp .= '			<ul>';
 				$tmp .= '				<li>'.$fingerprint['reg_date'].'<span>Date of registration</span></li>';
-				$tmp .= '				<li>1,119<span>Followers</span></li>';
+				// $tmp .= '				<li>1,119<span>Followers</span></li>';
 				$tmp .= '			</ul>';
 				$tmp .= '		</div>';
 
@@ -62,7 +62,7 @@
 			$blank_html .= '			<img src="img/x.png" alt="avatar" class="avatar">';
 
 			$blank_html .= '			<div class="hover">';
-			$blank_html .= '					<img src="img/favicon2.png" alt="avatar" class="avatar">';
+			$blank_html .= '					<img src="img/favicon3.png" alt="avatar" class="avatar">';
 			$blank_html .= '			</div>';
 			$blank_html .= '		</div>';
 			$blank_html .= '	</header>';
@@ -70,7 +70,7 @@
 			$blank_html .= '		<div class="data">';
 			$blank_html .= '			<ul>';
 			$blank_html .= '				<li>Empty<span>Date of registration</span></li>';
-			$blank_html .= '				<li>None<span>Followers</span></li>';
+			// $blank_html .= '				<li>None<span>Followers</span></li>';
 			$blank_html .= '			</ul>';
 			$blank_html .= '		</div>';
 
@@ -190,7 +190,7 @@
 							html_string += '		<div class="avatarcontainer">';
 							html_string = html_string + '<img src="img/'+index2+'.png" alt="avatar" class="avatar">';
 							html_string += '			<div class="hover">';
-							html_string += '					<div class="icon-twitter"></div>';
+							html_string += '					<img src="img/favicon3.png" alt="avatar" class="avatar">';
 							html_string += '			</div>';
 							html_string += '		</div>';
 							html_string += '	</header>';
@@ -198,7 +198,7 @@
 							html_string += '		<div class="data">';
 							html_string += '			<ul>';
 							html_string += '				<li>Replaced<span>Regist day</span></li>';
-							html_string += '				<li>Replaced<span>Followers</span></li>';
+							// html_string += '				<li>Replaced<span>Followers</span></li>';
 							html_string += '			</ul>';
 							html_string += '		</div>';
 							html_string += '		<div class="replace_fp">';

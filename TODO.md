@@ -16,6 +16,7 @@
 - Sherlock API
 - 최적 가중치 계산
 - Factor 추가, 제거
+- mypage FP에 닉네임 붙이기
 
 ## Done
 - User Test 방법 고안
