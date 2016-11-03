@@ -17,6 +17,7 @@
 - 최적 가중치 계산
 - Factor 추가, 제거
 - mypage FP에 닉네임 붙이기
+- Footer에 건의사항 등 의견 보내달라는 문구 붙이기
 
 ## Done
 - User Test 방법 고안
