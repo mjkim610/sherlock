@@ -2,7 +2,8 @@
     if (session_status() == PHP_SESSION_NONE) session_start();
     require_once "lib/dbconn.php";
     require_once "lib/head.php";
-
+	require_once "lib/get_ip.php";
+	
     if(isset($_SESSION['is_login']) && isset($_SESSION['user_id']))
     {
     	$user_id = $_SESSION['user_id'];
@@ -135,7 +136,6 @@
 
 <?php
 	require_once "lib/footer.php";
-	require_once "lib/get_ip.php";
 ?>
 
 <script type="text/javascript">
