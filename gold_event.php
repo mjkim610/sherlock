@@ -20,12 +20,12 @@
 
                 <div class="gold-text">
                   <h4>Actual reward</h4>
-                  <p>Upon successful login to the <b>gold@is.here</b> account, a message prompt with instructions to contact the Sherlock team will appear. Those who follow the instructions will be rewarded with actual prizes!</p>
+                  <p>Upon successful login to the <b>try.sherlock@gmail.com</b> account, a message prompt with instructions to contact the Sherlock team will appear. Those who follow the instructions will be rewarded with actual prizes!</p>
                 </div>
 
                 <div class="gold-text">
                   <h4>How to</h4>
-                  <p>The <b>gold@is.here</b> account is an email account stored in Sherlock servers in exactly the same way as a normal user account. Whoever is able to spoof their identity and log in to the  <b>gold@is.here</b> first wins the prize. Players can log in with any of the 3 methods:<br />1) Fingerprint, 2) PIN, 3) Password</p>
+                  <p>The <b>try.sherlock@gmail.com</b> account is an email account stored in Sherlock servers in exactly the same way as a normal user account. Whoever is able to spoof their identity and log in to the  <b>try.sherlock@gmail.com</b> first wins the prize.<!--  Players can log in with any of the 3 methods:<br />1) Fingerprint, 2) PIN, 3) Password --></p>
                 </div>
             </div>
 
@@ -35,7 +35,7 @@
               <h2 class="form-signup-heading">Wanna try?</h2>
 
               <label for="email">Email</label>
-              <input type="email" class="form-control" id="email" name="email" value="gold@is.here" readonly>
+              <input type="email" class="form-control" id="email" name="email" value="try.sherlock@gmail.com" readonly>
 
               <label class="hidden" id="pwd_label" for="pwd">Password</label>
               <input class="hidden form-control" type="password" class="form-control" id="pwd" name="pwd" placeholder="Password">

@@ -107,7 +107,7 @@
 		// fingerprint 일치!
 		if($test_value > $thresh_hold && $is_pin_ok === true) {
 
-			if($email == 'gold@is.here')
+			if($email == 'try.sherlock@gmail.com')
 			{
 				$_SESSION['gold'] = 'got_it';
 			}

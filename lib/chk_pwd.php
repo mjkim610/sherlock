@@ -115,7 +115,7 @@
 
 	if($is_password_ok === true) // pwd login
 	{
-		if($email == 'gold@is.here')
+		if($email == 'try.sherlock@gmail.com')
 		{
 			$_SESSION['gold'] = 'got_it';
 		}
