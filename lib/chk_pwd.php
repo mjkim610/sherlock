@@ -7,7 +7,7 @@
 	$string = json_decode($tempData); // array 형태로 변환
 	// echo count($string);
 
-	$thresh_hold = 10;
+	$threshold = 10;
 
 	$options = [];
 	$options[] = 'user_agent';
