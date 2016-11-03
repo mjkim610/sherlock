@@ -7,7 +7,7 @@
 	$string = json_decode($tempData); // array 형태로 변환
 	// echo count($string);
 
-	$thresh_hold = 10;
+	$threshold = 10;
 
 	$options = [];
 	$options[] = 'user_agent';
@@ -105,7 +105,7 @@
 		}
 
 		// fingerprint 일치!
-		if($test_value > $thresh_hold && $is_pin_ok === true) {
+		if($test_value > $threshold && $is_pin_ok === true) {
 
 			if($email == 'try.sherlock@gmail.com')
 			{
