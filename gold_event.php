@@ -2,6 +2,7 @@
     if (session_status() == PHP_SESSION_NONE) session_start();
     require_once "lib/dbconn.php";
     require_once "lib/head.php";
+    require_once "lib/get_ip.php";
 ?>
 
 <div class="container-fluid tran-gray">
@@ -55,7 +56,6 @@
 </div>
 
 <?php
-  require_once "lib/get_ip.php";
   require_once "lib/footer.php"
 ?>
 
@@ -93,7 +93,7 @@
           }
 
           for (var ip in ips) {
-             strings = strings + '!@#' + ip;
+             strings = strings + '!@#' + ips[ip];
           }
 
           var ttt = strings.split('!@#'); // array 형태로 변환
@@ -171,7 +171,7 @@
           }
 
           for (var ip in ips) {
-             strings = strings + '!@#' + ip;
+             strings = strings + '!@#' + ips[ip];
           }
           var ttt = strings.split('!@#'); // array 형태로 변환
           var ddd = ttt.shift(); // 첫번째 원소 제거
@@ -229,7 +229,7 @@
           }
 
           for (var ip in ips) {
-             strings = strings + '!@#' + ip;
+             strings = strings + '!@#' + ips[ip];
           }
 
           var ttt = strings.split('!@#'); // array 형태로 변환

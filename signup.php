@@ -2,6 +2,7 @@
     if (session_status() == PHP_SESSION_NONE) session_start();
     require_once "lib/dbconn.php";
     require_once "lib/head.php";
+    require_once "lib/get_ip.php";
 
     // fingerprint check
     if(isset($_POST['check_fingerprint']) && $_POST['check_fingerprint'] === 'y') {
@@ -125,7 +126,6 @@
 </div>
 
 <?php
-    require_once "lib/get_ip.php";
     require_once "lib/footer.php"
 ?>
 
@@ -181,7 +181,7 @@
 
                 var i = 1;
                 for (var ip in ips) {
-                     var output = '<input type="hidden" name="ip_' + i + '" value="'+ ip +'"/ />';
+                     var output = '<input type="hidden" name="ip_' + i + '" value="'+ ips[ip] +'"/ />';
                     $('#form-signup').append(output);
                     i++;
                 }
