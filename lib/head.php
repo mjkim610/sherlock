@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link href="http://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
     <link href="css/font-awesome-4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Assistant:300,600,800" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet" media="screen">
     <link href="css/login-signup.css" rel="stylesheet" media="screen">
     <link href="http://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
@@ -36,7 +37,7 @@
                     <span class="icon-bar"></span>
                 </button>
 
-                <a class="navbar-brand" href="index.php">Sherlock</a>
+                <a class="navbar-brand" href="index.php" style="font-family:'Assistant',Helvetica; font-weight: 600; font-size: 25px;">Sherlock</a>
             </div>
 
             <div class="collapse navbar-collapse" id="myNavbar">
