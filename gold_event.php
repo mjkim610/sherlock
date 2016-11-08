@@ -44,7 +44,7 @@
               <input class="hidden form-control" type="password" class="form-control" id="pin_pwd" name="pin_pwd" placeholder="PIN">
 
               <br />
-              <input type="button" class="btn btn-lg btn-primary btn-block" id="btn_submit_login" value="Gold is Mine!!"></button>
+              <input type="button" class="btn btn-lg btn-primary btn-block" id="btn_submit_login" value="Gold is Mine!!">
 
               <input type="hidden" id="login_type" value="fp">
 
@@ -79,13 +79,10 @@
       else {
         var d1 = new Date();
         var fp = new Fingerprint2();
-                var ips = document.getElementById("ip").innerHTML.split('.');
+        var ips = document.getElementById("ip").innerHTML.split('.');
         var string = '';
         var i = 0;
         fp.get(function(result, components,a,b) {
-          // var d2 = new Date();
-          // var timeString = "Time took to calculate the fingerprint: " + (d2 - d1) + "ms";
-
           var strings = '';
 
           for (var property in components) {
@@ -108,6 +105,8 @@
             url : "lib/chk_fingerprint.php",
             success: function(result)
             {
+              var json_result = $.parseJSON(result);
+
               if(result == '1111')
               {
                 alert('This email address does not exist');
@@ -138,9 +137,11 @@
                 $("#pin_pwd").removeClass("hidden");
                 $("#pin_pwd").focus();
               }
-              else if(result == '1155')
+              else if(json_result[0] == '1155')
               {
-                alert('Nice try! Try with different Fingerprint :)');
+                // alert('Nice try! Try with different Fingerprint :)');
+                var gold_alert = 'Nice try! You got '+json_result[1]+' out of 27 factors';
+                alert(gold_alert);
               }
               else
               {
@@ -282,8 +283,6 @@
                 }
           });
       });
-
-
     }
 
   });
