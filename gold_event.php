@@ -30,28 +30,37 @@
             </div>
 
             <div class="col-sm-6">
-            <div class="login_container">
-            <form class="form-signup" id="form-login" action="<?=$_SERVER['PHP_SELF']?>" method="post">
-              <h2 class="form-signup-heading">Wanna try?</h2>
+              <div class="login_container">
+              <form class="form-signup" id="form-login" action="<?=$_SERVER['PHP_SELF']?>" method="post">
+                <h2 class="form-signup-heading">Wanna try?</h2>
 
-              <label for="email">Email</label>
-              <input type="email" class="form-control" id="email" name="email" value="try.sherlock@gmail.com" readonly>
+                <label for="email">Email</label>
+                <input type="email" class="form-control" id="email" name="email" value="try.sherlock@gmail.com" readonly>
 
-              <label class="hidden" id="pwd_label" for="pwd">Password</label>
-              <input class="hidden form-control" type="password" class="form-control" id="pwd" name="pwd" placeholder="Password">
+                <label class="hidden" id="pwd_label" for="pwd">Password</label>
+                <input class="hidden form-control" type="password" class="form-control" id="pwd" name="pwd" placeholder="Password">
 
-              <label class="hidden" id="pin_label" for="pin_pwd">PIN</label>
-              <input class="hidden form-control" type="password" class="form-control" id="pin_pwd" name="pin_pwd" placeholder="PIN">
+                <label class="hidden" id="pin_label" for="pin_pwd">PIN</label>
+                <input class="hidden form-control" type="password" class="form-control" id="pin_pwd" name="pin_pwd" placeholder="PIN">
 
-              <br />
-              <input type="button" class="btn btn-lg btn-primary btn-block" id="btn_submit_login" value="Gold is Mine!!">
+                <br />
+                <input type="button" class="btn btn-lg btn-primary btn-block" id="btn_submit_login" value="Gold is Mine!!">
 
-              <input type="hidden" id="login_type" value="fp">
+                <input type="hidden" id="login_type" value="fp">
 
-            </form>
+              </form>
+              </div>
+              <div style="text-align: center;">
+                <button class="btn btn-primary" onclick="flip()">한국어 서비스 설명</button>
+              </div>
             </div>
+            <div class="col-sm-8 col-sm-offset-2">
+              <div class="explain_image" id="explain_image" style="display: none;">
+                <a href="img/onepage.png"><img src="img/onepage_no_back.png" alt="onepage image"></a>
+              </div>
             </div>
         </div>
+
     </div>
 </div>
 
@@ -60,6 +69,11 @@
 ?>
 
 <script type="text/javascript">
+  function flip()
+  {
+    $("#explain_image").slideToggle("fast");
+  };
+
   $("#form-login").keyup(function(event) {
     if(event.keyCode == 13) {
       $("#btn_submit_login").click();
@@ -147,12 +161,12 @@
               {
                 alert('Try again (err 110)');
               }
-                },
-                error: function (xhr, ajaxOptions, thrownError) {
-                     alert(xhr.status);
-                     alert(xhr.responseText);
-                     alert(thrownError);
-                 }
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+             alert(xhr.status);
+             alert(xhr.responseText);
+             alert(thrownError);
+            }
           });
         });
       }

@@ -935,3 +935,9 @@ box-shadow: 1px 5px 20px -5px rgba(0,0,0,0.7);
 .gold-text {
   margin-bottom: 40px;
 }
+
+.explain_image img {
+  width: 100%;
+  border: 2px solid;
+  padding: 5px;
+}
