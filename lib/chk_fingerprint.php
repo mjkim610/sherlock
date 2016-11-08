@@ -168,7 +168,8 @@
 	{
 		if($email == 'try.sherlock@gmail.com')
 		{
-			echo "1155"; // 다시 fp 검사
+			// echo "1155"; // 다시 fp 검사
+			echo json_encode(array(1155, $max_test_value));
 		}
 		else
 		{
