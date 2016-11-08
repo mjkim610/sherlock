@@ -269,18 +269,41 @@ if(isset($_SESSION['gold']) && $_SESSION['gold'] == 'got_it')
 <script>
   function flip()
   {
-    $("#explain_image").slideToggle("fast");
-    $('html, body').animate({
-      scrollTop: $("#explain_image").offset().top
-    }, 1200);
+    if($("#explain_image").css("display") == 'block')
+    {
+      $("#explain_image").css("display","none");
+    }
+    else if($("#explain_en_image").css("display") == 'block')
+    {
+      $("#explain_en_image").css("display","none");
+      $("#explain_image").css("display","block");
+      $('html, body').animate({scrollTop: $("#explain_image").offset().top}, 1200);
+    }
+    else
+    {
+      $("#explain_image").css("display","block");
+      $('html, body').animate({scrollTop: $("#explain_image").offset().top}, 1200);
+    }
+
   };
 
   function flip_en()
   {
-    $("#explain_en_image").slideToggle("fast");
-    $('html, body').animate({
-      scrollTop: $("#explain_en_image").offset().top
-    }, 1200);
+    if($("#explain_en_image").css("display") == 'block')
+    {
+      $("#explain_en_image").css("display","none");
+    }
+    else if($("#explain_image").css("display") == 'block')
+    {
+      $("#explain_image").css("display","none");
+      $("#explain_en_image").css("display","block");
+      $('html, body').animate({scrollTop: $("#explain_en_image").offset().top}, 1200);
+    }
+    else
+    {
+      $("#explain_en_image").css("display","block");
+      $('html, body').animate({scrollTop: $("#explain_en_image").offset().top}, 1200);
+    }
   };
 
   $("#form-login").keyup(function(event) {

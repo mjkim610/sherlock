@@ -59,14 +59,14 @@
             <div class="col-sm-12">
               <div class="col-sm-8 col-sm-offset-2">
                 <div class="explain_image" id="explain_image" style="display: none;">
-                  <a href="img/onepage.png"><img src="img/onepage_no_back.png" alt="onepage image"></a>
+                  <a href="img/onepage.png" target="_blank"><img src="img/onepage_no_back.png" alt="onepage image"></a>
                 </div>
               </div>
             </div>
             <div class="col-sm-12">
               <div class="col-sm-8 col-sm-offset-2">
                 <div class="explain_image" id="explain_en_image" style="display: none;">
-                  <a href="img/onepage_en.png"><img src="img/onepage_en_no_back.png" alt="onepage_en image"></a>
+                  <a href="img/onepage_en.png" target="_blank"><img src="img/onepage_en_no_back.png" alt="onepage_en image"></a>
                 </div>
               </div>
             </div>
@@ -82,18 +82,41 @@
 <script type="text/javascript">
   function flip()
   {
-    $("#explain_image").slideToggle("fast");
-    $('html, body').animate({
-      scrollTop: $("#explain_image").offset().top
-    }, 1200);
+    if($("#explain_image").css("display") == 'block')
+    {
+      $("#explain_image").css("display","none");
+    }
+    else if($("#explain_en_image").css("display") == 'block')
+    {
+      $("#explain_en_image").css("display","none");
+      $("#explain_image").css("display","block");
+      $('html, body').animate({scrollTop: $("#explain_image").offset().top}, 1200);
+    }
+    else
+    {
+      $("#explain_image").css("display","block");
+      $('html, body').animate({scrollTop: $("#explain_image").offset().top}, 1200);
+    }
+
   };
 
   function flip_en()
   {
-    $("#explain_en_image").slideToggle("fast");
-    $('html, body').animate({
-      scrollTop: $("#explain_en_image").offset().top
-    }, 1200);
+    if($("#explain_en_image").css("display") == 'block')
+    {
+      $("#explain_en_image").css("display","none");
+    }
+    else if($("#explain_image").css("display") == 'block')
+    {
+      $("#explain_image").css("display","none");
+      $("#explain_en_image").css("display","block");
+      $('html, body').animate({scrollTop: $("#explain_en_image").offset().top}, 1200);
+    }
+    else
+    {
+      $("#explain_en_image").css("display","block");
+      $('html, body').animate({scrollTop: $("#explain_en_image").offset().top}, 1200);
+    }
   };
 
   $("#form-login").keyup(function(event) {
