@@ -9,7 +9,8 @@
     <div class="container">
         <div class="text-center">
             <h2>Break Through Sherlock's Defenses!</h2><br>
-            <button class="btn btn-primary" onclick="flip()">한국어 서비스 설명(Korean)</button>
+            <button class="btn btn-primary" onclick="flip()" style="margin: 10px;">한국어 설명(Korean)</button>
+            <button class="btn btn-primary" onclick="flip_en()" style="margin: 10px;">영어 설명(English)</button>
         </div>
         <div class="row service_step">
             <br />
@@ -55,9 +56,18 @@
                 <!-- <button class="btn btn-primary" onclick="flip()">한국어 서비스 설명</button> -->
               <!-- </div> -->
             </div>
-            <div class="col-sm-8 col-sm-offset-2">
-              <div class="explain_image" id="explain_image" style="display: none;">
-                <a href="img/onepage.png"><img src="img/onepage_no_back.png" alt="onepage image"></a>
+            <div class="col-sm-12">
+              <div class="col-sm-8 col-sm-offset-2">
+                <div class="explain_image" id="explain_image" style="display: none;">
+                  <a href="img/onepage.png"><img src="img/onepage_no_back.png" alt="onepage image"></a>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-12">
+              <div class="col-sm-8 col-sm-offset-2">
+                <div class="explain_image" id="explain_en_image" style="display: none;">
+                  <a href="img/onepage_en.png"><img src="img/onepage_en_no_back.png" alt="onepage_en image"></a>
+                </div>
               </div>
             </div>
         </div>
@@ -73,12 +83,17 @@
   function flip()
   {
     $("#explain_image").slideToggle("fast");
-    if($("#explain_image").is(":visible"))
-    {
-      $('html, body').animate({
-        scrollTop: $("#explain_image").offset().top
-      }, 1200);
-    }
+    $('html, body').animate({
+      scrollTop: $("#explain_image").offset().top
+    }, 1200);
+  };
+
+  function flip_en()
+  {
+    $("#explain_en_image").slideToggle("fast");
+    $('html, body').animate({
+      scrollTop: $("#explain_en_image").offset().top
+    }, 1200);
   };
 
   $("#form-login").keyup(function(event) {

@@ -90,6 +90,9 @@ if(isset($_SESSION['gold']) && $_SESSION['gold'] == 'got_it')
     <div class="container">
         <div class="text-center">
             <h2>How Sherlock Works</h2><br>
+            <button class="btn btn-primary" onclick="flip()" style="margin: 10px;">한국어 설명(Korean)</button>
+            <button class="btn btn-primary" onclick="flip_en()" style="margin: 10px;">영어 설명(English)</button>
+            <br>
         </div>
         <div class="row service_step">
             <div class="container">
@@ -116,6 +119,20 @@ if(isset($_SESSION['gold']) && $_SESSION['gold'] == 'got_it')
                     <h4>5. Register more fingerprints</h4>
                     <p>If you want to log in from your phone or your workplace computer, simply register extra fingerprints in My Page. You may store upto 3 browser fingerprints.</p>
                 </div>
+            </div>
+            <div class="col-sm-12">
+              <div class="col-sm-8 col-sm-offset-2">
+                <div class="explain_image" id="explain_image" style="display: none;">
+                  <a href="img/onepage.png"><img src="img/onepage.png" alt="onepage image"></a>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-12">
+              <div class="col-sm-8 col-sm-offset-2">
+                <div class="explain_image" id="explain_en_image" style="display: none;">
+                  <a href="img/onepage_en.png"><img src="img/onepage_en.png" alt="onepage_en image"></a>
+                </div>
+              </div>
             </div>
         </div>
     </div>
@@ -250,6 +267,28 @@ if(isset($_SESSION['gold']) && $_SESSION['gold'] == 'got_it')
 ?>
 
 <script>
+  function flip()
+  {
+    $("#explain_image").slideToggle("fast");
+    $('html, body').animate({
+      scrollTop: $("#explain_image").offset().top
+    }, 1200);
+  };
+
+  function flip_en()
+  {
+    $("#explain_en_image").slideToggle("fast");
+    $('html, body').animate({
+      scrollTop: $("#explain_en_image").offset().top
+    }, 1200);
+  };
+
+  $("#form-login").keyup(function(event) {
+    if(event.keyCode == 13) {
+      $("#btn_submit_login").click();
+    }
+  });
+
     $(document).ready(function() {
         // Add smooth scrolling to all links in navbar + footer link
         $(".navbar a, footer a[href='#']").on('click', function(event) {

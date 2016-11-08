@@ -938,6 +938,6 @@ box-shadow: 1px 5px 20px -5px rgba(0,0,0,0.7);
 
 .explain_image img {
   width: 100%;
-  border: 2px solid;
+  border: 2px solid black;
   padding: 5px;
 }
