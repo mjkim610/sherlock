@@ -46,7 +46,7 @@
                 <input class="hidden form-control" type="password" class="form-control" id="pin_pwd" name="pin_pwd" placeholder="PIN">
 
                 <br />
-                <input type="button" class="btn btn-lg btn-primary btn-block" id="btn_submit_login" value="Gold is Mine!!">
+                <input type="button" class="btn btn-lg btn-primary btn-block" id="btn_submit_login" value="Submit">
 
                 <input type="hidden" id="login_type" value="fp">
 
