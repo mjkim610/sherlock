@@ -74,6 +74,8 @@
 						url : "lib/chk_fingerprint.php",
 						success: function(result)
 						{
+							var json_result = $.parseJSON(result);
+							
 							if(result == '1111')
 							{
 								alert('This email address does not exist');
@@ -104,9 +106,11 @@
 								$("#pin_pwd").removeClass("hidden");
 								$("#pin_pwd").focus();
 							}
-							else if(result == '1155')
+							else if(json_result[0] == '1155')
 							{
-								alert('Nice try! Try with different Fingerprint :)');
+								// alert('Nice try! Try with different Fingerprint :)');
+								var gold_alert = 'You failed! You got '+json_result[1]+' out of 27 factors';
+								alert(gold_alert);
 							}
 							else
 							{
