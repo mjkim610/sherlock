@@ -72,7 +72,7 @@
 			$fingerprints[] = $row;
 		}
 	} else {
-		echo "1112"; // fingerprint 가 존재하지 않음
+		echo "1122"; // fingerprint 가 존재하지 않음
 
 		$reg_date = 'now()';
         $sql = "INSERT INTO trial_log(user_id,email,result,reg_date) VALUES ('', '$email', 'fp-err', $reg_date)";
@@ -161,7 +161,7 @@
         $sql = $sql.")";
 
         $conn->query($sql);
-		
+
 		exit();
 	}
 	else

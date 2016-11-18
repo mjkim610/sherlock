@@ -75,7 +75,7 @@
 						success: function(result)
 						{
 							var json_result = $.parseJSON(result);
-							
+
 							if(result == '1111')
 							{
 								alert('This email address does not exist');
