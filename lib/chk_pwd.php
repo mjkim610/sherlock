@@ -69,13 +69,25 @@
 			$fingerprints[] = $row;
 		}
 	} else {
-		echo "2212"; // fingerprint 가 존재하지 않음
 
-		$reg_date = 'now()';
-        $sql = "INSERT INTO trial_log(user_id,email,result,reg_date) VALUES ('', '$email', 'pw-fp-err', $reg_date)";
+		if($password !== hash('sha256', test_input($_POST['password'])))
+		{
+			echo "2212"; // fingerprint 가 존재하지 않음
+			$reg_date = 'now()';
+	    $sql = "INSERT INTO trial_log(user_id,email,result,reg_date) VALUES ('', '$email', 'pw-fp-err', $reg_date)";
+	    $conn->query($sql);
+		}
+		else{
 
-        $conn->query($sql);
+			$_SESSION['is_login'] = true;
+			$_SESSION['user_id'] = $user_id;
 
+			echo "2221"; //no fp 로그인 성공
+
+			$reg_date = 'now()';
+			$sql = "INSERT INTO trial_log(user_id,email,result,reg_date) VALUES ('$user_id', '$email', 'pw-no-fp-login', $reg_date)";
+			$conn->query($sql);
+		}
 		exit();
 	}
 
@@ -123,7 +135,7 @@
 		$_SESSION['is_login'] = true;
 		$_SESSION['user_id'] = $user_id;
 
-		echo '2221'; 
+		echo '2221';
 
 		$reg_date = 'now()';
         $sql = "INSERT INTO trial_log(user_id,email,num_of_fp,fp_num,result,num_of_match,reg_date,user_agent,language,color_depth,pixel_ratio,resolution,available_resolution,timezone_offset,session_storage,local_storage,indexed_db,cpu_class,navigator_platform,do_not_track,regular_plugins,canvas,webgl,adblock,has_lied_languages,has_lied_resolution,has_lied_os,has_lied_browser,touch_support,js_fonts,ip_1,ip_2,ip_3,ip_4,final_fp) VALUES ('$user_id', '$email', '$num_of_fp', '$max_fp_num', 'pw-ok', '$max_test_value', $reg_date,";
@@ -154,6 +166,6 @@
 
         $conn->query($sql);
 
-	} 
+	}
 	exit();
 ?>
