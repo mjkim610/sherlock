@@ -22,7 +22,7 @@ html {
   padding-bottom: 20px;
   word-wrap: break-word;
   background-color: rgba(22, 40, 57, 0.82);
-  color: white; 
+  color: white;
   position: absolute;
   bottom: 0;
   width: 100%;
@@ -58,11 +58,11 @@ img.bg {
   /* Set rules to fill background */
   min-height: 100%;
   min-width: 1024px;
-  
+
   /* Set up proportionate scaling */
   width: 100%;
   height: auto;
-  
+
   /* Set up positioning */
   position: fixed;
   top: 0;
@@ -453,16 +453,16 @@ strong {
 .back-image{
   /*background-image: url("https://images.unsplash.com/42/U7Fc1sy5SCUDIu4tlJY3_NY_by_PhilippHenzler_philmotion.de.jpg");*/
 /*  width: 100%;
-  height: 100%;  
-*/  
-background: url(../img/background.jpg) no-repeat center center fixed; 
+  height: 100%;
+*/
+background: url(../img/background.jpg) no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
 }
 
-.btn-service { 
+.btn-service {
 box-shadow: 1px 5px 20px -5px rgba(0,0,0,0.7);
 }
 
@@ -496,7 +496,7 @@ box-shadow: 1px 5px 20px -5px rgba(0,0,0,0.7);
   }
 }
 
-.btn-service {  
+.btn-service {
   -webkit-animation: pulse 2s ease-out;
   -webkit-animation-iteration-count: infinite;
 }
@@ -734,7 +734,7 @@ box-shadow: 1px 5px 20px -5px rgba(0,0,0,0.7);
   border-top-left-radius: 8px;
   -moz-border-radius-topright: 8px;
   -webkit-border-top-right-radius: 8px;
-  border-top-right-radius: 8px; 
+  border-top-right-radius: 8px;
 }
 .fp-card-2 {
   width: auto;
@@ -748,15 +748,15 @@ box-shadow: 1px 5px 20px -5px rgba(0,0,0,0.7);
   background-color: #dde1e2;
   -webkit-box-shadow: #bdc3c7 0 5px 5px;
   -moz-box-shadow: #bdc3c7 0 5px 5px;
-  box-shadow: #bdc3c7 0 5px 5px; 
+  box-shadow: #bdc3c7 0 5px 5px;
 }
 .fp-card-2 .card-bg {
-  border-bottom: 8px solid #5cc0ff; 
+  border-bottom: 8px solid #5cc0ff;
   width: 100%;
 }
 .fp-card-2 .bio:hover > .desc {
   cursor: pointer;
-  opacity: 1; 
+  opacity: 1;
 }
 .fp-card-2 .avatarcontainer {
   position: absolute;
@@ -766,10 +766,10 @@ box-shadow: 1px 5px 20px -5px rgba(0,0,0,0.7);
   margin: auto;
   width: 70px;
   height: 70px;
-  display: block; 
+  display: block;
 }
 .fp-card-2 .avatarcontainer:hover > .hover {
-    opacity: 1; 
+    opacity: 1;
 }
 .fp-card-2 .avatar {
   width: 100%;
@@ -784,11 +784,11 @@ box-shadow: 1px 5px 20px -5px rgba(0,0,0,0.7);
 }
 .fp-card-2 .avatar img {
     width: 65px;
-    height: 65px; 
+    height: 65px;
 }
 .fp-card-2 .avatar:hover + .hover {
     opacity: 1;
-    cursor: pointer; 
+    cursor: pointer;
 }
 
 .fp-card-2 .hover {
@@ -822,21 +822,21 @@ box-shadow: 1px 5px 20px -5px rgba(0,0,0,0.7);
   -webkit-transition-timing-function: ease;
   -moz-transition-timing-function: ease;
   -o-transition-timing-function: ease;
-  transition-timing-function: ease; 
+  transition-timing-function: ease;
 }
 .fp-card-2 .data {
   margin-top: .6em;
-  color: #81878b; 
+  color: #81878b;
   }
 .fp-card-2 .data li {
     width: 100%;
     text-align: center;
     font-size: 1.5em;
     font-family: 'Lato';
-    border-right: solid 1px #bdc3c7; 
+    border-right: solid 1px #bdc3c7;
 }
 .fp-card-2 .data li:last-child {
-      border: none; 
+      border: none;
 }
 .fp-card-2 .data li span {
       display: block;
@@ -872,15 +872,16 @@ box-shadow: 1px 5px 20px -5px rgba(0,0,0,0.7);
 .fp-card-2 .desc h3 {
     font-family: "Lato";
     font-size: 1.2em;
-    margin-bottom: .5em; 
+    margin-bottom: .5em;
 }
 
 .fp-card-2 .desc p {
     font-size: .9em;
     font-family: 'Quicksand';
-    line-height: 1.5em; 
+    line-height: 1.5em;
 }
-.fp-card-2 .replace_fp {
+.fp-card-2 .fp-btn {
+  display: inline-block;
   margin: 1.5em auto 0 auto;
   background-color: #2589cc;
   width: 150px;
@@ -906,9 +907,9 @@ box-shadow: 1px 5px 20px -5px rgba(0,0,0,0.7);
   -o-transition-timing-function: ease;
   transition-timing-function: ease;
 }
-.fp-card-2 .replace_fp:hover {
+.fp-card-2 .fp-btn:hover {
     background-color: #167abd;
-    cursor: pointer; 
+    cursor: pointer;
 }
 
 .gold-btn {

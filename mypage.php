@@ -11,6 +11,33 @@
     	$sql0 = "SELECT * FROM fingerprint WHERE user_id = '$user_id' ORDER BY reg_date DESC";
 		$result0 = mysqli_query($conn, $sql0);
 
+    $blank_html = '<div class="fp-card-2">';
+    $blank_html .= '	<header>						';
+    $blank_html .= '		<div class="avatarcontainer">';
+    $blank_html .= '			<img src="img/x.png" alt="avatar" class="avatar">';
+
+    $blank_html .= '			<div class="hover">';
+    $blank_html .= '					<img src="img/favicon3.png" alt="avatar" class="avatar">';
+    $blank_html .= '			</div>';
+    $blank_html .= '		</div>';
+    $blank_html .= '	</header>';
+    $blank_html .= '	<div class="content">';
+    $blank_html .= '		<div class="data">';
+    $blank_html .= '			<ul>';
+    $blank_html .= '				<li>Empty<span>Date of registration</span></li>';
+    // $blank_html .= '				<li>None<span>Followers</span></li>';
+    $blank_html .= '			</ul>';
+    $blank_html .= '		</div>';
+
+    $blank_html .= '		<div style="text-align:center;">';
+    $blank_html .= '		 <div class="fp-btn">';
+    $blank_html .= '		   Empty fingerprint';
+    $blank_html .= '		 </div>';
+    $blank_html .= '		</div>';
+
+    $blank_html .= '	</div>';
+    $blank_html .= '</div>';
+
 		if (mysqli_num_rows($result0) > 0)
 		{
 			$fingerprints = [];
@@ -46,41 +73,20 @@
 				$tmp .= '			</ul>';
 				$tmp .= '		</div>';
 
-				$tmp .= '		<div class="replace_fp" id="replace_fp-'.$fingerprint['id'].'" onclick="replace_fp('.$fingerprint['id'].','.$i.')">';
-				$tmp .= '			Replace';
-				$tmp .= '		</div>';
+        $tmp .= '		<div style="text-align:center;">';
+    		$tmp .= '		 <div class="fp-btn" id="replace_fp-'.$fingerprint['id'].'" onclick="replace_fp('.$fingerprint['id'].','.$i.')">';
+    		$tmp .= '		 	Replace';
+    		$tmp .= '		 </div>';
+    		$tmp .= '		 <div class="fp-btn" id="delete_fp-'.$fingerprint['id'].'" onclick="delete_fp('.$fingerprint['id'].')">';
+    		$tmp .= '		 	Delete';
+    		$tmp .= '		 </div>';
+        $tmp .= '		</div>';
 				$tmp .= '	</div>';
 
 				$tmp .= '</div>';
 
 				$fp_html[$i] = $tmp;
 			}
-
-			$blank_html = '<div class="fp-card-2">';
-			$blank_html .= '	<header>						';
-			$blank_html .= '		<div class="avatarcontainer">';
-			$blank_html .= '			<img src="img/x.png" alt="avatar" class="avatar">';
-
-			$blank_html .= '			<div class="hover">';
-			$blank_html .= '					<img src="img/favicon3.png" alt="avatar" class="avatar">';
-			$blank_html .= '			</div>';
-			$blank_html .= '		</div>';
-			$blank_html .= '	</header>';
-			$blank_html .= '	<div class="content">';
-			$blank_html .= '		<div class="data">';
-			$blank_html .= '			<ul>';
-			$blank_html .= '				<li>Empty<span>Date of registration</span></li>';
-			// $blank_html .= '				<li>None<span>Followers</span></li>';
-			$blank_html .= '			</ul>';
-			$blank_html .= '		</div>';
-
-			$blank_html .= '		<div class="replace_fp">';
-			$blank_html .= '			Empty fingerprint';
-			$blank_html .= '		</div>';
-			$blank_html .= '	</div>';
-
-			$blank_html .= '</div>';
-
 
 			if($i == 1) // fp가 1개면
 			{
@@ -94,11 +100,14 @@
 		}
 		else
 		{
-			echo "<script type='text/javascript'>";
-			echo "window.alert('Try again (err 921)');";
-			echo "history.back();";
-			echo "</script>";
-			exit();
+      $fp_html[1] = $blank_html;
+      $fp_html[2] = $blank_html;
+      $fp_html[3] = $blank_html;
+			// echo "<script type='text/javascript'>";
+			// echo "window.alert('Try again (err 921)');";
+			// echo "history.back();";
+			// echo "</script>";
+			// exit();
 		}
 
     }
@@ -122,7 +131,7 @@
         		<button class="btn btn-primary" onclick="regist_fp()" style="font-size: 20px;">Register Browser Fingerprint</button>
         	</div>
         	<div class="col-sm-4" id="fp_1">
-               	<?=$fp_html[1]?>
+              <?=$fp_html[1]?>
             </div>
             <div class="col-sm-4" id="fp_2">
             	<?=$fp_html[2]?>
@@ -197,13 +206,15 @@
 							html_string += '	<div class="content">';
 							html_string += '		<div class="data">';
 							html_string += '			<ul>';
-							html_string += '				<li>Replaced<span>Regist day</span></li>';
+							html_string += '				<li>Replaced<span>Date of registration</span></li>';
 							// html_string += '				<li>Replaced<span>Followers</span></li>';
 							html_string += '			</ul>';
 							html_string += '		</div>';
-							html_string += '		<div class="replace_fp">';
-							html_string += '			Replaced!!';
-							html_string += '		</div>';
+              html_string += '		<div style="text-align:center;">';
+              html_string += '		  <div class="fp-btn">';
+              html_string += '		  	Replaced!!';
+              html_string += '		  </div>';
+              html_string += '		</div>';
 							html_string += '	</div>';
 
 							html_string += '</div>';
@@ -226,6 +237,59 @@
 				       }
 				});
 			});
+		}
+	};
+  function delete_fp(fp_id)
+	{
+		var ask = confirm("Do you want to delete this fingerprint?");
+		if(ask)
+		{
+			$.ajax({
+			type : "POST",
+			data : {
+				fp_id : fp_id
+      },
+			url : "lib/delete_fingerprint.php",
+			success: function(result)
+			{
+				if(result == '8811')
+				{
+					alert('Try again (err 809)');
+				}
+				else if(result == '8776')
+				{
+					alert('Nice try (err 819)');
+				}
+				else if(result == '8777')
+				{
+					alert('Try again (err 812)');
+				}
+				else if(result == '8885') // 성공
+				{
+          alert('Fingerprint deleted!');
+          location.reload();
+				}
+				else if(result == '8879')
+				{
+					alert('Try again (err 852)');
+				}
+        else if(result == '8179')
+				{
+					alert('Nice try (err 844)');
+				}
+				else
+				{
+					alert('Try again (err 810)');
+				}
+
+	    },
+      error: function (xhr, ajaxOptions, thrownError)
+      {
+           alert(xhr.status);
+           alert(xhr.responseText);
+           alert(thrownError);
+      }
+		  });
 		}
 	};
 
