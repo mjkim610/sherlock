@@ -199,7 +199,7 @@
               else if(json_result[0] == '1155')
               {
                 // alert('Nice try! Try with different Fingerprint :)');
-                var gold_alert = 'You failed! You got '+json_result[1]+' out of 27 factors';
+                var gold_alert = 'You failed! You got '+json_result[1]+' out of 27 factors.\nScore : '+json_result[2];
                 alert(gold_alert);
               }
               else

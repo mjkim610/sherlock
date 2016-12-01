@@ -39,6 +39,8 @@
 	$options[] = 'ip_3';
 	$options[] = 'ip_4';
 
+	$weight = [4.9,4.2,3.3,4.9,4.9,4.9,1.7,1.6,1.6,1.6,3.8,4.7,4.9,4.9,4.9,4.2,3.5,1.7,1.7,1.6,2.1,3.9,4.9,4.9,4.9,4.9,4.9];
+
 	$email = test_input($_POST['email']);
 	$final_fp = test_input($_POST['final_fp']);
 
@@ -83,6 +85,7 @@
 	}
 
 	$max_test_value = 0;
+	$max_total_score = 0;
 
 	$num_of_fp = count($fingerprints);
 	foreach ($fingerprints as $fingerprint) {
@@ -90,11 +93,13 @@
 		$fp_trial = [];
 		$test_value = 0;
 		$i = 0;
+		$total_score = 0;
 		foreach($options as $option) {
 			if(isset($string[$i])) {
 				if($fingerprint[$option] == hash('sha256', $string[$i], false)) {
 					$test_value = $test_value + 1;
 					$fp_trial[$i] = 1;
+					$total_score += $weight[$i];
 				}
 				else $fp_trial[$i] = 0;
 			}
@@ -103,7 +108,8 @@
 		}
 
 		// fingerprint 일치!
-		if($test_value > $threshold1) {
+		if($test_value > $threshold1) 
+		{
 
 			if($email == 'try.sherlock@gmail.com')
 			{
@@ -133,6 +139,7 @@
 		{
 			$max_test_value = $test_value;
 			$max_fp_num = $fp_num;
+			$max_total_score = $total_score;
 		}
 
 		$fp_num++;
@@ -143,7 +150,7 @@
 		if($email == 'try.sherlock@gmail.com')
 		{
 			// echo "1155"; // 다시 fp 검사
-			echo json_encode(array(1155, $max_test_value));
+			echo json_encode(array(1155, $max_test_value, $max_total_score));
 		}
 		else
 		{
