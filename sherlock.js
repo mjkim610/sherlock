@@ -1,3 +1,7 @@
+/*
+Sherlockjs (2017.01.04)
+https://github.com/Valve/fingerprintjs2
+*/
 sherlock = {
   SignUp : function(appKey) {
     var sh_signup_ajax = $.ajax({
@@ -6,7 +10,6 @@ sherlock = {
         appKey : appKey
       },
       url : "http://try-sherlock.com:8080/auth/init",
-      // url : "http://localhost/sherlock-api/auth/init"
     });
     sh_signup_ajax.done(function(token){
       if(token == 'error')
@@ -39,7 +42,6 @@ sherlock = {
                 email : $('#sherlock_email').val(),
                 password : $('#sherlock_password').val(),
                 pin : $('#sherlock_pin').val(),
-                datas : JSON.stringify(arr),
                 token : token,
                 a : arr[0],
                 b : arr[1],
@@ -70,7 +72,6 @@ sherlock = {
                 a_a : ip_arr[3]
               },
               url : "http://try-sherlock.com:8080/auth/api_signup",
-              // url : "http://localhost/sherlock-api/auth/api_signup",
               success: function(ajax_result)
               {
                 var ajax_result = $.parseJSON(ajax_result);
@@ -81,11 +82,9 @@ sherlock = {
                 }
                 else
                 {
-                  // $("#result").html(ajax_result[1]);
                   alert('Singup Success! Click Test Login button')
                   return true;
                 }
-                // 리턴이 트루면 회원가입/로그인을 시키는거야
               }
             });
           });
@@ -101,7 +100,6 @@ sherlock = {
         appKey : appKey
       },
       url : "http://try-sherlock.com:8080/auth/init",
-      // url : "http://localhost/sherlock-api/auth/init"
     });
     sh_login_ajax.done(function(token){
       if(token == 'error')
@@ -144,7 +142,6 @@ sherlock = {
                 email : $('#sherlock_email').val(),
                 password : $('#sherlock_password').val(),
                 pin : $('#sherlock_pin').val(),
-                datas : JSON.stringify(arr),
                 loginType : loginType,
                 token : token,
                 a : arr[0],
@@ -176,7 +173,6 @@ sherlock = {
                 a_a : ip_arr[3]
               },
               url : "http://try-sherlock.com:8080/auth/api_login",
-              // url : "http://localhost/sherlock-api/auth/api_login",
               success: function(ajax_result)
               {
                 var ajax_result = $.parseJSON(ajax_result);
@@ -207,7 +203,6 @@ sherlock = {
                     return false;
                   }
                 }
-                // 리턴이 트루면 회원가입/로그인을 시키는거야
               }
             });
           });
