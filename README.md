@@ -16,6 +16,7 @@ Sherlock's benefits have been tested and backed up by our research.
 
 ## Demo
 - Website - [http://www.try-sherlock.com/](http://www.try-sherlock.com/)
+- Video - [YouTube Link](https://youtu.be/Aj9xxVyO2Y8)
 
 ## API Usage
 1. Contact Sherlock administrators at `try.sherlock@gmail.com` to obtain an app key.
