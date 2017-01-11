@@ -2,10 +2,10 @@
 # Sherlock: Browser Fingerprint-Based Authentication System
 
 ## Overview
-Sherlock은 비밀번호 없이 로그인 가능하도록 합니다.
+Sherlock은 비밀번호 없이 로그인 가능합니다.
 
-Sherlock은 Browser Fingerprint 테크닉을 활용하여 사용자들을 판별합니다. 
-참조 : fingerprintjs2 (https://github.com/Valve/fingerprintjs2)
+Sherlock은 27 개의 Browser Fingerprint 조합으로 인증하는 방식입니다.
+참조 : [fingerprintjs2](https://github.com/Valve/fingerprintjs2)
 
 Sherlock의 신뢰성은 여러 시험들을 거쳐 인증되었습니다.
 
