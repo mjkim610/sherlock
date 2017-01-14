@@ -18,7 +18,7 @@ sherlock = {
       }
       else
       {
-        $.get("http://ipinfo.io", function(response) {
+        $.get("https://ipinfo.io", function(response) {
           var ip = response.ip;
           var ip_arr = ip.split(".");
           for(var i = 0; i < ip_arr.length; i++)
@@ -108,7 +108,7 @@ sherlock = {
       }
       else
       {
-        $.get("http://ipinfo.io", function(response) {
+        $.get("https://ipinfo.io", function(response) {
           var ip = response.ip;
           var ip_arr = ip.split(".");
           for(var i = 0; i < ip_arr.length; i++)

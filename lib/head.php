@@ -11,15 +11,15 @@
     <meta property="og:description" content="Browser Fingerprint Authentication System">
     <meta property="og:image" content="http://try-sherlock.com/img/logo_wide.png">
     <meta property="og:url" content="http://try-sherlock.com/">
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link href="http://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
     <link href="css/font-awesome-4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Assistant:300,600,800" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet" media="screen">
     <link href="css/login-signup.css" rel="stylesheet" media="screen">
-    <link href="http://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
-    <script src="http://code.jquery.com/jquery.js"></script>
-    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="js/fingerprint2.js"></script>
     <script src="js/sha256.js"></script>
 </head>
