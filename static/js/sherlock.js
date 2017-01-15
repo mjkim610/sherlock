@@ -1,6 +1,6 @@
 /*
 Sherlockjs (2017.01.04)
-https://github.com/Valve/fingerprintjs2
+https://github.com/mjkim610/sherlock/
 */
 sherlock = {
   SignUp : function(appKey) {
