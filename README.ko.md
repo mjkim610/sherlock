@@ -2,26 +2,27 @@
 # Sherlock: Browser Fingerprint-Based Authentication System
 
 ## Overview
-Sherlock allows users to log in to websites without typing their passwords.
+Sherlock은 비밀번호 없이 로그인 가능합니다.
 
-Sherlock utilizes the browser fingerprinting technique implemented by [fingerprintjs2](https://github.com/Valve/fingerprintjs2) to identify users' devices.
+Sherlock은 27 개의 Browser Fingerprint 조합으로 인증하는 방식입니다.
+참조 : [fingerprintjs2](https://github.com/Valve/fingerprintjs2)
 
-Sherlock's benefits have been tested and backed up by our research.
+Sherlock의 신뢰성은 여러 시험들을 거쳐 인증되었습니다.
 
 ## Features
-- Secure and usable password-free authentication
-- Provide the service provider control over levels of confidence for user authentication
-- No setup requirements from users
-- Allow user to register multiple device fingerprints for each account
+- 비밀번호 없이 보안성 (Security) 와 사용성 (Usability)를 동시에 만족
+- 서비스 제공자가 인증에 대한 수위를 조절 가능
+- 사용자 별도의 설치가 필요 없는 편리함
+- 사용자가 하나의 계정에 여러개의 기기를 등록 할 수 있음
 
 ## Demo
-- Website - [https://www.try-sherlock.com/](https://www.try-sherlock.com/)
+- Website - [http://www.try-sherlock.com/](http://www.try-sherlock.com/)
 - Video - [YouTube Link](https://youtu.be/Aj9xxVyO2Y8)
 
 ## API Usage
-1. Contact Sherlock administrators at `try.sherlock@gmail.com` to obtain an app key.
-2. Download [sherlock.js](https://github.com/mjkim610/sherlock/blob/master/static/js/sherlock.js) into the web service directory.
-3. Add the signup elements and JavaScript code into the service signup page
+1. 'try.sherlock@gmail.com’으로 email을 통해 App Key 발급받는다.
+2. [sherlock.js](https://github.com/mjkim610/sherlock/blob/master/static/js/sherlock.js) 를 다운 받는다.
+3. Signup elements 들과 JavaScript code를 signup page 에 첨부한다.
 
     - HTML
         - HTML code may be edited, but the Sherlock API accesses the signup information using the `id`
@@ -51,7 +52,7 @@ Sherlock's benefits have been tested and backed up by our research.
         </script>
         ```
 
-4. Add the login elements and JavaScript code into the service login page
+4. login element 들과 JavaScript code 를 login page 에 첨부한다
     - HTML
         - HTML code may be edited, but the Sherlock API accesses the signup information using the `id`
         ```
@@ -80,7 +81,7 @@ Sherlock's benefits have been tested and backed up by our research.
         </script>
         ```
 
-5. For testing, visit [http://try-sherlock.com:8080/](http://try-sherlock.com:8080/)
+5. Test를 위해서는 [http://try-sherlock.com:8080/](http://try-sherlock.com:8080/)
 
 ## External Code
 - fingerprintjs2 -  [https://github.com/Valve/fingerprintjs2](https://github.com/Valve/fingerprintjs2)
