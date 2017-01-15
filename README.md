@@ -1,4 +1,4 @@
-![Sherlock](img/sherlock-logo.png)
+![Sherlock](static/img/sherlock-logo.png)
 # Sherlock: Browser Fingerprint-Based Authentication System
 
 ## Overview
@@ -88,9 +88,9 @@ Sherlock's benefits have been tested and backed up by our research.
 - Font Awesome -  [http://fontawesome.io/](http://fontawesome.io/)
 
 ## Authors
-- ![sullamij](img/team/1-small.jpg) sullamij
-- ![jhoney](img/team/2-small.jpg) jhoney
-- ![mjkim](img/team/3-small.jpg) mjkim
+- ![sullamij](static/img/team/1-small.jpg) sullamij
+- ![jhoney](static/img/team/2-small.jpg) jhoney
+- ![mjkim](static/img/team/3-small.jpg) mjkim
 
 ## License
 

@@ -1,363 +1,315 @@
 <?php
-    if (session_status() == PHP_SESSION_NONE) session_start();
-    require_once "lib/head.php";
-    require_once "lib/get_ip.php";
-?>
+/**
+ * CodeIgniter
+ *
+ * An open source application development framework for PHP
+ *
+ * This content is released under the MIT License (MIT)
+ *
+ * Copyright (c) 2014 - 2016, British Columbia Institute of Technology
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ *
+ * @package	CodeIgniter
+ * @author	EllisLab Dev Team
+ * @copyright	Copyright (c) 2008 - 2014, EllisLab, Inc. (https://ellislab.com/)
+ * @copyright	Copyright (c) 2014 - 2016, British Columbia Institute of Technology (http://bcit.ca/)
+ * @license	http://opensource.org/licenses/MIT	MIT License
+ * @link	https://codeigniter.com
+ * @since	Version 1.0.0
+ * @filesource
+ */
 
-<?php
-if(isset($_SESSION['gold']) && $_SESSION['gold'] == 'got_it')
+/*
+ *---------------------------------------------------------------
+ * APPLICATION ENVIRONMENT
+ *---------------------------------------------------------------
+ *
+ * You can load different configurations depending on your
+ * current environment. Setting the environment also influences
+ * things like logging and error reporting.
+ *
+ * This can be set to anything, but default usage is:
+ *
+ *     development
+ *     testing
+ *     production
+ *
+ * NOTE: If you change these, also change the error_reporting() code below
+ */
+	define('ENVIRONMENT', isset($_SERVER['CI_ENV']) ? $_SERVER['CI_ENV'] : 'development');
+
+/*
+ *---------------------------------------------------------------
+ * ERROR REPORTING
+ *---------------------------------------------------------------
+ *
+ * Different environments will require different levels of error reporting.
+ * By default development will show errors but testing and live will hide them.
+ */
+switch (ENVIRONMENT)
 {
-    echo '<div class="container-fluid text-center tran-light-gray">';
-    echo '    <div class="container">';
-    echo '      <div class="row">';
-    echo '        <div class="col-sm-12" style="font-size: 30px;">';
-    echo '            Congratulation! Send us an email at <b>try.sherlock@gmail.com</b> with the secret number <b>920918</b> and your phone number :)';
-    echo '        </div>';
-    echo '      </div>';
-    echo '    </div>';
-    echo '</div>';
+	case 'development':
+		error_reporting(-1);
+		ini_set('display_errors', 1);
+	break;
+
+	case 'testing':
+	case 'production':
+		ini_set('display_errors', 0);
+		if (version_compare(PHP_VERSION, '5.3', '>='))
+		{
+			error_reporting(E_ALL & ~E_NOTICE & ~E_DEPRECATED & ~E_STRICT & ~E_USER_NOTICE & ~E_USER_DEPRECATED);
+		}
+		else
+		{
+			error_reporting(E_ALL & ~E_NOTICE & ~E_STRICT & ~E_USER_NOTICE);
+		}
+	break;
+
+	default:
+		header('HTTP/1.1 503 Service Unavailable.', TRUE, 503);
+		echo 'The application environment is not set correctly.';
+		exit(1); // EXIT_ERROR
 }
-?>
-<!-- 서비스 소개 -->
-<!-- <div class="container-fluid top-part"> -->
-<div class="container-fluid text-center tran-light-gray">
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-12">
-            <h2>What is Sherlock?</h2><br>
-            <span style="font-size:1.1em;">
-                Sherlock is a password-free authentication system.<br>
-                Sherlock utilizes browser fingerprinting to authenticate users.
-            </span><br>
-        </div>
-      </div>
-    </div>
-</div>
 
-<div class="container-fluid tran-gray">
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-12 text-center">
-                <h2>Let's try Sherlock</h2>
-            </div>
-            <?php
-                if(isset($_SESSION['is_login']) && $_SESSION['is_login'] === true) {
-                    echo '<div class="col-sm-4 col-sm-offset-4">';
-                        echo '<div class="main_btn">';
-                        echo '<h2>Play</h2>';
-                        echo '<p>Grab the Gold!</p>';
-                        echo '<a class="btn btn-service" href="gold_event.php" style="box-shadow: none;"><img class="gold-img" src="img/gold.png" alt="gold"/></a>';
-                        echo '</div>';
-                    echo '</div>';
-                }
-                else {
-                    echo '<div class="col-sm-4 col-sm-offset-2">';
-                    echo '<div class="main_btn">';
-                    echo '<h2>Sign In</h2>';
-                    echo '<p>Sign in with your browser fingerprint</p>';
-                    echo '<a class="btn btn-primary btn-service" href="login.php">Sign In</a>';
-                    echo '</div>';
-                    echo '</div>';
+/*
+ *---------------------------------------------------------------
+ * SYSTEM DIRECTORY NAME
+ *---------------------------------------------------------------
+ *
+ * This variable must contain the name of your "system" directory.
+ * Set the path if it is not in the same directory as this file.
+ */
+	$system_path = 'system';
 
-                    echo '<div class="col-sm-4">';
-                    echo '<div class="main_btn">';
-                    echo '<h2>Sign Up</h2>';
-                    echo '<p>Register your browser fingerprint</p>';
-                    echo '<a class="btn btn-danger btn-service" href="signup.php">Sign Up</a>';
-                    echo '</div>';
-                    echo '</div>';
+/*
+ *---------------------------------------------------------------
+ * APPLICATION DIRECTORY NAME
+ *---------------------------------------------------------------
+ *
+ * If you want this front controller to use a different "application"
+ * directory than the default one you can set its name here. The directory
+ * can also be renamed or relocated anywhere on your server. If you do,
+ * use an absolute (full) server path.
+ * For more info please see the user guide:
+ *
+ * https://codeigniter.com/user_guide/general/managing_apps.html
+ *
+ * NO TRAILING SLASH!
+ */
+	$application_folder = 'application';
 
-                    echo '<div class="gold-btn img-circle">';
-                    echo '    <a class="event-close-btn" onclick="this.parentNode.parentNode.removeChild(this.parentNode); return false;" href="#">';
-                    echo '    <div>';
-                    echo '       <span style="color:#000;font-size:1.2em;font-weight:bold;">x</span>';
-                    echo '    </div>';
-                    echo '    </a>';
-                    echo '    <div>';
-                    echo '    <a href="gold_event.php">';
-                    echo '     <img class="gold-img" src="img/gold.png" alt="gold"/>';
-                    echo '    </a>';
-                    echo '    </div>';
-                    echo '</div>';
-                }
-            ?>
-        </div>
-    </div>
-</div>
-
-<!-- 서비스 단계 -->
-<div class="container-fluid tran-light-gray">
-    <div class="container">
-        <div class="text-center">
-            <h2>How Sherlock Works</h2><br>
-            <button class="btn btn-primary" onclick="flip()" style="margin: 10px;">한국어 설명(Korean)</button>
-            <button class="btn btn-primary" onclick="flip_en()" style="margin: 10px;">영어 설명(English)</button>
-            <br>
-        </div>
-        <div class="row service_step">
-            <div class="container">
-                <div class="col-sm-4">
-                    <h4>1. Sign up</h4>
-                    <p>Sign up to Sherlock's service by entering your email, password, and PIN. Sherlock automatically calculates your session's <a href="https://en.wikipedia.org/wiki/Device_fingerprint" target="_blank">browser fingerprint</a> and stores it with your account.</p>
-                </div>
-                <div class="col-sm-4">
-                    <h4>2. Sign in</h4>
-                    <p>Sign into Sherlock using only your email address! Sherlock will check your browser fingerprint and determine if you are using your own machine.</p>
-                </div>
-                <div class="col-sm-4">
-                    <h4>3. Password-free authentication</h4>
-                    <p>If your browser fingerprint is a perfect match, you will be logged in. No password! No hassle!</p>
-                </div>
-            </div>
-
-            <div class="container">
-                <div class="col-sm-4">
-                    <h4>4. Different levels of authentication</h4>
-                    <p>If your browser fingerprint is not a perfect match, you will be prompted for extra authentication such as the PIN number or the password.</p>
-                </div>
-                <div class="col-sm-4">
-                    <h4>5. Register more fingerprints</h4>
-                    <p>If you want to log in from your phone or your workplace computer, simply register extra fingerprints in My Page. You may store upto 3 browser fingerprints.</p>
-                </div>
-            </div>
-            <div class="col-sm-12">
-              <div class="col-sm-8 col-sm-offset-2">
-                <div class="explain_image" id="explain_image" style="display: none;">
-                  <a href="img/onepage.png"><img src="img/onepage.png" alt="onepage image"></a>
-                </div>
-              </div>
-            </div>
-            <div class="col-sm-12">
-              <div class="col-sm-8 col-sm-offset-2">
-                <div class="explain_image" id="explain_en_image" style="display: none;">
-                  <a href="img/onepage_en.png"><img src="img/onepage_en.png" alt="onepage_en image"></a>
-                </div>
-              </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- 서비스 세부 -->
-<div class="container-fluid text-center tran-gray">
-    <div class="container">
-        <div class="row">
-            <h2>Our Contribution</h2>
-            <br>
-
-            <b>Authentication:</b> Sherlock proposes a secure and usable authentication system<br />
-            <b>Security:</b> Sherlock's authentication system is as secure as traditional authentication methods<br />
-            <b>Usability:</b> Sherlock's authentication improves usability and user satisfaction of the authentication process<br />
-
-        </div>
-    </div>
-</div>
-
-<!-- 핑거프린트 테스트 -->
-<div class="container-fluid tran-light-gray">
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-12">
-                <h2 class="text-center">Get your browser fingerprint</h2><br>
-                <span id="components"></span>
-                <button type="button" class="btn btn-lg btn-primary btn-block" id="btn">Get My Fingerprint</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="container-fluid tran-gray">
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-12 text-center team-info">
-                    <h2>Team B01</h2>
-                    <p class="team-sub">Software Capstone Project, Yonsei University</p>
-            </div>
-            <div class="col-sm-12">
-                <div class="col-sm-4">
-                    <div class="team-card">
-                        <div class="profile-card">
-                      <header>
-                        <a target="_blank" href="mailto:mjkim610@gmail.com?Subject=Regarding%20Sherlock">
-                          <img src="img/team/1.jpg" class="hoverZoomLink">
-                        </a>
-                        <h1>Myung-jong Kim</h1>
-                        <h2>Developer</h2>
-                      </header>
-
-                      <!-- bit of a bio; who are you? -->
-                      <div class="profile-bio">
-                        <p>Yonsei University</p>
-                        <p>Computer Science</p>
-                        <p>mjkim610@gmail.com</p>
-                      </div>
-
-                      <!-- some social links to show off -->
-                      <ul class="profile-social-links">
-                        <li><a target="_blank" href="https://www.facebook.com/creativedonut"><i class="fa fa-facebook"></i></a></li>
-                        <li><a target="_blank" href="https://github.com/mjkim610"><i class="fa fa-github"></i></a></li>
-                        <li><a target="_blank" href="mailto:mjkim610@gmail.com?Subject=Regarding%20Sherlock"><i class="fa fa-envelope"></i></a></li>
-                      </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-4">
-                    <div class="team-card">
-                        <div class="profile-card">
-                      <header>
-                        <a target="_blank" href="mailto:jhoney7374@gmail.com?Subject=Regarding%20Sherlock">
-                          <img src="img/team/2.jpg" class="hoverZoomLink">
-                        </a>
-                        <h1>Chunghun Kim</h1>
-                        <h2>Developer</h2>
-                      </header>
-
-                      <!-- bit of a bio; who are you? -->
-                      <div class="profile-bio">
-                        <p>Yonsei University</p>
-                        <p>Computer Science</p>
-                        <p>jhoney7374@gmail.com</p>
-                      </div>
-
-                      <!-- some social links to show off -->
-                      <ul class="profile-social-links">
-                        <li><a target="_blank" href="https://www.facebook.com/honey.Rnf"><i class="fa fa-facebook"></i></a></li>
-                        <li><a target="_blank" href="https://github.com/restforest"><i class="fa fa-github"></i></a></li>
-                        <li><a target="_blank" href="mailto:jhoney7374@gmail.com?Subject=Regarding%20Sherlock"><i class="fa fa-envelope"></i></a></li>
-                      </ul>
-
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-4">
-                    <div class="team-card">
-                        <div class="profile-card">
-                      <header>
-                        <a target="_blank" href="mailto:sullamij@naver.com?Subject=Regarding%20Sherlock">
-                          <img src="img/team/3.jpg" class="hoverZoomLink">
-                        </a>
-                        <h1>Sullam Jeong</h1>
-                        <h2>Developer</h2>
-                      </header>
-
-                      <!-- bit of a bio; who are you? -->
-                      <div class="profile-bio">
-                        <p>Yonsei University</p>
-                        <p>Theology/Computer Science</p>
-                        <p>sullamij@naver.com</p>
-                      </div>
-
-                      <!-- some social links to show off -->
-                      <ul class="profile-social-links">
-                        <li><a target="_blank" href="https://www.facebook.com/creativedonut"><i class="fa fa-facebook"></i></a></li>
-                        <li><a target="_blank" href="https://github.com/sullamij"><i class="fa fa-github"></i></a></li>
-                        <li><a target="_blank" href="mailto:sullamij@naver.com?Subject=Regarding%20Sherlock"><i class="fa fa-envelope"></i></a></li>
-                      </ul>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<?php
-    require_once "lib/footer.php"
-?>
-
-<script>
-  function flip()
-  {
-    if($("#explain_image").css("display") == 'block')
-    {
-      $("#explain_image").css("display","none");
-    }
-    else if($("#explain_en_image").css("display") == 'block')
-    {
-      $("#explain_en_image").css("display","none");
-      $("#explain_image").css("display","block");
-      $('html, body').animate({scrollTop: $("#explain_image").offset().top}, 1200);
-    }
-    else
-    {
-      $("#explain_image").css("display","block");
-      $('html, body').animate({scrollTop: $("#explain_image").offset().top}, 1200);
-    }
-
-  };
-
-  function flip_en()
-  {
-    if($("#explain_en_image").css("display") == 'block')
-    {
-      $("#explain_en_image").css("display","none");
-    }
-    else if($("#explain_image").css("display") == 'block')
-    {
-      $("#explain_image").css("display","none");
-      $("#explain_en_image").css("display","block");
-      $('html, body').animate({scrollTop: $("#explain_en_image").offset().top}, 1200);
-    }
-    else
-    {
-      $("#explain_en_image").css("display","block");
-      $('html, body').animate({scrollTop: $("#explain_en_image").offset().top}, 1200);
-    }
-  };
-
-  $("#form-login").keyup(function(event) {
-    if(event.keyCode == 13) {
-      $("#btn_submit_login").click();
-    }
-  });
-
-    $(document).ready(function() {
-        // Add smooth scrolling to all links in navbar + footer link
-        $(".navbar a, footer a[href='#']").on('click', function(event) {
-            // Make sure this.hash has a value before overriding default behavior
-            if (this.hash !== "") {
-                // Prevent default anchor click behavior
-                event.preventDefault();
-
-                // Store hash
-                var hash = this.hash;
-
-                // Using jQuery's animate() method to add smooth page scroll
-                // The optional number (900) specifies the number of milliseconds it takes to scroll to the specified area
-                $('html, body').animate({
-                    scrollTop: $(hash).offset().top
-                }, 900, function() {
-
-                    // Add hash (#) to URL when done scrolling (default click behavior)
-                    window.location.hash = hash;
-                });
-            } // End if
-        });
-    })
-</script>
-
-<script>
-    $("#btn").on("click", function () {
-        var d1 = new Date();
-        var fp = new Fingerprint2();
-        fp.get(function(result, components,a,b) {
-            var d2 = new Date();
-            var timeString = "Time took to calculate the fingerprint: " + (d2 - d1) + "ms";
-
-            var output = '';
-            var linenumber = 1;
-            for (var property in components) {
-                output += linenumber + ': <b>' + components[property]['key'] + '</b><br>' + String(components[property]['value']).substring(0, 1248)+'<br><br>';
-                linenumber++;
-            }
-            var ip = $("#ip")[0].innerHTML;
-            output += linenumber + ': <b>' + 'ip_address' + '</b><br>' + ip.substring(0, 1248)+'<br><br>';
+/*
+ *---------------------------------------------------------------
+ * VIEW DIRECTORY NAME
+ *---------------------------------------------------------------
+ *
+ * If you want to move the view directory out of the application
+ * directory, set the path to it here. The directory can be renamed
+ * and relocated anywhere on your server. If blank, it will default
+ * to the standard location inside your application directory.
+ * If you do move this, use an absolute (full) server path.
+ *
+ * NO TRAILING SLASH!
+ */
+	$view_folder = '';
 
 
-            $("#fp").text(result);
-            $("#time").text(timeString);
-            $("#components").html(output);
-        });
-    });
-</script>
+/*
+ * --------------------------------------------------------------------
+ * DEFAULT CONTROLLER
+ * --------------------------------------------------------------------
+ *
+ * Normally you will set your default controller in the routes.php file.
+ * You can, however, force a custom routing by hard-coding a
+ * specific controller class/function here. For most applications, you
+ * WILL NOT set your routing here, but it's an option for those
+ * special instances where you might want to override the standard
+ * routing in a specific front controller that shares a common CI installation.
+ *
+ * IMPORTANT: If you set the routing here, NO OTHER controller will be
+ * callable. In essence, this preference limits your application to ONE
+ * specific controller. Leave the function name blank if you need
+ * to call functions dynamically via the URI.
+ *
+ * Un-comment the $routing array below to use this feature
+ */
+	// The directory name, relative to the "controllers" directory.  Leave blank
+	// if your controller is not in a sub-directory within the "controllers" one
+	// $routing['directory'] = '';
+
+	// The controller class file name.  Example:  mycontroller
+	// $routing['controller'] = '';
+
+	// The controller function you wish to be called.
+	// $routing['function']	= '';
+
+
+/*
+ * -------------------------------------------------------------------
+ *  CUSTOM CONFIG VALUES
+ * -------------------------------------------------------------------
+ *
+ * The $assign_to_config array below will be passed dynamically to the
+ * config class when initialized. This allows you to set custom config
+ * items or override any default config values found in the config.php file.
+ * This can be handy as it permits you to share one application between
+ * multiple front controller files, with each file containing different
+ * config values.
+ *
+ * Un-comment the $assign_to_config array below to use this feature
+ */
+	// $assign_to_config['name_of_config_item'] = 'value of config item';
+
+
+
+// --------------------------------------------------------------------
+// END OF USER CONFIGURABLE SETTINGS.  DO NOT EDIT BELOW THIS LINE
+// --------------------------------------------------------------------
+
+/*
+ * ---------------------------------------------------------------
+ *  Resolve the system path for increased reliability
+ * ---------------------------------------------------------------
+ */
+
+	// Set the current directory correctly for CLI requests
+	if (defined('STDIN'))
+	{
+		chdir(dirname(__FILE__));
+	}
+
+	if (($_temp = realpath($system_path)) !== FALSE)
+	{
+		$system_path = $_temp.DIRECTORY_SEPARATOR;
+	}
+	else
+	{
+		// Ensure there's a trailing slash
+		$system_path = strtr(
+			rtrim($system_path, '/\\'),
+			'/\\',
+			DIRECTORY_SEPARATOR.DIRECTORY_SEPARATOR
+		).DIRECTORY_SEPARATOR;
+	}
+
+	// Is the system path correct?
+	if ( ! is_dir($system_path))
+	{
+		header('HTTP/1.1 503 Service Unavailable.', TRUE, 503);
+		echo 'Your system folder path does not appear to be set correctly. Please open the following file and correct this: '.pathinfo(__FILE__, PATHINFO_BASENAME);
+		exit(3); // EXIT_CONFIG
+	}
+
+/*
+ * -------------------------------------------------------------------
+ *  Now that we know the path, set the main path constants
+ * -------------------------------------------------------------------
+ */
+	// The name of THIS file
+	define('SELF', pathinfo(__FILE__, PATHINFO_BASENAME));
+
+	// Path to the system directory
+	define('BASEPATH', $system_path);
+
+	// Path to the front controller (this file) directory
+	define('FCPATH', dirname(__FILE__).DIRECTORY_SEPARATOR);
+
+	// Name of the "system" directory
+	define('SYSDIR', basename(BASEPATH));
+
+	// The path to the "application" directory
+	if (is_dir($application_folder))
+	{
+		if (($_temp = realpath($application_folder)) !== FALSE)
+		{
+			$application_folder = $_temp;
+		}
+		else
+		{
+			$application_folder = strtr(
+				rtrim($application_folder, '/\\'),
+				'/\\',
+				DIRECTORY_SEPARATOR.DIRECTORY_SEPARATOR
+			);
+		}
+	}
+	elseif (is_dir(BASEPATH.$application_folder.DIRECTORY_SEPARATOR))
+	{
+		$application_folder = BASEPATH.strtr(
+			trim($application_folder, '/\\'),
+			'/\\',
+			DIRECTORY_SEPARATOR.DIRECTORY_SEPARATOR
+		);
+	}
+	else
+	{
+		header('HTTP/1.1 503 Service Unavailable.', TRUE, 503);
+		echo 'Your application folder path does not appear to be set correctly. Please open the following file and correct this: '.SELF;
+		exit(3); // EXIT_CONFIG
+	}
+
+	define('APPPATH', $application_folder.DIRECTORY_SEPARATOR);
+
+	// The path to the "views" directory
+	if ( ! isset($view_folder[0]) && is_dir(APPPATH.'views'.DIRECTORY_SEPARATOR))
+	{
+		$view_folder = APPPATH.'views';
+	}
+	elseif (is_dir($view_folder))
+	{
+		if (($_temp = realpath($view_folder)) !== FALSE)
+		{
+			$view_folder = $_temp;
+		}
+		else
+		{
+			$view_folder = strtr(
+				rtrim($view_folder, '/\\'),
+				'/\\',
+				DIRECTORY_SEPARATOR.DIRECTORY_SEPARATOR
+			);
+		}
+	}
+	elseif (is_dir(APPPATH.$view_folder.DIRECTORY_SEPARATOR))
+	{
+		$view_folder = APPPATH.strtr(
+			trim($view_folder, '/\\'),
+			'/\\',
+			DIRECTORY_SEPARATOR.DIRECTORY_SEPARATOR
+		);
+	}
+	else
+	{
+		header('HTTP/1.1 503 Service Unavailable.', TRUE, 503);
+		echo 'Your view folder path does not appear to be set correctly. Please open the following file and correct this: '.SELF;
+		exit(3); // EXIT_CONFIG
+	}
+
+	define('VIEWPATH', $view_folder.DIRECTORY_SEPARATOR);
+
+/*
+ * --------------------------------------------------------------------
+ * LOAD THE BOOTSTRAP FILE
+ * --------------------------------------------------------------------
+ *
+ * And away we go...
+ */
+require_once BASEPATH.'core/CodeIgniter.php';
