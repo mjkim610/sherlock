@@ -21,7 +21,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <div class="account-wall">
                     <img class="profile-img" src="<?=site_url('static/img/team/1.jpg')?>"
                         alt="">
-                    <form class="form-signin">
+                    <form class="form-signup">
                         <input type="email" class="form-control" id="sherlock_email" name="email" placeholder="Email" required autofocus>
                         <input type="password" class="form-control" id="sherlock_password" name="password" placeholder="Password" required>
                         <input type="password" class="form-control" id="sherlock_pin" name="pin" placeholder="PIN" required>
@@ -30,12 +30,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <a href="#" class="pull-right need-help">Need help? </a><span class="clearfix"></span>
                     </form>
                 </div>
-                <a href="<?=site_url('login')?>" class="text-center new-account" id="wow" onclick="javascript">Log in </a>
-
+                <a href="<?=site_url('login')?>" class="text-center additional-message" id="wow" onclick="javascript">Log in </a>
             </div>
         </div>
     </div>
-
 </body>
 </html>
 

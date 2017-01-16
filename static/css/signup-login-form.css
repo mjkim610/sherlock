@@ -1,18 +1,18 @@
-.form-signin
+.form-signup, .form-login
 {
     max-width: 330px;
     padding: 15px;
     margin: 0 auto;
 }
-.form-signin .form-signin-heading, .form-signin .checkbox
+.form-signup .form-signup-heading, .form-signup .checkbox, .form-login .form-login-heading, .form-login .checkbox
 {
     margin-bottom: 10px;
 }
-.form-signin .checkbox
+.form-signup .checkbox, .form-login .checkbox
 {
     font-weight: normal;
 }
-.form-signin .form-control
+.form-signup .form-control. .form-login .form-control
 {
     position: relative;
     font-size: 16px;
@@ -22,17 +22,17 @@
     -moz-box-sizing: border-box;
     box-sizing: border-box;
 }
-.form-signin .form-control:focus
+.form-signup .form-control:focus, .form-login .form-control:focus
 {
     z-index: 2;
 }
-.form-signin input[name="email"]
+.form-signup input[name="email"]
 {
     margin-bottom: -1px;
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
 }
-.form-signin input[name="password"]
+.form-signup input[name="password"]
 {
     margin-bottom: -1px;
     border-top-left-radius: 0;
@@ -40,12 +40,25 @@
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
 }
-.form-signin input[name="pin"]
+.form-signup input[name="pin"]
 {
     margin-bottom: -1px;
     border-top-left-radius: 0;
     border-top-right-radius: 0;
 }
+.form-login input[name="email"]
+{
+    margin-bottom: -1px;
+}
+.form-login input[name="password"]
+{
+    margin-bottom: -1px;
+}
+.form-login input[name="pin"]
+{
+    margin-bottom: -1px;
+}
+
 .account-wall
 {
     margin-top: 20px;
@@ -76,14 +89,14 @@
 {
     margin-top: 10px;
 }
-.new-account
+.additional-message
 {
     display: block;
     margin-top: 10px;
 }
 
 /* -------------------- custom styles ------------------------- */
-.form-signin button[type="button"]
+.form-signup button[type="button"], .form-login button[type="button"]
 {
     margin-top: 10px;
 }
