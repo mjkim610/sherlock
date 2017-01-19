@@ -95,7 +95,7 @@ sherlock = {
             var arr = Array();
             for(var i = 0; i < components.length; i++)
             {
-              arr.push(CryptoJS.SHA256(components[i]['value'].toString()).toString());
+              arr.push(CryptoJS.SHA256(components[i]['value'].toString()+components[i]['key'].toString()+$('#sherlock_email').val()).toString());
             }
 
             $.ajax({
@@ -185,7 +185,7 @@ sherlock = {
             var arr = Array();
             for(var i = 0; i < components.length; i++)
             {
-              arr.push(CryptoJS.SHA256(components[i]['value'].toString()).toString());
+              arr.push(CryptoJS.SHA256(components[i]['value'].toString()+components[i]['key'].toString()+$('#sherlock_email').val()).toString());
             }
 
             if($('#sherlock_password').val())
