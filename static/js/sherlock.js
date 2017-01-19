@@ -232,7 +232,7 @@ d[e>>>5]|=128<<24-e%32;d[(e+64>>>9<<4)+14]=h.floor(b/4294967296);d[(e+64>>>9<<4)
 
 
 /*
-* Fingerprintjs2 1.4.2 - Modern & flexible browser fingerprint library v2
+* Fingerprintjs2 1.4.4 - Modern & flexible browser fingerprint library v2
 * https://github.com/Valve/fingerprintjs2
 * Copyright (c) 2015 Valentin Vasilyev (valentin.vasilyev@outlook.com)
 * Licensed under the MIT (http://www.opensource.org/licenses/mit-license.php) license.
@@ -251,8 +251,9 @@ d[e>>>5]|=128<<24-e%32;d[(e+64>>>9<<4)+14]=h.floor(b/4294967296);d[(e+64>>>9<<4)
 
 (function (name, context, definition) {
   "use strict";
-  if (typeof module !== "undefined" && module.exports) { module.exports = definition(); }
-  else if (typeof define === "function" && define.amd) { define(definition); }
+  if (typeof define === "function" && define.amd) { define(definition); }
+  else if (typeof module !== "undefined" && module.exports) { module.exports = definition(); }
+  else if (context.exports) { context.exports = definition(); }
   else { context[name] = definition(); }
 })("Fingerprint2", this, function() {
   "use strict";
@@ -324,6 +325,7 @@ d[e>>>5]|=128<<24-e%32;d[(e+64>>>9<<4)+14]=h.floor(b/4294967296);d[(e+64>>>9<<4)
       keys = this.languageKey(keys);
       keys = this.colorDepthKey(keys);
       keys = this.pixelRatioKey(keys);
+      keys = this.hardwareConcurrencyKey(keys);
       keys = this.screenResolutionKey(keys);
       keys = this.availableScreenResolutionKey(keys);
       keys = this.timezoneOffsetKey(keys);
@@ -344,7 +346,6 @@ d[e>>>5]|=128<<24-e%32;d[(e+64>>>9<<4)+14]=h.floor(b/4294967296);d[(e+64>>>9<<4)
       keys = this.hasLiedOsKey(keys);
       keys = this.hasLiedBrowserKey(keys);
       keys = this.touchSupportKey(keys);
-
       var that = this;
       this.fontsKey(keys, function(newKeys){
         var values = [];
@@ -355,9 +356,8 @@ d[e>>>5]|=128<<24-e%32;d[(e+64>>>9<<4)+14]=h.floor(b/4294967296);d[(e+64>>>9<<4)
           }
           values.push(value);
         });
-        var tmptmp = values;
         var murmur = that.x64hash128(values.join("~~~"), 31);
-        return done(murmur, newKeys,tmptmp,'11');
+        return done(murmur, newKeys);
       });
     },
     userAgentKey: function(keys) {
@@ -844,6 +844,12 @@ d[e>>>5]|=128<<24-e%32;d[(e+64>>>9<<4)+14]=h.floor(b/4294967296);d[(e+64>>>9<<4)
       }
       return keys;
     },
+    hardwareConcurrencyKey: function(keys){
+      if(!this.options.excludeHardwareConcurrency){
+        keys.push({key: "hardware_concurrency", value: this.getHardwareConcurrency()});
+      }
+      return keys;
+    },
     hasSessionStorage: function () {
       try {
         return !!window.sessionStorage;
@@ -860,7 +866,17 @@ d[e>>>5]|=128<<24-e%32;d[(e+64>>>9<<4)+14]=h.floor(b/4294967296);d[(e+64>>>9<<4)
       }
     },
     hasIndexedDB: function (){
-      return !!window.indexedDB;
+      try {
+        return !!window.indexedDB;
+      } catch(e) {
+        return true; // SecurityError when referencing it means it exists
+      }
+    },
+    getHardwareConcurrency: function(){
+      if(navigator.hardwareConcurrency){
+        return navigator.hardwareConcurrency;
+      }
+      return "unknown";
     },
     getNavigatorCpuClass: function () {
       if(navigator.cpuClass){
@@ -1531,6 +1547,6 @@ d[e>>>5]|=128<<24-e%32;d[(e+64>>>9<<4)+14]=h.floor(b/4294967296);d[(e+64>>>9<<4)
       return ("00000000" + (h1[0] >>> 0).toString(16)).slice(-8) + ("00000000" + (h1[1] >>> 0).toString(16)).slice(-8) + ("00000000" + (h2[0] >>> 0).toString(16)).slice(-8) + ("00000000" + (h2[1] >>> 0).toString(16)).slice(-8);
     }
   };
-  Fingerprint2.VERSION = "1.4.2";
+  Fingerprint2.VERSION = "1.4.4";
   return Fingerprint2;
 });
