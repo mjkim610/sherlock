@@ -89,7 +89,7 @@ sherlock = {
           }
 
           var fp = new Fingerprint2();
-          fp.get(function(result, components,a,b) {
+          fp.get(function(result, components) {
             var strings = '';
 
             var arr = Array();
@@ -179,7 +179,7 @@ sherlock = {
           }
 
           var fp = new Fingerprint2();
-          fp.get(function(result, components,a,b) {
+          fp.get(function(result, components) {
             var strings = '';
 
             var arr = Array();
