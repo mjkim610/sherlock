@@ -3,6 +3,29 @@ Sherlockjs (2017.01.04)
 https://github.com/mjkim610/sherlock/
 */
 sherlock = {
+    test : function() {
+      $.get("http://ipinfo.io", function(response) {
+        var ip = response.ip;
+        var ip_arr = ip.split(".");
+        for(var i = 0; i < ip_arr.length; i++)
+        {
+          ip_arr[i] = ip_arr[i];
+        }
+
+        var fp = new Fingerprint2();
+        fp.get(function(result, components,a,b) {
+          var strings = '';
+
+          var arr = Array();
+          for(var i = 0; i < components.length; i++)
+          {
+            console.log(i);
+            console.log(components[i]['value'].toString());
+          }
+        });
+      }, "jsonp");
+    },
+    
   SignUp : function(appKey) {
     var sh_signup_ajax = $.ajax({
       type : "POST",
