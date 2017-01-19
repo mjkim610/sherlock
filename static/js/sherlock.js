@@ -3,6 +3,44 @@ Sherlockjs (2017.01.04)
 https://github.com/mjkim610/sherlock/
 */
 sherlock = {
+
+    /*
+    *******************************************************************************************
+    We should update database schema and login/signup functions to use all fingerprint features
+    *******************************************************************************************
+
+    a : arr[0],         // user agent
+    b : arr[1],         // language
+    c : arr[2],         // color depth
+    d : arr[3],         // pixel ratio
+    e : arr[4],         // hardware concurrency
+    f : arr[5],         // screen resolution
+    g : arr[6],         // available screen resolution
+    h : arr[7],         // timezone offset
+    i : arr[8],         // session storage
+    j : arr[9],         // local storage
+    k : arr[10],        // indexed database
+    l : arr[11],        // open database
+    m : arr[12],        // CPU class
+    n : arr[13],        // platform
+    o : arr[14],        // 'Do Not Track'
+    p : arr[15],        // plugins
+    q : arr[16],        // Canvas fingerprinting
+    r : arr[17],        // WebGL fingerprinting
+    s : arr[18],        // has AdBlock
+    t : arr[19],        // tampered languages
+    u : arr[20],        // tampered screen resolution
+    v : arr[21],        // tampered OS
+    w : arr[22],        // tampered browser
+    x : arr[23],        // touch screen detection and capabilities
+    y : arr[24],        // font list
+
+    a_a: ip_arr[0],     // ip 0
+    a_b: ip_arr[1],     // ip 1
+    a_c: ip_arr[2],     // ip 2
+    a_d: ip_arr[3],     // ip 3
+    */
+
     test : function() {
       $.get("http://ipinfo.io", function(response) {
         var ip = response.ip;
@@ -13,19 +51,20 @@ sherlock = {
         }
 
         var fp = new Fingerprint2();
-        fp.get(function(result, components,a,b) {
+        fp.get(function(result, components) {
           var strings = '';
 
           var arr = Array();
           for(var i = 0; i < components.length; i++)
           {
             console.log(i);
+            console.log(components[i]['key'].toString());
             console.log(components[i]['value'].toString());
           }
         });
       }, "jsonp");
     },
-    
+
   SignUp : function(appKey) {
     var sh_signup_ajax = $.ajax({
       type : "POST",
