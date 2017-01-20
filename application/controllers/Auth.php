@@ -153,4 +153,14 @@ class Auth extends CI_Controller {
 
     echo json_encode($res);
 	}
+
+	public function auth($type = 'fp', $email = 'none', $token = 'none')
+	{
+		$datas = array(
+			'type' => $type,
+			'email' => $email,
+			'token' => $token
+		);
+		$this->load->view('auth', $datas);
+	}
 }
