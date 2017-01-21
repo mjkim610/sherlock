@@ -18,11 +18,11 @@
       <div class="account-wall">
         <img class="profile-img" src="<?=site_url('static/img/team/1.jpg')?>"
         alt="">
-        <form class="form-signup" action="<?=site_url('auth/provider_signup')?>" method="post">
-          <input type="email" class="form-control" name="email" placeholder="Email" value="<?=$this->session->flashdata('email')?>" required autofocus>
-          <input type="password" class="form-control" name="password" placeholder="Password" required>
-          <input type="text" class="form-control" name="name" placeholder="Name" value="<?=$this->session->flashdata('name')?>" required>
-          <input type="text" class="form-control" name="phone" placeholder="Phone number (xxx-xxxx-xxxx)" value="<?=$this->session->flashdata('phone')?>" required>
+        <form class="form-signup" action="<?=site_url('auth/provider_signup')?>" method="post" onsubmit="return check_provider_signup();">
+          <input type="email" class="form-control" id="form_email" name="email" placeholder="Email" value="<?=$this->session->flashdata('email')?>" required autofocus>
+          <input type="password" class="form-control" id="form_password" name="password" placeholder="Password" required>
+          <input type="text" class="form-control" id="form_name" name="name" placeholder="Name" value="<?=$this->session->flashdata('name')?>" required>
+          <input type="text" class="form-control" id="form_phone" name="phone" placeholder="Phone number (xxx-xxxx-xxxx)" value="<?=$this->session->flashdata('phone')?>" required>
           <button class="btn btn-lg btn-primary btn-block" type="submit" id="wow">Sign up</button>
           <a href="#" class="pull-right need-help">Need help? </a><span class="clearfix"></span>
           <a href="<?=site_url('signup')?>" class="pull-right need-help">Sign up as user </a><span class="clearfix"></span>
@@ -34,8 +34,44 @@
   </div>
 </div>
 
-<!-- <script type="text/javascript">
-function sherlock_signup() {
-  sherlock.SignUp('QWERTY');
-};
-</script> -->
+<script type="text/javascript">
+  function check_provider_signup()
+  {
+    var email = $('#form_email').val();
+    var password = $('#form_password').val();
+    var name = $('#form_name').val();
+    var phone = $('#form_phone').val();
+
+    if(email == '')
+    {
+      alert('이메일을 입력해주세요');
+      $('#form_email').focus();
+      return false;
+    }
+    if(password == '')
+    {
+      alert('비밀번호를 입력해주세요');
+      $('#form_password').focus();
+      return false;
+    }
+    if(name == '')
+    {
+      alert('이름을 입력해주세요');
+      $('#form_name').focus();
+      return false;
+    }
+    if(phone == '')
+    {
+      alert('연락가능한 전화번호를 입력해주세요');
+      $('#form_phone').focus();
+      return false;
+    }
+    if(!(/([0-9]{3})-([0-9]{3,4})-([0-9]{4})$/.test(phone)))
+    {
+      alert('전화번호의 형식은 xxx-xxxx-xxxx 입니다');
+      $('#form_phone').focus();
+      return false;
+    }
+    return true;
+  }
+</script>
