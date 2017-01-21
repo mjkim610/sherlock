@@ -56,7 +56,7 @@ class Auth_model extends CI_Model
       {
         $this->session->set_userdata(array('is_login'=> TRUE));
         $this->session->set_userdata(array('user_email'=> $datas['email']));
-        $this->session->set_userdata(array('user_id'=> $user->user_id));
+        $this->session->set_userdata(array('user_id'=> $created_id));
         $this->session->set_userdata(array('user_type'=> 'user_type'));
         return 'ok';
       }
@@ -92,7 +92,7 @@ class Auth_model extends CI_Model
       {
         $this->session->set_userdata(array('is_login'=> TRUE));
         $this->session->set_userdata(array('user_email'=> $datas['email']));
-        $this->session->set_userdata(array('user_id'=> $provider->provider_id));
+        $this->session->set_userdata(array('user_id'=> $created_id));
         $this->session->set_userdata(array('user_type'=> 'provider'));
         return 'ok';
       }
