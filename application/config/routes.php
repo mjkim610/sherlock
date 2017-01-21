@@ -5,6 +5,7 @@ $route['default_controller'] = 'home';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
+$route['about'] = 'home/about';
 $route['login'] = 'welcome/login';
 $route['signup'] = 'welcome/signup';
 $route['provider-signup'] = 'welcome/provider_signup';
