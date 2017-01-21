@@ -12,16 +12,14 @@ class Auth extends CI_Controller {
 	    parent::__construct();
 	}
 
-	public function index($what = 'signup')
+	public function auth($type = 'fp', $email = 'none', $token = 'none')
 	{
-		if($what == 'signup')
-		{
-			$this->load->view('signup');
-		}
-		else
-		{
-			$this->load->view('login');
-		}
+		$datas = array(
+			'type' => $type,
+			'email' => $email,
+			'token' => $token
+		);
+		$this->load->view('auth/auth_login', $datas);
 	}
 
 	public function init()
@@ -138,15 +136,5 @@ class Auth extends CI_Controller {
 		$res = $this->sherlock_model->login($datas);
 
     echo json_encode($res);
-	}
-
-	public function auth($type = 'fp', $email = 'none', $token = 'none')
-	{
-		$datas = array(
-			'type' => $type,
-			'email' => $email,
-			'token' => $token
-		);
-		$this->load->view('auth', $datas);
 	}
 }
