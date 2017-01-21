@@ -26,4 +26,11 @@ class Welcome extends CI_Controller {
 		$this->load->view('welcome/signup');
 		$this->load->view('welcome/footer');
 	}
+
+	public function provider_signup()
+	{
+		$this->load->view('welcome/head');
+		$this->load->view('welcome/provider_signup');
+		$this->load->view('welcome/footer');
+	}
 }

@@ -7,3 +7,4 @@ $route['translate_uri_dashes'] = FALSE;
 
 $route['login'] = 'welcome/login';
 $route['signup'] = 'welcome/signup';
+$route['provider-signup'] = 'welcome/provider_signup';
