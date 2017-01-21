@@ -18,10 +18,10 @@
       <div class="account-wall">
         <img class="profile-img" src="<?=site_url('static/img/team/1.jpg')?>"
         alt="">
-        <form class="form-signup" action="<?=site_url('auth/signup')?>" method="post">
-          <input type="email" class="form-control" id="sherlock_email" name="email" placeholder="Email" value="<?=$this->session->flashdata('email')?>" required autofocus>
-          <input type="password" class="form-control" id="sherlock_password" name="password" placeholder="Password" required>
-          <input type="password" class="form-control" id="sherlock_pin" name="pin" placeholder="PIN" required>
+        <form class="form-signup" action="<?=site_url('auth/signup')?>" method="post" onsubmit="return check_signup();">
+          <input type="email" class="form-control" id="form_email" name="email" placeholder="Email" value="<?=$this->session->flashdata('email')?>" required autofocus>
+          <input type="password" class="form-control" id="form_password" name="password" placeholder="Password" required>
+          <input type="password" class="form-control" id="form_pin" name="pin" placeholder="PIN" required>
           <button class="btn btn-lg btn-primary btn-block" type="submit" id="wow">Sign up</button>
           <a href="#" class="pull-right need-help">Need help? </a><span class="clearfix"></span>
           <a href="<?=site_url('provider-signup')?>" class="pull-right need-help">Sign up as provider </a><span class="clearfix"></span>
@@ -33,8 +33,37 @@
   </div>
 </div>
 
-<!-- <script type="text/javascript">
-function sherlock_signup() {
-  sherlock.SignUp('QWERTY');
-};
-</script> -->
+<script type="text/javascript">
+  function check_signup()
+  {
+    var email = $('#form_email').val();
+    var password = $('#form_password').val();
+    var pin = $('#form_pin').val();
+
+    if(email == '')
+    {
+      alert('이메일을 입력해주세요');
+      $('#form_email').focus();
+      return false;
+    }
+    if(password == '')
+    {
+      alert('비밀번호를 입력해주세요');
+      $('#form_password').focus();
+      return false;
+    }
+    if(pin == '')
+    {
+      alert('핀번호를 입력해주세요');
+      $('#form_pin').focus();
+      return false;
+    }
+    if(!(/^\d{4}$/.test(pin)))
+    {
+      alert('핀번호는 4자리 숫자의 형식이어야 합입니다');
+      $('#form_pin').focus();
+      return false;
+    }
+    return true;
+  }
+</script>
