@@ -18,12 +18,17 @@
         <?php if ($this->session->userdata('user_id')): ?>
           <li class="dropdown" style="<?=($this->uri->segment(1) == 'my') ? $nav_menu_css:''?>"><a class="dropdown-toggle" data-toggle="dropdown" href="#">My sherlock<span class="caret"></span></a>
             <ul class="dropdown-menu">
-              <!-- ntbf 관리자, 유저 구분하고 각각에 메뉴 구성하기 -->
-              <li><a href="<?=site_url('my/my-app')?>" style="<?=($this->uri->segment(2) == 'my-app') ? $nav_menu_css:''?>">나의 앱</a></li>
-              <li><a href="<?=site_url('my/what')?>" style="<?=($this->uri->segment(2) == 'users') ? $nav_menu_css:''?>">뭘 넣지?</a></li>
+            <!-- ntbf 관리자, 유저 구분하고 각각에 메뉴 구성하기 -->
+            <?php if ($this->session->userdata('user_type') == 'user'): ?>
+              <li><a href="<?=site_url('my/fingerprint')?>" style="<?=($this->uri->segment(2) == 'fingerprint') ? $nav_menu_css:''?>">나의 지문</a></li>
+              <li><a href="<?=site_url('my/user2')?>" style="<?=($this->uri->segment(2) == 'user2') ? $nav_menu_css:''?>">유저 메뉴2</a></li>
+            <?php elseif ($this->session->userdata('user_type') == 'provider'): ?>
+              <li><a href="<?=site_url('my/app')?>" style="<?=($this->uri->segment(2) == 'app') ? $nav_menu_css:''?>">나의 앱</a></li>
+              <li><a href="<?=site_url('my/provider2')?>" style="<?=($this->uri->segment(2) == 'provider2') ? $nav_menu_css:''?>">관리자 메뉴2</a></li>
+            <?php endif; ?>
             </ul>
           </li>
-          <li><a href="<?=site_url('user');?>">개인 정보 수정</a></li>
+          <li><a href="<?=site_url('user');?>" style="<?=($this->uri->segment(1) == 'user') ? $nav_menu_css:''?>">개인 정보 수정</a></li>
           <li><a href="<?=site_url('auth/logout');?>">로그아웃</a></li>
         <?php else: ?>
           <li><a href="<?=site_url('signup');?>">회원가입</a></li>
