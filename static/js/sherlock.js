@@ -3,6 +3,68 @@ Sherlockjs (2017.01.04)
 https://github.com/mjkim610/sherlock/
 */
 sherlock = {
+
+    /*
+    *******************************************************************************************
+    We should update database schema and login/signup functions to use all fingerprint features
+    *******************************************************************************************
+
+    a : arr[0],         // user agent
+    b : arr[1],         // language
+    c : arr[2],         // color depth
+    d : arr[3],         // pixel ratio
+    e : arr[4],         // hardware concurrency
+    f : arr[5],         // screen resolution
+    g : arr[6],         // available screen resolution
+    h : arr[7],         // timezone offset
+    i : arr[8],         // session storage
+    j : arr[9],         // local storage
+    k : arr[10],        // indexed database
+    l : arr[11],        // open database
+    m : arr[12],        // CPU class
+    n : arr[13],        // platform
+    o : arr[14],        // 'Do Not Track'
+    p : arr[15],        // plugins
+    q : arr[16],        // Canvas fingerprinting
+    r : arr[17],        // WebGL fingerprinting
+    s : arr[18],        // has AdBlock
+    t : arr[19],        // tampered languages
+    u : arr[20],        // tampered screen resolution
+    v : arr[21],        // tampered OS
+    w : arr[22],        // tampered browser
+    x : arr[23],        // touch screen detection and capabilities
+    y : arr[24],        // font list
+
+    a_a: ip_arr[0],     // ip 0
+    a_b: ip_arr[1],     // ip 1
+    a_c: ip_arr[2],     // ip 2
+    a_d: ip_arr[3],     // ip 3
+    */
+
+    test : function() {
+      $.get("http://ipinfo.io", function(response) {
+        var ip = response.ip;
+        var ip_arr = ip.split(".");
+        for(var i = 0; i < ip_arr.length; i++)
+        {
+          ip_arr[i] = ip_arr[i];
+        }
+
+        var fp = new Fingerprint2();
+        fp.get(function(result, components) {
+          var strings = '';
+
+          var arr = Array();
+          for(var i = 0; i < components.length; i++)
+          {
+            console.log(i);
+            console.log(components[i]['key'].toString());
+            console.log(components[i]['value'].toString());
+          }
+        });
+      }, "jsonp");
+    },
+
   SignUp : function(appKey) {
     var sh_signup_ajax = $.ajax({
       type : "POST",
@@ -27,13 +89,13 @@ sherlock = {
           }
 
           var fp = new Fingerprint2();
-          fp.get(function(result, components,a,b) {
+          fp.get(function(result, components) {
             var strings = '';
 
             var arr = Array();
             for(var i = 0; i < components.length; i++)
             {
-              arr.push(CryptoJS.SHA256(components[i]['value'].toString()).toString());
+              arr.push(CryptoJS.SHA256(components[i]['value'].toString()+components[i]['key'].toString()+$('#sherlock_email').val()).toString());
             }
 
             $.ajax({
@@ -117,13 +179,13 @@ sherlock = {
           }
 
           var fp = new Fingerprint2();
-          fp.get(function(result, components,a,b) {
+          fp.get(function(result, components) {
             var strings = '';
 
             var arr = Array();
             for(var i = 0; i < components.length; i++)
             {
-              arr.push(CryptoJS.SHA256(components[i]['value'].toString()).toString());
+              arr.push(CryptoJS.SHA256(components[i]['value'].toString()+components[i]['key'].toString()+$('#sherlock_email').val()).toString());
             }
 
             if($('#sherlock_password').val())
@@ -232,7 +294,7 @@ d[e>>>5]|=128<<24-e%32;d[(e+64>>>9<<4)+14]=h.floor(b/4294967296);d[(e+64>>>9<<4)
 
 
 /*
-* Fingerprintjs2 1.4.2 - Modern & flexible browser fingerprint library v2
+* Fingerprintjs2 1.4.4 - Modern & flexible browser fingerprint library v2
 * https://github.com/Valve/fingerprintjs2
 * Copyright (c) 2015 Valentin Vasilyev (valentin.vasilyev@outlook.com)
 * Licensed under the MIT (http://www.opensource.org/licenses/mit-license.php) license.
@@ -251,8 +313,9 @@ d[e>>>5]|=128<<24-e%32;d[(e+64>>>9<<4)+14]=h.floor(b/4294967296);d[(e+64>>>9<<4)
 
 (function (name, context, definition) {
   "use strict";
-  if (typeof module !== "undefined" && module.exports) { module.exports = definition(); }
-  else if (typeof define === "function" && define.amd) { define(definition); }
+  if (typeof define === "function" && define.amd) { define(definition); }
+  else if (typeof module !== "undefined" && module.exports) { module.exports = definition(); }
+  else if (context.exports) { context.exports = definition(); }
   else { context[name] = definition(); }
 })("Fingerprint2", this, function() {
   "use strict";
@@ -324,6 +387,7 @@ d[e>>>5]|=128<<24-e%32;d[(e+64>>>9<<4)+14]=h.floor(b/4294967296);d[(e+64>>>9<<4)
       keys = this.languageKey(keys);
       keys = this.colorDepthKey(keys);
       keys = this.pixelRatioKey(keys);
+      keys = this.hardwareConcurrencyKey(keys);
       keys = this.screenResolutionKey(keys);
       keys = this.availableScreenResolutionKey(keys);
       keys = this.timezoneOffsetKey(keys);
@@ -344,7 +408,6 @@ d[e>>>5]|=128<<24-e%32;d[(e+64>>>9<<4)+14]=h.floor(b/4294967296);d[(e+64>>>9<<4)
       keys = this.hasLiedOsKey(keys);
       keys = this.hasLiedBrowserKey(keys);
       keys = this.touchSupportKey(keys);
-
       var that = this;
       this.fontsKey(keys, function(newKeys){
         var values = [];
@@ -355,9 +418,8 @@ d[e>>>5]|=128<<24-e%32;d[(e+64>>>9<<4)+14]=h.floor(b/4294967296);d[(e+64>>>9<<4)
           }
           values.push(value);
         });
-        var tmptmp = values;
         var murmur = that.x64hash128(values.join("~~~"), 31);
-        return done(murmur, newKeys,tmptmp,'11');
+        return done(murmur, newKeys);
       });
     },
     userAgentKey: function(keys) {
@@ -844,6 +906,12 @@ d[e>>>5]|=128<<24-e%32;d[(e+64>>>9<<4)+14]=h.floor(b/4294967296);d[(e+64>>>9<<4)
       }
       return keys;
     },
+    hardwareConcurrencyKey: function(keys){
+      if(!this.options.excludeHardwareConcurrency){
+        keys.push({key: "hardware_concurrency", value: this.getHardwareConcurrency()});
+      }
+      return keys;
+    },
     hasSessionStorage: function () {
       try {
         return !!window.sessionStorage;
@@ -860,7 +928,17 @@ d[e>>>5]|=128<<24-e%32;d[(e+64>>>9<<4)+14]=h.floor(b/4294967296);d[(e+64>>>9<<4)
       }
     },
     hasIndexedDB: function (){
-      return !!window.indexedDB;
+      try {
+        return !!window.indexedDB;
+      } catch(e) {
+        return true; // SecurityError when referencing it means it exists
+      }
+    },
+    getHardwareConcurrency: function(){
+      if(navigator.hardwareConcurrency){
+        return navigator.hardwareConcurrency;
+      }
+      return "unknown";
     },
     getNavigatorCpuClass: function () {
       if(navigator.cpuClass){
@@ -1531,6 +1609,6 @@ d[e>>>5]|=128<<24-e%32;d[(e+64>>>9<<4)+14]=h.floor(b/4294967296);d[(e+64>>>9<<4)
       return ("00000000" + (h1[0] >>> 0).toString(16)).slice(-8) + ("00000000" + (h1[1] >>> 0).toString(16)).slice(-8) + ("00000000" + (h2[0] >>> 0).toString(16)).slice(-8) + ("00000000" + (h2[1] >>> 0).toString(16)).slice(-8);
     }
   };
-  Fingerprint2.VERSION = "1.4.2";
+  Fingerprint2.VERSION = "1.4.4";
   return Fingerprint2;
 });

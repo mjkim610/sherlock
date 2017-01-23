@@ -34,12 +34,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </div>
         </div>
     </div>
+
+    <button class="btn btn-lg btn-primary btn-block" type="button" id="test" onclick="sherlock_test()">Test</button>
+
 </body>
 </html>
 
 <script type="text/javascript">
 function sherlock_signup() {
 	sherlock.SignUp('QWERTY');
+};
+
+function sherlock_test() {
+	sherlock.test();
 };
 
 </script>
