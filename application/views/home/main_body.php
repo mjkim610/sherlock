@@ -13,6 +13,6 @@
 ?>
 <div class="row">
   <div class="col-sm-10 col-sm-offset-1">
-    hello world
+    메인 페이지
   </div>
 </div>

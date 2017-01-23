@@ -12,7 +12,7 @@ class Home extends CI_Controller {
  	{
 		$this->load->view('home/head');
  		$this->load->view('home/nav');
-		$this->load->view('home/body');
+		$this->load->view('home/main_body');
  		$this->load->view('home/footer');
  	}
 
@@ -21,6 +21,14 @@ class Home extends CI_Controller {
 		$this->load->view('home/head');
 		$this->load->view('home/nav');
 		$this->load->view('home/about');
+		$this->load->view('home/footer');
+	}
+
+	public function edit()
+	{
+		$this->load->view('home/head');
+		$this->load->view('home/nav');
+		$this->load->view('home/edit_body');
 		$this->load->view('home/footer');
 	}
 }
