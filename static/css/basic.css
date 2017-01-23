@@ -93,6 +93,9 @@ body {
 .nav>li>a:focus, .nav>li>a:hover{
   background: #003d54;color: #fff;
 }
+.nav .open>a, .nav .open>a:focus, .nav .open>a:hover{
+  background-color: #003d54;
+}
 
 .footer {
   padding-top: 20px;
