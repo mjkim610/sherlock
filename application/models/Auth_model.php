@@ -36,10 +36,13 @@ class Auth_model extends CI_Model
   {
     $this->db->where('email', $data['email']);
     $this->db->from('user');
-    $query=$this->db->get();
-    $user = $query->row();
+    $user = $this->db->get()->row();
 
-    if($user)
+    $this->db->where('email', $data['email']);
+    $this->db->from('provider');
+    $provider = $this->db->get()->row();
+
+    if($provider || $user)
     {
       return 'email existed';
     }
@@ -70,11 +73,14 @@ class Auth_model extends CI_Model
   public function signup_provider($data)
   {
     $this->db->where('email', $data['email']);
-    $this->db->from('provider');
-    $query=$this->db->get();
-    $provider = $query->row();
+    $this->db->from('user');
+    $user = $this->db->get()->row();
 
-    if($provider)
+    $this->db->where('email', $data['email']);
+    $this->db->from('provider');
+    $provider = $this->db->get()->row();
+
+    if($provider || $user)
     {
       return 'email existed';
     }

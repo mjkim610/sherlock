@@ -15,10 +15,9 @@ class Auth extends CI_Controller {
 	public function signup()
 	{
 		// ntbf 중복체크 메세지 버그
-		$this->form_validation->set_rules('email', 'email', 'required|valid_email|callback_unique_email', array(
+		$this->form_validation->set_rules('email', 'email', 'required|valid_email', array(
 	        'required'      => '이메일을 입력해 주세요',
-	        'valid_email'   => '이메일 형식이 잘못되었습니다',
-	        'unique_email'   => '이미 존재하는 이메일입니다'
+	        'valid_email'   => '이메일 형식이 잘못되었습니다'
 	      ));
 		$this->form_validation->set_rules('password', 'password', 'required|min_length[7]|max_length[30]', array(
 	        'required'      => '비밀번호를 입력해 주세요',
@@ -85,10 +84,9 @@ class Auth extends CI_Controller {
 	public function provider_signup()
 	{
 		// ntbf 중복체크 메세지 버그
-		$this->form_validation->set_rules('email', 'email', 'required|valid_email|callback_unique_email', array(
+		$this->form_validation->set_rules('email', 'email', 'required|valid_email', array(
 					'required'      => '이메일을 입력해 주세요',
-					'valid_email'   => '이메일 형식이 잘못되었습니다',
-	        'unique_email'   => '이미 존재하는 이메일입니다'
+					'valid_email'   => '이메일 형식이 잘못되었습니다'
 				));
 		$this->form_validation->set_rules('password', 'password', 'required|min_length[7]|max_length[30]', array(
 					'required'      => '비밀번호를 입력해 주세요',
