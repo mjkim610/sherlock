@@ -10,10 +10,9 @@ class User extends CI_Controller {
       if($this->session->userdata('user_type') != 'user')
       {
         $this->session->set_flashdata('message', '잘못된 접근입니다');
-
         redirect('/');
       }
-      $this->load->model('user_model')
+      $this->load->model('user_model');
 	}
 
 	public function fingerprint()

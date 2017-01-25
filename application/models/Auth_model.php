@@ -60,7 +60,7 @@ class Auth_model extends CI_Model
         $this->session->set_userdata(array('is_login'=> TRUE));
         $this->session->set_userdata(array('user_email'=> $datas['email']));
         $this->session->set_userdata(array('user_id'=> $created_id));
-        $this->session->set_userdata(array('user_type'=> 'user_type'));
+        $this->session->set_userdata(array('user_type'=> 'user'));
         return 'ok';
       }
       else
