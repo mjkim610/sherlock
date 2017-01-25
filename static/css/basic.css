@@ -225,3 +225,17 @@ nav a img {
   height: 50px;
   margin-top: -15px;
 }
+
+/* fingerprint card*/
+.fingerprint_title{
+  display: block;
+  margin: 15px;
+  font-size: 30px;
+}
+.fingerprint_card{
+  box-shadow: 2px 2px 2px 2px rgba(0,0,0,0.05);
+  padding: 15px;
+  background-color: #07060e1a;
+  border-radius: 10px;
+  margin: 30px 0;
+}
