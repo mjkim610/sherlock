@@ -239,3 +239,9 @@ nav a img {
   border-radius: 10px;
   margin: 30px 0;
 }
+.fingerprint_card input{
+  background: transparent;
+  padding: 5px;
+  width: 100%;
+  border: 1px solid rgba(126, 114, 114, 0.3)
+}
