@@ -63,10 +63,10 @@ class Auth extends CI_Controller {
 			{
 				$arr = "<div class='alert success'>";
 				$arr .= "<span class='closebtn'>&times;</span>";
-				$arr .= "<span>가입을 환영합니다</span>";
+				$arr .= "<span>Welcome!! Please regist your Fingerprint</span>";
 				$arr .= "</div>";
 				$this->session->set_flashdata('errors', $arr);
-				redirect('/');
+				redirect('my/fingerprint');
 			}
 			else if($result == 'email existed')
 			{
