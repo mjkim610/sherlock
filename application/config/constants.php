@@ -1,6 +1,9 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+// sherlock part
+defined('MAX_FINGERPRINT_NUM') OR define('MAX_FINGERPRINT_NUM', 3);
+
 /*
 |--------------------------------------------------------------------------
 | Display Debug backtrace
