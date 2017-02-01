@@ -9,7 +9,7 @@ class User extends CI_Controller {
 
       if($this->session->userdata('user_type') != 'user')
       {
-        $this->session->set_flashdata('message', '잘못된 접근입니다');
+        $this->session->set_flashdata('message', 'wrong approach');
         redirect('/');
       }
       $this->load->model('user_model');
@@ -89,5 +89,41 @@ class User extends CI_Controller {
 			}
 			redirect($this->input->post('redirect'));
 		}
+	}
+
+	public function delete_fingerprint($fp_id = 'none')
+	{
+		if($fp_id == 'none')
+		{
+			$this->session->set_flashdata('message', 'wrong approach1');
+			redirect('my/fingerprint');
+		}
+
+		if(!$this->session->userdata('user_id'))
+		{
+			$this->session->set_flashdata('message', 'wrong approach2');
+			redirect('my/fingerprint');
+		}
+
+		$datas = array(
+			'user_id' => $this->session->userdata('user_id'),
+			'fingerprint_id' => $fp_id
+		);
+
+		$res = $this->user_model->delete_fingerprint($datas);
+
+		if($res == 'error' || $res == 'fail')
+		{
+			$this->session->set_flashdata('message', 'wrong approach3');
+			redirect('my/fingerprint');
+		}
+
+		$arr = "<div class='alert success'>";
+		$arr .= "<span class='closebtn'>&times;</span>";
+		$arr .= "<span>Delete Success</span>";
+		$arr .= "</div>";
+		$this->session->set_flashdata('errors', $arr);
+		redirect('my/fingerprint');
+
 	}
 }

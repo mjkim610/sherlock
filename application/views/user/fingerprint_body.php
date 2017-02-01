@@ -19,7 +19,7 @@
 </div>
 
 <script type="text/javascript">
-  function regist_fingerprint(form_id)
+  function regist_fingerprint(form_id)//0~2
   {
     if($('#title_'+form_id).val() == '')
     {
@@ -61,5 +61,14 @@
       $('#fingerprint_form').submit();
     });
     return true;
+  }
+
+  function delete_fingerprint(fp_id)//0~2
+  {
+    var conf = confirm('Really Wanna Delete??');
+    if(conf)
+    {
+      location.href = '<?=site_url('user/delete_fingerprint')?>'+'/'+fp_id;
+    }
   }
 </script>
