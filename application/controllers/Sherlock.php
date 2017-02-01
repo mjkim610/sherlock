@@ -28,11 +28,16 @@ class Sherlock extends CI_Controller {
 
   public function auth($type = 'fp', $email = 'none', $token = 'none')
   {
+    $this->load->view('auth/head');
+		
     $datas = array(
       'type' => $type,
       'email' => $email,
       'token' => $token
     );
+
     $this->load->view('auth/auth_login', $datas);
+
+    $this->load->view('auth/footer');
   }
 }
