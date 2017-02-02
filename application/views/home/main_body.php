@@ -20,9 +20,29 @@
 
 <script type="text/javascript">
 $('#sherlock-btn').click(function() {
-  var get_string = '?';
-  get_string = get_string + 'type=' + encodeURI('fingerprint pin password');
-  get_string = get_string + '&token=' + encodeURI('Token Place');
-  location.href = 'http://localhost/sherlock/sherlock/auth' + get_string;
+
+  var appKey = 'Qdjjaalsdkjl12k3jasdLAKasdfJJksk';
+  $.ajax({
+    type : "POST",
+    data : {
+      appKey : appKey
+    },
+    url : "http://try-sherlock.com:8080/auth/api_signup",
+    success: function(ajax_result)
+    {
+      var ajax_result = $.parseJSON(ajax_result);
+      if(ajax_result['redirect_uri'].length == 0) // no data
+      {
+        alert('try again..');
+        return false;
+      }
+
+      var get_string = '?';
+      get_string = get_string + 'type=' + encodeURI('fingerprint'); // fingerprint pin password
+      get_string = get_string + '&token=' + encodeURI('Token Place'); // ajax_result['token']
+      get_string = get_string + '&redirect_uri=' + encodeURI('Token Place'); // ajax_result['redirect_uri']
+      location.href = 'http://localhost/sherlock/sherlock/auth' + get_string;
+    }
+  });
 });
 </script>
