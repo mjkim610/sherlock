@@ -9,7 +9,8 @@
     </div>
     <div class="col-sm-12 footer_content" style="margin-bottom:3px;">
       <div class="content">
-        <a href="https://www.facebook.com/Sherlock-Authentication-651981251639838/" target="_blank"><i class="fa fa-facebook-square" style="font-size:24px;"></i></a>
+        <a href="https://github.com/mjkim610/sherlock" target="_blank"><i class="fa fa-github" aria-hidden="true" style="font-size:24px;"></i></a>&nbsp;
+        <a href="https://www.facebook.com/Sherlock-Authentication-651981251639838/" target="_blank"><i class="fa fa-facebook-square" aria-hidden="true" style="font-size:24px;"></i></a>
         <!-- &nbsp; -->
         <!-- <a href="https://twitter.com/" target="_blank"><i class="fa fa-twitter-square" style="font-size:24px;"></i></a> -->
       </div>
