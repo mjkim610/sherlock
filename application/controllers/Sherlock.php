@@ -26,10 +26,14 @@ class Sherlock extends CI_Controller {
  		echo $token;
  	}
 
-  public function auth($type = 'fp', $email = 'none', $token = 'none')
+  public function auth()
   {
+		$type = $this->input->get('type');
+		$email = $this->input->get('email');
+		$token = $this->input->get('token');
+
     $this->load->view('auth/head');
-		
+
     $datas = array(
       'type' => $type,
       'email' => $email,
