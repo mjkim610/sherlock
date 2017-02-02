@@ -28,20 +28,18 @@ class Sherlock extends CI_Controller {
 
   public function auth()
   {
-		$type = $this->input->get('type');
-		$email = $this->input->get('email');
+		$sherlock_type = $this->input->get('sherlock_type');
 		$token = $this->input->get('token');
-
-    $this->load->view('auth/head');
+		$redirect_uri = $this->input->get('redirect_uri');
 
     $datas = array(
-      'type' => $type,
-      'email' => $email,
-      'token' => $token
+      'sherlock_type' => $sherlock_type,
+      'token' => $token,
+      'redirect_uri' => $redirect_uri
     );
 
+		$this->load->view('auth/head');
     $this->load->view('auth/auth_login', $datas);
-
-    $this->load->view('auth/footer');
+		$this->load->view('auth/footer');
   }
 }

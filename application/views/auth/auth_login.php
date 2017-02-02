@@ -10,20 +10,23 @@
             <input type="email" class="form-control" id="sherlock_email" name="email" placeholder="Email" required autofocus>
           </div>
 
-          <div class="form-group form-sherlock-password" style="display:none;" >
-            <input type="password" class="form-control" id="sherlock_password" name="password" placeholder="Password">
+        <?php if($sherlock_type == 'password'): ?>
+          <div class="form-group form-sherlock-password" >
+              <input type="password" class="form-control" id="sherlock_password" name="password" placeholder="Password">
           </div>
-
-          <div class="form-group form-sherlock-pin" style="display:none;" >
-            <input type="password" class="form-control" id="sherlock_pin" name="pin" placeholder="PIN">
+        <?php elseif($sherlock_type == 'pin'): ?>
+          <div class="form-group form-sherlock-pin">
+              <input type="password" class="form-control" id="sherlock_pin" name="pin" placeholder="PIN">
           </div>
+        <?php endif; ?>
+        <input type="hidden" name="sherlock_type" value="<?=$sherlock_type?>">
 
           <button class="btn btn-lg btn-primary btn-block" type="button" id="wow" onclick="sherlock_login()">Log in</button>
-          <p id="result"></p>
           <a href="#" class="pull-right need-help">Need help? </a><span class="clearfix"></span>
         </form>
       </div>
-      <a href="<?=site_url('signup')?>" class="text-center additional-message" id="wow" onclick="javascript">Sign Up </a>
+      <!-- ntbf 회원가입 흐름을 어떻게 가져갈 것인지 -->
+      <a href="<?=site_url('signup')?>" class="text-center additional-message" id="wow" onclick="javascript">Sign Up</a>
     </div>
   </div>
 </div>
