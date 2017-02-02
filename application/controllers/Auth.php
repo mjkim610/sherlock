@@ -14,7 +14,6 @@ class Auth extends CI_Controller {
 
 	public function signup()
 	{
-		// ntbf 중복체크 메세지 버그
 		$this->form_validation->set_rules('email', 'email', 'required|valid_email', array(
 	        'required'      => '이메일을 입력해 주세요',
 	        'valid_email'   => '이메일 형식이 잘못되었습니다'

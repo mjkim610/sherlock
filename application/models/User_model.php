@@ -21,22 +21,6 @@ class User_model extends CI_Model
       $this->db->set($key, $value);
     }
 
-    // --ip part
-    $ips = $this->input->ip_address();
-    $ip_arr = explode('.', $ips);
-    $ip_labels = array(
-      0 => 'fp_25',
-      1 => 'fp_26',
-      2 => 'fp_27',
-      3 => 'fp_28'
-    );
-
-    foreach ($ip_labels as $key=>$value)
-    {
-      $this->db->set($value, $ip_arr[$key]);
-    }
-    // --ip part
-
     $this->db->set('user_id', $datas['user_id']);
     $this->db->set('reg_date', 'now()', false);
     $res = $this->db->insert('fingerprint');

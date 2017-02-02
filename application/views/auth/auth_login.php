@@ -2,12 +2,25 @@
   <div class="row">
     <div class="col-sm-4 col-sm-offset-4" style="min-width: 300px">
       <h1 class="text-center login-title">Sherlock API Demo: Log In</h1>
+      <?php
+        if ($this->session->flashdata('errors'))
+        {
+          echo $this->session->flashdata('errors');
+        }
+        if ($this->session->flashdata('message'))
+        {
+          echo "<div class='alert'>";
+          echo "<span class='closebtn'>&times;</span>";
+          echo "<span>".$this->session->flashdata('message')."</span>";
+          echo "</div>";
+        }
+      ?>
       <div class="account-wall">
         <img class="profile-img" src="<?=site_url('static/img/team/1.jpg')?>"
         alt="">
-        <form class="form-login">
+        <form id="sherlock_login_form" class="form-login" action="<?=site_url('sherlock/auth_login')?>" method="post">
           <div class="form-group form-sherlock-email">
-            <input type="email" class="form-control" id="sherlock_email" name="email" placeholder="Email" required autofocus>
+            <input type="email" class="form-control" id="sherlock_email" name="email" placeholder="Email" required>
           </div>
 
         <?php if($sherlock_type == 'password'): ?>
@@ -19,9 +32,12 @@
               <input type="password" class="form-control" id="sherlock_pin" name="pin" placeholder="PIN">
           </div>
         <?php endif; ?>
-        <input type="hidden" name="sherlock_type" value="<?=$sherlock_type?>">
-
-          <button class="btn btn-lg btn-primary btn-block" type="button" id="wow" onclick="sherlock_login()">Log in</button>
+          <input type="hidden" id="sherlock_type" name="sherlock_type" value="<?=$sherlock_type?>">
+          <input type="hidden" name="token" value="<?=$token?>" >
+          <input type="hidden" name="app_id" value="<?=$app_id?>" >
+          <!-- <input type="hidden" name="redirect_uri" value="<?=$redirect_uri?>" > -->
+          <input type="hidden" name="redirect" value="<?= $this->uri->uri_string() ?>" >
+          <button class="btn btn-lg btn-primary btn-block" type="button" id="wow" onclick="sherlock_authentication()">Log in</button>
           <a href="#" class="pull-right need-help">Need help? </a><span class="clearfix"></span>
         </form>
       </div>
@@ -30,3 +46,41 @@
     </div>
   </div>
 </div>
+<script type="text/javascript">
+  function sherlock_authentication()//0~2
+  {
+    if($("#sherlock_email").val().length <= 0)
+    {
+      alert("Email required");
+      $("#sherlock_email").focus();
+      return false;
+    }
+    if($("#sherlock_type").val() === "password" && $("#sherlock_password").val().length <= 0)
+    {
+      alert("Password required");
+      $("#sherlock_password").focus();
+      return false;
+    }
+    if($("#sherlock_type").val() === "pin" && ($("#sherlock_pin").val().length != 4 || isNaN( $("#sherlock_pin").val() )))
+    {
+      alert("4 digits PIN required");
+      $("#sherlock_pin").focus();
+      return false;
+    }
+
+    var fp = new Fingerprint2();
+    var index = 1;
+    fp.get(function(result, components) {
+      for (var property in components) {
+        var input = document.createElement('input');
+        input.type = 'hidden';
+        input.name = 'fp_'+index++;
+        input.value = components[property]['value'];
+        $('#sherlock_login_form').append(input);
+      };
+
+      $('#sherlock_login_form').submit();
+    });
+    return true;
+  }
+</script>

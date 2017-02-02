@@ -70,9 +70,25 @@ class User extends CI_Controller {
 			{
 				$datas[$label] = $this->input->post($label);
 			}
-			$datas['user_id'] = $this->session->userdata('user_id');
 
-			// ntbf IP 받아오기
+			// --ip part
+			$ips = $this->input->ip_address();
+			if($ips == '::1') $ips = '127.0.0.1';
+			$ip_arr = explode('.', $ips);
+			$ip_labels = array(
+				0 => 'fp_25',
+				1 => 'fp_26',
+				2 => 'fp_27',
+				3 => 'fp_28'
+			);
+
+			foreach ($ip_labels as $key=>$value)
+			{
+				$datas[$value] = $ip_arr[$key];
+			}
+			// --ip part
+
+			$datas['user_id'] = $this->session->userdata('user_id');
 
 			$res = $this->user_model->regist_fingerprint($datas);
 			if(!$res)

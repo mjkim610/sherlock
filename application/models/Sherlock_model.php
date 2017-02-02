@@ -17,6 +17,33 @@ class Sherlock_model extends CI_Model
     else return $service->token;
   }
 
+  function compare_fingerprint($datas)
+  {
+    $this->db->where('email', $datas['email']);
+    $this->db->from('user');
+    $user = $this->db->get()->row();
+
+    if(!$user) return 'no user';
+
+    $user_id = $user->user_id;
+
+    $this->db->where('user_id', $user_id);
+    $this->db->from('fingerprint');
+    $fingerprints = $this->db->get()->result();
+
+    if(!$fingerprints) return 'no fingerprint';
+
+    // ntbf db에서 threshold 값 불러와야하는데..
+    $max_score = 0;
+    foreach ($fingerprints as $fingerprint)
+    {
+
+    }
+
+
+
+  }
+
   function signup($datas)
   {
     $this->db->where('token', $datas['token']);
@@ -77,7 +104,7 @@ class Sherlock_model extends CI_Model
 
     if($datas['loginType'] == 'email')
     {
-      $weight = [4.9,4.2,3.3,4.9,4.9,4.9,1.7,1.6,1.6,1.6,3.8,4.7,4.9,4.9,4.9,4.2,3.5,1.7,1.7,1.6,2.1,3.9,4.9,4.9,4.9,4.9,4.9];
+      $weight = json_decode(WEIGHT);
 
       $score = 0;
       $i = 0;
@@ -107,5 +134,7 @@ class Sherlock_model extends CI_Model
       return array('error', 'no loginType');
     }
   }
+
+
 
 }
