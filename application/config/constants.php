@@ -3,6 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 // sherlock part
 defined('MAX_FINGERPRINT_NUM') OR define('MAX_FINGERPRINT_NUM', 3);
+defined('WEIGHT') OR define('WEIGHT', json_encode(array(4.9,4.2,3.3,4.9,4.9,4.9,1.7,1.6,1.6,1.6,3.8,4.7,4.9,4.9,4.9,4.2,3.5,1.7,1.7,1.6,2.1,3.9,4.9,4.9,4.9,4.9,4.9)));
 
 /*
 |--------------------------------------------------------------------------
