@@ -83,6 +83,10 @@ Sherlock의 신뢰성은 여러 시험들을 거쳐 인증되었습니다.
 
 5. Test를 위해서는 [http://try-sherlock.com:8080/](http://try-sherlock.com:8080/)
 
+## Future Development Issue
+- 관리자 기능:  Sherlock API 를 쓰는 서비스 제공자들은, 자신의 사이트를 등록하고, 사용자들을 관리 할 수 있게 한다.
+- 사용자 관리 기능: 사용자들은 Sherlock 홈페이지에 fingerprint를 등록하고 관리하며, 다른 사이트에 등록된 fingerprint를 통해 로그인 할 수 있도록 한다. 
+
 ## External Code
 - fingerprintjs2 -  [https://github.com/Valve/fingerprintjs2](https://github.com/Valve/fingerprintjs2)
 - sha256.js -  [https://code.google.com/archive/p/crypto-js/](https://code.google.com/archive/p/crypto-js/)
