@@ -117,7 +117,8 @@ class Sherlock extends CI_Controller {
 		// 핀이 일치하는데 스코어가 thresh2 보다 아래면 튕겨야 한다
 
 		$res = $this->sherlock_model->compare_fingerprint($datas);
-		var_dump($datas);
+		echo var_dump($res);
+		// var_dump($datas);
 		// ntbf
   }
 }
