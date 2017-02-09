@@ -40,7 +40,7 @@ $('#sherlock-btn').click(function() {
       // }
 
       var get_string = '?';
-      get_string = get_string + 'type=' + encodeURI('fingerprint'); // fingerprint pin password
+      get_string = get_string + 'sherlock_type=' + encodeURI('fingerprint'); // fingerprint pin password
       get_string = get_string + '&token=' + encodeURI('Token Place'); // ajax_result['token']
       get_string = get_string + '&app_id=' + encodeURI('asd23fgasdgasf32'); // ajax_result['token']
       // get_string = get_string + '&redirect_uri=' + encodeURI('Token Place'); // ajax_result['redirect_uri']
