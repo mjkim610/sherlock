@@ -71,7 +71,10 @@ class Sherlock_model extends CI_Model
 
     if( ! $service_user) return array('error', 'no service user');
 
+    // redirect url 로 코드랑 보내면 될것같은데 어떤 방식으로???????
     return array('success', $service_user->user_code);
+
+    // 회원가입은  어떻게 시키지?
   }
 
   function get_fp_weight_score($datas)
@@ -107,6 +110,7 @@ class Sherlock_model extends CI_Model
     return $max_score;
   }
 
+  // unused
   function signup($datas)
   {
     $this->db->where('token', $datas['token']);
@@ -143,6 +147,7 @@ class Sherlock_model extends CI_Model
     else return array('error', 'db fail');
   }
 
+  // unused
   function login($datas)
   {
     $this->db->where('token', $datas['token']);
@@ -197,7 +202,4 @@ class Sherlock_model extends CI_Model
       return array('error', 'no loginType');
     }
   }
-
-
-
 }
