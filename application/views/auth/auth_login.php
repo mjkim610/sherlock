@@ -35,7 +35,6 @@
           <input type="hidden" id="sherlock_type" name="sherlock_type" value="<?=$sherlock_type?>">
           <input type="hidden" name="token" value="<?=$token?>" >
           <input type="hidden" name="app_id" value="<?=$app_id?>" >
-          <!-- <input type="hidden" name="redirect_uri" value="<?=$redirect_uri?>" > -->
           <input type="hidden" name="redirect" value="<?= $this->uri->uri_string() ?>" >
           <button class="btn btn-lg btn-primary btn-block" type="button" id="wow" onclick="sherlock_authentication()">Log in</button>
           <a href="#" class="pull-right need-help">Need help? </a><span class="clearfix"></span>
