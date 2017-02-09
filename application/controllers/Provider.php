@@ -15,11 +15,11 @@ class Provider extends CI_Controller {
       $this->load->model('provider_model');
 	}
 
-	public function my_app()
+	public function my_site()
 	{
 		$this->load->view('home/head');
 		$this->load->view('home/nav');
-		$this->load->view('provider/body');
+		$this->load->view('provider/my_site_body');
 		$this->load->view('home/footer');
 	}
 }

@@ -23,14 +23,14 @@
   {
     if($('#title_'+form_id).val() == '')
     {
-      alert('설명을 입력해주세요');
+      alert('타이틀을 입력해주세요');
       $('#title_'+form_id).focus();
       return false;
     }
 
     if($('#title_'+form_id).length > 15)
     {
-      alert('설명은 최대 15자까지 가능합니다.');
+      alert('타이틀은 최대 15자까지 가능합니다.');
       $('#title_'+form_id).focus();
       return false;
     }

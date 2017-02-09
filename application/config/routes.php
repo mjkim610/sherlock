@@ -13,6 +13,6 @@ $route['about'] = 'home/about';
 $route['user'] = 'home/edit';
 
 $route['my/fingerprint'] = 'user/fingerprint';
-$route['my/app'] = 'provider/my_app';
+$route['my/site'] = 'provider/my_site';
 
 $route['authentication'] = 'sherlock/auth';
