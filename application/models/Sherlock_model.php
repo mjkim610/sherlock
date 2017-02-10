@@ -41,11 +41,12 @@ class Sherlock_model extends CI_Model
 
     // 우선 fp 검사
     $score = $this->get_fp_weight_score($datas);
-    if( ! $score) return array('state' => 'error', 'message' => 'no score');
+    if($score = 'no fingerprint') return array('state' => 'error', 'message' => 'no fingerprint');
 
     if($datas['sherlock_type'] == 'fingerprint')
     {
-      if($score < $threshold_1) return array('state' => 'error', 'message' => 'fp-wrong');
+      if($score < $threshold_2) return array('state' => 'error', 'message' => 'fp-password', 'score' => $score);
+      else if($score < $threshold_1) return array('state' => 'error', 'message' => 'fp-pin', 'score' => $score);
     }
     else if($datas['sherlock_type'] == 'pin')
     {
@@ -106,7 +107,7 @@ class Sherlock_model extends CI_Model
     $this->db->from('fingerprint');
     $fingerprints = $this->db->get()->result();
 
-    if( ! $fingerprints) return array('state' => 'error', 'message' => 'no fingerprint');
+    if( ! $fingerprints) return 'no fingerprint';
 
     $max_score = 0;
 

@@ -75,6 +75,12 @@ class Sherlock extends CI_Controller {
 			redirect($this->input->post('redirect').'?sherlock_type='.$this->input->post('sherlock_type').'&token='.$this->input->post('token'));
 		}
 
+		if( ! in_array($this->input->post('sherlock_type'), array('fingerprint', 'pin', 'password')))
+		{
+			$this->session->set_flashdata('message', 'wrong approach');
+			redirect('/');
+		}
+
 		$datas = array();
 		$datas['sherlock_type'] = $this->input->post('sherlock_type');
 		$datas['token'] = $this->input->post('token');
@@ -120,7 +126,44 @@ class Sherlock extends CI_Controller {
 			$new_url = $res['url'].'?id_token='.$res['id_token'];
 			redirect($new_url);
 		}
-		else echo $res['message'];
+
+		if($res['message'] == 'no user')
+		{
+			$this->session->set_flashdata('message', 'No email. Please signup first.');
+			redirect($this->input->post('redirect').'?sherlock_type='.$datas['sherlock_type'].'&token='.$datas['token'].'&app_id='.$datas['app_id']);
+		}
+		else if($res['message'] == 'no fingerprint')
+		{
+			$this->session->set_flashdata('message', 'No fingerprint. Please regist fingerprint first.');
+			redirect($this->input->post('redirect').'?sherlock_type='.$datas['sherlock_type'].'&token='.$datas['token'].'&app_id='.$datas['app_id']);
+		}
+		else if($res['message'] == 'fp-password')
+		{
+			$this->session->set_flashdata('message', 'fingerprint score : '.$res['score'].'. Please enter password');
+			redirect($this->input->post('redirect').'?sherlock_type=password&token='.$datas['token'].'&app_id='.$datas['app_id']);
+		}
+		else if($res['message'] == 'fp-pin')
+		{
+			$this->session->set_flashdata('message', 'fingerprint score : '.$res['score'].'. Please enter pin');
+			redirect($this->input->post('redirect').'?sherlock_type=pin&token='.$datas['token'].'&app_id='.$datas['app_id']);
+		}
+		else if($res['message'] == 'pin wrong')
+		{
+			$this->session->set_flashdata('message', 'PIN number wrong. Please enter password');
+			redirect($this->input->post('redirect').'?sherlock_type=password&token='.$datas['token'].'&app_id='.$datas['app_id']);
+		}
+		else if($res['message'] == 'password wrong')
+		{
+			$this->session->set_flashdata('message', 'password wrong. Please enter password again');
+			redirect($this->input->post('redirect').'?sherlock_type=password&token='.$datas['token'].'&app_id='.$datas['app_id']);
+		}
+		else
+		{
+			$this->session->set_flashdata('message', 'Nice try');
+			redirect('/');
+		}
+		// ntbf exception for each case!!
+
   }
 
 	public function send_user_profile()
@@ -164,7 +207,8 @@ class Sherlock extends CI_Controller {
 			)
 		);
 		$context  = stream_context_create($opts);
-		$result = file_get_contents('http://try-sherlock.com/get_user_profile', false, $context);
+		// $result = file_get_contents('http://try-sherlock.com/get_user_profile', false, $context);
+		$result = file_get_contents(site_url('get_user_profile'), false, $context);
 
 		echo $result;
 	}
