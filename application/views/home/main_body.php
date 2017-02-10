@@ -31,16 +31,16 @@
 <script type="text/javascript">
 $('#sherlock-btn').click(function() {
 
-  var app_id = 'Qdjjaalsdkjl12k3jasdLAKasdfJJksk';
+  var app_id = 'asd23fgasdgasf32';
   $.ajax({
     type : "POST",
     data : {
       app_id : app_id
     },
-    url : "http://try-sherlock.com:8080/auth/api_signup",
-    success: function(ajax_result)
+    url : "<?=site_url('sherlock/init')?>",
+    success: function(token)
     {
-      var ajax_result = $.parseJSON(ajax_result);
+      // var token = $.parseJSON(token);
       // token 받아오기
 
       // if(ajax_result['redirect_uri'].length == 0) // no data
@@ -51,10 +51,10 @@ $('#sherlock-btn').click(function() {
 
       var get_string = '?';
       get_string = get_string + 'sherlock_type=' + encodeURI('fingerprint'); // fingerprint pin password
-      get_string = get_string + '&token=' + encodeURI('Token Place'); // ajax_result['token']
-      get_string = get_string + '&app_id=' + encodeURI('asd23fgasdgasf32'); // ajax_result['token']
+      get_string = get_string + '&token=' + encodeURI(token); // ajax_result['token']
+      get_string = get_string + '&app_id=' + encodeURI(app_id); // ajax_result['token']
       // get_string = get_string + '&redirect_uri=' + encodeURI('Token Place'); // ajax_result['redirect_uri']
-      location.href = 'http://localhost/sherlock/authentication' + get_string;
+      location.href = '<?=site_url('authentication')?>' + get_string;
     }
   });
 });

@@ -19,9 +19,9 @@ class Sherlock extends CI_Controller {
 
  	public function init()
  	{
- 		$appKey = $this->input->post('appKey');
+ 		$app_id = $this->input->post('app_id');
 
- 		$token = $this->sherlock_model->init($appKey);
+ 		$token = $this->sherlock_model->init($app_id);
 
  		echo $token;
  	}

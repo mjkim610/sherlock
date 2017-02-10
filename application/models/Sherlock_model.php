@@ -7,9 +7,9 @@ class Sherlock_model extends CI_Model
     parent::__construct();
   }
 
-  function init($appKey)
+  function init($app_id)
   {
-    $this->db->where('appKey', $appKey);
+    $this->db->where('app_id', $app_id);
     $this->db->from('service');
     $service = $this->db->get()->row();
 

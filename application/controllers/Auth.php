@@ -169,7 +169,6 @@ class Auth extends CI_Controller {
 		else return FLASE;
 	}
 
-
 	public function signup_old()
 	{
 		$this->form_validation->set_rules('email', 'email', 'required|valid_email', array(
