@@ -147,7 +147,7 @@ class Sherlock extends CI_Controller {
 	// code for service provider php server
 	public function auth_complete()
 	{
-		$id_token = $this->input->get('id_token');
+		$id_token = $_GET["id_token"];
 
 		$postdata = http_build_query(
 			array(
@@ -164,7 +164,7 @@ class Sherlock extends CI_Controller {
 			)
 		);
 		$context  = stream_context_create($opts);
-		$result = file_get_contents(site_url('sherlock/send_user_profile'), false, $context);
+		$result = file_get_contents('http://try-sherlock.com/get_user_profile', false, $context);
 
 		echo $result;
 	}

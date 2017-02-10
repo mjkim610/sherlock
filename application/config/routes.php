@@ -16,3 +16,5 @@ $route['my/fingerprint'] = 'user/fingerprint';
 $route['my/site'] = 'provider/my_site';
 
 $route['authentication'] = 'sherlock/auth';
+
+$route['get_user_profile'] = 'sherlock/send_user_profile';
