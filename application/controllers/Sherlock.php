@@ -82,7 +82,6 @@ class Sherlock extends CI_Controller {
 		$datas['email'] = $this->input->post('email');
 		$datas['password'] = $this->input->post('password');
 		$datas['pin'] = $this->input->post('pin');
-		// $redirect_uri = $this->input->post('redirect_uri');
 
 		// post 받을 준비
 		$labels = array();
@@ -114,8 +113,6 @@ class Sherlock extends CI_Controller {
 		}
 		// --ip part
 
-		// 핀이 일치하는데 스코어가 thresh2 보다 아래면 튕겨야 한다
-
 		$res = $this->sherlock_model->compare_fingerprint($datas);
 		// echo var_dump($res);
 		if($res['state'] == 'success')
@@ -124,8 +121,6 @@ class Sherlock extends CI_Controller {
 			redirect($new_url);
 		}
 		else echo $res['message'];
-
-		// ntbf
   }
 
 	public function send_user_profile()
@@ -149,6 +144,7 @@ class Sherlock extends CI_Controller {
 		}
 	}
 
+	// code for service provider php server
 	public function auth_complete()
 	{
 		$id_token = $this->input->get('id_token');
