@@ -117,8 +117,59 @@ class Sherlock extends CI_Controller {
 		// 핀이 일치하는데 스코어가 thresh2 보다 아래면 튕겨야 한다
 
 		$res = $this->sherlock_model->compare_fingerprint($datas);
-		echo var_dump($res);
-		// var_dump($datas);
+		// echo var_dump($res);
+		if($res['state'] == 'success')
+		{
+			$new_url = $res['url'].'?id_token='.$res['id_token'];
+			redirect($new_url);
+		}
+		else echo $res['message'];
+
 		// ntbf
   }
+
+	public function send_user_profile()
+	{
+		$id_token = $this->input->post('id_token');
+		$app_id = $this->input->post('app_id');
+
+		$datas = array(
+			'id_token' => $id_token,
+			'app_id' => $app_id
+		);
+
+		$res = $this->sherlock_model->get_user_profile($datas);
+		if($res['state'] == 'success')
+		{
+			echo $res['data'];
+		}
+		else
+		{
+			echo $res['message'];
+		}
+	}
+
+	public function auth_complete()
+	{
+		$id_token = $this->input->get('id_token');
+
+		$postdata = http_build_query(
+			array(
+				'id_token' => $id_token,
+				'app_id' => 'asd23fgasdgasf32'
+			)
+		);
+
+		$opts = array(
+			'http' => array(
+				'method'  => 'POST',
+				'header'  => 'Content-type: application/x-www-form-urlencoded',
+				'content' => $postdata
+			)
+		);
+		$context  = stream_context_create($opts);
+		$result = file_get_contents(site_url('sherlock/send_user_profile'), false, $context);
+
+		echo $result;
+	}
 }
