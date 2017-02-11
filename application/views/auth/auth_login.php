@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-4 col-sm-offset-4" style="min-width: 300px">
-      <h1 class="text-center login-title">Sherlock API Demo: Log In</h1>
+      <h1 class="text-center login-title">Sherlock API : Log In</h1>
       <?php
         if ($this->session->flashdata('errors'))
         {

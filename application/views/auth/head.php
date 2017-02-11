@@ -4,12 +4,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Sherlock API Login</title>
+    <title><?=$title?></title>
     <link rel="shortcut icon" href="<?=site_url('/static/img/sherlock/favicon3.png')?>">
     <meta http-equiv="content-type" content="text/html;charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Sherlock">
+    <meta property="og:title" content="<?=$title?>">
     <meta property="og:image" content="<?=site_url('/static/img/sherlock/logo_wide.png')?>">
     <meta property="og:description" content="Browser Fingerprint Authentication System">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">

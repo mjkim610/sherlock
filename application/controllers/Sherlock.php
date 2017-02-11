@@ -40,7 +40,11 @@ class Sherlock extends CI_Controller {
       // 'redirect_uri' => $redirect_uri
     );
 
-		$this->load->view('auth/head');
+		$head_datas = array(
+			'title' => 'Sherlock API Login'
+		);
+
+		$this->load->view('auth/head', $head_datas);
     $this->load->view('auth/auth_login', $datas);
 		$this->load->view('auth/footer');
   }
@@ -123,7 +127,7 @@ class Sherlock extends CI_Controller {
 		// echo var_dump($res);
 		if($res['state'] == 'success')
 		{
-			$new_url = $res['url'].'?id_token='.$res['id_token'];
+			$new_url = $res['url'].'?id_token='.$res['id_token'].'&state=login';;
 			redirect($new_url);
 		}
 
@@ -157,14 +161,99 @@ class Sherlock extends CI_Controller {
 			$this->session->set_flashdata('message', 'password wrong. Please enter password again');
 			redirect($this->input->post('redirect').'?sherlock_type=password&token='.$datas['token'].'&app_id='.$datas['app_id']);
 		}
+		else if($res['message'] == 'no service user')
+		{
+			redirect(site_url('authentication/signup').'?token='.$datas['token'].'&app_id='.$datas['app_id'].'&id_token='.$res['id_token']);
+		}
 		else
 		{
 			$this->session->set_flashdata('message', 'Nice try');
 			redirect('/');
 		}
 		// ntbf exception for each case!!
-
   }
+
+	public function auth_signup()
+	{
+		$token = $this->input->get('token');
+		$app_id = $this->input->get('app_id');
+		$id_token = $this->input->get('id_token');
+
+		$datas = array(
+			'token' => $token,
+			'app_id' => $app_id,
+			'id_token' => $id_token
+		);
+
+		$user_info = $this->sherlock_model->get_user_info_from_id_token_t($datas);
+		if($user_info == 'no id token' || $user_info == 'no user')
+		{
+			$this->session->set_flashdata('message', 'Wrong approach 411');
+			redirect('/');
+		}
+
+		$service_info = $this->sherlock_model->get_service_info($datas);
+		if($service_info == 'no service')
+		{
+			$this->session->set_flashdata('message', 'Wrong approach 771');
+			redirect('/');
+		}
+
+		$datas['user_info'] = $user_info;
+		$datas['service_info'] = $service_info;
+
+		$head_datas = array(
+			'title' => 'Sherlock API Signup'
+		);
+
+		$this->load->view('auth/head', $head_datas);
+		$this->load->view('auth/auth_signup', $datas);
+		$this->load->view('auth/footer');
+	}
+
+	public function auth_signup_submit()
+	{
+		$token = $this->input->post('token');
+		$app_id = $this->input->post('app_id');
+		$id_token = $this->input->post('id_token');
+
+		$datas = array(
+			'token' => $token,
+			'app_id' => $app_id,
+			'id_token' => $id_token
+		);
+
+		// signup
+		$res = $this->sherlock_model->signup_service($datas);
+		if($res == 'db insert error')
+		{
+			$this->session->set_flashdata('message', $res);
+			redirect('/');
+		}
+		else if($res == 'already done')
+		{
+			$this->session->set_flashdata('message', 'you have already signed up');
+			redirect(site_url('authentication').'?sherlock_type=fingerprint&token='.$token.'&app_id='.$app_id);
+		}
+
+		if($res == 'ok')
+		{
+			$service_info = $this->sherlock_model->get_service_info($datas);
+			if($service_info == 'no service')
+			{
+				$this->session->set_flashdata('message', 'Wrong approach 511');
+				redirect('/');
+			}
+
+			$new_url = $service_info->url.'?id_token='.$id_token.'&state=signup';
+			redirect($new_url);
+		}
+		else
+		{
+			$this->session->set_flashdata('message', 'Wrong approach 499');
+			redirect('/');
+		}
+	}
 
 	public function send_user_profile()
 	{
@@ -191,6 +280,7 @@ class Sherlock extends CI_Controller {
 	public function auth_complete()
 	{
 		$id_token = $_GET["id_token"];
+		$state = $_GET["state"];
 
 		$postdata = http_build_query(
 			array(

@@ -65,13 +65,6 @@ class Sherlock_model extends CI_Model
     }
     else return array('state' => 'error', 'message' => 'no sherlock type');
 
-    // 해당 서비스의 회원인지 검사. 회원이면 로그인. 아니면 회원가입
-    $this->db->where('user_id', $user->user_id);
-    $this->db->from($table_name);
-    $service_user = $this->db->get()->row();
-
-    if( ! $service_user) return array('error', 'no service user');
-
     // redirect url 로 코드랑 보내면 될것같은데 어떤 방식으로???????
     $randomString = make_random_string(100);
 
@@ -79,15 +72,28 @@ class Sherlock_model extends CI_Model
     $this->db->set('app_id', $datas['app_id']);
     $this->db->set('user_id', $user->user_id);
     $this->db->set('reg_date', 'NOW()', FALSE);
-    if($this->db->insert('id_token'))
+    if($this->db->insert('id_token_t'))
     {
-      return array('state' => 'success',
-                   'url' => $url,
-                   'id_token' => $randomString);
+      // 해당 서비스의 회원인지 검사. 회원이면 로그인. 아니면 회원가입
+      $this->db->where('user_id', $user->user_id);
+      $this->db->from($table_name);
+      $service_user = $this->db->get()->row();
+
+      if( ! $service_user)
+      {
+        return array('state' => 'error',
+                     'message' => 'no service user',
+                     'id_token' => $randomString);
+      }
+      else
+      {
+        return array('state' => 'success',
+                     'url' => $url,
+                     'id_token' => $randomString);
+      }
+
     }
     else return array('state' => 'error', 'message' => 'db insert error');
-
-    // 회원가입은  어떻게 시키지?
   }
 
   function get_fp_weight_score($datas)
@@ -121,6 +127,41 @@ class Sherlock_model extends CI_Model
     }
 
     return $max_score;
+  }
+
+  function signup_service($datas)
+  {
+    $user_info = $this->get_user_info_from_id_token_t($datas);
+    if($user_info == 'no id token' || $user_info == 'no user')
+    {
+      $this->session->set_flashdata('message', 'Wrong approach 412');
+      redirect('/');
+    }
+
+    $service_info = $this->get_service_info($datas);
+		if($service_info == 'no service')
+		{
+			$this->session->set_flashdata('message', 'Wrong approach 682');
+			redirect('/');
+		}
+
+    $this->db->where('user_id', $user_info->user_id);
+    $this->db->from($service_info->table_name);
+    $service_user = $this->db->get()->row();
+
+    if($service_user) return 'already done';
+
+    $randomstring = make_random_string(30);
+
+    $this->db->set('user_id', $user_info->user_id);
+    $this->db->set('user_code', $randomstring);
+    $this->db->set('last_login', 'NOW()', FALSE);
+    $this->db->set('reg_date', 'NOW()', FALSE);
+    if($this->db->insert($service_info->table_name))
+    {
+      return 'ok';
+    }
+    else return 'db insert error';
   }
 
   // unused
@@ -220,17 +261,17 @@ class Sherlock_model extends CI_Model
   {
     $this->db->where('id_token', $datas['id_token']);
     $this->db->where('app_id', $datas['app_id']);
-    $this->db->from('id_token');
-    $id_token = $this->db->get()->row();
+    $this->db->from('id_token_t');
+    $id_token_t = $this->db->get()->row();
 
-    if( ! $id_token) return array('state' => 'error', 'message' => 'no id token');
+    if( ! $id_token_t) return array('state' => 'error', 'message' => 'no id token');
 
-    $user_id = $id_token->user_id;
+    $user_id = $id_token_t->user_id;
 
-    // delete right after use id_token
+    // delete right after use id_token_t
     // $this->db->where('id_token', $datas['id_token']);
     // $this->db->where('app_id', $datas['app_id']);
-    // $this->db->delete('id_token');
+    // $this->db->delete('id_token_t');
 
     $this->db->where('user_id', $user_id);
     $this->db->from('user');
@@ -258,5 +299,35 @@ class Sherlock_model extends CI_Model
     );
 
     return array('state' => 'success', 'data' => $info_json);
+  }
+
+  function get_user_info_from_id_token_t($datas)
+  {
+    $this->db->where('app_id', $datas['app_id']);
+    $this->db->where('id_token', $datas['id_token']);
+    $this->db->from('id_token_t');
+    $id_token_t = $this->db->get()->row();
+
+    if( ! $id_token_t) return 'no id token';
+
+    $this->db->where('user_id', $id_token_t->user_id);
+    $this->db->from('user');
+    $user = $this->db->get()->row();
+
+    if( ! $user) return 'no user';
+
+    return $user;
+  }
+
+  function get_service_info($datas)
+  {
+    $this->db->where('app_id', $datas['app_id']);
+    $this->db->where('token', $datas['token']);
+    $this->db->from('service');
+    $service = $this->db->get()->row();
+
+    if( ! $service) return 'no service';
+
+    return $service;
   }
 }
