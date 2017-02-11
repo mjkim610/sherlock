@@ -18,7 +18,7 @@
       <div class="account-wall">
         <img class="profile-img" src="<?=site_url('static/img/sherlock/favicon3.png')?>"
         alt="">
-        <form id="sherlock_login_form" class="form-login" action="<?=site_url('authentication/signup/submit')?>" method="post">
+        <form id="sherlock_login_form" class="form-login" action="<?=site_url('authenticate/signup/submit')?>" method="post">
           <div class="">
             <div class="">
               <?=$user_info->email?>

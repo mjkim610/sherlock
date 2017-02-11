@@ -163,7 +163,7 @@ class Sherlock extends CI_Controller {
 		}
 		else if($res['message'] == 'no service user')
 		{
-			redirect(site_url('authentication/signup').'?token='.$datas['token'].'&app_id='.$datas['app_id'].'&id_token='.$res['id_token']);
+			redirect(site_url('authenticate/signup').'?token='.$datas['token'].'&app_id='.$datas['app_id'].'&id_token='.$res['id_token']);
 		}
 		else
 		{
@@ -233,7 +233,7 @@ class Sherlock extends CI_Controller {
 		else if($res == 'already done')
 		{
 			$this->session->set_flashdata('message', 'you have already signed up');
-			redirect(site_url('authentication').'?sherlock_type=fingerprint&token='.$token.'&app_id='.$app_id);
+			redirect(site_url('authenticate').'?sherlock_type=fingerprint&token='.$token.'&app_id='.$app_id);
 		}
 
 		if($res == 'ok')

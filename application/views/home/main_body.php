@@ -37,7 +37,7 @@ $('#sherlock-btn').click(function() {
     data : {
       app_id : app_id
     },
-    url : "<?=site_url('sherlock/init')?>",
+    url : "<?=site_url('authenticate/init')?>",
     success: function(token)
     {
       // var token = $.parseJSON(token);
@@ -54,7 +54,7 @@ $('#sherlock-btn').click(function() {
       get_string = get_string + '&token=' + encodeURI(token); // ajax_result['token']
       get_string = get_string + '&app_id=' + encodeURI(app_id); // ajax_result['token']
       // get_string = get_string + '&redirect_uri=' + encodeURI('Token Place'); // ajax_result['redirect_uri']
-      location.href = '<?=site_url('authentication')?>' + get_string;
+      location.href = '<?=site_url('authenticate')?>' + get_string;
     }
   });
 });

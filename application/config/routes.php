@@ -15,8 +15,9 @@ $route['user'] = 'home/edit';
 $route['my/fingerprint'] = 'user/fingerprint';
 $route['my/site'] = 'provider/my_site';
 
-$route['authentication'] = 'sherlock/auth';
-$route['authentication/signup'] = 'sherlock/auth_signup';
-$route['authentication/signup/submit'] = 'sherlock/auth_signup_submit';
+$route['authenticate'] = 'sherlock/auth';
+$route['authenticate/init'] = 'sherlock/init';
+$route['authenticate/signup'] = 'sherlock/auth_signup';
+$route['authenticate/signup/submit'] = 'sherlock/auth_signup_submit';
 
 $route['get_user_profile'] = 'sherlock/send_user_profile';
