@@ -9,7 +9,7 @@ function Sherlock_init(app_id)
       app_id : app_id
     },
     // url : "http://localhost/sherlock/authenticate/init",
-    url : "http://try-sherlock.com/authenticate/init",
+    url : "https://try-sherlock.com/authenticate/init",
     success: function(token)
     {
       var get_string = '?';
@@ -17,7 +17,7 @@ function Sherlock_init(app_id)
       get_string = get_string + '&token=' + encodeURI(token); // ajax_result['token']
       get_string = get_string + '&app_id=' + encodeURI(app_id); // ajax_result['token']
       // location.href = 'http://localhost/sherlock/authenticate' + get_string;
-      location.href = 'http://try-sherlock.com/authenticate' + get_string;
+      location.href = 'https://try-sherlock.com/authenticate' + get_string;
     }
   });
 }
