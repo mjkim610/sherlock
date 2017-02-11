@@ -37,7 +37,7 @@
           <input type="hidden" name="app_id" value="<?=$app_id?>" >
           <input type="hidden" name="redirect" value="<?= $this->uri->uri_string() ?>" >
           <button class="btn btn-lg btn-primary btn-block" type="button" id="wow" onclick="sherlock_authentication()">Log in</button>
-          <a href="#" class="pull-right need-help">Need help? </a><span class="clearfix"></span>
+          <a href="<?=site_url('/')?>" target="_blank" class="pull-right need-help"><i class="fa fa-arrow-right" aria-hidden="true" style="vertical-align: text-top;"></i> Sherlock home</a>
         </form>
       </div>
       <!-- ntbf 회원가입 흐름을 어떻게 가져갈 것인지 -->
