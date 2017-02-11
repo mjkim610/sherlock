@@ -41,7 +41,7 @@ class Sherlock_model extends CI_Model
 
     // 우선 fp 검사
     $score = $this->get_fp_weight_score($datas);
-    if($score = 'no fingerprint') return array('state' => 'error', 'message' => 'no fingerprint');
+    if($score == 'no fingerprint') return array('state' => 'error', 'message' => 'no fingerprint');
 
     if($datas['sherlock_type'] == 'fingerprint')
     {
@@ -73,13 +73,7 @@ class Sherlock_model extends CI_Model
     if( ! $service_user) return array('error', 'no service user');
 
     // redirect url 로 코드랑 보내면 될것같은데 어떤 방식으로???????
-    $length = 50;
-    $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-    $charactersLength = strlen($characters);
-    $randomString = '';
-    for ($i = 0; $i < $length; $i++) {
-        $randomString .= $characters[rand(0, $charactersLength - 1)];
-    }
+    $randomString = make_random_string(100);
 
     $this->db->set('id_token', $randomString);
     $this->db->set('app_id', $datas['app_id']);
