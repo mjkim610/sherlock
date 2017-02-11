@@ -66,7 +66,7 @@
       $("#sherlock_pin").focus();
       return false;
     }
-
+    console.log('fp scan start');
     var fp = new Fingerprint2();
     var index = 1;
     fp.get(function(result, components) {
