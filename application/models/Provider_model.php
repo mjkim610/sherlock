@@ -6,4 +6,19 @@ class Provider_model extends CI_Model
   {
     parent::__construct();
   }
+
+  function get_provider_site($provider_id)
+  {
+    $this->db->where('provider_id', $provider_id);
+    $this->db->from('provider');
+    $provider = $this->db->get()->row();
+
+    if( ! $provider) return 'no provider';
+
+    $this->db->where('provider_id', $provider_id);
+    $this->db->from('service');
+    $service = $this->db->get()->result();
+
+    return $service;
+  }
 }
