@@ -42,8 +42,6 @@ $('#sherlock-test-btn').click(function() {
           output += linenumber + ': <b>' + components[property]['key'] + '</b><br>' + String(components[property]['value']).substring(0, 1248)+'<br><br>';
           linenumber++;
       }
-
-
       $("#fp").text(result);
       $("#time").text(timeString);
       $("#components").html(output);

@@ -20,20 +20,20 @@
         alt="">
         <form id="sherlock_login_form" class="form-login" action="<?=site_url('authenticate/signup/submit')?>" method="post">
           <div class="">
-            <div class="">
-              <?=$user_info->email?>
-            </div>
-            <div class="">
-              <?=$service_info->service_name?>
-            </div>
-            <div class="">
-              <?=$service_info->description?>
-            </div>
-            <div class="">
+            <dl>
+              <dt>Your Email</dt>
+              <dd> <?=$user_info->email?></dd>
+              <dt>Service Name</dt>
+              <dd> <?=$service_info->service_name?></dd>
+              <dt>Service description</dt>
+              <dd> <?=$service_info->description?></dd>
+            </dl>
+            <br>
+            <div class="text-center text-info">
               Really wanna sign up??
             </div>
           </div>
-          <button class="btn btn-lg btn-primary btn-block" type="submit">Agree</button>
+          <button class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
           <a href="<?=site_url('/')?>" target="_blank" class="pull-right need-help"><i class="fa fa-arrow-right" aria-hidden="true" style="vertical-align: text-top;"></i> Sherlock home</a>
 
           <input type="hidden" name="token" value="<?=$token?>" >
