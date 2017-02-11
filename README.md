@@ -15,7 +15,7 @@ Sherlock's benefits have been tested and backed up by our research.
 - Allow user to register multiple device fingerprints for each account
 
 ## Demo
-- Website - [http://www.try-sherlock.com/](http://www.try-sherlock.com/)
+- Website - [http://www.try-sherlock.com/](https://www.try-sherlock.com/)
 - Video - [YouTube Link](https://youtu.be/Aj9xxVyO2Y8)
 
 ## API Usage
