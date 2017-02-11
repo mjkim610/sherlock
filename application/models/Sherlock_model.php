@@ -65,7 +65,7 @@ class Sherlock_model extends CI_Model
     }
     else return array('state' => 'error', 'message' => 'no sherlock type');
 
-    // redirect url 로 코드랑 보내면 될것같은데 어떤 방식으로???????
+    // id_token_t 에 임시 회원 데이터 생성
     $randomString = make_random_string(100);
 
     $this->db->set('id_token', $randomString);
@@ -109,12 +109,20 @@ class Sherlock_model extends CI_Model
 
     if( ! $fingerprints) return 'no fingerprint';
 
+    $this->db->where('app_id', $datas['app_id']);
+    $this->db->where('token', $datas['token']);
+    $this->db->from('service');
+    $service = $this->db->get()->row();
+    if( ! $service) $service_id = -1;
+    else $service_id = $service->service_id;
+
     $max_score = 0;
 
     $weight = json_decode(WEIGHT);
     foreach ($fingerprints as $fingerprint)
     {
       $tmp_score = 0;
+
       for($i = 1; $i <= 28; $i++)
       {
         $label = 'fp_'.$i;
@@ -124,6 +132,21 @@ class Sherlock_model extends CI_Model
         }
       }
       if($tmp_score > $max_score) $max_score = $tmp_score;
+    }
+
+    foreach ($fingerprints as $fingerprint)
+    {
+      $this->db->set('service_id', $service_id);
+      $this->db->set('user_id', $user_id);
+      for($i = 1; $i <= 28; $i++)
+      {
+        $label = 'fp_'.$i;
+        $this->db->set($label, $datas[$label]);
+      }
+      $this->db->set('score', $max_score);
+      $this->db->set('reg_date', 'NOW()', FALSE);
+      $this->db->insert('trial_log');
+      break;
     }
 
     return $max_score;
@@ -155,7 +178,6 @@ class Sherlock_model extends CI_Model
 
     $this->db->set('user_id', $user_info->user_id);
     $this->db->set('user_code', $randomstring);
-    $this->db->set('last_login', 'NOW()', FALSE);
     $this->db->set('reg_date', 'NOW()', FALSE);
     if($this->db->insert($service_info->table_name))
     {
