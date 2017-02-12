@@ -24,6 +24,14 @@ class Home extends CI_Controller {
 		$this->load->view('home/footer');
 	}
 
+	public function about_dev()
+	{
+		$this->load->view('home/head');
+		$this->load->view('home/nav');
+		$this->load->view('home/about_dev');
+		$this->load->view('home/footer');
+	}
+
 	public function edit()
 	{
 		$this->load->view('home/head');

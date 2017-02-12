@@ -10,6 +10,7 @@ $route['signup'] = 'welcome/signup';
 $route['provider-signup'] = 'welcome/provider_signup';
 
 $route['about'] = 'home/about';
+$route['about/dev'] = 'home/about_dev';
 $route['user'] = 'home/edit';
 
 $route['my/fingerprint'] = 'user/fingerprint';

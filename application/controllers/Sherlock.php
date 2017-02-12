@@ -9,14 +9,6 @@ class Sherlock extends CI_Controller {
 			$this->load->model('sherlock_model');
 	}
 
-	// public function index()
- // 	{
-	// 	$this->load->view('home/head');
- // 		$this->load->view('home/nav');
-	// 	$this->load->view('home/body');
- // 		$this->load->view('home/footer');
- // 	}
-
  	public function init()
  	{
  		$app_id = $this->input->post('app_id');
@@ -31,13 +23,11 @@ class Sherlock extends CI_Controller {
 		$sherlock_type = $this->input->get('sherlock_type');
 		$token = $this->input->get('token');
 		$app_id = $this->input->get('app_id');
-		// $redirect_uri = $this->input->get('redirect_uri');
 
     $datas = array(
       'sherlock_type' => $sherlock_type,
       'token' => $token,
       'app_id' => $app_id
-      // 'redirect_uri' => $redirect_uri
     );
 
 		$head_datas = array(
@@ -52,17 +42,17 @@ class Sherlock extends CI_Controller {
   public function auth_login()
   {
 		$this->form_validation->set_rules('sherlock_type', 'sherlock_type', 'required', array(
-					'required'      => '다시 시도해주세요(type error)'
+					'required'      => 'sherlock_type error'
 				));
 		$this->form_validation->set_rules('token', 'token', 'required', array(
-					'required'      => '다시 시도해주세요(token error)'
+					'required'      => 'token error'
 				));
 		$this->form_validation->set_rules('app_id', 'app_id', 'required', array(
-					'required'      => '다시 시도해주세요(app_id error)'
+					'required'      => 'app_id error'
 				));
 		$this->form_validation->set_rules('email', 'email', 'required|valid_email', array(
-					'required'      => '이메일을 입력해 주세요',
-					'valid_email'   => '이메일 형식이 잘못되었습니다'
+					'required'      => 'Email required',
+					'valid_email'   => 'Email not valid'
 				));
 
 		if ($this->form_validation->run() == FALSE)
@@ -80,10 +70,7 @@ class Sherlock extends CI_Controller {
 		}
 
 		if( ! in_array($this->input->post('sherlock_type'), array('fingerprint', 'pin', 'password')))
-		{
-			$this->session->set_flashdata('message', 'wrong approach');
-			redirect('/');
-		}
+		 error_message_goto('Wrong approach 111', '/');
 
 		$datas = array();
 		$datas['sherlock_type'] = $this->input->post('sherlock_type');
@@ -93,7 +80,6 @@ class Sherlock extends CI_Controller {
 		$datas['password'] = $this->input->post('password');
 		$datas['pin'] = $this->input->post('pin');
 
-		// post 받을 준비
 		$labels = array();
 		for($i = 1; $i <= 24; $i++)
 		{
@@ -124,52 +110,29 @@ class Sherlock extends CI_Controller {
 		// --ip part
 
 		$res = $this->sherlock_model->compare_fingerprint($datas);
-		// echo var_dump($res);
+
 		if($res['state'] == 'success')
 		{
-			$new_url = $res['url'].'?id_token='.$res['id_token'].'&state=login';;
+			$new_url = $res['redirect_url'].'?id_token='.$res['id_token'].'&state=login';;
 			redirect($new_url);
 		}
 
 		if($res['message'] == 'no user')
-		{
-			$this->session->set_flashdata('message', 'No email. Please signup first.');
-			redirect($this->input->post('redirect').'?sherlock_type='.$datas['sherlock_type'].'&token='.$datas['token'].'&app_id='.$datas['app_id']);
-		}
+		 error_message_goto('No email. Please signup first', $this->input->post('redirect').'?sherlock_type='.$datas['sherlock_type'].'&token='.$datas['token'].'&app_id='.$datas['app_id']);
 		else if($res['message'] == 'no fingerprint')
-		{
-			$this->session->set_flashdata('message', 'No fingerprint. Please regist fingerprint first.');
-			redirect($this->input->post('redirect').'?sherlock_type='.$datas['sherlock_type'].'&token='.$datas['token'].'&app_id='.$datas['app_id']);
-		}
+			error_message_goto('No fingerprint. Please regist fingerprint first', $this->input->post('redirect').'?sherlock_type='.$datas['sherlock_type'].'&token='.$datas['token'].'&app_id='.$datas['app_id']);
 		else if($res['message'] == 'fp-password')
-		{
-			$this->session->set_flashdata('message', 'fingerprint score : '.$res['score'].'. Please enter password');
-			redirect($this->input->post('redirect').'?sherlock_type=password&token='.$datas['token'].'&app_id='.$datas['app_id']);
-		}
+			error_message_goto('fingerprint score : '.$res['score'].'. Please enter password', $this->input->post('redirect').'?sherlock_type=password&token='.$datas['token'].'&app_id='.$datas['app_id']);
 		else if($res['message'] == 'fp-pin')
-		{
-			$this->session->set_flashdata('message', 'fingerprint score : '.$res['score'].'. Please enter pin');
-			redirect($this->input->post('redirect').'?sherlock_type=pin&token='.$datas['token'].'&app_id='.$datas['app_id']);
-		}
+			error_message_goto('fingerprint score : '.$res['score'].'. Please enter pin', $this->input->post('redirect').'?sherlock_type=pin&token='.$datas['token'].'&app_id='.$datas['app_id']);
 		else if($res['message'] == 'pin wrong')
-		{
-			$this->session->set_flashdata('message', 'PIN number wrong. Please enter password');
-			redirect($this->input->post('redirect').'?sherlock_type=password&token='.$datas['token'].'&app_id='.$datas['app_id']);
-		}
+			error_message_goto('PIN number wrong. Please enter password', $this->input->post('redirect').'?sherlock_type=password&token='.$datas['token'].'&app_id='.$datas['app_id']);
 		else if($res['message'] == 'password wrong')
-		{
-			$this->session->set_flashdata('message', 'password wrong. Please enter password again');
-			redirect($this->input->post('redirect').'?sherlock_type=password&token='.$datas['token'].'&app_id='.$datas['app_id']);
-		}
+			error_message_goto('Password wrong. Please enter password again', $this->input->post('redirect').'?sherlock_type=password&token='.$datas['token'].'&app_id='.$datas['app_id']);
 		else if($res['message'] == 'no service user')
-		{
 			redirect(site_url('authenticate/signup').'?token='.$datas['token'].'&app_id='.$datas['app_id'].'&id_token='.$res['id_token']);
-		}
 		else
-		{
-			$this->session->set_flashdata('message', 'Nice try');
-			redirect('/');
-		}
+			error_message_goto('Nice try 112', '/');
 		// ntbf exception for each case!!
   }
 
@@ -187,17 +150,11 @@ class Sherlock extends CI_Controller {
 
 		$user_info = $this->sherlock_model->get_user_info_from_id_token_t($datas);
 		if($user_info == 'no id token' || $user_info == 'no user')
-		{
-			$this->session->set_flashdata('message', 'Wrong approach 411');
-			redirect('/');
-		}
+		 error_message_goto('Wrong approach 113', '/');
 
 		$service_info = $this->sherlock_model->get_service_info($datas);
 		if($service_info == 'no service')
-		{
-			$this->session->set_flashdata('message', 'Wrong approach 771');
-			redirect('/');
-		}
+		 error_message_goto('Wrong approach 114', '/');
 
 		$datas['user_info'] = $user_info;
 		$datas['service_info'] = $service_info;
@@ -226,33 +183,21 @@ class Sherlock extends CI_Controller {
 		// signup
 		$res = $this->sherlock_model->signup_service($datas);
 		if($res == 'db insert error')
-		{
-			$this->session->set_flashdata('message', $res);
-			redirect('/');
-		}
+		 error_message_goto($res, '/');
 		else if($res == 'already done')
-		{
-			$this->session->set_flashdata('message', 'you have already signed up');
-			redirect(site_url('authenticate').'?sherlock_type=fingerprint&token='.$token.'&app_id='.$app_id);
-		}
+		 error_message_goto('you have already signed up', site_url('authenticate').'?sherlock_type=fingerprint&token='.$token.'&app_id='.$app_id);
 
 		if($res == 'ok')
 		{
 			$service_info = $this->sherlock_model->get_service_info($datas);
 			if($service_info == 'no service')
-			{
-				$this->session->set_flashdata('message', 'Wrong approach 511');
-				redirect('/');
-			}
+			 error_message_goto('Wrong approach 115', '/');
 
-			$new_url = $service_info->url.'?id_token='.$id_token.'&state=signup';
+			$new_url = $service_info->redirect_url.'?id_token='.$id_token.'&state=signup';
 			redirect($new_url);
 		}
 		else
-		{
-			$this->session->set_flashdata('message', 'Wrong approach 499');
-			redirect('/');
-		}
+		 error_message_goto('Wrong approach 116', '/');
 	}
 
 	public function send_user_profile()

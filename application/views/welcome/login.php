@@ -16,8 +16,7 @@
       ?>
       <h1 class="text-center login-title">Sherlock API Demo: Log In</h1>
       <div class="account-wall">
-        <img class="profile-img" src="<?=site_url('static/img/team/1.jpg')?>" alt="">
-        <!-- 이미지좀 바꿉시다ㅋㅋ -->
+        <img class="profile-img" src="<?=site_url('static/img/sherlock/favicon3.png')?>" alt="">
         <form class="form-login" action="<?=site_url('auth/login')?>" method="post">
           <div class="form-group form-sherlock-usertype">
             <label class="radio-inline"><input type="radio" name="user_type" value="user" checked>일반회원</label>
@@ -33,7 +32,6 @@
           </div>
 
           <button class="btn btn-lg btn-primary btn-block" type="submit" id="wow">Log in</button>
-          <a href="#" class="pull-right need-help">Need help? </a><span class="clearfix"></span>
           <input name="redirect" type="hidden" value="<?= $this->uri->uri_string() ?>" >
         </form>
       </div>

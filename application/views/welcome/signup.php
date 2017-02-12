@@ -16,15 +16,14 @@
       ?>
       <h1 class="text-center login-title">Sherlock API Demo: Sign Up</h1>
       <div class="account-wall">
-        <img class="profile-img" src="<?=site_url('static/img/team/1.jpg')?>"
+        <img class="profile-img" src="<?=site_url('static/img/sherlock/favicon3.png')?>"
         alt="">
         <form class="form-signup" action="<?=site_url('auth/signup')?>" method="post" onsubmit="return check_signup();">
           <input type="email" class="form-control" id="form_email" name="email" placeholder="Email" value="<?=$this->session->flashdata('email')?>" required autofocus>
           <input type="password" class="form-control" id="form_password" name="password" placeholder="Password" required>
           <input type="password" class="form-control" id="form_pin" name="pin" placeholder="PIN" required>
           <button class="btn btn-lg btn-primary btn-block" type="submit" id="wow">Sign up</button>
-          <a href="#" class="pull-right need-help">Need help? </a><span class="clearfix"></span>
-          <a href="<?=site_url('provider-signup')?>" class="pull-right need-help">Sign up as provider </a><span class="clearfix"></span>
+          <a href="<?=site_url('provider-signup')?>" class="pull-right btn btn-link">Sign up as provider </a>
           <input name="redirect" type="hidden" value="<?= $this->uri->uri_string() ?>" >
         </form>
       </div>

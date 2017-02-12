@@ -37,7 +37,7 @@ class Sherlock_model extends CI_Model
     $threshold_1 = $service->threshold_1;
     $threshold_2 = $service->threshold_2;
     $table_name = $service->table_name;
-    $url = $service->url;
+    $redirect_url = $service->redirect_url;
 
     // 우선 fp 검사
     $score = $this->get_fp_weight_score($datas);
@@ -88,7 +88,7 @@ class Sherlock_model extends CI_Model
       else
       {
         return array('state' => 'success',
-                     'url' => $url,
+                     'redirect_url' => $redirect_url,
                      'id_token' => $randomString);
       }
 

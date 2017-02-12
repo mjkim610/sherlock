@@ -196,7 +196,7 @@ body {
 
 
 .alert {
-    padding: 5px 15px;height: 35px;
+    padding: 5px 15px;
     background-color: #f44336;
     color: white;
     opacity: 1;
@@ -226,6 +226,10 @@ nav a img {
   margin-top: -15px;
 }
 
+/*main page*/
+.main-section{
+  margin-top: 50px;
+}
 /* fingerprint card*/
 .fingerprint_title{
   display: block;
@@ -244,4 +248,36 @@ nav a img {
   padding: 5px;
   width: 100%;
   border: 1px solid rgba(126, 114, 114, 0.3)
+}
+
+/*provider part*/
+.my-site-card{
+  background: #f1f1f1;
+  box-shadow: 0 15px 15px -15px #2C3E50;
+}
+.my-site-card .button a{
+  width: 100%;
+  color: #626262;
+}
+
+.my-site-card .content{
+  padding: 15px;
+  word-wrap: break-word;
+}
+
+.my-site-card .banner{
+  text-align: center;
+  font-size: 20px;
+  margin-bottom: 10px;
+  border-block-end: 3px dashed;
+  border-block-start: 3px dashed;
+  color: #efe87a;
+  background: #667BFF;
+}
+
+/*about image*/
+.about-image{
+  display: block;
+  margin: 0 auto;
+  width: 80%;
 }
