@@ -42,7 +42,7 @@ if ( ! function_exists('print_fingerprint_table')){
       echo '        <input type="text" id="title_'.$i.'" name="title" placeholder="Fingerprint description">';
       echo '      </div>';
       echo '      <div class="button">';
-      echo '        <button class="btn btn-default btn-block" type="button" id="regist_button_'.$i.'" name="button" onclick="regist_fingerprint('.$i.');">Regist</button>';
+      echo '        <button class="btn btn-default btn-block" type="button" id="regist_button_'.$i.'" name="button" onclick="regist_fingerprint('.$i.');">Register</button>';
       echo '      </div>';
       echo '  </div>';
       echo '</div>';

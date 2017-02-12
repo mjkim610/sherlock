@@ -58,7 +58,7 @@ class Auth extends CI_Controller {
 			{
 				$arr = "<div class='alert success'>";
 				$arr .= "<span class='closebtn'>&times;</span>";
-				$arr .= "<span>Welcome!! Please regist your Fingerprint</span>";
+				$arr .= "<span>Welcome!! Please register your Fingerprint</span>";
 				$arr .= "</div>";
 				$this->session->set_flashdata('errors', $arr);
 				redirect('my/fingerprint');

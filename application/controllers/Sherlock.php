@@ -130,7 +130,7 @@ class Sherlock extends CI_Controller {
 		if($res['message'] == 'no user')
 		 error_message_goto('No email. Please signup first', $this->input->post('redirect').'?sherlock_type='.$datas['sherlock_type'].'&token='.$datas['token'].'&app_id='.$datas['app_id']);
 		else if($res['message'] == 'no fingerprint')
-			error_message_goto('No fingerprint. Please regist fingerprint first', $this->input->post('redirect').'?sherlock_type='.$datas['sherlock_type'].'&token='.$datas['token'].'&app_id='.$datas['app_id']);
+			error_message_goto('No fingerprint. Please register fingerprint first', $this->input->post('redirect').'?sherlock_type='.$datas['sherlock_type'].'&token='.$datas['token'].'&app_id='.$datas['app_id']);
 		else if($res['message'] == 'fp-password')
 			error_message_goto('fingerprint score : '.$res['score'].'. Please enter password', $this->input->post('redirect').'?sherlock_type=password&token='.$datas['token'].'&app_id='.$datas['app_id']);
 		else if($res['message'] == 'fp-pin')
