@@ -6,24 +6,27 @@ class Auth extends CI_Controller {
 	public function __construct()
 	{
 	    parent::__construct();
+			$this->load->model('auth_model');
 	}
 
+	// 일반회원 회원가입
 	public function signup()
 	{
 		$this->form_validation->set_rules('email', 'email', 'required|valid_email', array(
-	        'required'      => '이메일을 입력해 주세요',
-	        'valid_email'   => '이메일 형식이 잘못되었습니다'
+	        'required'      => 'Email required',
+	        'valid_email'   => 'Email is not valid'
 	      ));
 		$this->form_validation->set_rules('password', 'password', 'required|min_length[7]|max_length[30]', array(
-	        'required'      => '비밀번호를 입력해 주세요',
-	        'min_length'    => '비밀번호는 7자 이상입니다',
-	        'max_length'    => '비밀번호는 30자 이하입니다'
+	        'required'      => 'Password required',
+	        'min_length'    => 'Password must have at least 7 characters',
+	        'max_length'    => 'Password must have at most 30 characters'
 	      ));
 		$this->form_validation->set_rules('pin', 'pin', 'required|exact_length[4]', array(
-	        'required'      => '핀번호를 입력해 주세요',
-	        'exact_length'     	=> '핀번호의 길이는 4자리입니다'
+	        'required'      => 'PIN number required',
+	        'exact_length'     	=> 'PIN number must have 4 digit'
 	      ));
 
+		// 다시 쓰기 귀찮으니까
 		$this->session->set_flashdata('email', $this->input->post('email'));
 
 		if ($this->form_validation->run() == FALSE)
@@ -51,10 +54,10 @@ class Auth extends CI_Controller {
 				'pin' => $pin
 			);
 
-			$this->load->model('auth_model');
+			// 회원가입 실행
 			$result = $this->auth_model->signup($datas);
 
-			if($result == 'ok')
+			if($result == 'ok') // 회원가입 성공
 			{
 				$arr = "<div class='alert success'>";
 				$arr .= "<span class='closebtn'>&times;</span>";
@@ -63,36 +66,36 @@ class Auth extends CI_Controller {
 				$this->session->set_flashdata('errors', $arr);
 				redirect('my/fingerprint');
 			}
-			else if($result == 'email existed')
+			else if($result == 'email existed') // 이메일 중복
 			{
-				$this->session->set_flashdata('message', '이미 존재하는 이메일입니다.');
+				$this->session->set_flashdata('message', 'Email already exists.');
 				redirect($this->input->post('redirect'));
 			}
-			else
+			else // 기타 에러
 			{
-				$this->session->set_flashdata('message', '다시 시도해주세요.');
+				$this->session->set_flashdata('message', 'Try again');
 				redirect($this->input->post('redirect'));
 			}
 		}
 	}
 
+	// 서비스 관리자 회원가입
 	public function provider_signup()
 	{
-		// ntbf 중복체크 메세지 버그
 		$this->form_validation->set_rules('email', 'email', 'required|valid_email', array(
-					'required'      => '이메일을 입력해 주세요',
-					'valid_email'   => '이메일 형식이 잘못되었습니다'
-				));
+	        'required'      => 'Email required',
+	        'valid_email'   => 'Email is not valid'
+	      ));
 		$this->form_validation->set_rules('password', 'password', 'required|min_length[7]|max_length[30]', array(
-					'required'      => '비밀번호를 입력해 주세요',
-					'min_length'    => '비밀번호는 7자 이상입니다',
-					'max_length'    => '비밀번호는 30자 이하입니다'
-				));
+	        'required'      => 'Password required',
+	        'min_length'    => 'Password must have at least 7 characters',
+	        'max_length'    => 'Password must have at most 30 characters'
+	      ));
 		$this->form_validation->set_rules('name', 'name', 'required', array(
-					'required'      => '실명를 입력해 주세요'
+					'required'      => 'Name required'
 				));
 		$this->form_validation->set_rules('phone', 'phone', 'required', array(
-					'required'      => '연락가능한 전화번호를 입력해 주세요'
+					'required'      => 'Phone number required'
 				));
 
 		$this->session->set_flashdata('email', $this->input->post('email'));
@@ -126,7 +129,6 @@ class Auth extends CI_Controller {
 				'phone' 		 => $phone
 			);
 
-			$this->load->model('auth_model');
 			$result = $this->auth_model->signup_provider($datas);
 
 			if($result == 'ok')
@@ -151,35 +153,20 @@ class Auth extends CI_Controller {
 		}
 	}
 
-	public function unique_email($email)
-	{
-		$this->db->where('email', $email);
-		$this->db->from('user');
-		$user1 = $this->db->get()->row();
-
-		$this->db->where('email', $email);
-		$this->db->from('provider');
-		$user2 = $this->db->get()->row();
-
-		if(!$user1 && !$user2) return TRUE;
-		else return FLASE;
-	}
-
+	// 로그인
 	public function login()
 	{
 		$this->form_validation->set_rules('email', 'email', 'required|valid_email', array(
-			'required'      => '이메일을 입력해 주세요.',
-			'valid_email'   => '이메일 형식이 잘못되었습니다.'
-		));
-
+	        'required'      => 'Email required',
+	        'valid_email'   => 'Email is not valid'
+	      ));
 		$this->form_validation->set_rules('password', 'password', 'required|min_length[7]|max_length[30]', array(
-	        'required'      => '비밀번호를 입력해 주세요',
-	        'min_length'    => '비밀번호는 7자 이상입니다',
-	        'max_length'    => '비밀번호는 30자 이하입니다'
-    ));
-
+	        'required'      => 'Password required',
+	        'min_length'    => 'Password must have at least 7 characters',
+	        'max_length'    => 'Password must have at most 30 characters'
+	      ));
 		$this->form_validation->set_rules('user_type', 'user_type', 'required', array(
-	        'required'      => '회원 구분을 선택해 주세요'
+	        'required'      => 'User type required'
     ));
 
 		$this->session->set_flashdata('email', $this->input->post('email'));
@@ -208,22 +195,17 @@ class Auth extends CI_Controller {
 				'password' => $password,
 				'user_type' => $user_type
 			);
-			$this->load->model('auth_model');
+
 			$result = $this->auth_model->login($datas);
 
 			if($result == 'no email')
 			{
-				$this->session->set_flashdata('message', '이메일이 존재하지 않습니다.');
-				redirect('login');
-			}
-			else if($result == 'not confirmed')
-			{
-				$this->session->set_flashdata('message', '이메일이 인증되지 않았습니다.');
+				$this->session->set_flashdata('message', 'Email does not exist.');
 				redirect('login');
 			}
 			else if($result == 'pwd wrong')
 			{
-				$this->session->set_flashdata('message', '비밀번호가 일치하지 않습니다.');
+				$this->session->set_flashdata('message', 'Password wrong.');
 				redirect('login');
 			}
 		  else if($result == 'ok')
@@ -234,6 +216,23 @@ class Auth extends CI_Controller {
 		}
 	}
 
+	// 이메일 중복검사
+	public function unique_email($email)
+	{
+		$this->db->where('email', $email);
+		$this->db->from('user');
+		$user1 = $this->db->get()->row();
+
+		$this->db->where('email', $email);
+		$this->db->from('provider');
+		$user2 = $this->db->get()->row();
+
+		// 어느쪽에도 없어야 true
+		if(!$user1 && !$user2) return TRUE;
+		else return FLASE;
+	}
+
+	// 로그아웃
 	public function logout()
 	{
 		$this->session->sess_destroy();
