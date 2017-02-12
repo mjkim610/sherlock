@@ -113,7 +113,7 @@ class Sherlock extends CI_Controller {
 
 		if($res['state'] == 'success')
 		{
-			$new_url = $res['url'].'?id_token='.$res['id_token'].'&state=login';;
+			$new_url = $res['redirect_url'].'?id_token='.$res['id_token'].'&state=login';;
 			redirect($new_url);
 		}
 
@@ -193,7 +193,7 @@ class Sherlock extends CI_Controller {
 			if($service_info == 'no service')
 			 error_message_goto('Wrong approach 115', '/');
 
-			$new_url = $service_info->url.'?id_token='.$id_token.'&state=signup';
+			$new_url = $service_info->redirect_url.'?id_token='.$id_token.'&state=signup';
 			redirect($new_url);
 		}
 		else
