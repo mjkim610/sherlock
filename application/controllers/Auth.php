@@ -9,7 +9,7 @@ class Auth extends CI_Controller {
 			$this->load->model('auth_model');
 	}
 
-	// 일반회원 회원가입
+	// 일반회원 회원가입 동작
 	public function signup()
 	{
 		$this->form_validation->set_rules('email', 'email', 'required|valid_email', array(
@@ -79,7 +79,7 @@ class Auth extends CI_Controller {
 		}
 	}
 
-	// 서비스 관리자 회원가입
+	// 서비스 관리자 회원가입 동작
 	public function provider_signup()
 	{
 		$this->form_validation->set_rules('email', 'email', 'required|valid_email', array(
@@ -153,7 +153,7 @@ class Auth extends CI_Controller {
 		}
 	}
 
-	// 로그인
+	// 로그인 동작
 	public function login()
 	{
 		$this->form_validation->set_rules('email', 'email', 'required|valid_email', array(

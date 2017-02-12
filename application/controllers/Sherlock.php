@@ -13,6 +13,7 @@ class Sherlock extends CI_Controller {
 		$this->load->model('sherlock_model');
 	}
 
+	// app id 로 token을 받기 위한 초기 함수
  	public function init()
  	{
  		$app_id = $this->input->post('app_id');
@@ -22,6 +23,7 @@ class Sherlock extends CI_Controller {
  		echo $token;
  	}
 
+	// 인증 메인 페이지
   public function auth()
   {
 		$sherlock_type = $this->input->get('sherlock_type');
@@ -49,6 +51,7 @@ class Sherlock extends CI_Controller {
 		$this->load->view('auth/footer');
   }
 
+	// 인증 동작 실행
   public function auth_login()
   {
 		$this->form_validation->set_rules('sherlock_type', 'sherlock_type', 'required', array(
@@ -146,6 +149,7 @@ class Sherlock extends CI_Controller {
 		// ntbf exception for each case!!
   }
 
+	// 해당 서비스 미 가입시 가입 페이지
 	public function auth_signup()
 	{
 		$token = $this->input->get('token');
@@ -178,6 +182,7 @@ class Sherlock extends CI_Controller {
 		$this->load->view('auth/footer');
 	}
 
+	// 가입 동작 실행
 	public function auth_signup_submit()
 	{
 		$token = $this->input->post('token');
@@ -210,6 +215,7 @@ class Sherlock extends CI_Controller {
 		 error_message_goto('Wrong approach 116', '/');
 	}
 
+	// id_token을 받아 redirect_url로 회원 정보를 json 형태로 전송
 	public function send_user_profile()
 	{
 		$id_token = $this->input->post('id_token');

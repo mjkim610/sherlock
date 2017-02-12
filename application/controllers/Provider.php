@@ -7,12 +7,14 @@ class Provider extends CI_Controller {
 	{
 	    parent::__construct();
 
+			// 관리자가 아니면 튕긴다
       if($this->session->userdata('user_type') != 'provider')
 			 error_message_goto('Wrong approach 440', '/');
 
 			$this->load->model('provider_model');
 	}
 
+	// 서비스 관리
 	public function my_site()
 	{
 		$my_sites = $this->provider_model->get_provider_site($this->session->userdata('user_id'));
@@ -30,6 +32,7 @@ class Provider extends CI_Controller {
 		$this->load->view('home/footer');
 	}
 
+	// 서비스 등록
 	public function regist($app_id = 'none')
 	{
 		// app_id 가 없으면 새로 생성, 있으면 수정 (form에 value로)
@@ -58,12 +61,13 @@ class Provider extends CI_Controller {
 
 	}
 
+	// 서비스 등록 동작 수행
 	public function regist_submit()
 	{
 		if($this->input->post('state') != 'regist' && $this->input->post('state') != 'edit')
 			error_message_goto('Wrong approach 444', $this->input->post('redirest'));
 
-		if($this->input->post('state') == 'regist')
+		if($this->input->post('state') == 'regist') // 새로 등록하는 경우에만 서비스 이름을 입력받는다
 		{
 			$this->form_validation->set_rules('service_name', 'service_name', 'required|min_length[1]|max_length[20]|is_unique[service.service_name]', array(
 						'required'      => 'Service name required',
@@ -109,7 +113,7 @@ class Provider extends CI_Controller {
 
 		$datas = array();
 
-		if($this->input->post('state') == 'regist')
+		if($this->input->post('state') == 'regist') // 새로 등록하는 경우에만 서비스 이름을 입력받는다
 		{
 			$datas['service_name'] = $this->input->post('service_name');
 		}
@@ -125,11 +129,12 @@ class Provider extends CI_Controller {
 		if($datas['threshold_1'] <= $datas['threshold_2'])
 			error_message_goto('Threshold 1 must be bigger than Threshold 2', $this->input->post('redirect'));
 
+	  // DB에 들어가지 않는 정보를 포함하는 배열 생성
 		$extra = array();
 		$extra['provider_id'] = $this->session->userdata('user_id');
 		$extra['state'] = $this->input->post('state');
 
-		if($this->input->post('state') == 'edit')
+		if($this->input->post('state') == 'edit') // 수정시 app_id로 해당 row를 찾는다
 		{
 			$extra['app_id'] = $this->input->post('app_id');
 		}
@@ -149,9 +154,5 @@ class Provider extends CI_Controller {
 		}
 		else if($res == 'over maximum')
 			error_message_goto('Maximum number error', '/');
-
-		var_dump($datas);
-
-
 	}
 }

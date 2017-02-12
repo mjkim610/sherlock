@@ -8,11 +8,7 @@ class Welcome extends CI_Controller {
 	    parent::__construct();
 	}
 
-	public function index()
- 	{
-
- 	}
-
+	// 로그인 페이지
 	public function login()
 	{
 		$this->load->view('welcome/head');
@@ -20,6 +16,7 @@ class Welcome extends CI_Controller {
 		$this->load->view('welcome/footer');
 	}
 
+	// 일반 사용자 회원가입 페이지
 	public function signup()
 	{
 		$this->load->view('welcome/head');
@@ -27,6 +24,7 @@ class Welcome extends CI_Controller {
 		$this->load->view('welcome/footer');
 	}
 
+	// 서비스 관리자 회원가입 페이지
 	public function provider_signup()
 	{
 		$this->load->view('welcome/head');

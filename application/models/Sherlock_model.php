@@ -26,7 +26,7 @@ class Sherlock_model extends CI_Model
 
     if( ! $user) return array('state' => 'error', 'message' => 'no user');
 
-    // ntbf db에서 threshold 값 불러와야하는데..
+    // 해당 서비스 정보 불러오기
     $this->db->where('app_id', $datas['app_id']);
     $this->db->where('token', $datas['token']);
     $this->db->from('service');
@@ -39,10 +39,11 @@ class Sherlock_model extends CI_Model
     $table_name = $service->table_name;
     $redirect_url = $service->redirect_url;
 
-    // 우선 fp 검사
+    // 우선 지문 정보 검사
     $score = $this->get_fp_weight_score($datas);
     if($score == 'no fingerprint') return array('state' => 'error', 'message' => 'no fingerprint');
 
+    // score 별로 동작 분리
     if($datas['sherlock_type'] == 'fingerprint')
     {
       if($score < $threshold_2) return array('state' => 'error', 'message' => 'fp-password', 'score' => $score);
@@ -65,7 +66,7 @@ class Sherlock_model extends CI_Model
     }
     else return array('state' => 'error', 'message' => 'no sherlock type');
 
-    // id_token_t 에 임시 회원 데이터 생성
+    // 유사도 검사 통과했으므로 id_token_t 에 임시 회원 데이터 생성
     $randomString = make_random_string(100);
 
     $this->db->set('id_token', $randomString);
@@ -119,6 +120,8 @@ class Sherlock_model extends CI_Model
     $max_score = 0;
 
     $weight = json_decode(WEIGHT);
+
+    // 사용자가 등록한 모든 지문 정보와 비교하여 최대값을 계산한다
     foreach ($fingerprints as $fingerprint)
     {
       $tmp_score = 0;
@@ -134,6 +137,7 @@ class Sherlock_model extends CI_Model
       if($tmp_score > $max_score) $max_score = $tmp_score;
     }
 
+    // 로그를 남기기위한 추가 동작
     foreach ($fingerprints as $fingerprint)
     {
       $this->db->set('service_id', $service_id);
@@ -146,7 +150,7 @@ class Sherlock_model extends CI_Model
       $this->db->set('score', $max_score);
       $this->db->set('reg_date', 'NOW()', FALSE);
       $this->db->insert('trial_log');
-      break;
+      break; // 입력된 정보는 같으므로 한번만 실행한다
     }
 
     return $max_score;
@@ -186,99 +190,6 @@ class Sherlock_model extends CI_Model
     else return 'db insert error';
   }
 
-  // unused
-  function signup($datas)
-  {
-    $this->db->where('token', $datas['token']);
-    $this->db->from('service');
-    $service = $this->db->get()->row();
-
-    if( ! $service)
-    {
-      return array('error', 'token error');
-    }
-
-    $tname = $service->tname;
-    $mix = $service->mix;
-
-    $this->db->where('email', $datas['email']);
-    $this->db->from($tname);
-    $user = $this->db->get()->row();
-
-    if($user)
-    {
-      return array('error', 'email exist');
-    }
-
-    $this->db->set('email', $datas['email']);
-    $this->db->set('password', $datas['password']);
-    $this->db->set('pin', $datas['pin']);
-    foreach ($datas['fps'] as $key => $value) {
-      $this->db->set($key, $value);
-    }
-    $this->db->set('reg_date', 'NOW()', FALSE);
-    $res = $this->db->insert($tname);
-
-    if($res) return array('ok', 'ok');
-    else return array('error', 'db fail');
-  }
-
-  // unused
-  function login($datas)
-  {
-    $this->db->where('token', $datas['token']);
-    $this->db->from('service');
-    $service = $this->db->get()->row();
-
-    if( ! $service)
-    {
-      return 'token error';
-    }
-
-    $tname = $service->tname;
-    $mix = $service->mix;
-    $thresh_1 = $service->thresh_1;
-    $thresh_2 = $service->thresh_2;
-
-    $this->db->where('email', $datas['email']);
-    $this->db->from($tname);
-    $user = $this->db->get()->row();
-
-    if( ! $user) return array('error', 'no user');
-
-    if($datas['loginType'] == 'email')
-    {
-      $weight = json_decode(WEIGHT);
-
-      $score = 0;
-      $i = 0;
-      foreach ($datas['fps'] as $key => $value) {
-        if($user->$key == $value)
-        {
-          $score += $weight[$i];
-        }
-        $i++;
-      }
-      if($score > $thresh_1) return array('ok', 'ok');
-      else if($score > $thresh_2) return array('move', 'to pin');
-      else return array('move', 'to pwd');
-    }
-    else if($datas['loginType'] == 'pin')
-    {
-      if($user->pin == $datas['pin']) return array('ok', 'ok');
-      else return array('move', 'to pwd');
-    }
-    else if($datas['loginType'] == 'password')
-    {
-      if($user->password == $datas['password']) return array('ok', 'ok');
-      else return array('error', 'password wrong');
-    }
-    else
-    {
-      return array('error', 'no loginType');
-    }
-  }
-
   function get_user_profile($datas)
   {
     $this->db->where('id_token', $datas['id_token']);
@@ -290,7 +201,7 @@ class Sherlock_model extends CI_Model
 
     $user_id = $id_token_t->user_id;
 
-    // delete right after use id_token_t
+    // id_token 사용 후 해당 데이터 삭제 코드
     // $this->db->where('id_token', $datas['id_token']);
     // $this->db->where('app_id', $datas['app_id']);
     // $this->db->delete('id_token_t');

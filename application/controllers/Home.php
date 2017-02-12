@@ -8,6 +8,7 @@ class Home extends CI_Controller {
 	    parent::__construct();
 	}
 
+	// 메인 페이지
 	public function index()
  	{
 		$this->load->view('home/head');
@@ -16,6 +17,7 @@ class Home extends CI_Controller {
  		$this->load->view('home/footer');
  	}
 
+	// 일반 사용자 설명 페이지
 	public function about()
 	{
 		$this->load->view('home/head');
@@ -24,6 +26,7 @@ class Home extends CI_Controller {
 		$this->load->view('home/footer');
 	}
 
+	// 개발자 설명 페이지
 	public function about_dev()
 	{
 		$this->load->view('home/head');
@@ -32,6 +35,7 @@ class Home extends CI_Controller {
 		$this->load->view('home/footer');
 	}
 
+	// 개인정보 수정 페이지
 	public function edit()
 	{
 		$this->load->view('home/head');

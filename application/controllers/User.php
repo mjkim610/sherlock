@@ -13,6 +13,7 @@ class User extends CI_Controller {
       $this->load->model('user_model');
 	}
 
+	// 자신의 지문 정보 열람 페이지
 	public function fingerprint()
 	{
 		$fingerprints = $this->user_model->get_user_fingerprints($this->session->userdata('user_id'));
@@ -27,6 +28,7 @@ class User extends CI_Controller {
 		$this->load->view('home/footer');
 	}
 
+	// 지문 등록 동작
 	public function regist_fingerprint()
 	{
 		$this->form_validation->set_rules('title', 'title', 'required|max_length[15]', array(
@@ -99,6 +101,7 @@ class User extends CI_Controller {
 		}
 	}
 
+	// 지문 삭제 동작
 	public function delete_fingerprint($fp_id = 'none')
 	{
 		if($fp_id == 'none')
