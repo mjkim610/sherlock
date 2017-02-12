@@ -18,6 +18,10 @@
       <div class="account-wall">
         <img class="profile-img" src="<?=site_url('static/img/sherlock/favicon3.png')?>"
         alt="">
+        <div class="">
+          <p><strong>Service Name</strong> : <?=$service_info->service_name?></p>
+          <p><strong>Service URL</strong> : <?=$service_info->url?></p>
+        </div>
         <form id="sherlock_login_form" class="form-login" action="<?=site_url('sherlock/auth_login')?>" method="post">
           <?php if($sherlock_type == 'fingerprint'): ?>
             <div class="text-center" style="font-size: 16px;">

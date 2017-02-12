@@ -28,11 +28,17 @@ class Sherlock extends CI_Controller {
 		$token = $this->input->get('token');
 		$app_id = $this->input->get('app_id');
 
+
     $datas = array(
       'sherlock_type' => $sherlock_type,
       'token' => $token,
       'app_id' => $app_id
     );
+
+		$service_info = $this->sherlock_model->get_service_info($datas);
+		if($service_info == 'no service') error_message_goto('Wrong approach 109', '/');
+
+		$datas['service_info'] = $service_info;
 
 		$head_datas = array(
 			'title' => 'Sherlock API Login'
