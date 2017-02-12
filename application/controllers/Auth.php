@@ -5,10 +5,6 @@ class Auth extends CI_Controller {
 
 	public function __construct()
 	{
-	    header('Access-Control-Allow-Origin: *');
-	    header("Access-Control-Allow-Headers: X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Request-Method");
-	    header("Access-Control-Allow-Methods: GET, POST, OPTIONS, PUT, DELETE");
-
 	    parent::__construct();
 	}
 
@@ -169,54 +165,6 @@ class Auth extends CI_Controller {
 		else return FLASE;
 	}
 
-	public function signup_old()
-	{
-		$this->form_validation->set_rules('email', 'email', 'required|valid_email', array(
-			'required'      => '이메일을 입력해 주세요.',
-			'valid_email'   => '이메일 형식이 잘못되었습니다.'
-		));
-		$this->form_validation->set_rules('password', 'password', 'required', array(
-			'required'      => '비밀번호를 입력해 주세요.'
-		));
-		$this->form_validation->set_rules('pin', 'pin', 'required|exact_length[4]|numeric', array(
-			'required'      => '핀번호를 입력해 주세요.',
-			'exact_length'      => '핀번호는 네자리 숫자만 가능합니다.',
-			'numeric'      => '핀번호는 숫자만 가능합니다.'
-		));
-		if ($this->form_validation->run() == FALSE)
-		{
-			echo json_encode(array('error', validation_errors()));
-			exit();
-		}
-
-    $posts = $this->input->post();
-    $fp_indexes = array('a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z','a_a');
-    $fps = [];
-    foreach ($fp_indexes as $fp_index) {
-      if($posts[$fp_index])
-      {
-        $fps[$fp_index] = $posts[$fp_index];
-      }
-      else {
-        // ntbf.예외처리
-        $fps[$fp_index] = '';
-      }
-    }
-
-		$datas = array(
-			'email' => $posts['email'],
-			'password' => $posts['password'],
-			'pin' => $posts['pin'],
-			'fps' => $fps,
-			'token' => $posts['token']
-		);
-
-		$this->load->model('sherlock_model');
-		$res = $this->sherlock_model->signup($datas);
-
-		echo json_encode($res);
-	}
-
 	public function login()
 	{
 		$this->form_validation->set_rules('email', 'email', 'required|valid_email', array(
@@ -284,64 +232,6 @@ class Auth extends CI_Controller {
 				redirect($returnURL ? $returnURL : '/');
 			}
 		}
-	}
-
-	public function login_old()
-	{
-		$this->form_validation->set_rules('email', 'email', 'required|valid_email', array(
-			'required'      => '이메일을 입력해 주세요.',
-			'valid_email'   => '이메일 형식이 잘못되었습니다.'
-		));
-
-		if($this->input->post('loginType') == 'password')
-		{
-			$this->form_validation->set_rules('password', 'password', 'required', array(
-				'required'      => '비밀번호를 입력해 주세요.'
-			));
-		}
-
-		if($this->input->post('loginType') == 'pin')
-		{
-			$this->form_validation->set_rules('pin', 'pin', 'required|exact_length[4]|numeric', array(
-				'required'      => '핀번호를 입력해 주세요.',
-				'exact_length'      => '핀번호는 네자리 숫자만 가능합니다.',
-				'numeric'      => '핀번호는 숫자만 가능합니다.'
-			));
-		}
-
-		if ($this->form_validation->run() == FALSE)
-		{
-			echo json_encode(array('error', validation_errors()));
-			exit();
-		}
-
-		$posts = $this->input->post();
-		$fp_indexes = array('a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z','a_a');
-		$fps = [];
-		foreach ($fp_indexes as $fp_index) {
-			if($posts[$fp_index])
-			{
-				$fps[$fp_index] = $posts[$fp_index];
-			}
-			else {
-				// ntbf.예외처리
-				$fps[$fp_index] = '';
-			}
-		}
-
-		$datas = array(
-			'email' => $posts['email'],
-			'password' => $posts['password'],
-			'loginType' => $posts['loginType'],
-			'pin' => $posts['pin'],
-			'fps' => $fps,
-			'token' => $posts['token']
-		);
-
-		$this->load->model('sherlock_model');
-		$res = $this->sherlock_model->login($datas);
-
-		echo json_encode($res);
 	}
 
 	public function logout()
