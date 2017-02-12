@@ -25,6 +25,7 @@
       <div>
         <span id="components"></span>
       </div>
+    </div>
     <div class="main-section">
       <h4>Guide for</h4>
       <a href="<?=site_url('about')?>" class="btn btn-lg btn-link" id="sherlock-test-btn">User</a>
@@ -32,7 +33,6 @@
     </div>
   </div>
 </div>
-
 <script type="text/javascript">
 $('#sherlock-test-btn').click(function() {
   var d1 = new Date();
