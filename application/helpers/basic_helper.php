@@ -1,5 +1,14 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
+if ( ! function_exists('error_message_goto')){
+  function error_message_goto($message, $path)
+  {
+    $CI =& get_instance();
+    $CI->session->set_flashdata('message', $message);
+    redirect($path);
+  }
+}
+
 if ( ! function_exists('print_fingerprint_table')){
   function print_fingerprint_table($fingerprints)
   {

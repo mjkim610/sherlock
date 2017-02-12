@@ -8,11 +8,9 @@ class Provider extends CI_Controller {
 	    parent::__construct();
 
       if($this->session->userdata('user_type') != 'provider')
-      {
-        $this->session->set_flashdata('message', 'Wrong approach 440');
-        redirect('/');
-      }
-      $this->load->model('provider_model');
+			 error_message_goto('Wrong approach 440', '/');
+
+			$this->load->model('provider_model');
 	}
 
 	public function my_site()
@@ -20,10 +18,7 @@ class Provider extends CI_Controller {
 		$my_sites = $this->provider_model->get_provider_site($this->session->userdata('user_id'));
 
 		if($my_sites == 'no provider')
-		{
-			$this->session->set_flashdata('message', 'Wrong approach 441');
-			redirect('/');
-		}
+		 error_message_goto('Wrong approach 441', '/');
 
 		$datas = array(
 			'my_sites' => $my_sites
@@ -50,10 +45,8 @@ class Provider extends CI_Controller {
 		{
 			$res = $this->provider_model->is_right_provider($this->session->userdata('user_id'), $app_id);
 			if( ! $res)
-			{
-				$this->session->set_flashdata('message', 'Wrong approach 442');
-				redirect('/');
-			}
+			 error_message_goto('Wrong approach 442', '/');
+			 
 			$datas['what'] = $res;
 		}
 
