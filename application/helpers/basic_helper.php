@@ -61,20 +61,46 @@ if ( ! function_exists('print_my_site_table')){
     foreach ($my_sites as $my_site)
     {
       $card_num--;
+
+      $banner = 'ERROR';
+      if($my_site->state == 'prepare')
+      {
+        $banner = 'ON PREPARE';
+      }
+      else if($my_site->state == 'service')
+      {
+        $banner = 'ON SERVICE';
+      }
       // ntbf 아직 수정안함
       echo '<div class="col-sm-4 '.$my_site->state.'">';
       echo '  <div class="my-site-card">';
-      echo '    <div class="app_id">';
-      echo        'App ID : '.$my_site->app_id;
-          echo '</div>';
-      echo '    <div class="service_name">';
-      echo        $my_site->service_name;
+      echo '    <div class="banner">';
+      echo      $banner;
       echo '    </div>';
-      echo '    <div class="reg_date">';
-      echo        $my_site->reg_date;
+      echo '    <div class="content">';
+      echo '      <dl>';
+      echo '        <dt> Service Name</dt>';
+      echo '        <dd>'.$my_site->service_name.'</dd>';
+      echo '        <dt> Regist date</dt>';
+      echo '        <dd>'.$my_site->reg_date.'</dd>';
+      echo '        <dt> App ID</dt>';
+      echo '        <dd>'.$my_site->app_id.'</dd>';
+      echo '        <dt> Description</dt>';
+      echo '        <dd>'.$my_site->description.'</dd>';
+      echo '        <dt> URL</dt>';
+      echo '        <dd>'.$my_site->url.'</dd>';
+      echo '        <dt> Redirect URL</dt>';
+      echo '        <dd>'.$my_site->redirect_url.'</dd>';
+      echo '        <dt> Threshold_1</dt>';
+      echo '        <dd>'.$my_site->threshold_1.'</dd>';
+      echo '        <dt> Threshold_2</dt>';
+      echo '        <dd>'.$my_site->threshold_2.'</dd>';
+      echo '        <dt> Modify date</dt>';
+      echo '        <dd>'.$my_site->mod_date.'</dd>';
+      echo '      </dl>';
       echo '    </div>';
       echo '    <div class="button">';
-      echo '        <a href="'.site_url('provider/regist/'.$my_site->app_id).'" class="btn btn-primary">Edit</a>';
+      echo '        <a href="'.site_url('provider/regist/'.$my_site->app_id).'" class="btn btn-default">Edit</a>';
       echo '    </div>';
       echo '  </div>';
       echo '</div>';
@@ -85,10 +111,13 @@ if ( ! function_exists('print_my_site_table')){
       echo '<div class="col-sm-4">';
       echo '  <div class="my-site-card">';
       echo '    <div class="banner">';
-      echo '    Regist to use Sherlock';
+      echo '    NOT USED';
+      echo '    </div>';
+      echo '    <div class="content">';
+      echo '    Regist to use Sherlock Authentication';
       echo '    </div>';
       echo '    <div class="button">';
-      echo '      <a href="'.site_url('provider/regist').'" class="btn btn-primary">Regist</a>';
+      echo '      <a href="'.site_url('provider/regist').'" class="btn btn-default">Regist</a>';
       echo '    </div>';
       echo '  </div>';
       echo '</div>';
