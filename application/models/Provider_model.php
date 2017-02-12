@@ -21,4 +21,14 @@ class Provider_model extends CI_Model
 
     return $service;
   }
+
+  function is_right_provider($provider_id, $app_id)
+  {
+    $this->db->where('provider_id', $provider_id);
+    $this->db->where('app_id', $app_id);
+    $this->db->from('service');
+    $service = $this->db->get()->row();
+
+    return $service;
+  }
 }
