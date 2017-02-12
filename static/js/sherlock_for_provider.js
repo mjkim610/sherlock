@@ -2,7 +2,6 @@
 // just for when click sherlock-login button
 function Sherlock_init(app_id)
 {
-  var app_id = 'asd23fgasdgasf32'; // Your App ID Here
   $.ajax({
     type : "POST",
     data : {
@@ -18,6 +17,11 @@ function Sherlock_init(app_id)
       get_string = get_string + '&app_id=' + encodeURI(app_id); // ajax_result['token']
       // location.href = 'http://localhost/sherlock/authenticate' + get_string;
       location.href = 'https://try-sherlock.com/authenticate' + get_string;
-    }
+    },
+    error: function (xhr, ajaxOptions, thrownError) {
+         console.log(xhr.status);
+         console.log(xhr.responseText);
+         console.log(thrownError);
+     }
   });
 }
