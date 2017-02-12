@@ -45,9 +45,9 @@
           <input type="hidden" name="token" value="<?=$token?>" >
           <input type="hidden" name="app_id" value="<?=$app_id?>" >
           <input type="hidden" name="redirect" value="<?= $this->uri->uri_string() ?>" >
-          <button class="btn btn-primary btn-block" type="button" id="wow" onclick="sherlock_authentication()">Log in</button>
-          <a href="<?=site_url('/')?>" target="_blank" class="pull-right"><i class="fa fa-arrow-right" aria-hidden="true" style="vertical-align: text-top;"></i> Sherlock home</a>
         </form>
+        <button class="btn btn-primary btn-block" type="button" id="wow" onclick="sherlock_authentication();">Log in</button>
+        <a href="<?=site_url('/')?>" target="_blank" class="pull-right"><i class="fa fa-arrow-right" aria-hidden="true" style="vertical-align: text-top;"></i> Sherlock home</a>
       </div>
       <!-- ntbf 회원가입 흐름을 어떻게 가져갈 것인지 -->
       <a href="<?=site_url('signup')?>" class="text-center additional-message" id="wow" onclick="javascript">Sign Up</a>
