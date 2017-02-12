@@ -12,18 +12,23 @@
   }
 ?>
 <div class="row">
-  <div class="col-sm-12">
-    <div class="col-sm-10 col-sm-offset-1">
-      <h2>메인 페이지</h2>
-      <button class="btn btn-primary" type="button" id="sherlock-btn" onclick="Sherlock_init('asd23fgasdgasf32')" name="button">Try-it</button>
+  <div class="col-sm-10 col-sm-offset-1">
+    <h2>Main page.</h2>
+    <h4>Welecome to Sherlock Authentication page</h4>
+    <div class="main-section">
+      <h4>You can try Sherlock Authentication API here</h4>
+      <button class="btn btn-lg btn-primary" type="button" id="sherlock-btn" onclick="Sherlock_init('asd23fgasdgasf32')" name="button">Sherlock auth</button>
     </div>
-  </div>
-  <div class="col-sm-12">
-    <div class="col-sm-10 col-sm-offset-1">
-      <button class="btn btn-primary" type="button" id="sherlock-test-btn" name="button">Test your fingerprint</button>
+    <div class="main-section">
+      <h4>You can check your Browser fingerprint that we use to authenticate</h4>
+      <button class="btn btn-lg btn-primary" type="button" id="sherlock-test-btn" name="button">Check your fingerprint</button>
       <div>
         <span id="components"></span>
       </div>
+    <div class="main-section">
+      <h4>Guide for</h4>
+      <a href="<?=site_url('about')?>" class="btn btn-lg btn-link" id="sherlock-test-btn">User</a>
+      <a href="<?=site_url('about/dev')?>" class="btn btn-lg btn-link" id="sherlock-test-btn">Service Provider</a>
     </div>
   </div>
 </div>

@@ -226,6 +226,10 @@ nav a img {
   margin-top: -15px;
 }
 
+/*main page*/
+.main-section{
+  margin-top: 50px;
+}
 /* fingerprint card*/
 .fingerprint_title{
   display: block;
@@ -258,6 +262,7 @@ nav a img {
 
 .my-site-card .content{
   padding: 15px;
+  word-wrap: break-word;
 }
 
 .my-site-card .banner{
@@ -268,4 +273,11 @@ nav a img {
   border-block-start: 3px dashed;
   color: #efe87a;
   background: #667BFF;
+}
+
+/*about image*/
+.about-image{
+  display: block;
+  margin: 0 auto;
+  width: 80%;
 }
