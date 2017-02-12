@@ -6,7 +6,7 @@ Sherlock allows users to log in to websites without typing their passwords.
 
 Sherlock utilizes the browser fingerprinting technique implemented by [fingerprintjs2](https://github.com/Valve/fingerprintjs2) to identify users' devices.
 
-Sherlock's benefits have been tested and backed up by our research.
+Sherlock's benefits have been tested and backed up by our [research](https://github.com/mjkim610/sherlock/blob/master/sherlock-paper.pdf).
 
 ## Features
 - Secure and usable password-free authentication
@@ -15,7 +15,7 @@ Sherlock's benefits have been tested and backed up by our research.
 - Allow user to register multiple device fingerprints for each account
 
 ## Demo
-- Website - [http://www.try-sherlock.com/](https://www.try-sherlock.com/)
+- Website - [https://www.try-sherlock.com/](https://www.try-sherlock.com/)
 - Video - [YouTube Link](https://youtu.be/Aj9xxVyO2Y8)
 
 ## API Usage
