@@ -80,8 +80,6 @@ Sherlock's benefits have been tested and backed up by our research.
         </script>
         ```
 
-5. For testing, visit [http://try-sherlock.com:8080/](http://try-sherlock.com:8080/)
-
 ## External Code
 - fingerprintjs2 -  [https://github.com/Valve/fingerprintjs2](https://github.com/Valve/fingerprintjs2)
 - sha256.js -  [https://code.google.com/archive/p/crypto-js/](https://code.google.com/archive/p/crypto-js/)
