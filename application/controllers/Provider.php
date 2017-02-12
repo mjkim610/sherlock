@@ -137,7 +137,7 @@ class Provider extends CI_Controller {
 		$new_datas = array('datas' => $datas, 'extra' => $extra);
 		$res = $this->provider_model->set_service($new_datas);
 
-		if($res)
+		if($res == 'ok')
 		{
 			$arr = "<div class='alert success'>";
 			$arr .= "<span class='closebtn'>&times;</span>";
@@ -147,6 +147,8 @@ class Provider extends CI_Controller {
 			$this->session->set_flashdata('errors', $arr);
 			redirect('my/site');
 		}
+		else if($res == 'over maximum')
+			error_message_goto('Maximum number error', '/');
 
 		var_dump($datas);
 

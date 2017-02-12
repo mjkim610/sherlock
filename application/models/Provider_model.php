@@ -36,6 +36,12 @@ class Provider_model extends CI_Model
   {
     if($new_datas['extra']['state'] == 'regist')
     {
+      $this->db->where('provider_id', $new_datas['extra']['provider_id']);
+      $this->db->from('service');
+      $num_of_service = $this->db->count_all_results();
+
+      if($num_of_service >= MAX_MY_SITE_NUM) return 'over maximum';
+
       $table_name = 'z_'.make_random_string(30);
       while(1)
       {
@@ -69,7 +75,7 @@ class Provider_model extends CI_Model
       $this->db->set('reg_date', 'NOW()', FALSE);
       $res = $this->db->insert('service');
 
-      return $res;
+      if($res) return 'ok';
     }
     else if($new_datas['extra']['state'] == 'edit')
     {
@@ -85,8 +91,10 @@ class Provider_model extends CI_Model
       $this->db->where('app_id', $new_datas['extra']['app_id']);
       $res = $this->db->update('service');
 
-      return $res;
+      if($res) return 'ok';
     }
+
+    return 'error';
 
   }
 }
