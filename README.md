@@ -26,48 +26,43 @@ Sherlock's benefits have been tested and backed up by our [research](https://git
     - **Redirect URL**: Address of page to load upon successful login attempt
     - **Threshold 1**: Threshold value for allowing login without additional credentials
     - **Threshold 2**: Threshold value for allowing login with PIN
-    - 0 < Threshold 2 < Threshold 1 <= 100
+    - **Threshold values guide**: 0 < Threshold 2 < Threshold 1 <= 100
 3. Save the generated `App ID` in a safe location
 4. Save [sherlock_for_provider](https://github.com/mjkim610/sherlock/blob/master/static/js/sherlock_for_provider.js) in your website / web service
+5. Download [sherlock.js](https://github.com/mjkim610/sherlock/blob/master/static/js/sherlock.js) into the web service directory and include the script in the header of the relevant pages (*PATH_TO_JS_FILE* must be specified)
+    ```
+    <script src="PATH_TO_JS_FILE"></script>
+    ```
+6. Add a "Login with Sherlock" button and create an onclick event (*APP_ID* must be specified)
+    ```
+    onclick="Sherlock_init(APP_ID)
+    ```
+7. On your webpage specified at **Redirect URL**, add the following code (*APP_ID* must be specified)
+    ```
+    $id_token = $_GET["id_token"];
+    $state = $_GET["state"];
 
-Contact Sherlock administrators at `try.sherlock@gmail.com` to obtain an app key.
-5. Download [sherlock.js](https://github.com/mjkim610/sherlock/blob/master/static/js/sherlock.js) into the web service directory and include the script in the header of the relevant pages
-```
-<script src="PATH_TO_JS_FILE"></script>
-```
-*PATH_TO_JS_FILE* must be specified
-6. Add a "Login with Sherlock" button and create an onclick event
-```
-onclick="Sherlock_init(APP_ID)
-```
-*APP_ID* must be specified
-7. On your webpage specified at **Redirect URL**, add the following code
-```
-$id_token = $_GET["id_token"];
-$state = $_GET["state"];
+    $postdata = http_build_query(
+        array(
+            'id_token' => $id_token,
+            'app_id' => APP_ID
+        )
+    );
 
-$postdata = http_build_query(
-    array(
-        'id_token' => $id_token,
-        'app_id' => APP_ID
-    )
-);
+    $opts = array(
+        'http' => array(
+            'method' => 'POST',
+            'header' => 'Content-type: application/x-www-form-urlencoded',
+            'content' => $postdata
+        )
+    );
 
-$opts = array(
-    'http' => array(
-        'method' => 'POST',
-        'header' => 'Content-type: application/x-www-form-urlencoded',
-        'content' => $postdata
-    )
-);
+    $context = stream_context_create($opts);
+    $result = file_get_contents(site_url('get_user_profile'), false, $context);
 
-$context = stream_context_create($opts);
-$result = file_get_contents(site_url('get_user_profile'), false, $context);
+    echo $result;
 
-echo $result;
-
-```
-*APP_ID* must be specified
+    ```
 7. Setup is complete! A successful login will return user information as JSON in the form `{"email":"jhoney7374@gmail.com","code":"dkHHr1AsOYcUTTUvO2xe75rxWhsqSk"}`
 
 ### Users
@@ -77,6 +72,7 @@ echo $result;
 
 ## External Code
 - fingerprintjs2 -  [https://github.com/Valve/fingerprintjs2](https://github.com/Valve/fingerprintjs2)
+- password_compat - [https://github.com/ircmaxell/password_compat](https://github.com/ircmaxell/password_compat)
 - sha256.js -  [https://code.google.com/archive/p/crypto-js/](https://code.google.com/archive/p/crypto-js/)
 - Font Awesome -  [http://fontawesome.io/](http://fontawesome.io/)
 
