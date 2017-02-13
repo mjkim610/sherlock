@@ -18,67 +18,62 @@ Sherlock's benefits have been tested and backed up by our [research](https://git
 - Website - [https://www.try-sherlock.com/](https://www.try-sherlock.com/)
 - Video - [YouTube Link](https://youtu.be/Aj9xxVyO2Y8)
 
-## API Usage
-1. Contact Sherlock administrators at `try.sherlock@gmail.com` to obtain an app key.
-2. Download [sherlock.js](https://github.com/mjkim610/sherlock/blob/master/static/js/sherlock.js) into the web service directory.
-3. Add the signup elements and JavaScript code into the service signup page
+## API Usage (PHP)
+### Service Providers
+1. Sign up as a service provider at [try-sherlock.com](https://try-sherlock.com/)
+2. Log in at [try-sherlock.com](https://try-sherlock.com/) and register your website / web service at [https://try-sherlock.com/my/site](https://try-sherlock.com/my/site)
+    - **URL**: Address of homepage
+    - **Redirect URL**: Address of page to load upon successful login attempt
+    - **Threshold 1**: Threshold value for allowing login without additional credentials
+    - **Threshold 2**: Threshold value for allowing login with PIN
+    - 0 < Threshold 2 < Threshold 1 <= 100
+3. Save the generated `App ID` in a safe location
+4. Save [sherlock_for_provider](https://github.com/mjkim610/sherlock/blob/master/static/js/sherlock_for_provider.js) in your website / web service
 
-    - HTML
-        - HTML code may be edited, but the Sherlock API accesses the signup information using the `id`
-        ```
-        <div class="form-group form-sherlock-email">
-            <label for="sherlock_email">Email:</label>
-            <input type="email" class="form-control" id="sherlock_email" name="email" placeholder="Email" value="email@email.email">
-        </div>
-        <div class="form-group form-sherlock-password">
-            <label for="sherlock_password">Password:</label>
-            <input type="password" class="form-control" id="sherlock_password" name="password" placeholder="Password">
-        </div>
-        <div class="form-group form-sherlock-pin">
-            <label for="sherlock_pin">Pin:</label>
-            <input type="password" class="form-control" id="sherlock_pin" name="pin" placeholder="PIN">
-        </div>
-        <button type="button" class="btn btn-default pull-right" id="wow" onclick="sherlock_signup()">Click</button>
-        ```
-    - JavaScript
-        - replace `'QWERTY'` with the app key
-        - on successful sign up, `sherlock.SignUp()` will return `true`
-        ```
-        <script type="text/javascript">
-        function sherlock_signup() {
-            sherlock.SignUp('QWERTY');
-        };
-        </script>
-        ```
+Contact Sherlock administrators at `try.sherlock@gmail.com` to obtain an app key.
+5. Download [sherlock.js](https://github.com/mjkim610/sherlock/blob/master/static/js/sherlock.js) into the web service directory and include the script in the header of the relevant pages
+```
+<script src="PATH_TO_JS_FILE"></script>
+```
+*PATH_TO_JS_FILE* must be specified
+6. Add a "Login with Sherlock" button and create an onclick event
+```
+onclick="Sherlock_init(APP_ID)
+```
+*APP_ID* must be specified
+7. On your webpage specified at **Redirect URL**, add the following code
+```
+$id_token = $_GET["id_token"];
+$state = $_GET["state"];
 
-4. Add the login elements and JavaScript code into the service login page
-    - HTML
-        - HTML code may be edited, but the Sherlock API accesses the signup information using the `id`
-        ```
-        <div class="form-group form-sherlock-email">
-            <label for="sherlock_email">Email:</label>
-            <input type="email" class="form-control" id="sherlock_email" name="email" placeholder="Email" value="email@email.email">
-        </div>
-        <div class="form-group form-sherlock-password" style="display:none;" >
-            <label for="sherlock_password">Password:</label>
-            <input type="password" class="form-control" id="sherlock_password" name="password" placeholder="Password">
-        </div>
-        <div class="form-group form-sherlock-pin" style="display:none;" >
-            <label for="sherlock_pin">Pin:</label>
-            <input type="password" class="form-control" id="sherlock_pin" name="pin" placeholder="PIN">
-        </div>
-        <button type="button" class="btn btn-default pull-right" id="wow" onclick="sherlock_login()">Click</button>
-         ```
-    - JavaScript
-        - replace `'QWERTY'` with the app key
-        - `sherlock.LogIn()` will check the threshold value and authenticate user or ask for additional credentials
-        ```
-        <script type="text/javascript">
-        function sherlock_login() {
-            sherlock.LogIn('QWERTY');
-        };
-        </script>
-        ```
+$postdata = http_build_query(
+    array(
+        'id_token' => $id_token,
+        'app_id' => APP_ID
+    )
+);
+
+$opts = array(
+    'http' => array(
+        'method' => 'POST',
+        'header' => 'Content-type: application/x-www-form-urlencoded',
+        'content' => $postdata
+    )
+);
+
+$context = stream_context_create($opts);
+$result = file_get_contents(site_url('get_user_profile'), false, $context);
+
+echo $result;
+
+```
+*APP_ID* must be specified
+7. Setup is complete! A successful login will return user information as JSON in the form `{"email":"jhoney7374@gmail.com","code":"dkHHr1AsOYcUTTUvO2xe75rxWhsqSk"}`
+
+### Users
+1. Sign up as a user at [try-sherlock.com](https://try-sherlock.com/)
+2. Register your fingerprints at [try-sherlock.com/my/fingerprint](https://try-sherlock.com/my/fingerprint)
+3. Setup is complete! Log in without hassle in any of the Sherlock-supported websites / web services
 
 ## External Code
 - fingerprintjs2 -  [https://github.com/Valve/fingerprintjs2](https://github.com/Valve/fingerprintjs2)
